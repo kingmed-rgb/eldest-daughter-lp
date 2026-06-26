@@ -284,7 +284,7 @@
         font-family:'Fraunces';font-weight:700;font-size:15px;line-height:1.1;box-shadow:var(--shadow);border:3px solid #E8C98A}
 
   /* what's inside */
-  .inside-list{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:10px}
+  .inside-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
   .inside-list li{background:var(--white);border:var(--card-border);border-radius:var(--card-radius);padding:20px 22px 20px 58px;position:relative;display:flex;flex-direction:column;gap:4px;counter-increment:exercise}
   .inside-list li::before{content:counter(exercise);position:absolute;left:16px;top:18px;width:24px;height:24px;border-radius:50%;
        background:rgba(122,132,102,.18);font-family:'Inter';font-size:12px;font-weight:700;color:#56713F;
@@ -699,7 +699,7 @@
   <div class="wrap">
     <h2>A Closer Look At The Exercises</h2>
     <p class="sec-intro">This isn't about fixing yourself overnight, it's about walking <B><em>step by step </em></B>into a lighter way of living. Here's the path ahead:</p>
-    <div style="display:flex;flex-direction:column;gap:16px;counter-reset:exercise">
+    <div style="display:flex;flex-direction:column;gap:10px;counter-reset:exercise">
     <div class="part">
       <ul class="inside-list">
         <li><span class="il-title">The Day My Childhood Ended</span><span class="il-desc">Name the roles you carried and the exact moment you stopped being just a kid.</span></li>
