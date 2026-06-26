@@ -130,14 +130,14 @@
        margin:0 auto 14px;margin-top:-56px;position:relative;z-index:1}
 
   /* page gallery */
-  .page-gallery-wrap{position:relative;overflow-x:clip;padding-bottom:4px}
+  .page-gallery-wrap{position:relative;overflow-x:clip;padding:8px 0 4px}
   @keyframes gallery-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  .page-gallery{display:flex;gap:28px;padding:8px 28px 8px;animation:gallery-scroll 55s linear infinite;width:max-content}
+  .page-gallery{display:flex;animation:gallery-scroll 70s linear infinite;width:max-content}
   .page-gallery:hover{animation-play-state:paused}
-  .page-card{flex:0 0 300px;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -10px rgba(0,0,0,.5);transition:transform .2s ease}
+  .page-card{flex:none;width:300px;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -10px rgba(0,0,0,.5);transition:transform .2s ease;margin-right:28px}
   .page-card:hover{transform:translateY(-8px) scale(1.02)}
   .page-card img{width:100%;display:block}
-  @media(max-width:600px){.page-card{flex:0 0 220px}}
+  @media(max-width:600px){.page-card{width:220px;margin-right:20px}}
 
   /* narrative */
   .narrative p{font-size:inherit}
@@ -224,10 +224,10 @@
   .reviews-score .count{font-size:15px;color:rgba(244,233,220,.65)}
   .review-marquee-wrap{position:relative;overflow-x:clip;padding:0 0 24px}
   @keyframes review-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  .review-track{display:flex;gap:18px;width:max-content;animation:review-scroll 90s linear infinite}
+  .review-track{display:flex;width:max-content;animation:review-scroll 120s linear infinite}
   .review-track:hover{animation-play-state:paused}
   /* quote cards */
-  .rcard{flex:0 0 310px;border-radius:var(--card-radius);overflow:hidden;display:flex;flex-direction:column;font-size:15px;min-height:220px}
+  .rcard{flex:none;width:310px;border-radius:var(--card-radius);overflow:hidden;display:flex;flex-direction:column;font-size:15px;min-height:220px;margin-right:18px}
   .rcard-quote{background:var(--white);border:var(--card-border);padding:var(--card-pad);font-family:'Inter',sans-serif}
   .qcard-mark{display:block;margin-bottom:4px;line-height:1}
   .qcard-body{font-size:15px;line-height:1.6;color:var(--plum-soft);flex:1;margin-bottom:18px}
