@@ -68,18 +68,21 @@
   /* CTA */
   .cta{display:inline-flex;align-items:center;gap:10px;background:var(--go);color:#fff;font-family:'Inter';font-weight:700;
        font-size:20px;letter-spacing:.01em;text-decoration:none;padding:17px 34px;border-radius:14px;border:none;cursor:pointer;
-       box-shadow:0 14px 26px -12px rgba(47,107,71,.7);transition:transform .15s ease,background .15s ease}
+       box-shadow:0 14px 26px -12px rgba(47,107,71,.7);transition:transform .15s ease,background .15s ease;white-space:nowrap}
   .cta:hover{background:var(--go-dark);transform:translateY(-2px)}
   .cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-  .cta svg{transition:transform .15s ease}
+  .cta svg{transition:transform .15s ease;flex:none}
   .cta:hover svg{transform:translateX(3px)}
   .cta-note{font-size:15px;color:var(--plum-soft);margin-top:12px}
+  @media(max-width:480px){.cta{font-size:16px;padding:15px 22px;gap:8px}}
 
   /* trust */
   .trust{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px}
   .trust .avatars{display:flex}
   .trust .avatars img{width:36px;height:36px;border-radius:50%;border:2px solid var(--ivory);margin-left:-10px;object-fit:cover;display:block}
   .trust .avatars img:first-child{margin-left:0}
+  .av{width:36px;height:36px;border-radius:50%;border:2px solid var(--ivory);margin-left:-10px;display:flex;align-items:center;justify-content:center;font-family:'Inter';font-size:13px;font-weight:700;color:#fff;flex:none}
+  .av:first-child{margin-left:0}
   .trust .trust-text{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
   .trust .trust-stars{color:var(--gold);font-size:18px;letter-spacing:2px;line-height:1}
   .trust .trust-label{font-size:14px;color:var(--plum-soft);font-weight:500;line-height:1}
@@ -223,7 +226,7 @@
   .qcard-mark{display:block;margin-bottom:4px;line-height:1}
   .qcard-body{font-size:15px;line-height:1.6;color:var(--plum-soft);flex:1;margin-bottom:18px}
   .qcard-footer{display:flex;align-items:center;gap:10px;padding-top:14px;border-top:1px solid var(--line)}
-  .qcard-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none}
+  .qcard-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none;display:flex;align-items:center;justify-content:center;font-family:'Inter';font-size:14px;font-weight:700;color:#fff}
   .qcard-info{flex:1;min-width:0}
   .qcard-name{font-size:13px;font-weight:700;color:var(--plum);line-height:1.2}
   .qcard-meta{font-size:11px;color:var(--plum-soft);margin-top:1px}
@@ -332,10 +335,10 @@
     </a>
     <div class="trust">
       <span class="avatars">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
-        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
-        <img src="https://randomuser.me/api/portraits/women/83.jpg" alt="">
-        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+        <span class="av" style="background:#C8893A">P</span>
+        <span class="av" style="background:#B5502F">F</span>
+        <span class="av" style="background:#7A8466">C</span>
+        <span class="av" style="background:#56713F">Z</span>
       </span>
       <div class="trust-text">
         <span class="trust-stars" style="color:var(--gold);font-size:20px;letter-spacing:2px;line-height:1">★★★★<span class="star-3q">★</span></span>
@@ -533,113 +536,113 @@
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I didn't plan on getting personally attacked today, but here we are 😭 Every single page felt too close to home. If you know, you know.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Priya M.</div><div class="qcard-meta">Mumbai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#C8893A">P</span><div class="qcard-info"><div class="qcard-name">Priya M.</div><div class="qcard-meta">Mumbai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Everyone always expected something from me. Needed something from me. I could never rest. This workbook finally gave me permission to.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/12.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Fatima Zahra</div><div class="qcard-meta">Casablanca</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#B5502F">F</span><div class="qcard-info"><div class="qcard-name">Fatima Zahra</div><div class="qcard-meta">Casablanca</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">The inner child worksheet made me realize how young I was when I started acting like the adult. I cried for 20 mins straight.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/83.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Chisom</div><div class="qcard-meta">Lagos</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#7A8466">C</span><div class="qcard-info"><div class="qcard-name">Chisom</div><div class="qcard-meta">Lagos</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Reading this felt like someone finally handed me back to myself. Honestly didn't expect a workbook to hit this hard.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#56713F">Z</span><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Confusing being loved with being useful. Ouch. I had to put it down for a minute and just sit with that. Chapter 3 absolutely wrecked me. 💔</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/32.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Renée L.</div><div class="qcard-meta">Paris</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#8F3C22">R</span><div class="qcard-info"><div class="qcard-name">Renée L.</div><div class="qcard-meta">Paris</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I finally had words for why rest felt impossible. It felt like someone understood the part of me I always hide. Get this workbook NOW.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/56.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#9A5B43">Y</span><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">The prompts were direct without being harsh. I cried, but in the way that makes space afterward. You NEED to try this.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/62.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Leila</div><div class="qcard-meta">Dubai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#C8893A">L</span><div class="qcard-info"><div class="qcard-name">Leila</div><div class="qcard-meta">Dubai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I kept stopping because every page felt too accurate. In a good way. I felt so seen without feeling judged 🤍</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/74.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Nora</div><div class="qcard-meta">Sydney</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#B5502F">N</span><div class="qcard-info"><div class="qcard-name">Nora</div><div class="qcard-meta">Sydney</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Called me out and made me cry. Described me to a T. I sent it to every eldest daughter I know. You will cry but in the best way.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/22.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Adaeze O.</div><div class="qcard-meta">Accra</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#7A8466">A</span><div class="qcard-info"><div class="qcard-name">Adaeze O.</div><div class="qcard-meta">Accra</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">It gave me language for the guilt. I didn't know how much I needed that until I wrote it down. Highly recommend 🌱</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/90.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#56713F">C</span><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I bought it for the workbook but the poems were what broke me open. Soft, honest, painfully familiar.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/48.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Amara</div><div class="qcard-meta">Nairobi</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#8F3C22">A</span><div class="qcard-info"><div class="qcard-name">Amara</div><div class="qcard-meta">Nairobi</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <!-- duplicate set for seamless loop -->
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I didn't plan on getting personally attacked today, but here we are 😭 Every single page felt too close to home. If you know, you know.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Priya M.</div><div class="qcard-meta">Mumbai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#C8893A">P</span><div class="qcard-info"><div class="qcard-name">Priya M.</div><div class="qcard-meta">Mumbai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Everyone always expected something from me. Needed something from me. I could never rest. This workbook finally gave me permission to.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/12.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Fatima Zahra</div><div class="qcard-meta">Casablanca</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#B5502F">F</span><div class="qcard-info"><div class="qcard-name">Fatima Zahra</div><div class="qcard-meta">Casablanca</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">The inner child worksheet made me realize how young I was when I started acting like the adult. I cried for 20 mins straight.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/83.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Chisom</div><div class="qcard-meta">Lagos</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#7A8466">C</span><div class="qcard-info"><div class="qcard-name">Chisom</div><div class="qcard-meta">Lagos</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Reading this felt like someone finally handed me back to myself. Honestly didn't expect a workbook to hit this hard.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#56713F">Z</span><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Confusing being loved with being useful. Ouch. I had to put it down for a minute and just sit with that. Chapter 3 absolutely wrecked me. 💔</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/32.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Renée L.</div><div class="qcard-meta">Paris</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#8F3C22">R</span><div class="qcard-info"><div class="qcard-name">Renée L.</div><div class="qcard-meta">Paris</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I finally had words for why rest felt impossible. It felt like someone understood the part of me I always hide. Get this workbook NOW.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/56.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#9A5B43">Y</span><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">The prompts were direct without being harsh. I cried, but in the way that makes space afterward. You NEED to try this.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/62.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Leila</div><div class="qcard-meta">Dubai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#C8893A">L</span><div class="qcard-info"><div class="qcard-name">Leila</div><div class="qcard-meta">Dubai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I kept stopping because every page felt too accurate. In a good way. I felt so seen without feeling judged 🤍</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/74.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Nora</div><div class="qcard-meta">Sydney</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#B5502F">N</span><div class="qcard-info"><div class="qcard-name">Nora</div><div class="qcard-meta">Sydney</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Called me out and made me cry. Described me to a T. I sent it to every eldest daughter I know. You will cry but in the best way.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/22.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Adaeze O.</div><div class="qcard-meta">Accra</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#7A8466">A</span><div class="qcard-info"><div class="qcard-name">Adaeze O.</div><div class="qcard-meta">Accra</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">It gave me language for the guilt. I didn't know how much I needed that until I wrote it down. Highly recommend 🌱</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/90.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#56713F">C</span><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I bought it for the workbook but the poems were what broke me open. Soft, honest, painfully familiar.</div>
-          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/48.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Amara</div><div class="qcard-meta">Nairobi</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:#8F3C22">A</span><div class="qcard-info"><div class="qcard-name">Amara</div><div class="qcard-meta">Nairobi</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         </div>
   </div>
