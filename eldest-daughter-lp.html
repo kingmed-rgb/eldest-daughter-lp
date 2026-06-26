@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Eldest Daughter Workbook — Heal the Burnout, Break the Cycle</title>
+<meta name="description" content="A guided workbook for eldest daughters ready to stop carrying everyone else and start healing themselves. 17 chapters, printable worksheets, instant download. Trusted by 3,000+ readers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF4EC;
+    --cream-band:#F3E7D6;
+    --white:#FFFFFF;
+    --clay:#B5502F;          /* primary accent / headlines */
+    --clay-deep:#8F3C22;
+    --plum:#36242F;          /* body + dark sections */
+    --plum-soft:#1a1a1a;
+    --sage:#7A8466;
+    --gold:#C8893A;
+    --go:#2F6B47;            /* CTA */
+    --go-dark:#255639;
+    --line:#E6D8C5;
+    --shadow:0 18px 40px -22px rgba(54,36,47,.45);
+    --card-radius:16px;
+    --card-pad:20px 22px;
+    --card-border:1px solid var(--line);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{
+    margin:0;background:var(--ivory);color:var(--plum);
+    font-family:'Inter',system-ui,sans-serif;font-size:20px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:660px;margin:0 auto;padding:0 22px}
+  .band{padding:44px 0 24px}
+  .band--cream{background:var(--cream-band)}
+  .band--white{background:var(--white)}
+  .band--white+.band--white,.band--cream+.band--cream{padding-top:8px}
+  .band--plum{background:var(--plum);color:#F4E9DC}
+  .band--plum h2,.band--plum h3{color:#F4E9DC}
+  .band--sage-light{background:#DDE8DC}
+
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
+  h2{font-size:33px;color:var(--clay);text-align:center;margin:0 0 14px}
+  h3{font-size:26px;color:var(--plum)}
+  .eyebrow{font-family:'Inter';font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay);text-align:center;margin:0 0 14px;display:block}
+  .eyebrow span{display:inline-block;background:var(--cream-band);border:1px solid rgba(181,80,47,.25);border-radius:30px;padding:4px 12px}
+  p{margin:0 0 16px}
+  em.hand{font-style:italic;font-family:'Fraunces';color:var(--clay-deep)}
+  strong{font-weight:700}
+  a{color:var(--clay-deep)}
+
+  /* top bar */
+
+  /* hero */
+  .hero{background:linear-gradient(180deg,#FBEFE0 0%, var(--ivory) 100%);padding:64px 0 36px;text-align:center}
+  .hero h1{font-size:clamp(31px,5.5vw,46px);color:var(--plum);margin:6px 0 16px}
+  .hero h1 .glow{color:var(--clay);font-style:italic}
+  .hero .sub{font-size:22px;color:var(--plum);max-width:560px;margin:0 auto 0;font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.01em}
+  .hero .sub--small{font-size:21px}
+  .hero-art{margin:16px auto 20px;max-width:380px;overflow:hidden}
+  .hero-art img{width:130%;display:block;margin:-6% -15% -12%}
+
+  /* CTA */
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--go);color:#fff;font-family:'Inter';font-weight:700;
+       font-size:20px;letter-spacing:.01em;text-decoration:none;padding:17px 34px;border-radius:14px;border:none;cursor:pointer;
+       box-shadow:0 14px 26px -12px rgba(47,107,71,.7);transition:transform .15s ease,background .15s ease}
+  .cta:hover{background:var(--go-dark);transform:translateY(-2px)}
+  .cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .cta svg{transition:transform .15s ease}
+  .cta:hover svg{transform:translateX(3px)}
+  .cta-note{font-size:15px;color:var(--plum-soft);margin-top:12px}
+
+  /* trust */
+  .trust{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px}
+  .trust .avatars{display:flex}
+  .trust .avatars img{width:36px;height:36px;border-radius:50%;border:2px solid var(--ivory);margin-left:-10px;object-fit:cover;display:block}
+  .trust .avatars img:first-child{margin-left:0}
+  .trust .trust-text{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
+  .trust .trust-stars{color:var(--gold);font-size:18px;letter-spacing:2px;line-height:1}
+  .trust .trust-label{font-size:14px;color:var(--plum-soft);font-weight:500;line-height:1}
+  .stars{color:var(--gold);letter-spacing:1px;font-size:17px}
+  .tp-stars{display:inline-flex;gap:2px;align-items:center}
+  .star-3q{background:linear-gradient(to right,var(--gold) 50%,rgba(200,137,58,.22) 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .press{margin-top:30px;text-align:center}
+  .press .label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#B7A892;margin-bottom:12px}
+  .press .row{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;opacity:.5;filter:grayscale(1)}
+  .press .row span{font-family:'Fraunces';font-weight:600;font-size:17px;color:var(--plum)}
+
+  /* check list */
+  .checks{list-style:none;padding:0;margin:8px 0 0}
+  .checks li{position:relative;padding:0 0 16px 38px;margin-bottom:16px;border-bottom:1px dashed var(--line)}
+  .checks li:last-child{border-bottom:none;margin-bottom:0}
+  .checks li::before{content:"";position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:50%;
+       background:rgba(122,132,102,.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237A8466' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+       background-repeat:no-repeat;background-position:center}
+  .checks li b{color:var(--plum)}
+  .checks--plain li{border-bottom:none;margin-bottom:4px;padding-bottom:4px}
+
+  /* before / after */
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:56px;align-items:stretch}
+  .ba .col{border-radius:var(--card-radius);padding:var(--card-pad);overflow:visible;position:relative}
+  .ba .before{background:#FBEFE0;border:1px solid var(--line)}
+  .ba .after{background:#E7EDE0;border:1px solid #D2DCC4}
+  .ba h4{margin:0 0 10px;font-family:'Inter';font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .ba .before h4{color:#9A5B43}
+  .ba .after h4{color:#56713F}
+  .ba ul{list-style:none;margin:0;padding:0;font-size:18px;line-height:1.5}
+  .ba li{display:flex;align-items:flex-start;gap:7px;padding:5px 0;border-bottom:1px solid rgba(54,36,47,.07)}
+  .ba li:last-child{border-bottom:none}
+  .ba .before li{color:var(--plum-soft)}
+  .ba .after li{color:var(--plum-soft)}
+  .ba .before li::before{content:"—";flex:none;color:#9A5B43;font-size:13px;font-weight:400;margin-top:1px}
+  .ba .after li::before{content:"✓";flex:none;color:#56713F;font-size:13px;font-weight:700;margin-top:1px}
+  @media(max-width:520px){.ba{grid-template-columns:1fr}}
+  .ba .col-img{width:80%;display:block;height:170px;object-fit:contain;object-position:center bottom;
+       margin:0 auto 14px;margin-top:-56px;position:relative;z-index:1}
+
+  /* page gallery */
+  .page-gallery-wrap{position:relative;overflow-x:clip;padding-bottom:4px}
+  @keyframes gallery-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .page-gallery{display:flex;gap:28px;padding:8px 28px 8px;animation:gallery-scroll 30s linear infinite;width:max-content}
+  .page-gallery:hover{animation-play-state:paused}
+  .page-card{flex:0 0 300px;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -10px rgba(0,0,0,.5);transition:transform .2s ease}
+  .page-card:hover{transform:translateY(-8px) scale(1.02)}
+  .page-card img{width:100%;display:block}
+  @media(max-width:600px){.page-card{flex:0 0 220px}}
+
+  /* narrative */
+  .narrative p{font-size:inherit}
+  .reactions-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0 20px}
+  .reactions-card{border:var(--card-border);border-radius:var(--card-radius);overflow:hidden;background:var(--white)}
+  .reactions-card-label{padding:14px 16px 8px;font-family:'Fraunces',sans-serif;font-size:18px;font-weight:600;color:#000;letter-spacing:-.01em;line-height:1.15}
+  .reactions-card-label hr{border:none;border-top:1px solid #ccc;margin:8px 0 0}
+  .reactions-card-img{overflow:hidden;line-height:0}
+  .reactions-card-img img{display:block;width:300%;max-width:none;margin-top:-20%}
+  .reactions-card-img.panel-1 img{transform:translateX(0)}
+  .reactions-card-img.panel-2 img{transform:translateX(-33.333%)}
+  .reactions-card-img.panel-3 img{transform:translateX(-66.666%)}
+  .pullquote{font-family:'Fraunces';font-style:italic;font-size:22px;line-height:1.4;color:var(--clay-deep);
+       border-left:3px solid var(--clay);padding:6px 0 6px 20px;margin:26px 0}
+  .emphasis-quotes{margin:20px 0 24px;display:flex;flex-direction:column;gap:4px}
+  .emphasis-quotes p{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:20px;line-height:1.35;color:var(--clay-deep);margin:0}
+  .verified-badge{display:inline-flex;align-items:center;gap:7px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:var(--plum);letter-spacing:.01em}
+  .callout-quote{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:20px;line-height:1.5;color:var(--clay-deep);
+       background:rgba(181,80,47,.07);border-left:4px solid var(--clay);border-radius:0 12px 12px 0;
+       margin:20px 0 24px;padding:16px 20px;}
+  .danger{list-style:none;padding:0;margin:18px 0 0}
+  .danger li{position:relative;padding-left:26px;margin-bottom:10px;font-size:20px}
+  .danger li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:2px;background:var(--clay);transform:rotate(45deg)}
+
+  /* cycle diagram */
+  .cycle{position:relative;width:320px;height:320px;margin:30px auto 8px}
+  .cycle .ring{position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(181,80,47,.45)}
+  .cycle .core{position:absolute;inset:34%;border-radius:50%;background:var(--clay);color:#fff;display:flex;
+       align-items:center;justify-content:center;text-align:center;font-family:'Fraunces';font-weight:600;font-size:15px;padding:14px;line-height:1.2}
+  .cycle .node{position:absolute;width:150px;margin-left:-75px;left:50%;text-align:center;font-size:15px;
+       background:var(--white);border:1px solid var(--line);border-radius:12px;padding:8px 10px;box-shadow:var(--shadow);line-height:1.3}
+  .cycle .node b{display:block;font-family:'Fraunces';font-size:15px;color:var(--clay-deep);margin-bottom:1px}
+  .cycle .n1{top:-14px}
+  .cycle .n2{top:24%;left:104%;margin-left:0;width:140px}
+  .cycle .n3{top:74%;left:96%;margin-left:0;width:140px}
+  .cycle .n4{bottom:-14px}
+  .cycle .n5{top:74%;left:-36%;margin-left:0;width:140px;text-align:left}
+  .cycle .n6{top:24%;left:-40%;margin-left:0;width:140px;text-align:left}
+  .cycle-caption{text-align:center;font-style:italic;font-family:'Fraunces';color:var(--plum-soft);margin-top:14px}
+  @media(max-width:680px){
+    .cycle{width:auto;height:auto;display:flex;flex-direction:column;gap:8px}
+    .cycle .ring{display:none}
+    .cycle .core{position:static;inset:auto;border-radius:14px;order:-1;margin-bottom:6px;font-size:17px;padding:16px}
+    .cycle .node{position:static;width:100%!important;margin:0!important;left:auto;text-align:left!important}
+  }
+
+  /* research */
+  .research li{position:relative;padding-left:30px;margin-bottom:14px;font-size:20px;list-style:none}
+  .research ul{padding:0;margin:0}
+  .research li::before{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;
+       background:var(--gold);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5'%3E%3Cpath d='M12 19V6M5 13l7 7 7-7'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+  .disclaim{font-size:15px;color:var(--plum-soft);font-style:italic;margin-top:18px}
+
+  /* parts / system */
+  .part{margin-bottom:28px}
+  .part .tag{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;letter-spacing:.01em;text-transform:none;color:var(--clay);margin-bottom:14px;display:block}
+  .part h3{margin:0 0 8px;font-size:24px}
+  .part p{margin:0;font-size:20px;color:var(--plum-soft)}
+
+  /* permission cards (SIGNATURE) */
+  .permission{background:var(--plum);border-radius:var(--card-radius);padding:var(--card-pad);margin-top:8px}
+  .permission p.lead{color:#E8C9B6;text-align:center;font-style:italic;font-family:'Fraunces';font-size:26px;margin:0 auto 22px;max-width:440px}
+  .perm-list{display:flex;flex-direction:column;gap:10px}
+  .perm{display:flex;align-items:flex-start;gap:12px;background:rgba(255,252,248,.05);border:1px solid rgba(244,233,220,.16);
+        border-radius:12px;padding:13px 16px;font-family:'Fraunces';font-size:20px;color:#F4E9DC;line-height:1.35}
+  .perm span{color:var(--gold);font-weight:600;flex:none}
+  .perm em{font-style:italic;color:#F2D6C2}
+
+  /* testimonials */
+  .tcard{background:var(--white);border:var(--card-border);border-radius:var(--card-radius);padding:var(--card-pad);margin-bottom:14px;box-shadow:var(--shadow)}
+  .tcard .head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .tcard .pic{width:42px;height:42px;border-radius:50%;background:var(--sage);flex:none}
+  .tcard .who{font-weight:700;font-size:15px}
+  .tcard .who small{display:block;font-weight:500;color:var(--plum-soft);font-size:12px}
+  .tcard .stars{font-size:15px}
+  .tcard q{font-style:italic;font-family:'Fraunces';font-size:20px;color:var(--plum);display:block;line-height:1.45}
+  .ph{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C0654A;background:#F7E4DB;border:1px dashed #E2B7A6;
+      border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:10px}
+
+  /* reviews */
+  .reviews-score{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:24px}
+  .reviews-score .stars{font-size:22px;color:var(--gold)}
+  .reviews-score .score{font-family:'Fraunces';font-size:22px;font-weight:600;color:#F4E9DC}
+  .reviews-score .count{font-size:15px;color:rgba(244,233,220,.65)}
+  .review-marquee-wrap{position:relative;overflow-x:clip;padding:0 0 24px}
+  @keyframes review-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .review-track{display:flex;gap:18px;width:max-content;animation:review-scroll 90s linear infinite}
+  .review-track:hover{animation-play-state:paused}
+  /* quote cards */
+  .rcard{flex:0 0 310px;border-radius:var(--card-radius);overflow:hidden;display:flex;flex-direction:column;font-size:15px;min-height:220px}
+  .rcard-quote{background:var(--white);border:var(--card-border);padding:var(--card-pad);font-family:'Inter',sans-serif}
+  .qcard-mark{display:block;margin-bottom:4px;line-height:1}
+  .qcard-body{font-size:15px;line-height:1.6;color:var(--plum-soft);flex:1;margin-bottom:18px}
+  .qcard-footer{display:flex;align-items:center;gap:10px;padding-top:14px;border-top:1px solid var(--line)}
+  .qcard-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none}
+  .qcard-info{flex:1;min-width:0}
+  .qcard-name{font-size:13px;font-weight:700;color:var(--plum);line-height:1.2}
+  .qcard-meta{font-size:11px;color:var(--plum-soft);margin-top:1px}
+  .qcard-stars{color:var(--gold);font-size:13px;letter-spacing:1px;flex:none}
+
+  /* founder */
+  .founder{display:flex;flex-direction:column;align-items:center;gap:24px}
+  .founder-photo-block{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:480px}
+  .founder .pic{width:100%;height:auto;border-radius:var(--card-radius);display:block;box-shadow:var(--shadow)}
+  .founder-id{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 4px}
+  .founder-sig{font-family:'Fraunces';font-style:italic;font-size:19px;color:var(--plum);font-weight:600}
+  .founder-socials{display:flex;align-items:center;gap:14px}
+  .founder-socials a{color:var(--plum-soft);display:flex;align-items:center;transition:color .15s}
+  .founder-socials a:hover{color:var(--clay)}
+  .founder-text{max-width:520px;display:flex;flex-direction:column;gap:4px}
+  .founder-text p{margin:0}
+
+  /* offer box */
+  .offer{border:var(--card-border);border-radius:var(--card-radius);background:var(--white);padding:var(--card-pad);margin:8px auto 0;box-shadow:var(--shadow)}
+  .offer .intro{text-align:center;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);font-weight:700;margin-bottom:6px}
+  .offer h3.name{text-align:center;font-size:33px;color:var(--plum);margin:0 0 6px}
+  .offer .tagline{font-size:20px;color:var(--plum-soft);margin:0 auto 20px;text-align:center;max-width:380px}
+  .offer .lifetime{font-size:12px;color:var(--sage);font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:.06em}
+  .offer-blocks{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+  .offer-block{border-radius:var(--card-radius);padding:var(--card-pad)}
+  .offer-block--receive,.offer-block--schedule,.offer-block--format{background:var(--white);border:var(--card-border)}
+  .offer-block h4{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:700;color:var(--clay);letter-spacing:.01em;margin:0 0 12px}
+  .offer-block ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+  .offer-block li{position:relative;padding:0 0 0 36px;font-size:20px;line-height:1.45}
+  .offer-block li::before{content:"";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;background:rgba(122,132,102,.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='%237A8466' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+  .offer-block .li--gift{padding-left:0}
+  .offer-block .li--gift::before{display:none}
+  .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:20px 0 16px}
+  .price .now{font-family:'Fraunces';font-size:48px;color:var(--clay);font-weight:700;line-height:1}
+  .price .was{color:rgba(90,70,81,.38);text-decoration:line-through;font-size:22px}
+  .offer-checks{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:0}
+  .offer-checks li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:16px;color:var(--plum-soft)}
+  .offer-checks li:last-child{border-bottom:none}
+  .offer-free{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--clay);background:rgba(181,80,47,.1);border-radius:20px;padding:2px 9px;flex:none}
+  .offer-checks li::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:rgba(122,132,102,.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8466' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+  .cta--full{width:100%;justify-content:center;letter-spacing:.06em;text-transform:uppercase}
+  .guarantee{text-align:center;font-size:14px;color:var(--plum-soft);margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+  .pay{display:flex;justify-content:center;gap:7px;margin:14px 0 6px;flex-wrap:wrap;align-items:center}
+  .center{text-align:center}
+
+  /* guarantee */
+  .seal{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 50% 38%,var(--gold),#9c6a26);
+        color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;margin:0 auto 18px;
+        font-family:'Fraunces';font-weight:700;font-size:15px;line-height:1.1;box-shadow:var(--shadow);border:3px solid #E8C98A}
+
+  /* what's inside */
+  .inside-list{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:10px}
+  .inside-list li{background:var(--white);border:var(--card-border);border-radius:var(--card-radius);padding:20px 22px 20px 58px;position:relative;display:flex;flex-direction:column;gap:4px}
+  .inside-list li::before{content:"";position:absolute;left:16px;top:18px;width:24px;height:24px;border-radius:50%;
+       background:rgba(122,132,102,.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237A8466' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+       background-repeat:no-repeat;background-position:center}
+  .il-title{font-size:20px;font-weight:700;color:var(--plum)}
+  .il-desc{font-size:18px;color:var(--plum-soft);line-height:1.6}
+
+  /* faq */
+  .faq h2{margin-bottom:32px}
+  .faq details{border-bottom:1px solid var(--line);margin-bottom:0;overflow:hidden}
+  .faq details:first-of-type{border-top:1px solid var(--line)}
+  .faq summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;font-weight:600;font-size:18px;position:relative;color:var(--plum)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--clay);font-weight:300;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;border-radius:4px}
+  .faq .answer{padding:0 0 16px;font-size:18px;color:var(--plum-soft);line-height:1.6}
+
+  footer{background:var(--ivory);border-top:1px solid var(--line);color:var(--plum-soft);font-size:15px;text-align:center;padding:18px 22px}
+  footer a{color:var(--clay);margin:0 8px;text-decoration:none}
+  footer a:hover{color:var(--clay-deep)}
+  footer .disc{max-width:560px;margin:14px auto 0;font-size:13px;line-height:1.6;color:var(--plum)}
+
+  .sec-intro{max-width:560px;margin:0 auto 8px;color:var(--plum-soft)}
+  .toc{display:flex;flex-direction:column;gap:16px;padding:8px 0}
+  .toc-card{background:var(--white);border:var(--card-border);border-radius:var(--card-radius);padding:var(--card-pad);box-shadow:var(--shadow)}
+  .toc-card .part-label{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:26px;letter-spacing:.01em;text-transform:none;
+       color:var(--clay);margin:0 0 14px;display:block}
+  .toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+  .toc li{counter-increment:toc;position:relative;padding:10px 0 10px 40px;border-bottom:1px dashed var(--line);font-size:20px;line-height:1.5}
+  .toc li:last-child{border-bottom:none}
+  .toc li::before{content:counter(toc);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;
+       background:var(--cream-band);color:var(--clay-deep);font-family:'Fraunces';font-weight:700;font-size:15px;
+       display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span>For the burnt out eldest daughter</span></p>
+    <h1>The Workbook That Finally Lets You <span class="glow">Put Yourself First</span> </h1>
+    <p class="sub"> Without Guilt, Burnout, or Feeling Like You're Letting Everyone Down.</p>
+
+    <div class="hero-art">
+      <img src="images/eds book.png" alt="The Eldest Daughter Workbook"/>
+    </div>
+
+    <a class="cta" href="#offer">Get the workbook
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <div class="trust">
+      <span class="avatars">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
+        <img src="https://randomuser.me/api/portraits/women/83.jpg" alt="">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+      </span>
+      <div class="trust-text">
+        <span class="trust-stars" style="color:var(--gold);font-size:20px;letter-spacing:2px;line-height:1">★★★★<span class="star-3q">★</span></span>
+        <span class="trust-label">Trusted by 3,000+ eldest daughters</span>
+      </div>
+    </div>
+</section>
+
+<!-- ===== THE REAL REASON ===== -->
+<section class="band band--white">
+  <div class="wrap narrative">
+    <h2>How Many Times Were You Told &ldquo;You're So Mature for Your Age&rdquo;</h2>
+    <img src="images/how many times.png" alt="" style="display:block;margin:20px 0 28px;width:100%;mix-blend-mode:multiply">
+    <p>At first, it sounded like a compliment. But for many eldest daughters, those words carried an unspoken expectation:</p>
+    <blockquote class="callout-quote">&ldquo;Be responsible. Be mature. And don&rsquo;t make life harder for anyone else.&rdquo;</blockquote>
+    <p>Somewhere along the way, being needed felt safer than having needs of your own.</p>
+    <p style="margin-bottom:8px">So you became:</p>
+    <ul class="checks checks--plain">
+      <li>The responsible one.</li>
+      <li>The fixer.</li>
+      <li>The one who read the room before anyone spoke.</li>
+    </ul>
+    <p style="margin-top:16px">You didn't become this way because something was wrong with you. <b>You became who you needed to be to survive. Over time, survival became your default.</b></p>
+  </div>
+</section>
+
+<!-- ===== THE WOUND DIAGRAM ===== -->
+<section class="band band--white" style="padding-top:0">
+  <div class="wrap">
+    <h2 style="margin-bottom:32px">The Real Reason You’re Feeling like this</h2>
+
+    <div class="narrative">
+      <p><b> The eldest daughter syndrome </b>is what happens when your worth is measured in usefulness, when love feels tied to performance, and when rest feels like laziness instead of healing. It shows up in how you move through the world:</p>
+
+      <div class="reactions-cards">
+        <div class="reactions-card">
+          <div class="reactions-card-label">Always<br>responsible.<hr></div>
+          <div class="reactions-card-img panel-1"><img src="images/eds reactions-nobg.png" alt="Always responsible"></div>
+        </div>
+        <div class="reactions-card">
+          <div class="reactions-card-label">Always<br>reliable.<hr></div>
+          <div class="reactions-card-img panel-2"><img src="images/eds reactions-nobg.png" alt="Always reliable"></div>
+        </div>
+        <div class="reactions-card">
+          <div class="reactions-card-label">Always<br>on alert.<hr></div>
+          <div class="reactions-card-img panel-3"><img src="images/eds reactions-nobg.png" alt="Always on alert"></div>
+        </div>
+      </div>
+
+      <p>It is not just stress or personality. It is an identity shaped by <em class="hand">duty</em>, <em class="hand">guilt</em>, and <em class="hand">invisible contracts</em> you never agreed to sign.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE / AFTER + BENEFITS ===== -->
+<section class="band band--white" style="padding-top:0">
+  <div class="wrap">
+    <h2>The Cycle Ends With You</h2>
+    <div class="ba" style="margin-top:40px">
+      <div class="col before">
+        <img class="col-img" src="images/before challenge.png" alt="Before the challenge"/>
+        <h4>Right now</h4>
+        <ul>
+          <li>You feel guilty when you're not productive</li>
+          <li>You confuse being loved with being useful</li>
+          <li>Exhausted in your body, not just your mind</li>
+          <li>Always scanning the room before anyone speaks</li>
+          <li>Everyone's therapist, nobody's patient</li>
+        </ul>
+      </div>
+      <div class="col after">
+        <img class="col-img" src="images/after challenge.png" alt="After the challenge"/>
+        <h4>After the workbook</h4>
+        <ul>
+          <li>Your nervous system standing down</li>
+          <li>A body that isn't braced for the next thing</li>
+          <li>Boundaries that hold, even at home</li>
+          <li>Resting without shame</li>
+          <li>Being loved for who you are, not what you do</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<!-- ===== WHAT'S INSIDE ===== -->
+
+<section class="band band--white">
+  <div class="wrap">
+    <h2>What's Inside</h2>
+    <p class="sec-intro">This workbook combines practical exercises and <B>proven therapeutic principles</B> to help you break cycles that have shaped your life for years.    </p>
+  </div>
+  <div class="page-gallery-wrap" style="margin-top:12px">
+    <div class="page-gallery">
+      <div class="page-card"><img src="pages/page-10.png" alt="Page 10" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-11.png" alt="Page 11" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-31.png" alt="Page 31" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-40.png" alt="Page 40" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-47.png" alt="Page 47" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-33.png" alt="Page 33" loading="lazy"></div>
+      <!-- duplicated for seamless loop -->
+      <div class="page-card"><img src="pages/page-10.png" alt="Page 10" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-11.png" alt="Page 11" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-31.png" alt="Page 31" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-40.png" alt="Page 40" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-47.png" alt="Page 47" loading="lazy"></div>
+      <div class="page-card"><img src="pages/page-33.png" alt="Page 33" loading="lazy"></div>
+    </div>
+  </div>
+  <div class="wrap" style="padding:10px 22px 10px;display:flex;justify-content:center">
+    <div style="display:flex;align-items:center;gap:16px;color:var(--plum-soft);font-size:13px;font-weight:500;white-space:nowrap">
+      <span style="display:flex;align-items:center;gap:6px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        17 Chapters
+      </span>
+      <span style="color:var(--line)">|</span>
+      <span style="display:flex;align-items:center;gap:6px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        Bonus Materials
+      </span>
+      <span style="color:var(--line)">|</span>
+      <span style="display:flex;align-items:center;gap:6px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Instant Download
+      </span>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:16px">
+    <div class="toc">
+      <div class="toc-card">
+        <p class="part-label">I · Awareness</p>
+        <ol start="1">
+          <li>The Weight You Never Chose</li>
+          <li>Where It All Started</li>
+          <li>Why Pretending You're Fine Isn't Working</li>
+          <li>Your Healing Starts Here</li>
+          <li>The Day My Childhood Ended</li>
+        </ol>
+      </div>
+      <div class="toc-card">
+        <p class="part-label">II · Release</p>
+        <ol start="6">
+          <li>Older Sister Guilt</li>
+          <li>The Angry Mean Sister</li>
+          <li>The "I Don't Need Anyone" Lie</li>
+          <li>Your Job Isn't Your Worth</li>
+          <li>The Body Remembers Everything</li>
+        </ol>
+      </div>
+      <div class="toc-card">
+        <p class="part-label">III · Reclaiming Joy</p>
+        <ol start="11">
+          <li>Loved, Not Just Needed</li>
+          <li>The Family ATM (Financial Boundaries)</li>
+          <li>The Wounds We Inherit</li>
+          <li>I'm Your Sister, Not Your Mom</li>
+          <li>Becoming the Kid You Never Got to Be</li>
+          <li>The Cycle Ends With You</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOUNDER ===== -->
+<section class="band band--white">
+  <div class="wrap">
+    <h2>If I Could Heal, So Can You</h2>
+    <div class="founder">
+      <div class="founder-photo-block">
+        <img class="pic" src="images/author image..png" alt="Anna Celestina">
+      </div>
+      <div class="founder-text">
+        <p>Written by an eldest daughter who knows what it feels like to be the burned out gifted child who never learned how to rest. This book was born from my own story.</p>
+        <blockquote class="callout-quote">&ldquo;For years, I carried a weight I never chose. I was the caretaker, the strong one, the one who held everything together.&rdquo;</blockquote>
+        <p>My worth came from being useful, not from being loved. This workbook is my way of helping other eldest daughters begin laying that weight down. I&rsquo;m not special. I was just tired of surviving.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="band band--plum">
+  <div class="wrap">
+    <h2>Real Words From Eldest Daughters</h2>
+    <div class="reviews-score">
+      <span class="reviews-score-stars" style="color:var(--gold);font-size:22px;letter-spacing:2px;line-height:1">★★★★<span class="star-3q">★</span></span>
+      <span class="score">4.8</span>
+      <span class="count">· 600 reviews</span>
+    </div>
+  </div>
+  <div class="review-marquee-wrap">
+      <div class="review-track" aria-label="Customer reviews">
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">I didn't plan on getting personally attacked today, but here we are 😭 Every single page felt too close to home. If you know, you know.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Priya M.</div><div class="qcard-meta">Mumbai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">Everyone always expected something from me. Needed something from me. I could never rest. This workbook finally gave me permission to.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/12.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Fatima Zahra</div><div class="qcard-meta">Casablanca</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">The inner child worksheet made me realize how young I was when I started acting like the adult. I cried for 20 mins straight.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/83.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Chisom</div><div class="qcard-meta">Lagos</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">Reading this felt like someone finally handed me back to myself. Honestly didn't expect a workbook to hit this hard.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">Confusing being loved with being useful. Ouch. I had to put it down for a minute and just sit with that. Chapter 3 absolutely wrecked me. 💔</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/32.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Renée L.</div><div class="qcard-meta">Paris</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">I finally had words for why rest felt impossible. It felt like someone understood the part of me I always hide. Get this workbook NOW.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/56.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">The prompts were direct without being harsh. I cried, but in the way that makes space afterward. You NEED to try this.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/62.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Leila</div><div class="qcard-meta">Dubai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">I kept stopping because every page felt too accurate. In a good way. I felt so seen without feeling judged 🤍</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/74.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Nora</div><div class="qcard-meta">Sydney</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">Called me out and made me cry. Described me to a T. I sent it to every eldest daughter I know. You will cry but in the best way.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/22.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Adaeze O.</div><div class="qcard-meta">Accra</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">It gave me language for the guilt. I didn't know how much I needed that until I wrote it down. Highly recommend 🌱</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/90.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">I bought it for the workbook but the poems were what broke me open. Soft, honest, painfully familiar.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/48.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Amara</div><div class="qcard-meta">Nairobi</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <!-- duplicate set for seamless loop -->
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">I didn't plan on getting personally attacked today, but here we are 😭 Every single page felt too close to home. If you know, you know.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Priya M.</div><div class="qcard-meta">Mumbai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">Everyone always expected something from me. Needed something from me. I could never rest. This workbook finally gave me permission to.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/12.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Fatima Zahra</div><div class="qcard-meta">Casablanca</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">The inner child worksheet made me realize how young I was when I started acting like the adult. I cried for 20 mins straight.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/83.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Chisom</div><div class="qcard-meta">Lagos</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">Reading this felt like someone finally handed me back to myself. Honestly didn't expect a workbook to hit this hard.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">Confusing being loved with being useful. Ouch. I had to put it down for a minute and just sit with that. Chapter 3 absolutely wrecked me. 💔</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/32.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Renée L.</div><div class="qcard-meta">Paris</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">I finally had words for why rest felt impossible. It felt like someone understood the part of me I always hide. Get this workbook NOW.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/56.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">The prompts were direct without being harsh. I cried, but in the way that makes space afterward. You NEED to try this.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/62.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Leila</div><div class="qcard-meta">Dubai</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">I kept stopping because every page felt too accurate. In a good way. I felt so seen without feeling judged 🤍</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/74.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Nora</div><div class="qcard-meta">Sydney</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">Called me out and made me cry. Described me to a T. I sent it to every eldest daughter I know. You will cry but in the best way.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/22.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Adaeze O.</div><div class="qcard-meta">Accra</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">It gave me language for the guilt. I didn't know how much I needed that until I wrote it down. Highly recommend 🌱</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/90.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        <div class="rcard rcard-quote">
+          <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
+          <div class="qcard-body">I bought it for the workbook but the poems were what broke me open. Soft, honest, painfully familiar.</div>
+          <div class="qcard-footer"><img class="qcard-avatar" src="https://randomuser.me/api/portraits/women/48.jpg" alt=""><div class="qcard-info"><div class="qcard-name">Amara</div><div class="qcard-meta">Nairobi</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+        </div>
+        </div>
+  </div>
+</section>
+
+<!-- ===== OFFER ===== -->
+<section class="band band--sage-light" id="offer">
+  <div class="wrap">
+    <div class="offer">
+      <p class="intro">Limited Time Offer</p>
+      <h3 class="name">The Eldest Daughter Healing Bundle™</h3>
+      <div style="overflow:hidden;margin:24px auto 8px;line-height:0;border-radius:12px">
+        <img src="images/eds bundle image.png" alt="The Eldest Daughter Workbook" style="width:100%;display:block;margin-top:-6%">
+      </div>
+      <p class="lifetime">INSTANT DOWNLOAD · YOURS TO KEEP FOREVER</p>
+
+
+      <div class="price">
+        <span class="now">$19</span><span class="was">$47</span>
+      </div>
+
+      <ul class="offer-checks">
+        <li><b>The Eldest Daughter Workbook</b></li>
+        <li><b>Poems & Letters</b><span class="offer-free">Free</span></li>
+        <li><b>Inner Child Healing Worksheet</b><span class="offer-free">Free</span></li>
+        <li><b>Instant Download · Lifetime Access</b></li>
+      </ul>
+
+      <!-- REPLACE-CHECKOUT: point href to your checkout -->
+      <a class="cta cta--full" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">Yes, I Want to Heal
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+
+      <p class="guarantee">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        14-Day Money-Back Guarantee
+      </p>
+
+      <div class="pay">
+        <img src="images/payment-methods.jpg" alt="PayPal, Visa, Mastercard, American Express, Discover" style="height:28px;width:auto;opacity:.85">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT'S INSIDE (DETAIL) ===== -->
+<section class="band band--white">
+  <div class="wrap">
+    <h2>A Closer Look At The Exercises</h2>
+    <p class="sec-intro">This isn't about fixing yourself overnight, it's about walking <B><em>step by step </em></B>into a lighter way of living. Here's the path ahead:</p>
+    <div class="part">
+      <div class="tag">I · Awareness</div>
+      <ul class="inside-list">
+        <li><span class="il-title">The Day My Childhood Ended</span><span class="il-desc">Name the roles you carried and the exact moment you stopped being just a kid.</span></li>
+        <li><span class="il-title">The Detective Exercise</span><span class="il-desc">Gather the evidence of your eldest-daughter patterns without trying to fix anything yet.</span></li>
+        <li><span class="il-title">Why Pretending You're Fine Isn't Working</span><span class="il-desc">Understand how an unhealed "eldest daughter self" keeps running the show.</span></li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <div class="tag">II · Release</div>
+      <ul class="inside-list">
+        <li><span class="il-title">The Guilt Dump &amp; Sort</span><span class="il-desc">Sort every guilt into "actually my fault," "not my circus," and "survival tax."</span></li>
+        <li><span class="il-title">The Rage Timeline &amp; Anger Translator</span><span class="il-desc">Map where anger should have lived in your body and finally let it move through.</span></li>
+        <li><span class="il-title">The Help Allergy Test</span><span class="il-desc">Rate your reaction to being helped and start unlearning hyper-independence.</span></li>
+        <li><span class="il-title">Redefining "Enough"</span><span class="il-desc">Untangle your worth from your job, your achievements, and your perfectionism.</span></li>
+      </ul>
+    </div>
+
+    <div class="part">
+      <div class="tag">III · Reclaiming Joy</div>
+      <ul class="inside-list">
+        <li><span class="il-title">The Mom Call Drill</span><span class="il-desc">A real script for high-trigger calls: time limit, safe topics, exit line, after-care.</span></li>
+        <li><span class="il-title">The Family ATM</span><span class="il-desc">Rewrite your money script and build the boundaries that protect your energy.</span></li>
+        <li><span class="il-title">The Inheritance Inventory</span><span class="il-desc">Separate what you inherited from what's actually yours to keep.</span></li>
+        <li><span class="il-title">The Permission Slip &amp; Boring Life Experiment</span><span class="il-desc">Officially give yourself back the childhood you never got to have.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="band band--white">
+  <div class="wrap faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details>
+      <summary>Is this a physical book?</summary>
+      <div class="answer">No. The bundle is delivered digitally, so you can open the workbook and bonuses right away on your phone, tablet, or computer.</div>
+    </details>
+
+    <details>
+      <summary>Who is this workbook for?</summary>
+      <div class="answer">It is for eldest daughters who became the responsible one, the fixer, the emotional support person, or the child who had to grow up too soon.</div>
+    </details>
+
+    <details>
+      <summary>What do I get in the bundle?</summary>
+      <div class="answer">You get The Eldest Daughter Workbook PDF, Poems &amp; Letters, and the Inner Child Healing Worksheet.</div>
+    </details>
+
+    <details>
+      <summary>Do I need to finish it all at once?</summary>
+      <div class="answer">No. The workbook is designed to move slowly. You can work through one page, one prompt, or one section whenever you have capacity.</div>
+    </details>
+
+    <details>
+      <summary>I'm not technically the eldest daughter. Will this still work for me?</summary>
+      <div class="answer">Yes. This is about the <em>role</em>, not your birth order. Plenty of only children, youngest siblings, and middle kids were the responsible one: the fixer, the peacemaker, the emotional default. If that's you, you're in exactly the right place.</div>
+    </details>
+
+    <details>
+      <summary>I've already done therapy and read all the books. Why would this help?</summary>
+      <div class="answer">Because awareness and repair are two different skills. You can describe the eldest daughter wound perfectly and still re-run the pattern daily. This workbook isn't more theory. It's writing, reflecting, and experimenting, exercise by exercise. It sits alongside therapy beautifully; it doesn't replace it.</div>
+    </details>
+
+    <details>
+      <summary>My progress always resets the moment I'm around my family.</summary>
+      <div class="answer">That's exactly what the Mom Call Drill and the financial-boundary chapter are built for: practical scripts for the moments (the guilt-trip call, the money request) that tend to undo people fastest.</div>
+    </details>
+
+    <details>
+      <summary>Can I buy this as a gift?</summary>
+      <div class="answer">Yes, many people give it to a sister, a friend, or a mother who's quietly carrying the same weight.</div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ===== EMOTIONAL CLOSE ===== -->
+<section style="background:var(--white);padding:0 0 32px;text-align:center">
+  <div class="wrap">
+    <div style="line-height:0;margin:0 auto 16px;max-width:480px;overflow:hidden">
+      <img src="images/what you will learn in.png" alt="" style="width:100%;display:block;margin-top:-8%">
+    </div>
+    <p style="font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:600;line-height:1.2;color:var(--plum);letter-spacing:-.01em;margin:0 auto 6px;max-width:440px">You spent years becoming who everyone else needed.</p>
+    <p style="font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:600;font-style:italic;line-height:1.2;color:var(--clay);letter-spacing:-.01em;margin:0 auto 20px;max-width:440px">It's finally time to become you.</p>
+    <a class="cta" href="#offer">Start healing today
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-of-service.html">Terms of Service</a>
+  </div>
+  <p class="disc">This program is educational and personal-development in nature. It is not therapy, medical care, or a substitute for professional mental-health treatment.</p>
+  <p class="disc" style="margin-top:10px">Need Help? <a href="mailto:anna@eldestdaughtercore.com">anna@eldestdaughtercore.com</a></p>
+</footer>
+
+</body>
+</html>
