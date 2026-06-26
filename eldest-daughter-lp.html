@@ -28,12 +28,12 @@
     --card-border:1px solid var(--line);
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
   body{
     margin:0;background:var(--white);color:var(--plum);
     font-family:'Inter',system-ui,sans-serif;font-size:20px;line-height:1.5;
-    -webkit-font-smoothing:antialiased;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw;
   }
   .wrap{max-width:660px;margin:0 auto;padding:0 22px}
   .band{padding:44px 0 24px}
@@ -652,7 +652,7 @@
 <section class="band band--sage-light" id="offer">
   <div class="wrap">
     <div class="offer">
-      <p class="intro">Introductory Price</p>
+      <p class="intro">Limited Time Offer</p>
       <h3 class="name">The Eldest Daughter Healing Bundle™</h3>
       <div style="overflow:hidden;margin:24px auto 8px;line-height:0;border-radius:12px">
         <img src="images/eds bundle image.png" alt="The Eldest Daughter Workbook" style="width:100%;display:block;margin-top:-6%">
