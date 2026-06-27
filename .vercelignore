@@ -1,0 +1,19 @@
+# Duplicate HTML files — served via index.html and folder structure
+eldest-daughter-lp.html
+terms-of-service.html
+privacy-policy.html
+
+# Source PNGs — WebP versions are used in production
+images/eds book.png
+images/eds bundle image.png
+pages/page-10.png
+pages/page-11.png
+pages/page-12.png
+pages/page-31.png
+pages/page-33.png
+pages/page-40.png
+pages/page-47.png
+
+# Unused font CSS files (fonts are self-hosted via @font-face in HTML)
+fonts/google-fonts.css
+fonts/google-fonts-woff2.css
