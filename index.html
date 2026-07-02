@@ -16,7 +16,14 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','4363206913920168');
-fbq('track','PageView');
+
+// Dedup key shared with the server-side PageView event (Conversions API).
+// Expose it (window var + cookie) so a server-side tag/backend can reuse the same id.
+var pageViewEventId = (crypto.randomUUID ? crypto.randomUUID() : 'pv_' + Date.now() + '_' + Math.random().toString(36).slice(2));
+window.__fbPageViewEventId = pageViewEventId;
+document.cookie = 'fb_pageview_event_id=' + pageViewEventId + ';path=/;max-age=1800;SameSite=Lax';
+
+fbq('track','PageView',{},{eventID:pageViewEventId});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4363206913920168&ev=PageView&noscript=1"/></noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-874XF1X3E3"></script>
@@ -154,8 +161,6 @@ fbq('track','PageView');
   .ba .before li::before{content:"—";flex:none;color:#9A5B43;font-size:13px;font-weight:400;margin-top:1px}
   .ba .after li::before{content:"✓";flex:none;color:#56713F;font-size:13px;font-weight:700;margin-top:1px}
   @media(max-width:520px){.ba{grid-template-columns:1fr}}
-  .ba .col-img{width:80%;display:block;height:170px;object-fit:contain;object-position:center bottom;
-       margin:0 auto 14px;margin-top:-56px;position:relative;z-index:1}
 
   /* page gallery */
   .page-gallery-wrap{position:relative;overflow-x:clip;padding:8px 0 4px}
@@ -170,14 +175,11 @@ fbq('track','PageView');
   /* narrative */
   .narrative p{font-size:inherit}
   .reactions-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0 20px}
-  .reactions-card{border:var(--card-border);border-radius:var(--card-radius);overflow:hidden;background:var(--white)}
-  .reactions-card-label{padding:14px 12px 8px;font-family:'Fraunces',sans-serif;font-size:clamp(13px,3.5vw,18px);font-weight:600;color:#000;letter-spacing:-.01em;line-height:1.15}
-  .reactions-card-label hr{border:none;border-top:1px solid #ccc;margin:8px 0 0}
-  .reactions-card-img{overflow:hidden;line-height:0}
-  .reactions-card-img img{display:block;width:300%;max-width:none;margin-top:-20%}
-  .reactions-card-img.panel-1 img{transform:translateX(0)}
-  .reactions-card-img.panel-2 img{transform:translateX(-33.333%)}
-  .reactions-card-img.panel-3 img{transform:translateX(-66.666%)}
+  .reactions-card{border:var(--card-border);border-radius:var(--card-radius);overflow:hidden;background:var(--white);padding:20px 12px 18px;text-align:center}
+  .reactions-card-icon{margin:0 auto 12px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#F7ECE1}
+  .reactions-card-icon svg{width:20px;height:20px;stroke:var(--clay-deep)}
+  .reactions-card-label{font-family:'Fraunces',sans-serif;font-size:clamp(13px,3.5vw,18px);font-weight:600;color:#000;letter-spacing:-.01em;line-height:1.15}
+  .reactions-card-label hr{border:none;border-top:1px solid #ccc;margin:10px auto 0;width:32px}
   .pullquote{font-family:'Fraunces';font-style:italic;font-size:22px;line-height:1.4;color:var(--clay-deep);
        border-left:3px solid var(--clay);padding:6px 0 6px 20px;margin:26px 0}
   .emphasis-quotes{margin:20px 0 24px;display:flex;flex-direction:column;gap:4px}
@@ -385,7 +387,6 @@ fbq('track','PageView');
 <section class="band band--white">
   <div class="wrap narrative">
     <h2>How Many Times Were You Told &ldquo;You're So Mature for Your Age&rdquo;</h2>
-    <img src="images/how many times.png" alt="" decoding="async" style="display:block;margin:20px 0 28px;width:100%;mix-blend-mode:multiply">
     <p>At first, it sounded like a compliment. But for many eldest daughters, those words carried an unspoken expectation:</p>
     <blockquote class="callout-quote">&ldquo;Be responsible. Be mature. And don&rsquo;t make life harder for anyone else.&rdquo;</blockquote>
     <p>Somewhere along the way, being needed felt safer than having needs of your own.</p>
@@ -409,16 +410,16 @@ fbq('track','PageView');
 
       <div class="reactions-cards">
         <div class="reactions-card">
+          <div class="reactions-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></div>
           <div class="reactions-card-label">Always<br>responsible.<hr></div>
-          <div class="reactions-card-img panel-1"><img src="images/eds reactions-nobg.png" alt="Always responsible" decoding="async"></div>
         </div>
         <div class="reactions-card">
+          <div class="reactions-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
           <div class="reactions-card-label">Always<br>reliable.<hr></div>
-          <div class="reactions-card-img panel-2"><img src="images/eds reactions-nobg.png" alt="Always reliable" decoding="async"></div>
         </div>
         <div class="reactions-card">
+          <div class="reactions-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
           <div class="reactions-card-label">Always<br>on alert.<hr></div>
-          <div class="reactions-card-img panel-3"><img src="images/eds reactions-nobg.png" alt="Always on alert" decoding="async"></div>
         </div>
       </div>
 
@@ -433,7 +434,6 @@ fbq('track','PageView');
     <h2>The Cycle Ends With You</h2>
     <div class="ba" style="margin-top:40px">
       <div class="col before">
-        <img class="col-img" src="images/before challenge.png" alt="Before the challenge" loading="lazy" decoding="async"/>
         <h4>Right now</h4>
         <ul>
           <li>You feel guilty when you're not productive</li>
@@ -444,7 +444,6 @@ fbq('track','PageView');
         </ul>
       </div>
       <div class="col after">
-        <img class="col-img" src="images/after challenge.png" alt="After the challenge" loading="lazy" decoding="async"/>
         <h4>After the workbook</h4>
         <ul>
           <li>Your nervous system standing down</li>
@@ -502,7 +501,7 @@ fbq('track','PageView');
   <div class="wrap" style="padding-top:16px">
     <div class="toc">
       <div class="toc-card">
-        <p class="part-label">I · Awareness</p>
+        <p class="part-label">Step I · Awareness</p>
         <ol start="1">
           <li>The Weight You Never Chose</li>
           <li>Where It All Started</li>
@@ -512,7 +511,7 @@ fbq('track','PageView');
         </ol>
       </div>
       <div class="toc-card">
-        <p class="part-label">II · Release</p>
+        <p class="part-label">Step II · Release</p>
         <ol start="6">
           <li>Older Sister Guilt</li>
           <li>The Angry Mean Sister</li>
@@ -522,7 +521,7 @@ fbq('track','PageView');
         </ol>
       </div>
       <div class="toc-card">
-        <p class="part-label">III · Reclaiming Joy</p>
+        <p class="part-label">Step III · Reclaiming Joy</p>
         <ol start="11">
           <li>Loved, Not Just Needed</li>
           <li>The Family ATM (Financial Boundaries)</li>
@@ -804,9 +803,7 @@ fbq('track','PageView');
 <!-- ===== EMOTIONAL CLOSE ===== -->
 <section style="background:var(--white);padding:0 0 32px;text-align:center">
   <div class="wrap">
-    <div style="line-height:0;margin:0 auto 16px;max-width:480px;overflow:hidden">
-      <img src="images/what you will learn in.png" alt="" style="width:100%;display:block;margin-top:-8%">
-    </div>
+    <div style="font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:48px;line-height:1;color:var(--clay);margin:0 0 8px">&rdquo;</div>
     <p style="font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:600;line-height:1.2;color:var(--plum);letter-spacing:-.01em;margin:0 auto 6px;max-width:440px">You spent years becoming who everyone else needed.</p>
     <p style="font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:600;font-style:italic;line-height:1.2;color:var(--clay);letter-spacing:-.01em;margin:0 auto 20px;max-width:440px">It's finally time to become you.</p>
     <a class="cta" href="#offer">Start healing today
