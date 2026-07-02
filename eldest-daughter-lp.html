@@ -57,12 +57,28 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     --clay:#B5502F;          /* primary accent / headlines */
     --clay-deep:#8F3C22;
     --plum:#36242F;          /* body + dark sections */
-    --plum-soft:#1a1a1a;
+    --ink:#1a1a1a;
     --sage:#7A8466;
+    --sage-deep:#56713F;      /* "after" state text/icons */
+    --sage-tint:#E7EDE0;      /* "after" card background */
+    --sage-tint-border:#D2DCC4;
+    --sage-tint-2:#DDE8DC;    /* band--sage-light background */
     --gold:#C8893A;
+    --gold-deep:#9c6a26;      /* guarantee seal gradient */
+    --gold-light:#E8C98A;     /* guarantee seal border */
     --go:#2F6B47;            /* CTA */
     --go-dark:#255639;
     --line:#E6D8C5;
+    --clay-warm:#9A5B43;      /* "before" state text/icons */
+    --clay-tint:#FBEFE0;      /* "before" card background */
+    --clay-tag:#C0654A;       /* .ph tag text */
+    --clay-tag-bg:#F7E4DB;
+    --clay-tag-border:#E2B7A6;
+    --peach-tint:#F7ECE1;     /* reactions-card icon background */
+    --cream-text:#F4E9DC;     /* text on plum background */
+    --peach-text:#E8C9B6;     /* permission lead text */
+    --peach-text-2:#F2D6C2;   /* perm em text */
+    --taupe:#B7A892;          /* press label */
     --shadow:0 18px 40px -22px rgba(54,36,47,.45);
     --card-radius:16px;
     --card-pad:20px 22px;
@@ -81,9 +97,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .band--cream{background:var(--cream-band)}
   .band--white{background:var(--white)}
   .band--white+.band--white,.band--cream+.band--cream{padding-top:8px}
-  .band--plum{background:var(--plum);color:#F4E9DC}
-  .band--plum h2,.band--plum h3{color:#F4E9DC}
-  .band--sage-light{background:#DDE8DC}
+  .band--plum{background:var(--plum);color:var(--cream-text)}
+  .band--plum h2,.band--plum h3{color:var(--cream-text)}
+  .band--sage-light{background:var(--sage-tint-2)}
 
   h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em}
   h2{font-size:33px;color:var(--clay);text-align:center;margin:0 0 14px}
@@ -98,7 +114,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   /* top bar */
 
   /* hero */
-  .hero{background:linear-gradient(180deg,#FBEFE0 0%, var(--ivory) 100%);padding:64px 0 36px;text-align:center}
+  .hero{background:linear-gradient(180deg,var(--clay-tint) 0%, var(--ivory) 100%);padding:64px 0 36px;text-align:center}
   .hero h1{font-size:clamp(31px,5.5vw,46px);color:var(--plum);margin:6px 0 16px}
   .hero h1 .glow{color:var(--clay);font-style:italic}
   .hero .sub{font-size:22px;color:var(--plum);max-width:560px;margin:0 auto 0;font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.01em}
@@ -114,7 +130,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
   .cta svg{transition:transform .15s ease;flex:none}
   .cta:hover svg{transform:translateX(3px)}
-  .cta-note{font-size:15px;color:var(--plum-soft);margin-top:12px}
+  .cta-note{font-size:15px;color:var(--ink);margin-top:12px}
   @media(max-width:480px){.cta{font-size:16px;padding:15px 22px;gap:8px}}
 
   /* trust */
@@ -126,12 +142,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .av:first-child{margin-left:0}
   .trust .trust-text{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
   .trust .trust-stars{color:var(--gold);font-size:18px;letter-spacing:2px;line-height:1}
-  .trust .trust-label{font-size:13px;color:var(--plum-soft);font-weight:500;line-height:1.2;white-space:nowrap}
+  .trust .trust-label{font-size:13px;color:var(--ink);font-weight:500;line-height:1.2;white-space:nowrap}
   .stars{color:var(--gold);letter-spacing:1px;font-size:17px}
   .tp-stars{display:inline-flex;gap:2px;align-items:center}
   .star-3q{background:linear-gradient(to right,var(--gold) 50%,rgba(200,137,58,.22) 50%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
   .press{margin-top:30px;text-align:center}
-  .press .label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#B7A892;margin-bottom:12px}
+  .press .label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);margin-bottom:12px}
   .press .row{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;opacity:.5;filter:grayscale(1)}
   .press .row span{font-family:'Fraunces';font-weight:600;font-size:17px;color:var(--plum)}
 
@@ -148,18 +164,18 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   /* before / after */
   .ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:56px;align-items:stretch}
   .ba .col{border-radius:var(--card-radius);padding:var(--card-pad);overflow:visible;position:relative}
-  .ba .before{background:#FBEFE0;border:1px solid var(--line)}
-  .ba .after{background:#E7EDE0;border:1px solid #D2DCC4}
+  .ba .before{background:var(--clay-tint);border:1px solid var(--line)}
+  .ba .after{background:var(--sage-tint);border:1px solid var(--sage-tint-border)}
   .ba h4{margin:0 0 10px;font-family:'Inter';font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-  .ba .before h4{color:#9A5B43}
-  .ba .after h4{color:#56713F}
+  .ba .before h4{color:var(--clay-warm)}
+  .ba .after h4{color:var(--sage-deep)}
   .ba ul{list-style:none;margin:0;padding:0;font-size:18px;line-height:1.5}
   .ba li{display:flex;align-items:flex-start;gap:7px;padding:5px 0;border-bottom:1px solid rgba(54,36,47,.07)}
   .ba li:last-child{border-bottom:none}
-  .ba .before li{color:var(--plum-soft)}
-  .ba .after li{color:var(--plum-soft)}
-  .ba .before li::before{content:"—";flex:none;color:#9A5B43;font-size:13px;font-weight:400;margin-top:1px}
-  .ba .after li::before{content:"✓";flex:none;color:#56713F;font-size:13px;font-weight:700;margin-top:1px}
+  .ba .before li{color:var(--ink)}
+  .ba .after li{color:var(--ink)}
+  .ba .before li::before{content:"—";flex:none;color:var(--clay-warm);font-size:13px;font-weight:400;margin-top:1px}
+  .ba .after li::before{content:"✓";flex:none;color:var(--sage-deep);font-size:13px;font-weight:700;margin-top:1px}
   @media(max-width:520px){.ba{grid-template-columns:1fr}}
 
   /* page gallery */
@@ -176,7 +192,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .narrative p{font-size:inherit}
   .reactions-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0 20px}
   .reactions-card{border:var(--card-border);border-radius:var(--card-radius);overflow:hidden;background:var(--white);padding:20px 12px 18px;text-align:center}
-  .reactions-card-icon{margin:0 auto 12px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#F7ECE1}
+  .reactions-card-icon{margin:0 auto 12px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--peach-tint)}
   .reactions-card-icon svg{width:20px;height:20px;stroke:var(--clay-deep)}
   .reactions-card-label{font-family:'Fraunces',sans-serif;font-size:clamp(13px,3.5vw,18px);font-weight:600;color:#000;letter-spacing:-.01em;line-height:1.15}
   .reactions-card-label hr{border:none;border-top:1px solid #ccc;margin:10px auto 0;width:32px}
@@ -206,7 +222,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .cycle .n4{bottom:-14px}
   .cycle .n5{top:74%;left:-36%;margin-left:0;width:140px;text-align:left}
   .cycle .n6{top:24%;left:-40%;margin-left:0;width:140px;text-align:left}
-  .cycle-caption{text-align:center;font-style:italic;font-family:'Fraunces';color:var(--plum-soft);margin-top:14px}
+  .cycle-caption{text-align:center;font-style:italic;font-family:'Fraunces';color:var(--ink);margin-top:14px}
   @media(max-width:680px){
     .cycle{width:auto;height:auto;display:flex;flex-direction:column;gap:8px}
     .cycle .ring{display:none}
@@ -219,38 +235,38 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .research ul{padding:0;margin:0}
   .research li::before{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;
        background:var(--gold);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5'%3E%3Cpath d='M12 19V6M5 13l7 7 7-7'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
-  .disclaim{font-size:15px;color:var(--plum-soft);font-style:italic;margin-top:18px}
+  .disclaim{font-size:15px;color:var(--ink);font-style:italic;margin-top:18px}
 
   /* parts / system */
   .part{margin-bottom:0}
-  .part .tag{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:24px;letter-spacing:.01em;text-transform:none;color:var(--clay);margin-bottom:14px;display:block}
+  .part .tag{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:24px;letter-spacing:.01em;text-transform:none;color:var(--clay);margin-bottom:14px;display:block}
   .part h3{margin:0 0 8px;font-size:24px}
-  .part p{margin:0;font-size:20px;color:var(--plum-soft)}
+  .part p{margin:0;font-size:20px;color:var(--ink)}
 
   /* permission cards (SIGNATURE) */
   .permission{background:var(--plum);border-radius:var(--card-radius);padding:var(--card-pad);margin-top:8px}
-  .permission p.lead{color:#E8C9B6;text-align:center;font-style:italic;font-family:'Fraunces';font-size:26px;margin:0 auto 22px;max-width:440px}
+  .permission p.lead{color:var(--peach-text);text-align:center;font-style:italic;font-family:'Fraunces';font-size:26px;margin:0 auto 22px;max-width:440px}
   .perm-list{display:flex;flex-direction:column;gap:10px}
   .perm{display:flex;align-items:flex-start;gap:12px;background:rgba(255,252,248,.05);border:1px solid rgba(244,233,220,.16);
-        border-radius:12px;padding:13px 16px;font-family:'Fraunces';font-size:20px;color:#F4E9DC;line-height:1.35}
+        border-radius:12px;padding:13px 16px;font-family:'Fraunces';font-size:20px;color:var(--cream-text);line-height:1.35}
   .perm span{color:var(--gold);font-weight:600;flex:none}
-  .perm em{font-style:italic;color:#F2D6C2}
+  .perm em{font-style:italic;color:var(--peach-text-2)}
 
   /* testimonials */
   .tcard{background:var(--white);border:var(--card-border);border-radius:var(--card-radius);padding:var(--card-pad);margin-bottom:14px;box-shadow:var(--shadow)}
   .tcard .head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
   .tcard .pic{width:42px;height:42px;border-radius:50%;background:var(--sage);flex:none}
   .tcard .who{font-weight:700;font-size:15px}
-  .tcard .who small{display:block;font-weight:500;color:var(--plum-soft);font-size:12px}
+  .tcard .who small{display:block;font-weight:500;color:var(--ink);font-size:12px}
   .tcard .stars{font-size:15px}
   .tcard q{font-style:italic;font-family:'Fraunces';font-size:20px;color:var(--plum);display:block;line-height:1.45}
-  .ph{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C0654A;background:#F7E4DB;border:1px dashed #E2B7A6;
+  .ph{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay-tag);background:var(--clay-tag-bg);border:1px dashed var(--clay-tag-border);
       border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:10px}
 
   /* reviews */
   .reviews-score{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:24px}
   .reviews-score .stars{font-size:22px;color:var(--gold)}
-  .reviews-score .score{font-family:'Fraunces';font-size:22px;font-weight:600;color:#F4E9DC}
+  .reviews-score .score{font-family:'Fraunces';font-size:22px;font-weight:600;color:var(--cream-text)}
   .reviews-score .count{font-size:15px;color:rgba(244,233,220,.65)}
   .review-marquee-wrap{position:relative;overflow-x:clip;padding:0 0 24px}
   @keyframes review-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -260,12 +276,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .rcard{flex:none;width:310px;border-radius:var(--card-radius);overflow:hidden;display:flex;flex-direction:column;font-size:15px;min-height:220px;margin-right:18px}
   .rcard-quote{background:var(--white);border:var(--card-border);padding:var(--card-pad);font-family:'Inter',sans-serif}
   .qcard-mark{display:block;margin-bottom:4px;line-height:1}
-  .qcard-body{font-size:15px;line-height:1.6;color:var(--plum-soft);flex:1;margin-bottom:18px}
+  .qcard-body{font-size:15px;line-height:1.6;color:var(--ink);flex:1;margin-bottom:18px}
   .qcard-footer{display:flex;align-items:center;gap:10px;padding-top:14px;border-top:1px solid var(--line)}
   .qcard-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none;display:flex;align-items:center;justify-content:center;font-family:'Inter';font-size:14px;font-weight:700;color:#fff}
   .qcard-info{flex:1;min-width:0}
   .qcard-name{font-size:13px;font-weight:700;color:var(--plum);line-height:1.2}
-  .qcard-meta{font-size:11px;color:var(--plum-soft);margin-top:1px}
+  .qcard-meta{font-size:11px;color:var(--ink);margin-top:1px}
   .qcard-stars{color:var(--gold);font-size:13px;letter-spacing:1px;flex:none}
 
   /* founder */
@@ -275,7 +291,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .founder-id{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 4px}
   .founder-sig{font-family:'Fraunces';font-style:italic;font-size:19px;color:var(--plum);font-weight:600}
   .founder-socials{display:flex;align-items:center;gap:14px}
-  .founder-socials a{color:var(--plum-soft);display:flex;align-items:center;transition:color .15s}
+  .founder-socials a{color:var(--ink);display:flex;align-items:center;transition:color .15s}
   .founder-socials a:hover{color:var(--clay)}
   .founder-text{max-width:520px;display:flex;flex-direction:column;gap:4px}
   .founder-text p{margin:0}
@@ -284,43 +300,43 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer{border:var(--card-border);border-radius:var(--card-radius);background:var(--white);padding:var(--card-pad);margin:8px auto 0;box-shadow:var(--shadow)}
   .offer .intro{text-align:center;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);font-weight:700;margin-bottom:10px}
   .offer h3.name{text-align:center;font-size:33px;color:var(--plum);margin:0 0 10px}
-  .offer .tagline{font-size:20px;color:var(--plum-soft);margin:0 auto 20px;text-align:center;max-width:380px}
+  .offer .tagline{font-size:20px;color:var(--ink);margin:0 auto 20px;text-align:center;max-width:380px}
   .offer .lifetime{font-size:12px;color:var(--sage);font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:.06em}
   .offer-blocks{display:flex;flex-direction:column;gap:14px;margin-top:24px}
   .offer-block{border-radius:var(--card-radius);padding:var(--card-pad)}
   .offer-block--receive,.offer-block--schedule,.offer-block--format{background:var(--white);border:var(--card-border)}
-  .offer-block h4{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:700;color:var(--clay);letter-spacing:.01em;margin:0 0 12px}
+  .offer-block h4{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:600;color:var(--clay);letter-spacing:.01em;margin:0 0 12px}
   .offer-block ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
   .offer-block li{position:relative;padding:0 0 0 36px;font-size:20px;line-height:1.45}
   .offer-block li::before{content:"";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;background:rgba(122,132,102,.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='%237A8466' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
   .offer-block .li--gift{padding-left:0}
   .offer-block .li--gift::before{display:none}
   .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:20px 0 16px}
-  .price .now{font-family:'Fraunces';font-size:48px;color:var(--clay);font-weight:700;line-height:1}
+  .price .now{font-family:'Fraunces';font-size:48px;color:var(--clay);font-weight:600;line-height:1}
   .price .was{color:rgba(90,70,81,.38);text-decoration:line-through;font-size:22px}
   .offer-checks{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:0}
-  .offer-checks li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:16px;color:var(--plum-soft)}
+  .offer-checks li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:16px;color:var(--ink)}
   .offer-checks li:last-child{border-bottom:none}
   .offer-free{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--clay);background:rgba(181,80,47,.1);border-radius:20px;padding:2px 9px;flex:none}
   .offer-checks li::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:rgba(122,132,102,.18);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8466' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
   .cta--full{width:100%;justify-content:center;letter-spacing:.06em;text-transform:uppercase}
-  .guarantee{text-align:center;font-size:14px;color:var(--plum-soft);margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+  .guarantee{text-align:center;font-size:14px;color:var(--ink);margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px}
   .pay{display:flex;justify-content:center;gap:7px;margin:14px 0 6px;flex-wrap:wrap;align-items:center}
   .center{text-align:center}
 
   /* guarantee */
-  .seal{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 50% 38%,var(--gold),#9c6a26);
+  .seal{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 50% 38%,var(--gold),var(--gold-deep));
         color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;margin:0 auto 18px;
-        font-family:'Fraunces';font-weight:700;font-size:15px;line-height:1.1;box-shadow:var(--shadow);border:3px solid #E8C98A}
+        font-family:'Fraunces';font-weight:600;font-size:15px;line-height:1.1;box-shadow:var(--shadow);border:3px solid var(--gold-light)}
 
   /* what's inside */
   .inside-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
   .inside-list li{background:var(--white);border:var(--card-border);border-radius:var(--card-radius);padding:20px 22px 20px 58px;position:relative;display:flex;flex-direction:column;gap:4px;counter-increment:exercise}
   .inside-list li::before{content:counter(exercise);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;
-       background:rgba(122,132,102,.18);font-family:'Inter';font-size:12px;font-weight:700;color:#56713F;
+       background:rgba(122,132,102,.18);font-family:'Inter';font-size:12px;font-weight:700;color:var(--sage-deep);
        display:flex;align-items:center;justify-content:center;line-height:1}
   .il-title{font-size:20px;font-weight:700;color:var(--plum)}
-  .il-desc{font-size:18px;color:var(--plum-soft);line-height:1.6}
+  .il-desc{font-size:18px;color:var(--ink);line-height:1.6}
 
   /* faq */
   .faq h2{margin-bottom:32px}
@@ -331,23 +347,23 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .faq summary::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--clay);font-weight:300;line-height:1}
   .faq details[open] summary::after{content:"–"}
   .faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;border-radius:4px}
-  .faq .answer{padding:0 0 16px;font-size:18px;color:var(--plum-soft);line-height:1.6}
+  .faq .answer{padding:0 0 16px;font-size:18px;color:var(--ink);line-height:1.6}
 
-  footer{background:var(--ivory);border-top:1px solid var(--line);color:var(--plum-soft);font-size:15px;text-align:center;padding:18px 22px}
+  footer{background:var(--ivory);border-top:1px solid var(--line);color:var(--ink);font-size:15px;text-align:center;padding:18px 22px}
   footer a{color:var(--clay);margin:0 8px;text-decoration:none}
   footer a:hover{color:var(--clay-deep)}
   footer .disc{max-width:560px;margin:14px auto 0;font-size:13px;line-height:1.6;color:var(--plum)}
 
-  .sec-intro{max-width:560px;margin:0 auto 8px;color:var(--plum-soft)}
+  .sec-intro{max-width:560px;margin:0 auto 8px;color:var(--ink)}
   .toc{display:flex;flex-direction:column;gap:16px;padding:8px 0}
   .toc-card{background:var(--white);border:var(--card-border);border-radius:var(--card-radius);padding:var(--card-pad);box-shadow:var(--shadow)}
-  .toc-card .part-label{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:26px;letter-spacing:.01em;text-transform:none;
+  .toc-card .part-label{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:26px;letter-spacing:.01em;text-transform:none;
        color:var(--clay);margin:0 0 14px;display:block}
   .toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
   .toc li{counter-increment:toc;position:relative;padding:10px 0 10px 40px;border-bottom:1px dashed var(--line);font-size:20px;line-height:1.5}
   .toc li:last-child{border-bottom:none}
   .toc li::before{content:counter(toc);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;
-       background:var(--cream-band);color:var(--clay-deep);font-family:'Fraunces';font-weight:700;font-size:15px;
+       background:var(--cream-band);color:var(--clay-deep);font-family:'Fraunces';font-weight:600;font-size:15px;
        display:flex;align-items:center;justify-content:center}
 </style>
 </head>
@@ -582,7 +598,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Reading this felt like someone finally handed me back to myself. Honestly didn't expect a workbook to hit this hard.</div>
-          <div class="qcard-footer"><span class="qcard-avatar" style="background:#56713F">Z</span><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:var(--sage-deep)">Z</span><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
@@ -592,7 +608,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I finally had words for why rest felt impossible. It felt like someone understood the part of me I always hide. Get this workbook NOW.</div>
-          <div class="qcard-footer"><span class="qcard-avatar" style="background:#9A5B43">Y</span><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:var(--clay-warm)">Y</span><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
@@ -612,7 +628,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">It gave me language for the guilt. I didn't know how much I needed that until I wrote it down. Highly recommend 🌱</div>
-          <div class="qcard-footer"><span class="qcard-avatar" style="background:#56713F">C</span><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:var(--sage-deep)">C</span><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
@@ -638,7 +654,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">Reading this felt like someone finally handed me back to myself. Honestly didn't expect a workbook to hit this hard.</div>
-          <div class="qcard-footer"><span class="qcard-avatar" style="background:#56713F">Z</span><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:var(--sage-deep)">Z</span><div class="qcard-info"><div class="qcard-name">Zara</div><div class="qcard-meta">London</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
@@ -648,7 +664,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">I finally had words for why rest felt impossible. It felt like someone understood the part of me I always hide. Get this workbook NOW.</div>
-          <div class="qcard-footer"><span class="qcard-avatar" style="background:#9A5B43">Y</span><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:var(--clay-warm)">Y</span><div class="qcard-info"><div class="qcard-name">Yara Al-Hassan</div><div class="qcard-meta">Beirut</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
@@ -668,7 +684,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
           <div class="qcard-body">It gave me language for the guilt. I didn't know how much I needed that until I wrote it down. Highly recommend 🌱</div>
-          <div class="qcard-footer"><span class="qcard-avatar" style="background:#56713F">C</span><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
+          <div class="qcard-footer"><span class="qcard-avatar" style="background:var(--sage-deep)">C</span><div class="qcard-info"><div class="qcard-name">Claire Dubois</div><div class="qcard-meta">Brussels</div></div><div class="qcard-stars">★★★★<span class="star-3q">★</span></div></div>
         </div>
         <div class="rcard rcard-quote">
           <span class="qcard-mark"><svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 22V13.6C0 9.86667 0.933333 6.86667 2.8 4.6C4.66667 2.33333 7.4 0.8 11 0L12.6 2.8C9.8 3.46667 7.73333 4.6 6.4 6.2C5.06667 7.8 4.46667 9.73333 4.6 12H8.8V22H0ZM15.4 22V13.6C15.4 9.86667 16.3333 6.86667 18.2 4.6C20.0667 2.33333 22.8 0.8 26.4 0L28 2.8C25.2 3.46667 23.1333 4.6 21.8 6.2C20.4667 7.8 19.8667 9.73333 20 12H24.2V22H15.4Z" fill="#B5502F" fill-opacity="0.25"/></svg></span>
