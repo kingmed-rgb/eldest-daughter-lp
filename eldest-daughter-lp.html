@@ -179,14 +179,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   @media(max-width:520px){.ba{grid-template-columns:1fr}}
 
   /* page gallery */
-  .page-gallery-wrap{position:relative;overflow-x:clip;padding:8px 0 4px}
-  @keyframes gallery-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  .page-gallery{display:flex;animation:gallery-scroll 70s linear infinite;width:max-content}
-  .page-gallery:hover{animation-play-state:paused}
-  .page-card{flex:none;width:300px;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -10px rgba(0,0,0,.5);transition:transform .2s ease;margin-right:28px}
-  .page-card:hover{transform:translateY(-8px) scale(1.02)}
-  .page-card img{width:100%;display:block}
-  @media(max-width:600px){.page-card{width:220px;margin-right:20px}}
+  .page-gallery-wrap{padding:8px 0 4px}
+  .page-gallery-wrap img{width:100%;display:block;border-radius:14px}
 
   /* narrative */
   .narrative p{font-size:inherit}
@@ -482,22 +476,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <h2>What's Inside</h2>
     <p class="sec-intro">17 chapters of guided exercises and <B>proven therapeutic principles</B>, walking you from naming the wound to finally setting it down. Here's what each one covers.</p>
   </div>
-  <div class="page-gallery-wrap" style="margin-top:12px">
-    <div class="page-gallery">
-      <div class="page-card"><img src="pages/page-10.webp" alt="Page 10"></div>
-      <div class="page-card"><img src="pages/page-11.webp" alt="Page 11"></div>
-      <div class="page-card"><img src="pages/page-31.webp" alt="Page 31"></div>
-      <div class="page-card"><img src="pages/page-40.webp" alt="Page 40"></div>
-      <div class="page-card"><img src="pages/page-47.webp" alt="Page 47"></div>
-      <div class="page-card"><img src="pages/page-33.webp" alt="Page 33"></div>
-      <!-- duplicated for seamless loop -->
-      <div class="page-card"><img src="pages/page-10.webp" alt="Page 10"></div>
-      <div class="page-card"><img src="pages/page-11.webp" alt="Page 11"></div>
-      <div class="page-card"><img src="pages/page-31.webp" alt="Page 31"></div>
-      <div class="page-card"><img src="pages/page-40.webp" alt="Page 40"></div>
-      <div class="page-card"><img src="pages/page-47.webp" alt="Page 47"></div>
-      <div class="page-card"><img src="pages/page-33.webp" alt="Page 33"></div>
-    </div>
+  <div class="page-gallery-wrap wrap" style="margin-top:12px">
+    <img src="pages/PAGES COVER.png" alt="Sample pages from The Eldest Daughter Workbook" loading="lazy" decoding="async">
   </div>
   <div class="wrap" style="padding:10px 22px 10px;display:flex;justify-content:center">
     <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;row-gap:10px;color:var(--plum);font-size:13px;font-weight:500">
