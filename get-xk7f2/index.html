@@ -16,8 +16,20 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','4363206913920168');
-fbq('track','PageView');
-fbq('track','Purchase',{value:12.00,currency:'USD'});
+
+// Dedup key shared with the server-side PageView event (Conversions API).
+var pageViewEventId = (crypto.randomUUID ? crypto.randomUUID() : 'pv_' + Date.now() + '_' + Math.random().toString(36).slice(2));
+window.__fbPageViewEventId = pageViewEventId;
+document.cookie = 'fb_pageview_event_id=' + pageViewEventId + ';path=/;max-age=1800;SameSite=Lax';
+fbq('track','PageView',{},{eventID:pageViewEventId});
+
+// Dedup key shared with the server-side Purchase event (Conversions API).
+// Stripe's success URL must include ?session_id={CHECKOUT_SESSION_ID} for this to be populated.
+var params = new URLSearchParams(window.location.search);
+var stripeSessionId = params.get('session_id');
+var eventId = stripeSessionId || ('purchase_' + Date.now());
+
+fbq('track','Purchase',{value:12.00,currency:'USD'},{eventID:eventId});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4363206913920168&ev=Purchase&noscript=1"/></noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-874XF1X3E3"></script>
@@ -26,7 +38,7 @@ fbq('track','Purchase',{value:12.00,currency:'USD'});
   function gtag(){window.dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-874XF1X3E3');
-  gtag('event', 'purchase', {value: 12.00, currency: 'USD'});
+  gtag('event', 'purchase', {value: 12.00, currency: 'USD', transaction_id: eventId});
 </script>
 <script>
   (function(c,l,a,r,i,t,y){
