@@ -61,7 +61,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     --tint-4:#9C4F5C;
     --tint-5:#6E2433;
     --pop:#8E1B3A;           /* the burgundy, lifted: price, founding price, bonus, instant download */
-    --pop-soft:#F5DEE2;      /* light wash of the same hue behind small tags */
     --accent:#4D0619;        /* buttons only */
     --accent-dark:#36040F;
     --serif:'Fraunces',Georgia,serif;
@@ -160,13 +159,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 4px;font-family:var(--body)}
   .price .now{font-family:var(--serif);font-size:48px;font-weight:600;line-height:1;color:var(--pop)}
   .price .was{color:var(--muted);text-decoration:line-through;font-size:24px}
-  .price .save{align-self:center;font-size:13px;font-weight:600;color:var(--pop);background:var(--pop-soft);border-radius:999px;padding:4px 10px}
+  .price .save{align-self:center;font-size:15px;color:var(--muted)}
   .price-note{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 18px!important}
   .includes{list-style:none;margin:0 0 20px;padding:0;font-family:var(--body);font-size:17px}
   .includes li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);line-height:1.4}
   .includes li:last-child{border-bottom:1px solid var(--line)}
   .includes li::before{content:"✓";color:var(--accent);font-weight:600;flex:none}
-  .includes .tag{margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--pop);background:var(--pop-soft);border-radius:999px;padding:2px 9px;white-space:nowrap;align-self:center}
+  .includes .tag{margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--muted);white-space:nowrap;align-self:center}
   .steps{list-style:none;margin:18px 0 0;padding:0;font-family:var(--body);font-size:15px;color:var(--muted);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
   .steps b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
   .guarantee{font-family:var(--body);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
@@ -200,7 +199,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .buybar a{color:var(--bg)!important}
   .buybar .p b{display:block;color:var(--ink);font-size:17px}
   .buybar .p s{margin-left:4px}
-  .buybar .bp{color:var(--pop);font-weight:600}
+  .buybar .bp{color:var(--ink);font-weight:600}
   .buybar a{background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
 </style>
 </head>
