@@ -118,11 +118,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   @media(max-width:520px){.ba{grid-template-columns:1fr;gap:6px}.ba-arrow svg{transform:rotate(90deg)}.ba-arrow{padding:6px 0 10px}}
 
   /* chapters */
-  .toc{font-family:var(--body);margin:0 0 20px}
-  .toc h3{font-family:var(--body);font-weight:600;font-size:24px;color:var(--accent);margin:22px 0 6px;display:flex;align-items:center;gap:10px}
-  .toc h3::after{content:"";flex:1;height:1px;background:var(--tint-3)}
-  .toc .step-desc{color:var(--ink);font-size:18px;line-height:1.7;margin:0 0 8px!important}
-  .toc h3.first-step{margin-top:4px}
+  .steps-list{display:flex;flex-direction:column;gap:18px;margin:4px 0 26px}
+  .steps-list h3{font-family:var(--body);font-weight:600;font-size:24px;color:var(--accent);margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  .steps-list h3::after{content:"";flex:1;height:1px;background:var(--tint-3)}
+  .steps-list .step-desc{color:var(--ink);font-size:18px;line-height:1.7;margin:0!important}
+  .toc{font-family:var(--body);margin:0 0 20px;padding-top:12px;border-top:1px solid var(--line)}
   .toc ol{margin:0;padding:0;list-style:none}
   .toc li{display:flex;align-items:baseline;gap:10px;padding:7px 0;font-size:18px;line-height:1.4}
   .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:44px;font-size:18px;font-weight:400;white-space:nowrap}
@@ -275,28 +275,27 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <h2>what's inside</h2>
   <p>this book isn't about fixing yourself overnight. it's about walking step by step into a lighter way of living. 16 chapters of guided exercises built on proven therapeutic principles. you write, you reflect, you try things.</p>
 
+  <div class="steps-list">
+    <div><h3><span class="step">step 1</span>awareness</h3>
+    <p class="step-desc">the goal: see the wound clearly. you name the guilt, the pressure, and the roles you were handed as a kid, so you finally understand why you feel the way you do.</p></div>
+    <div><h3><span class="step">step 2</span>release</h3>
+    <p class="step-desc">the goal: loosen the grip. you let go of the guilt, anger, and perfectionism you've been carrying, and give yourself permission to stop being everyone's fixer.</p></div>
+    <div><h3><span class="step">step 3</span>reclaiming joy</h3>
+    <p class="step-desc">the goal: rebuild. you set boundaries that hold, build relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p></div>
+  </div>
+
   <div class="toc">
-    <h3 class="first-step"><span class="step">step 1</span>awareness</h3>
-    <p class="step-desc">the goal: see the wound clearly. you name the guilt, the pressure, and the roles you were handed as a kid, so you finally understand why you feel the way you do.</p>
     <ol>
       <li><span>ch 01</span><b>the weight you never chose</b><i></i><em>p. 3</em></li>
       <li><span>ch 02</span><b>where it all started</b><i></i><em>p. 9</em></li>
       <li><span>ch 03</span><b>why pretending you're fine isn't working</b><i></i><em>p. 18</em></li>
       <li><span>ch 04</span><b>your healing starts here</b><i></i><em>p. 21</em></li>
       <li><span>ch 05</span><b>the day my childhood ended</b><i></i><em>p. 22</em></li>
-    </ol>
-    <h3><span class="step">step 2</span>release</h3>
-    <p class="step-desc">the goal: loosen the grip. you let go of the guilt, anger, and perfectionism you've been carrying, and give yourself permission to stop being everyone's fixer.</p>
-    <ol>
       <li><span>ch 06</span><b>older sister guilt (the guilt dump &amp; sort)</b><i></i><em>p. 32</em></li>
       <li><span>ch 07</span><b>the angry mean sister (the rage timeline)</b><i></i><em>p. 41</em></li>
       <li><span>ch 08</span><b>the &ldquo;i don't need anyone&rdquo; lie (the help allergy test)</b><i></i><em>p. 48</em></li>
       <li><span>ch 09</span><b>your job isn't your worth</b><i></i><em>p. 54</em></li>
       <li><span>ch 10</span><b>the body remembers everything</b><i></i><em>p. 66</em></li>
-    </ol>
-    <h3><span class="step">step 3</span>reclaiming joy</h3>
-    <p class="step-desc">the goal: rebuild. you set boundaries that hold, build relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p>
-    <ol>
       <li><span>ch 11</span><b>loved, not just needed</b><i></i><em>p. 74</em></li>
       <li><span>ch 12</span><b>the family atm (financial boundaries)</b><i></i><em>p. 85</em></li>
       <li><span>ch 13</span><b>the wounds we inherit</b><i></i><em>p. 90</em></li>
