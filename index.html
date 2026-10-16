@@ -60,7 +60,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     --tint-3:#C98F95;
     --tint-4:#9C4F5C;
     --tint-5:#6E2433;
-    --pop:#8E1B3A;           /* the burgundy, lifted: price, founding price, bonus, instant download */
     --accent:#4D0619;        /* buttons only */
     --accent-dark:#36040F;
     --serif:'Fraunces',Georgia,serif;
@@ -119,13 +118,14 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .toc{font-family:var(--body);margin:0 0 20px}
   .toc h3{font-family:var(--body);font-weight:600;font-size:24px;color:var(--accent);margin:22px 0 6px;display:flex;align-items:center;gap:10px}
   .toc h3::after{content:"";flex:1;height:1px;background:var(--tint-3)}
-  .toc .step-desc{color:var(--muted);font-size:17px;line-height:1.5;margin:0 0 6px!important}
+  .toc .step-desc{color:var(--ink);font-size:19px;line-height:1.7;margin:0 0 8px!important}
   .toc h3.first-step{margin-top:4px}
   .toc ol{margin:0;padding:0;list-style:none}
-  .toc li{display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:19px;line-height:1.4}
-  .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:22px;font-size:15px;font-weight:600}
+  .toc li{display:flex;align-items:baseline;gap:10px;padding:7px 0;font-size:17px;line-height:1.4}
+  .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:44px;font-size:15px;font-weight:600;white-space:nowrap}
   .toc li i{flex:1;border-bottom:1.5px dotted var(--tint-3);transform:translateY(-5px);min-width:16px;font-style:normal}
-  .toc li b{font-weight:400;min-width:0}
+  .toc li b{font-weight:400;min-width:0;text-wrap:wrap}
+  .toc li{text-wrap:wrap}
   .toc li em{color:var(--muted);font-style:italic;font-size:15px;white-space:nowrap}
 
   /* buttons */
@@ -135,7 +135,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .cta:active{transform:scale(.99)}
   .cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
   .cta-wrap{margin:22px 0 26px}
-  .cta-note{font-family:var(--body);font-size:13px;color:var(--pop);font-weight:600;text-align:center;margin:10px 0 0!important}
+  .cta-note{font-family:var(--body);font-size:13px;color:var(--accent);font-weight:600;text-align:center;margin:10px 0 0!important}
 
   /* comments (TikTok style reviews) */
   .comments-head{font-family:var(--body);display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
@@ -152,12 +152,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   /* offer */
   .offer{border:1.5px solid var(--ink);border-radius:14px;padding:26px 22px 22px;margin:8px 0 10px;scroll-margin-top:16px}
-  .offer .kicker{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--bg);background:var(--pop);border-radius:999px;padding:5px 12px;width:max-content;margin:0 auto 10px!important;text-align:center}
   .offer h2{margin:0 0 4px!important;text-align:center;font-size:24px}
   .offer .sub{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
   .offer .bundle{margin:0 -6px 6px;mix-blend-mode:multiply}
   .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 4px;font-family:var(--body)}
-  .price .now{font-family:var(--serif);font-size:48px;font-weight:600;line-height:1;color:var(--pop)}
+  .price .now{font-family:var(--serif);font-size:48px;font-weight:600;line-height:1;color:var(--accent)}
   .price .was{color:var(--muted);text-decoration:line-through;font-size:24px}
   .price .save{align-self:center;font-size:15px;color:var(--muted)}
   .price-note{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 18px!important}
@@ -277,32 +276,32 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   <div class="toc">
     <h3 class="first-step"><span class="step">step 1</span>awareness</h3>
-    <p class="step-desc">see the wound clearly. name the guilt, the pressure, and the roles you were forced to play.</p>
+    <p class="step-desc">the goal: see the wound clearly. you name the guilt, the pressure, and the roles you were handed as a kid, so you finally understand why you feel the way you do.</p>
     <ol>
-      <li><span>01</span><b>the weight you never chose</b><i></i><em>p. 3</em></li>
-      <li><span>02</span><b>where it all started</b><i></i><em>p. 9</em></li>
-      <li><span>03</span><b>why pretending you're fine isn't working</b><i></i><em>p. 18</em></li>
-      <li><span>04</span><b>your healing starts here</b><i></i><em>p. 21</em></li>
-      <li><span>05</span><b>the day my childhood ended</b><i></i><em>p. 22</em></li>
+      <li><span>ch 01</span><b>the weight you never chose</b><i></i><em>p. 3</em></li>
+      <li><span>ch 02</span><b>where it all started</b><i></i><em>p. 9</em></li>
+      <li><span>ch 03</span><b>why pretending you're fine isn't working</b><i></i><em>p. 18</em></li>
+      <li><span>ch 04</span><b>your healing starts here</b><i></i><em>p. 21</em></li>
+      <li><span>ch 05</span><b>the day my childhood ended</b><i></i><em>p. 22</em></li>
     </ol>
     <h3><span class="step">step 2</span>release</h3>
-    <p class="step-desc">loosen the grip. let go of guilt, anger, and perfectionism. give yourself permission to stop being everyone's fixer.</p>
+    <p class="step-desc">the goal: loosen the grip. you let go of the guilt, anger, and perfectionism you've been carrying, and give yourself permission to stop being everyone's fixer.</p>
     <ol>
-      <li><span>06</span><b>older sister guilt (the guilt dump &amp; sort)</b><i></i><em>p. 32</em></li>
-      <li><span>07</span><b>the angry mean sister (the rage timeline)</b><i></i><em>p. 41</em></li>
-      <li><span>08</span><b>the &ldquo;i don't need anyone&rdquo; lie (the help allergy test)</b><i></i><em>p. 48</em></li>
-      <li><span>09</span><b>your job isn't your worth</b><i></i><em>p. 54</em></li>
-      <li><span>10</span><b>the body remembers everything</b><i></i><em>p. 66</em></li>
+      <li><span>ch 06</span><b>older sister guilt (the guilt dump &amp; sort)</b><i></i><em>p. 32</em></li>
+      <li><span>ch 07</span><b>the angry mean sister (the rage timeline)</b><i></i><em>p. 41</em></li>
+      <li><span>ch 08</span><b>the &ldquo;i don't need anyone&rdquo; lie (the help allergy test)</b><i></i><em>p. 48</em></li>
+      <li><span>ch 09</span><b>your job isn't your worth</b><i></i><em>p. 54</em></li>
+      <li><span>ch 10</span><b>the body remembers everything</b><i></i><em>p. 66</em></li>
     </ol>
     <h3><span class="step">step 3</span>reclaiming joy</h3>
-    <p class="step-desc">rebuild. set boundaries, create relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p>
+    <p class="step-desc">the goal: rebuild. you set boundaries that hold, build relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p>
     <ol>
-      <li><span>11</span><b>loved, not just needed</b><i></i><em>p. 74</em></li>
-      <li><span>12</span><b>the family atm (financial boundaries)</b><i></i><em>p. 85</em></li>
-      <li><span>13</span><b>the wounds we inherit</b><i></i><em>p. 90</em></li>
-      <li><span>14</span><b>i'm your sister, not your mom</b><i></i><em>p. 97</em></li>
-      <li><span>15</span><b>becoming the kid you never got to be</b><i></i><em>p. 105</em></li>
-      <li><span>16</span><b>the cycle ends with you</b><i></i><em>p. 117</em></li>
+      <li><span>ch 11</span><b>loved, not just needed</b><i></i><em>p. 74</em></li>
+      <li><span>ch 12</span><b>the family atm (financial boundaries)</b><i></i><em>p. 85</em></li>
+      <li><span>ch 13</span><b>the wounds we inherit</b><i></i><em>p. 90</em></li>
+      <li><span>ch 14</span><b>i'm your sister, not your mom</b><i></i><em>p. 97</em></li>
+      <li><span>ch 15</span><b>becoming the kid you never got to be</b><i></i><em>p. 105</em></li>
+      <li><span>ch 16</span><b>the cycle ends with you</b><i></i><em>p. 117</em></li>
     </ol>
   </div>
 
@@ -364,7 +363,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
-    <p class="kicker">founding price</p>
     <h2>the eldest daughter healing bundle™</h2>
     <img class="bundle" src="images/eds bundle image.webp" alt="the eldest daughter workbook, poems &amp; letters, and inner child healing worksheet" width="2640" height="1485" loading="lazy" decoding="async">
 
