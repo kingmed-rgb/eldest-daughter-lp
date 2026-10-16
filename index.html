@@ -50,12 +50,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 <style>
   /* One background, one accent. Everything else is type + hairlines. All lowercase, like the book. */
   :root{
-    --bg:#FFFFFF;
+    --bg:#FEF7EC;
     --ink:#1F1A1C;
     --muted:#6E6669;
-    --line:#ECE6E2;
-    --accent:#B5502F;
-    --accent-dark:#963F23;
+    --line:#EADFD0;
+    --accent:#4D0619;        /* buttons only */
+    --accent-dark:#36040F;
     --serif:'Fraunces',Georgia,serif;
     --body:Georgia,'Iowan Old Style','Noto Serif',serif;
     --ui:'Inter',system-ui,-apple-system,sans-serif;
@@ -80,14 +80,15 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .actions a,.actions button{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:inherit;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-transform:inherit}
   .actions .spacer{flex:1}
   .actions svg{width:19px;height:19px}
-  .actions .liked svg{fill:var(--accent);stroke:var(--accent)}
+  .actions .liked svg{fill:var(--ink);stroke:var(--ink)}
 
   /* prose */
   .post p{margin:0 0 22px}
   .post h2{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.2;letter-spacing:-.015em;margin:48px 0 16px}
+  .post h2.first{margin-top:0}
   .big{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.01em}
   .figure{margin:4px 0 26px}
-  .figure img{width:100%;height:auto}
+  .figure img{width:100%;height:auto;mix-blend-mode:multiply}
   hr.dots{border:0;text-align:center;margin:40px 0}
   hr.dots::before{content:"✦ ✦ ✦";color:var(--muted);letter-spacing:.6em;font-size:12px}
 
@@ -98,7 +99,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   /* the three parts */
   .path{margin:0 0 22px;display:flex;flex-direction:column;gap:16px}
-  .path h3{font-family:var(--ui);font-size:12px;letter-spacing:.04em;color:var(--accent);margin:0 0 4px}
+  .path h3{font-family:var(--ui);font-size:12px;letter-spacing:.04em;color:var(--muted);margin:0 0 4px}
   .path p{margin:0!important}
 
   /* before / after as two plain lists */
@@ -106,12 +107,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .ba h3{font-family:var(--ui);font-size:12px;letter-spacing:.04em;margin:0 0 10px;color:var(--muted)}
   .ba ul{list-style:none;margin:0;padding:0}
   .ba li{padding:8px 0;border-top:1px solid var(--line)}
-  .ba .after h3{color:var(--accent)}
+  .ba .after h3{color:var(--ink)}
   @media(max-width:520px){.ba{grid-template-columns:1fr;gap:18px}}
 
   /* chapters */
   .toc{font-family:var(--ui);margin:0 0 22px}
-  .toc h3{font-family:var(--ui);font-size:12px;letter-spacing:.04em;color:var(--accent);margin:22px 0 4px}
+  .toc h3{font-family:var(--ui);font-size:12px;letter-spacing:.04em;color:var(--muted);margin:22px 0 4px}
   .toc ol{margin:0;padding:0;list-style:none}
   .toc li{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.4}
   .toc li span{color:var(--muted);font-variant-numeric:tabular-nums;min-width:20px}
@@ -130,7 +131,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .comments-head b{font-size:17px}
   .comments-head span{font-size:14px;color:var(--muted)}
   .comment{display:flex;gap:12px;padding:14px 0;font-family:var(--ui)}
-  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700}
+  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:var(--line)!important;color:var(--muted);font-size:14px;font-weight:700}
   .comment .name{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:2px}
   .comment .name small{font-weight:400}
   .comment .txt{font-size:16px;line-height:1.45}
@@ -140,10 +141,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   /* offer */
   .offer{border:1.5px solid var(--ink);border-radius:14px;padding:26px 22px 22px;margin:8px 0 10px;scroll-margin-top:16px}
-  .offer .kicker{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent);margin:0 0 6px!important;text-align:center}
+  .offer .kicker{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--muted);margin:0 0 6px!important;text-align:center}
   .offer h2{margin:0 0 4px!important;text-align:center;font-size:25px}
   .offer .sub{font-family:var(--ui);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
-  .offer .bundle{margin:0 -6px 6px}
+  .offer .bundle{margin:0 -6px 6px;mix-blend-mode:multiply}
   .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 4px;font-family:var(--ui)}
   .price .now{font-family:var(--serif);font-size:48px;font-weight:600;line-height:1}
   .price .was{color:var(--muted);text-decoration:line-through;font-size:20px}
@@ -151,14 +152,14 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .includes{list-style:none;margin:0 0 20px;padding:0;font-family:var(--ui);font-size:16px}
   .includes li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);line-height:1.4}
   .includes li:last-child{border-bottom:1px solid var(--line)}
-  .includes li::before{content:"✓";color:var(--accent);font-weight:700;flex:none}
-  .includes .tag{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);white-space:nowrap;padding-left:8px}
+  .includes li::before{content:"✓";color:var(--ink);font-weight:700;flex:none}
+  .includes .tag{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);white-space:nowrap;padding-left:8px}
   .steps{list-style:none;margin:18px 0 0;padding:0;font-family:var(--ui);font-size:14px;color:var(--muted);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
   .steps b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
   .guarantee{font-family:var(--ui);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
   .guarantee svg{flex:none;margin-top:2px}
   .pay{display:flex;justify-content:center;margin-top:14px}
-  .pay img{height:24px;width:auto;opacity:.75}
+  .pay img{height:24px;width:auto;opacity:.75;mix-blend-mode:multiply}
 
   /* faq */
   .faq{font-family:var(--ui);margin:0 0 10px}
@@ -178,7 +179,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   footer p{max-width:520px;margin:12px auto 0;line-height:1.6}
 
   /* sticky buy bar */
-  .buybar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  .buybar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(254,247,236,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
           border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .25s ease}
   .buybar.show{transform:none}
   .buybar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px;font-family:var(--ui)}
@@ -219,7 +220,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </div>
 
   <!-- ===== HOOK ===== -->
-  <p class="big">how many times were you told &ldquo;you're so mature for your age&rdquo;?</p>
+  <h2 class="first">how many times were you told &ldquo;you're so mature for your age&rdquo;?</h2>
   <p>at first, it sounded like a compliment. but for a lot of us, those words came with an unspoken contract: be responsible. be mature. and don't make life harder for anyone else.</p>
   <p>somewhere along the way, being needed started to feel safer than having needs of your own.</p>
   <p>so you became the responsible one. the fixer. the one who read the room before anyone spoke.</p>
@@ -438,7 +439,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <hr class="dots">
 
   <p class="big">you spent years becoming who everyone else needed.</p>
-  <p class="big" style="color:var(--accent)"><em>it's finally time to become you.</em></p>
+  <p class="big"><em>it's finally time to become you.</em></p>
   <p>with love,<br>anna</p>
   <p class="ps">p.s. the founding price is $12 (normally $49). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
 
