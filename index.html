@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Eldest Daughter Healing Bundle™</title>
+<title>the psychology of eldest daughters</title>
 <meta name="description" content="A guided workbook for eldest daughters ready to stop carrying everyone else and start healing themselves. 17 chapters, printable worksheets, instant download. Trusted by 3,000+ readers.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
@@ -42,14 +42,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 </script>
 <link rel="preload" as="font" type="font/woff2" href="fonts/fraunces.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter.woff2" crossorigin>
-<link rel="preload" as="image" href="images/eds book.webp">
 <style>
 @font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url('fonts/inter.woff2') format('woff2')}
 @font-face{font-family:'Fraunces';font-style:normal;font-weight:400 600;font-display:swap;src:url('fonts/fraunces.woff2') format('woff2')}
 @font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url('fonts/fraunces-italic.woff2') format('woff2')}
 </style>
 <style>
-  /* One background, one accent. Everything else is type + hairlines. */
+  /* One background, one accent. Everything else is type + hairlines. All lowercase, like the book. */
   :root{
     --bg:#FFFFFF;
     --ink:#1F1A1C;
@@ -57,7 +56,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     --line:#ECE6E2;
     --accent:#B5502F;
     --accent-dark:#963F23;
-    --mark:#FFE1D2;          /* TikTok-caption style highlight */
     --serif:'Fraunces',Georgia,serif;
     --body:Georgia,'Iowan Old Style','Noto Serif',serif;
     --ui:'Inter',system-ui,-apple-system,sans-serif;
@@ -66,52 +64,46 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   html{scroll-behavior:smooth;overflow-x:clip}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.7;
-       -webkit-font-smoothing:antialiased;overflow-x:clip}
+       -webkit-font-smoothing:antialiased;overflow-x:clip;text-transform:lowercase}
   a{color:inherit}
   img{max-width:100%;height:auto;display:block}
 
-  /* top bar */
-  .topbar{background:var(--bg);border-bottom:1px solid var(--line)}
-  .topbar .in{max-width:680px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:10px}
-  .topbar img{width:30px;height:30px;border-radius:6px}
-  .topbar .pub{font-family:var(--ui);font-weight:700;font-size:15px;letter-spacing:-.01em;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .topbar .btn-sm{font-family:var(--ui);font-weight:600;font-size:14px;background:var(--accent);color:#fff;text-decoration:none;padding:8px 14px;border-radius:8px}
-
   /* article column */
   .post{max-width:640px;margin:0 auto;padding:0 20px}
-  .post-head{padding:36px 0 0}
-  h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,7.4vw,42px);line-height:1.1;letter-spacing:-.02em;margin:0 0 12px}
-  .dek{font-family:var(--ui);font-size:19px;line-height:1.45;color:var(--muted);margin:0 0 22px}
+  .post-head{padding:44px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,8vw,44px);line-height:1.08;letter-spacing:-.02em;margin:0 0 22px}
   .byline{display:flex;align-items:center;gap:12px;font-family:var(--ui);padding-bottom:16px}
   .byline img{width:40px;height:40px;border-radius:50%}
-  .byline .who{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;line-height:1.3}
-  .byline .meta{font-size:13px;color:var(--muted);font-weight:400;text-transform:uppercase;letter-spacing:.04em}
-  .actions{display:flex;gap:18px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:28px;font-family:var(--ui);font-size:14px;color:var(--muted)}
-  .actions a,.actions button{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:inherit;background:none;border:0;padding:0;font:inherit;cursor:pointer}
+  .byline .who{font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1.3}
+  .byline .meta{font-size:13px;color:var(--muted)}
+  .actions{display:flex;gap:18px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:30px;font-family:var(--ui);font-size:14px;color:var(--muted)}
+  .actions a,.actions button{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:inherit;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-transform:inherit}
   .actions .spacer{flex:1}
   .actions svg{width:19px;height:19px}
   .actions .liked svg{fill:var(--accent);stroke:var(--accent)}
 
   /* prose */
   .post p{margin:0 0 22px}
-  .post h2{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.2;letter-spacing:-.015em;margin:46px 0 16px}
-  .post strong{font-weight:700}
-  mark{background:var(--mark);color:inherit;padding:1px 4px;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-  .pov{font-family:var(--ui);font-size:15px;font-weight:600;color:var(--muted);text-transform:lowercase;margin:0 0 6px!important}
-  blockquote{margin:28px 0;padding:2px 0 2px 20px;border-left:3px solid var(--ink);font-style:italic;font-size:20px}
-  blockquote p{margin:0!important}
-  .post ul.plain{margin:0 0 22px;padding-left:22px}
-  .post ul.plain li{margin-bottom:8px}
-  .big{font-family:var(--serif);font-size:24px;line-height:1.35;font-weight:600;letter-spacing:-.01em}
-  .figure{margin:8px 0 28px}
-  .figure img{width:100%;height:auto;border-radius:6px}
-  .figure figcaption{font-family:var(--ui);font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+  .post h2{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.2;letter-spacing:-.015em;margin:48px 0 16px}
+  .big{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.01em}
+  .figure{margin:4px 0 26px}
+  .figure img{width:100%;height:auto}
   hr.dots{border:0;text-align:center;margin:40px 0}
   hr.dots::before{content:"✦ ✦ ✦";color:var(--muted);letter-spacing:.6em;font-size:12px}
 
+  /* signs checklist, the book's own ❒ boxes */
+  .signs{list-style:none;margin:0 0 22px;padding:0}
+  .signs li{position:relative;padding:7px 0 7px 32px;line-height:1.5}
+  .signs li::before{content:"❒";position:absolute;left:2px;top:7px;color:var(--muted)}
+
+  /* the three parts */
+  .path{margin:0 0 22px;display:flex;flex-direction:column;gap:16px}
+  .path h3{font-family:var(--ui);font-size:12px;letter-spacing:.04em;color:var(--accent);margin:0 0 4px}
+  .path p{margin:0!important}
+
   /* before / after as two plain lists */
   .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:4px 0 26px;font-family:var(--ui);font-size:16px;line-height:1.5}
-  .ba h3{font-family:var(--ui);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px;color:var(--muted)}
+  .ba h3{font-family:var(--ui);font-size:12px;letter-spacing:.04em;margin:0 0 10px;color:var(--muted)}
   .ba ul{list-style:none;margin:0;padding:0}
   .ba li{padding:8px 0;border-top:1px solid var(--line)}
   .ba .after h3{color:var(--accent)}
@@ -119,7 +111,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   /* chapters */
   .toc{font-family:var(--ui);margin:0 0 22px}
-  .toc h3{font-family:var(--ui);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:22px 0 4px}
+  .toc h3{font-family:var(--ui);font-size:12px;letter-spacing:.04em;color:var(--accent);margin:22px 0 4px}
   .toc ol{margin:0;padding:0;list-style:none}
   .toc li{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.4}
   .toc li span{color:var(--muted);font-variant-numeric:tabular-nums;min-width:20px}
@@ -138,24 +130,17 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .comments-head b{font-size:17px}
   .comments-head span{font-size:14px;color:var(--muted)}
   .comment{display:flex;gap:12px;padding:14px 0;font-family:var(--ui)}
-  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;object-fit:cover}
+  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700}
   .comment .name{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:2px}
   .comment .name small{font-weight:400}
   .comment .txt{font-size:16px;line-height:1.45}
-  .comment .sub{font-size:12px;color:var(--muted);margin-top:6px}
   .more summary{font-family:var(--ui);font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;list-style:none;padding:6px 0 0 48px}
   .more summary::-webkit-details-marker{display:none}
   .more[open] summary{display:none}
 
-  /* author */
-  .author{display:flex;gap:16px;align-items:center;margin:0 0 18px}
-  .author img{width:64px;height:64px;border-radius:50%;flex:none}
-  .author b{font-family:var(--ui);font-size:16px;display:block}
-  .author span{font-family:var(--ui);font-size:14px;color:var(--muted)}
-
   /* offer */
   .offer{border:1.5px solid var(--ink);border-radius:14px;padding:26px 22px 22px;margin:8px 0 10px;scroll-margin-top:16px}
-  .offer .kicker{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px!important;text-align:center}
+  .offer .kicker{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent);margin:0 0 6px!important;text-align:center}
   .offer h2{margin:0 0 4px!important;text-align:center;font-size:25px}
   .offer .sub{font-family:var(--ui);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
   .offer .bundle{margin:0 -6px 6px}
@@ -167,7 +152,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .includes li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);line-height:1.4}
   .includes li:last-child{border-bottom:1px solid var(--line)}
   .includes li::before{content:"✓";color:var(--accent);font-weight:700;flex:none}
-  .includes .tag{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap;padding-left:8px}
+  .includes .tag{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);white-space:nowrap;padding-left:8px}
   .steps{list-style:none;margin:18px 0 0;padding:0;font-family:var(--ui);font-size:14px;color:var(--muted);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
   .steps b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
   .guarantee{font-family:var(--ui);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
@@ -205,29 +190,20 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 </head>
 <body>
 
-<header class="topbar">
-  <div class="in">
-    <img src="favicon.png" alt="">
-    <span class="pub">Eldest Daughter Core</span>
-    <a class="btn-sm" href="#offer">Get it · $12</a>
-  </div>
-</header>
-
 <main class="post">
 
   <!-- ===== HEADER ===== -->
   <div class="post-head">
-    <h1>You weren't &ldquo;mature for your age.&rdquo; You were surviving.</h1>
-    <p class="dek">A letter to the burnt-out eldest daughter, and the workbook that finally lets you put yourself first, without guilt.</p>
+    <h1>the psychology of eldest daughters</h1>
     <div class="byline">
-      <img src="images/author-avatar.webp" alt="Anna Celestina" width="40" height="40">
+      <img src="images/author-avatar.webp" alt="anna celestina" width="40" height="40">
       <div>
-        <div class="who">Anna Celestina</div>
+        <div class="who">anna celestina</div>
         <div class="meta">6 min read</div>
       </div>
     </div>
     <div class="actions">
-      <button type="button" id="like" aria-pressed="false" aria-label="Like">
+      <button type="button" id="like" aria-pressed="false" aria-label="like">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></svg>
       </button>
       <a href="#comments">
@@ -235,231 +211,250 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
         600
       </a>
       <span class="spacer"></span>
-      <button type="button" id="share" aria-label="Share">
+      <button type="button" id="share" aria-label="share">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-        Share
+        share
       </button>
     </div>
   </div>
 
   <!-- ===== HOOK ===== -->
-  <p class="pov">pov: you're the eldest daughter</p>
-  <p class="big">How many times were you told &ldquo;you're so mature for your age&rdquo;?</p>
-  <p>At first, it sounded like a compliment. But for a lot of us, those words came with an unspoken contract:</p>
-  <blockquote><p>&ldquo;Be responsible. Be mature. And don't make life harder for anyone else.&rdquo;</p></blockquote>
-  <p>Somewhere along the way, <mark>being needed started to feel safer than having needs of your own.</mark></p>
-  <p>So you became the responsible one. The fixer. The one who read the room before anyone spoke.</p>
-  <p>You didn't become this way because something was wrong with you. <strong>You became who you needed to be to survive.</strong> And over time, survival became your default.</p>
-
-  <figure class="figure">
-    <img src="images/eds book.webp" alt="The Eldest Daughter Workbook" width="1536" height="1024" fetchpriority="high">
-  </figure>
+  <p class="big">how many times were you told &ldquo;you're so mature for your age&rdquo;?</p>
+  <p>at first, it sounded like a compliment. but for a lot of us, those words came with an unspoken contract: be responsible. be mature. and don't make life harder for anyone else.</p>
+  <p>somewhere along the way, being needed started to feel safer than having needs of your own.</p>
+  <p>so you became the responsible one. the fixer. the one who read the room before anyone spoke.</p>
+  <p>you didn't become this way because something was wrong with you. you became who you needed to be to survive. and over time, survival became your default.</p>
 
   <!-- ===== THE WOUND ===== -->
-  <h2>The real reason you feel like this</h2>
-  <p><strong>Eldest daughter syndrome</strong> is what happens when your worth gets measured in usefulness. When love feels tied to performance. When rest feels like laziness instead of healing.</p>
-  <p>It shows up as being <mark>always responsible. always reliable. always on alert.</mark></p>
-  <p>It isn't just stress, and it isn't your personality. It's an identity shaped by <em>duty</em>, <em>guilt</em>, and invisible contracts you never agreed to sign.</p>
+  <h2>the real reason you feel like this</h2>
+  <p>the eldest daughter wound isn't a diagnosis you'll find in a medical textbook, but it is a lived reality, etched into your nervous system. it shows up in how you move through the world: always responsible, always reliable, always on alert.</p>
+  <p>it's what happens when your worth is measured in usefulness, when love feels tied to performance, and when rest feels like laziness instead of healing.</p>
+  <p>it leaves traces everywhere. in the way you apologize for existing. in the way you feel guilty for wanting more. in the way you struggle to ask for help because deep down you've learned that no one is coming.</p>
+  <p>it isn't just stress, and it isn't your personality. it's an identity shaped by duty, guilt, and invisible contracts you never agreed to sign.</p>
+
+  <!-- ===== TRANSITION + WHY I WROTE THIS ===== -->
+  <h2>why i wrote this</h2>
+  <p>i'm an eldest daughter too. for years i carried a weight i never chose. i was the caretaker, the strong one, the one who held everything together. the burnt out gifted child who never learned how to rest.</p>
+  <p>i could explain the wound perfectly. i'd read the posts, watched the videos, sent them to my friends with &ldquo;this is literally me.&rdquo; and i still felt guilty every time i sat down.</p>
+  <p>because awareness doesn't change patterns that live in your nervous system. you have to do something with it. write it down. sort it. grieve it. say no once and see what happens.</p>
+  <p>so i wrote the workbook i wish someone had handed me. it starts with a simple check. be honest:</p>
+
+  <ul class="signs">
+    <li>i apologize for emotions that might inconvenience others.</li>
+    <li>i sense tension in a room before anyone speaks.</li>
+    <li>i've been &ldquo;mature for my age&rdquo; since i was 8.</li>
+    <li>i feel guilty when i'm not productive.</li>
+    <li>i'm everyone's therapist, but nobody's patient.</li>
+    <li>asking for help feels like weakness.</li>
+    <li>i secretly wish someone would take care of me.</li>
+    <li>i confuse being loved with being useful.</li>
+  </ul>
+
+  <p>if you checked even one? welcome to the eldest daughter's club.</p>
+  <p>if you checked them all? congrats, you're probably the president.</p>
+
+  <figure class="figure">
+    <img src="images/eds book.webp" alt="the eldest daughter workbook" width="1536" height="1024" loading="lazy" decoding="async">
+  </figure>
+
+  <p>this book isn't about fixing yourself overnight. it's about walking step by step into a lighter way of living. here's the path:</p>
+
+  <div class="path">
+    <div><h3>part one · awareness</h3><p>see the wound clearly. name the guilt, the pressure, and the roles you were forced to play.</p></div>
+    <div><h3>part two · release</h3><p>loosen the grip. let go of guilt, anger, and perfectionism. give yourself permission to stop being everyone's fixer.</p></div>
+    <div><h3>part three · reclaiming joy</h3><p>rebuild. set boundaries, create relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p></div>
+  </div>
+
+  <!-- ===== WHAT'S INSIDE ===== -->
+  <h2>what's inside</h2>
+  <p>17 chapters of guided exercises built on proven therapeutic principles, walking you from naming the wound to finally setting it down. you write, you reflect, you try things.</p>
+
+  <div class="toc">
+    <h3>part one · awareness</h3>
+    <ol>
+      <li><span>01</span>the weight you never chose</li>
+      <li><span>02</span>where it all started</li>
+      <li><span>03</span>why pretending you're fine isn't working</li>
+      <li><span>04</span>your healing starts here</li>
+      <li><span>05</span>the day my childhood ended</li>
+    </ol>
+    <h3>part two · release</h3>
+    <ol>
+      <li><span>06</span>older sister guilt (the guilt dump &amp; sort)</li>
+      <li><span>07</span>the angry mean sister (the rage timeline)</li>
+      <li><span>08</span>the &ldquo;i don't need anyone&rdquo; lie (the help allergy test)</li>
+      <li><span>09</span>your job isn't your worth</li>
+      <li><span>10</span>the body remembers everything</li>
+    </ol>
+    <h3>part three · reclaiming joy</h3>
+    <ol>
+      <li><span>11</span>loved, not just needed</li>
+      <li><span>12</span>the family atm (financial boundaries)</li>
+      <li><span>13</span>the wounds we inherit</li>
+      <li><span>14</span>i'm your sister, not your mom</li>
+      <li><span>15</span>becoming the kid you never got to be</li>
+      <li><span>16</span>the cycle ends with you</li>
+    </ol>
+  </div>
+
+  <p>plus the exercises people message me about the most: the mom call drill (a real script for high-trigger calls: time limit, safe topics, exit line, after-care) and the permission slip, where you officially give yourself back the childhood you never got.</p>
 
   <!-- ===== BEFORE / AFTER ===== -->
-  <h2>The cycle ends with you</h2>
+  <h2>the cycle ends with you</h2>
   <div class="ba">
     <div>
-      <h3>Right now</h3>
+      <h3>right now</h3>
       <ul>
-        <li>You feel guilty when you're not productive</li>
-        <li>You confuse being loved with being useful</li>
-        <li>You're exhausted in your body, not just your mind</li>
-        <li>You scan the room before anyone speaks</li>
-        <li>Everyone's therapist, nobody's patient</li>
+        <li>you feel guilty when you're not productive</li>
+        <li>you confuse being loved with being useful</li>
+        <li>you're exhausted in your body, not just your mind</li>
+        <li>you scan the room before anyone speaks</li>
+        <li>everyone's therapist, nobody's patient</li>
       </ul>
     </div>
     <div class="after">
-      <h3>After the workbook</h3>
+      <h3>after the workbook</h3>
       <ul>
-        <li>Your nervous system finally stands down</li>
-        <li>A body that isn't braced for the next thing</li>
-        <li>Boundaries that hold, even at home</li>
-        <li>Resting without shame</li>
-        <li>Being loved for who you are, not what you do</li>
+        <li>your nervous system finally stands down</li>
+        <li>a body that isn't braced for the next thing</li>
+        <li>boundaries that hold, even at home</li>
+        <li>resting without shame</li>
+        <li>being loved for who you are, not what you do</li>
       </ul>
     </div>
   </div>
 
   <div class="cta-wrap">
-    <a class="cta" href="#offer">Get the workbook for $12 →</a>
-    <p class="cta-note">Instant download · 14-day money-back guarantee</p>
+    <a class="cta" href="#offer">get the workbook for $12 →</a>
+    <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
-
-  <!-- ===== WHAT'S INSIDE ===== -->
-  <h2>What's inside</h2>
-  <p>17 chapters of guided exercises built on <strong>proven therapeutic principles</strong>, walking you from naming the wound to finally setting it down. Not more theory. You write, you reflect, you try things.</p>
-
-  <figure class="figure">
-    <img src="pages/pages-cover-v3.webp" alt="Sample pages from The Eldest Daughter Workbook" width="1400" height="574" loading="lazy" decoding="async">
-    <figcaption>A few real pages from the workbook</figcaption>
-  </figure>
-
-  <div class="toc">
-    <h3>Step I · Awareness</h3>
-    <ol>
-      <li><span>01</span>The Weight You Never Chose</li>
-      <li><span>02</span>Where It All Started</li>
-      <li><span>03</span>Why Pretending You're Fine Isn't Working</li>
-      <li><span>04</span>Your Healing Starts Here</li>
-      <li><span>05</span>The Day My Childhood Ended</li>
-    </ol>
-    <h3>Step II · Release</h3>
-    <ol>
-      <li><span>06</span>Older Sister Guilt (the Guilt Dump &amp; Sort)</li>
-      <li><span>07</span>The Angry Mean Sister (the Rage Timeline)</li>
-      <li><span>08</span>The &ldquo;I Don't Need Anyone&rdquo; Lie (the Help Allergy Test)</li>
-      <li><span>09</span>Your Job Isn't Your Worth</li>
-      <li><span>10</span>The Body Remembers Everything</li>
-    </ol>
-    <h3>Step III · Reclaiming Joy</h3>
-    <ol>
-      <li><span>11</span>Loved, Not Just Needed</li>
-      <li><span>12</span>The Family ATM (Financial Boundaries)</li>
-      <li><span>13</span>The Wounds We Inherit</li>
-      <li><span>14</span>I'm Your Sister, Not Your Mom</li>
-      <li><span>15</span>Becoming the Kid You Never Got to Be</li>
-      <li><span>16</span>The Cycle Ends With You</li>
-    </ol>
-  </div>
-
-  <p>Plus the exercises people message me about the most: <mark>the Mom Call Drill</mark> (a real script for high-trigger calls: time limit, safe topics, exit line, after-care) and <mark>the Permission Slip</mark>, where you officially give yourself back the childhood you never got.</p>
 
   <!-- ===== COMMENTS / REVIEWS ===== -->
-  <h2 id="comments" style="scroll-margin-top:16px">What other eldest daughters said</h2>
+  <h2 id="comments" style="scroll-margin-top:16px">what other eldest daughters said</h2>
   <div class="comments-head"><b>★★★★★ 4.8</b><span>· 600 reviews</span></div>
 
-  <div class="comment"><span class="av" style="background:#C8893A">P</span><div><div class="name">Priya M. <small>· Mumbai</small></div><div class="txt">I didn't plan on getting personally attacked today, but here we are 😭 Every single page felt too close to home. If you know, you know.</div></div></div>
-  <div class="comment"><span class="av" style="background:#B5502F">F</span><div><div class="name">Fatima Zahra <small>· Casablanca</small></div><div class="txt">Everyone always expected something from me. Needed something from me. I could never rest. This workbook finally gave me permission to.</div></div></div>
-  <div class="comment"><span class="av" style="background:#7A8466">C</span><div><div class="name">Chisom <small>· Lagos</small></div><div class="txt">The inner child worksheet made me realize how young I was when I started acting like the adult. I cried for 20 mins straight.</div></div></div>
-  <div class="comment"><span class="av" style="background:#56713F">Z</span><div><div class="name">Zara <small>· London</small></div><div class="txt">Reading this felt like someone finally handed me back to myself. Honestly didn't expect a workbook to hit this hard.</div></div></div>
-  <div class="comment"><span class="av" style="background:#8F3C22">R</span><div><div class="name">Renée L. <small>· Paris</small></div><div class="txt">Confusing being loved with being useful. Ouch. I had to put it down for a minute and just sit with that. Chapter 3 absolutely wrecked me. 💔</div></div></div>
+  <div class="comment"><span class="av" style="background:#C8893A">p</span><div><div class="name">priya m. <small>· mumbai</small></div><div class="txt">i didn't plan on getting personally attacked today, but here we are 😭 every single page felt too close to home. if you know, you know.</div></div></div>
+  <div class="comment"><span class="av" style="background:#B5502F">f</span><div><div class="name">fatima zahra <small>· casablanca</small></div><div class="txt">everyone always expected something from me. needed something from me. i could never rest. this workbook finally gave me permission to.</div></div></div>
+  <div class="comment"><span class="av" style="background:#7A8466">c</span><div><div class="name">chisom <small>· lagos</small></div><div class="txt">the inner child worksheet made me realize how young i was when i started acting like the adult. i cried for 20 mins straight.</div></div></div>
+  <div class="comment"><span class="av" style="background:#56713F">z</span><div><div class="name">zara <small>· london</small></div><div class="txt">reading this felt like someone finally handed me back to myself. honestly didn't expect a workbook to hit this hard.</div></div></div>
+  <div class="comment"><span class="av" style="background:#8F3C22">r</span><div><div class="name">renée l. <small>· paris</small></div><div class="txt">confusing being loved with being useful. ouch. i had to put it down for a minute and just sit with that. chapter 3 absolutely wrecked me. 💔</div></div></div>
   <details class="more">
-    <summary>View 6 more replies ⌄</summary>
-    <div class="comment"><span class="av" style="background:#9A5B43">Y</span><div><div class="name">Yara Al-Hassan <small>· Beirut</small></div><div class="txt">I finally had words for why rest felt impossible. It felt like someone understood the part of me I always hide. Get this workbook NOW.</div></div></div>
-    <div class="comment"><span class="av" style="background:#C8893A">L</span><div><div class="name">Leila <small>· Dubai</small></div><div class="txt">The prompts were direct without being harsh. I cried, but in the way that makes space afterward. You NEED to try this.</div></div></div>
-    <div class="comment"><span class="av" style="background:#B5502F">N</span><div><div class="name">Nora <small>· Sydney</small></div><div class="txt">I kept stopping because every page felt too accurate. In a good way. I felt so seen without feeling judged 🤍</div></div></div>
-    <div class="comment"><span class="av" style="background:#7A8466">A</span><div><div class="name">Adaeze O. <small>· Accra</small></div><div class="txt">Called me out and made me cry. Described me to a T. I sent it to every eldest daughter I know. You will cry but in the best way.</div></div></div>
-    <div class="comment"><span class="av" style="background:#56713F">C</span><div><div class="name">Claire Dubois <small>· Brussels</small></div><div class="txt">It gave me language for the guilt. I didn't know how much I needed that until I wrote it down. Highly recommend 🌱</div></div></div>
-    <div class="comment"><span class="av" style="background:#8F3C22">A</span><div><div class="name">Amara <small>· Nairobi</small></div><div class="txt">I bought it for the workbook but the poems were what broke me open. Soft, honest, painfully familiar.</div></div></div>
+    <summary>view 6 more replies ⌄</summary>
+    <div class="comment"><span class="av" style="background:#9A5B43">y</span><div><div class="name">yara al-hassan <small>· beirut</small></div><div class="txt">i finally had words for why rest felt impossible. it felt like someone understood the part of me i always hide. get this workbook now.</div></div></div>
+    <div class="comment"><span class="av" style="background:#C8893A">l</span><div><div class="name">leila <small>· dubai</small></div><div class="txt">the prompts were direct without being harsh. i cried, but in the way that makes space afterward. you need to try this.</div></div></div>
+    <div class="comment"><span class="av" style="background:#B5502F">n</span><div><div class="name">nora <small>· sydney</small></div><div class="txt">i kept stopping because every page felt too accurate. in a good way. i felt so seen without feeling judged 🤍</div></div></div>
+    <div class="comment"><span class="av" style="background:#7A8466">a</span><div><div class="name">adaeze o. <small>· accra</small></div><div class="txt">called me out and made me cry. described me to a t. i sent it to every eldest daughter i know. you will cry but in the best way.</div></div></div>
+    <div class="comment"><span class="av" style="background:#56713F">c</span><div><div class="name">claire dubois <small>· brussels</small></div><div class="txt">it gave me language for the guilt. i didn't know how much i needed that until i wrote it down. highly recommend 🌱</div></div></div>
+    <div class="comment"><span class="av" style="background:#8F3C22">a</span><div><div class="name">amara <small>· nairobi</small></div><div class="txt">i bought it for the workbook but the poems were what broke me open. soft, honest, painfully familiar.</div></div></div>
   </details>
 
-  <!-- ===== AUTHOR ===== -->
-  <h2>Why I wrote this</h2>
-  <div class="author">
-    <img src="images/author-avatar.webp" alt="Anna Celestina" width="64" height="64" loading="lazy">
-    <div><b>Anna Celestina</b><span>Eldest daughter. Recovering fixer.</span></div>
-  </div>
-  <p>For years, I carried a weight I never chose. I was the caretaker, the strong one, the one who held everything together. The burnt-out gifted child who never learned how to rest.</p>
-  <p>My worth came from being useful, not from being loved. This workbook is my way of helping other eldest daughters start laying that weight down. <mark>I'm not special. I was just tired of surviving.</mark></p>
-  <p>If you've read this far, I think you already know whether this is for you.</p>
+  <!-- ===== BRIDGE TO OFFER ===== -->
+  <h2>your healing starts here</h2>
+  <p>you don't have to do this all at once. go at your own pace. some exercises will feel light, others will sting. that's normal.</p>
+  <p>your only job is honesty, not perfection.</p>
+  <p>take a deep breath. flip the page. let's begin.</p>
 
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
-    <p class="kicker">Founding price</p>
-    <h2>The Eldest Daughter Healing Bundle™</h2>
-    <p class="sub">Everything you need to start tonight</p>
-    <img class="bundle" src="images/eds bundle image.webp" alt="The Eldest Daughter Workbook, Poems &amp; Letters, and Inner Child Healing Worksheet" width="2640" height="1485" loading="lazy" decoding="async">
+    <p class="kicker">founding price</p>
+    <h2>the eldest daughter healing bundle™</h2>
+    <p class="sub">everything you need to start tonight</p>
+    <img class="bundle" src="images/eds bundle image.webp" alt="the eldest daughter workbook, poems &amp; letters, and inner child healing worksheet" width="2640" height="1485" loading="lazy" decoding="async">
 
     <div class="price"><span class="now">$12</span><span class="was">$49</span></div>
-    <p class="price-note">One-time payment. No subscription. Yours forever.</p>
+    <p class="price-note">one-time payment. no subscription. yours forever.</p>
 
     <ul class="includes">
-      <li>The Eldest Daughter Workbook (17 chapters)</li>
-      <li>Poems &amp; Letters<span class="tag">Bonus</span></li>
-      <li>Inner Child Healing Worksheet<span class="tag">Bonus</span></li>
-      <li>Instant lifetime access, on any device</li>
+      <li>the eldest daughter workbook (17 chapters)</li>
+      <li>poems &amp; letters<span class="tag">bonus</span></li>
+      <li>inner child healing worksheet<span class="tag">bonus</span></li>
+      <li>instant lifetime access, on any device</li>
     </ul>
 
     <!-- REPLACE-CHECKOUT: point href to your checkout -->
-    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">Get instant access →</a>
+    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get instant access →</a>
 
     <ol class="steps">
-      <li><b>1. Checkout</b>Secure, via Stripe</li>
-      <li><b>2. Download</b>Sent to your email instantly</li>
-      <li><b>3. Begin</b>One page at a time</li>
+      <li><b>1. checkout</b>secure, via stripe</li>
+      <li><b>2. download</b>sent to your email instantly</li>
+      <li><b>3. begin</b>one page at a time</li>
     </ol>
 
     <div class="guarantee">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-      <div><strong>14-day money-back guarantee.</strong> If it doesn't feel right for you, email me within 14 days and I'll refund you. No questions, no guilt (you've had enough of that).</div>
+      <div>14-day money-back guarantee. if it doesn't feel right for you, email me within 14 days and i'll refund you. no questions, no guilt (you've had enough of that).</div>
     </div>
 
-    <div class="pay"><img src="images/payment-methods.jpg" alt="PayPal, Visa, Mastercard, American Express, Discover" width="492" height="49" loading="lazy" decoding="async"></div>
+    <div class="pay"><img src="images/payment-methods.jpg" alt="paypal, visa, mastercard, american express, discover" width="492" height="49" loading="lazy" decoding="async"></div>
   </section>
 
   <!-- ===== FAQ ===== -->
-  <h2>Still thinking about it?</h2>
-  <p>Totally fair. Here's what people usually ask me before buying:</p>
+  <h2>still thinking about it?</h2>
+  <p>totally fair. here's what people usually ask me before buying:</p>
   <div class="faq">
     <details open>
-      <summary>Is it really worth it for $12?</summary>
-      <div class="a">It's less than a coffee date and a pastry, and you get 17 chapters plus two bonuses you can come back to for years. And if it isn't for you, the 14-day guarantee means you get your money back.</div>
+      <summary>is it really worth it for $12?</summary>
+      <div class="a">it's less than a coffee date and a pastry, and you get 17 chapters plus two bonuses you can come back to for years. and if it isn't for you, the 14-day guarantee means you get your money back.</div>
     </details>
     <details>
-      <summary>What if it doesn't help me?</summary>
-      <div class="a">Then email <a href="mailto:anna@eldestdaughtercore.com">anna@eldestdaughtercore.com</a> within 14 days and you'll get a full refund. You don't have to justify it.</div>
+      <summary>what if it doesn't help me?</summary>
+      <div class="a">then email <a href="mailto:eldestdaughterbook@gmail.com">eldestdaughterbook@gmail.com</a> within 14 days and you'll get a full refund. you don't have to justify it.</div>
     </details>
     <details>
-      <summary>How do I get it after I pay?</summary>
-      <div class="a">Right after checkout you'll get a download link by email. It's a digital bundle, so you can open it on your phone, tablet, or computer, or print the pages you want to write on.</div>
+      <summary>how do i get it after i pay?</summary>
+      <div class="a">right after checkout you'll get a download link by email. it's a digital bundle, so you can open it on your phone, tablet, or computer, or print the pages you want to write on.</div>
     </details>
     <details>
-      <summary>Is this a physical book?</summary>
-      <div class="a">No, it's digital, which is why you can start tonight instead of waiting for shipping.</div>
+      <summary>is this a physical book?</summary>
+      <div class="a">no, it's digital, which is why you can start tonight instead of waiting for shipping.</div>
     </details>
     <details>
-      <summary>I'm not technically the eldest. Will it still work for me?</summary>
-      <div class="a">Yes. This is about the <em>role</em>, not birth order. Plenty of only children, youngest siblings, and middle kids were the responsible one: the fixer, the peacemaker, the emotional default. If that's you, you're in the right place.</div>
+      <summary>i'm not technically the eldest. will it still work for me?</summary>
+      <div class="a">yes. this is about the role, not birth order. plenty of only children, youngest siblings, and middle kids were the responsible one: the fixer, the peacemaker, the emotional default. if that's you, you're in the right place.</div>
     </details>
     <details>
-      <summary>I've done therapy and read all the books. Why would this help?</summary>
-      <div class="a">Because awareness and repair are two different skills. You can describe the eldest daughter wound perfectly and still re-run the pattern every day. This workbook is writing, reflecting, and experimenting, exercise by exercise. It sits alongside therapy beautifully; it doesn't replace it.</div>
+      <summary>i've done therapy and read all the books. why would this help?</summary>
+      <div class="a">because awareness and repair are two different skills. you can describe the eldest daughter wound perfectly and still re-run the pattern every day. this workbook is writing, reflecting, and experimenting, exercise by exercise. it sits alongside therapy beautifully; it doesn't replace it.</div>
     </details>
     <details>
-      <summary>My progress resets the moment I'm around my family.</summary>
-      <div class="a">That's exactly what the Mom Call Drill and the financial boundaries chapter are built for: practical scripts for the moments (the guilt-trip call, the money request) that tend to undo people fastest.</div>
+      <summary>my progress resets the moment i'm around my family.</summary>
+      <div class="a">that's exactly what the mom call drill and the financial boundaries chapter are built for: practical scripts for the moments (the guilt-trip call, the money request) that tend to undo people fastest.</div>
     </details>
     <details>
-      <summary>Do I need to finish it all at once?</summary>
-      <div class="a">No. It's designed to go slowly. One page, one prompt, or one section, whenever you have the capacity.</div>
+      <summary>do i need to finish it all at once?</summary>
+      <div class="a">no. it's designed to go slowly. one page, one prompt, or one section, whenever you have the capacity.</div>
     </details>
     <details>
-      <summary>Can I buy it as a gift?</summary>
-      <div class="a">Yes. Lots of people send it to a sister, a friend, or a mother who's quietly carrying the same weight.</div>
+      <summary>can i buy it as a gift?</summary>
+      <div class="a">yes. lots of people send it to a sister, a friend, or a mother who's quietly carrying the same weight.</div>
     </details>
   </div>
 
   <div class="cta-wrap">
-    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">Get the bundle for $12 →</a>
-    <p class="cta-note">Instant download · 14-day money-back guarantee</p>
+    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the bundle for $12 →</a>
+    <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
 
   <hr class="dots">
 
-  <p class="big">You spent years becoming who everyone else needed.</p>
-  <p class="big" style="color:var(--accent)"><em>It's finally time to become you.</em></p>
-  <p>With love,<br>Anna</p>
-  <p class="ps"><strong>P.S.</strong> The founding price is $12 (normally $49). If you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, I'll refund you. <a href="#offer">Get the workbook →</a></p>
+  <p class="big">you spent years becoming who everyone else needed.</p>
+  <p class="big" style="color:var(--accent)"><em>it's finally time to become you.</em></p>
+  <p>with love,<br>anna</p>
+  <p class="ps">p.s. the founding price is $12 (normally $49). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
 
 </main>
 
 <footer>
-  <div><a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-of-service">Terms of Service</a></div>
-  <p>This program is educational and personal-development in nature. It is not therapy, medical care, or a substitute for professional mental-health treatment.</p>
-  <p>Need help? <a href="mailto:anna@eldestdaughtercore.com" style="margin:0">anna@eldestdaughtercore.com</a></p>
+  <div><a href="/privacy-policy">privacy policy</a> · <a href="/terms-of-service">terms of service</a></div>
+  <p>this program is educational and personal-development in nature. it is not therapy, medical care, or a substitute for professional mental-health treatment.</p>
+  <p>need help? <a href="mailto:eldestdaughterbook@gmail.com" style="margin:0">eldestdaughterbook@gmail.com</a></p>
 </footer>
 
 <!-- sticky buy bar: appears after the intro, hides while the offer or a checkout button is on screen -->
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="in">
-    <div class="p"><b>The Healing Bundle™</b>$12 <s>$49</s> · instant download</div>
-    <a class="js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00" tabindex="-1">Get it now →</a>
+    <div class="p"><b>the healing bundle™</b>$12 <s>$49</s> · instant download</div>
+    <a class="js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00" tabindex="-1">get it now →</a>
   </div>
 </div>
 
@@ -494,9 +489,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   like.addEventListener('click',function(){var on=like.classList.toggle('liked');like.setAttribute('aria-pressed',on);});
 
   document.getElementById('share').addEventListener('click',function(){
-    var data={title:document.title,text:'This made me feel so seen 🥹',url:location.origin+location.pathname};
+    var data={title:document.title,text:'this made me feel so seen 🥹',url:location.origin+location.pathname};
     if(navigator.share){navigator.share(data).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(data.url);this.lastChild.textContent=' Link copied';}
+    else if(navigator.clipboard){navigator.clipboard.writeText(data.url);this.lastChild.textContent=' link copied';}
   });
 })();
 </script>
