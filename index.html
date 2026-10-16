@@ -90,24 +90,24 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   /* prose */
   .post p,.post li,.faq .a{text-wrap:pretty}
   h1,h2,.faq summary{text-wrap:balance}
-  .post p{margin:0 0 22px}
-  .post h2{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;letter-spacing:-.015em;margin:40px 0 14px}
+  .post p{margin:0 0 16px}
+  .post h2{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;letter-spacing:-.015em;margin:32px 0 10px}
   .post h2.first{margin-top:0}
   .big{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.01em}
-  .figure{margin:4px 0 26px}
+  .figure{margin:0 0 16px}
   .figure img{width:100%;height:auto;mix-blend-mode:multiply}
   hr.dots{border:0;text-align:center;margin:40px 0}
   hr.dots::before{content:"✦ ✦ ✦";color:var(--muted);letter-spacing:.6em;font-size:13px}
 
   /* signs checklist, the book's own ❒ boxes */
-  .signs{list-style:none;margin:0 0 22px;padding:0}
-  .signs li{position:relative;padding:7px 0 7px 32px;line-height:1.5}
+  .signs{list-style:none;margin:0 0 16px;padding:0}
+  .signs li{position:relative;padding:5px 0 5px 32px;line-height:1.5}
   .signs li::before{content:"❒";position:absolute;left:2px;top:7px;color:var(--muted)}
 
   .step{font-size:15px;font-weight:600;line-height:1;letter-spacing:.02em;background:var(--accent);color:var(--bg);padding:5px 9px 6px;border-radius:999px;white-space:nowrap}
 
   /* before / after as two plain lists */
-  .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:4px 0 26px;font-family:var(--body);font-size:17px;line-height:1.5}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:0 0 20px;font-family:var(--body);font-size:17px;line-height:1.5}
   .ba h3{font-family:var(--body);font-weight:600;font-size:24px;margin:0 0 8px;color:var(--accent)}
   .ba ul{list-style:none;margin:0;padding:0}
   .ba li{padding:8px 0;border-top:1px solid var(--line)}
@@ -115,12 +115,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   @media(max-width:520px){.ba{grid-template-columns:1fr;gap:18px}}
 
   /* chapters */
-  .toc{font-family:var(--body);margin:6px 0 26px}
-  .toc .toc-title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:30px;color:var(--accent);text-align:center;margin:0 0 4px!important;letter-spacing:-.01em}
-  .toc .toc-sub{text-align:center;color:var(--muted);font-size:15px;margin:0 0 6px!important}
-  .toc h3{font-family:var(--body);font-weight:600;font-size:24px;color:var(--accent);margin:26px 0 8px;display:flex;align-items:center;gap:10px}
+  .toc{font-family:var(--body);margin:0 0 20px}
+  .toc h3{font-family:var(--body);font-weight:600;font-size:24px;color:var(--accent);margin:22px 0 6px;display:flex;align-items:center;gap:10px}
   .toc h3::after{content:"";flex:1;height:1px;background:var(--tint-3)}
   .toc .step-desc{color:var(--muted);font-size:17px;line-height:1.5;margin:0 0 6px!important}
+  .toc h3.first-step{margin-top:4px}
   .toc ol{margin:0;padding:0;list-style:none}
   .toc li{display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:19px;line-height:1.4}
   .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:22px;font-size:15px;font-weight:600}
@@ -134,7 +133,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .cta:hover{background:var(--accent-dark)}
   .cta:active{transform:scale(.99)}
   .cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-  .cta-wrap{margin:30px 0 34px}
+  .cta-wrap{margin:22px 0 26px}
   .cta-note{font-family:var(--body);font-size:13px;color:var(--muted);text-align:center;margin:10px 0 0!important}
 
   /* comments (TikTok style reviews) */
@@ -263,8 +262,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <li>i confuse being loved with being useful.</li>
   </ul>
 
-  <p>if you checked even one? welcome to the eldest daughter's club.</p>
-  <p>if you checked them all? congrats, you're probably the president.</p>
+  <p>if you checked even one? welcome to the eldest daughter's club.<br>if you checked them all? congrats, you're probably the president.</p>
 
   <figure class="figure">
     <img src="images/eds book.webp" alt="the eldest daughter workbook" width="1536" height="1024" loading="lazy" decoding="async">
@@ -275,9 +273,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <p>this book isn't about fixing yourself overnight. it's about walking step by step into a lighter way of living. 16 chapters of guided exercises built on proven therapeutic principles. you write, you reflect, you try things.</p>
 
   <div class="toc">
-    <p class="toc-title">contents</p>
-    <p class="toc-sub">16 chapters in 3 steps</p>
-    <h3><span class="step">step 1</span>awareness</h3>
+    <h3 class="first-step"><span class="step">step 1</span>awareness</h3>
     <p class="step-desc">see the wound clearly. name the guilt, the pressure, and the roles you were forced to play.</p>
     <ol>
       <li><span>01</span><b>the weight you never chose</b><i></i><em>p. 3</em></li>
@@ -360,8 +356,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   <!-- ===== BRIDGE TO OFFER ===== -->
   <h2>your healing starts here</h2>
-  <p>you don't have to do this all at once. go at your own pace. some exercises will feel light, others will sting. that's normal.</p>
-  <p>your only job is honesty, not perfection.</p>
+  <p>you don't have to do this all at once. go at your own pace. some exercises will feel light, others will sting. that's normal. your only job is honesty, not perfection.</p>
   <p>take a deep breath. flip the page. let's begin.</p>
 
   <!-- ===== OFFER ===== -->
@@ -443,8 +438,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
 
-  <p class="big">you spent years becoming who everyone else needed.</p>
-  <p class="big"><em>it's finally time to become you.</em></p>
+  <p class="big">you spent years becoming who everyone else needed.<br><em>it's finally time to become you.</em></p>
   <p>with love,<br>anna</p>
   <p class="ps">p.s. the founding price is $12 (normally $49). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
 
