@@ -51,9 +51,14 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   /* One background, one accent. Everything else is type + hairlines. All lowercase, like the book. */
   :root{
     --bg:#FEF7EC;
-    --ink:#1F1A1C;
-    --muted:#6E6669;
-    --line:#EADFD0;
+    --ink:#2B1218;           /* darkest burgundy, all body text */
+    --muted:#5E434A;         /* burgundy-grey, secondary text (7:1 on cream) */
+    --line:#EBDCCD;          /* hairlines */
+    --tint-1:#F2DED6;        /* burgundy tints, used only for avatars */
+    --tint-2:#E3BDB8;
+    --tint-3:#C98F95;
+    --tint-4:#9C4F5C;
+    --tint-5:#6E2433;
     --accent:#4D0619;        /* buttons only */
     --accent-dark:#36040F;
     --serif:'Fraunces',Georgia,serif;
@@ -83,8 +88,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .actions .liked svg{fill:var(--ink);stroke:var(--ink)}
 
   /* prose */
+  .post p,.post li,.faq .a{text-wrap:pretty}
+  h1,h2,.faq summary{text-wrap:balance}
   .post p{margin:0 0 22px}
-  .post h2{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.2;letter-spacing:-.015em;margin:48px 0 16px}
+  .post h2{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.2;letter-spacing:-.015em;margin:40px 0 14px}
   .post h2.first{margin-top:0}
   .big{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.01em}
   .figure{margin:4px 0 26px}
@@ -118,7 +125,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .toc li span{color:var(--muted);font-variant-numeric:tabular-nums;min-width:20px}
 
   /* buttons */
-  .cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--accent);color:#fff;font-family:var(--ui);font-weight:700;font-size:17px;
+  .cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--accent);color:var(--bg);font-family:var(--ui);font-weight:700;font-size:17px;
        text-decoration:none;padding:17px 22px;border-radius:10px;transition:background .15s ease,transform .15s ease}
   .cta:hover{background:var(--accent-dark)}
   .cta:active{transform:scale(.99)}
@@ -128,10 +135,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   /* comments (TikTok style reviews) */
   .comments-head{font-family:var(--ui);display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
-  .comments-head b{font-size:17px}
+  .comments-head b{font-size:17px;color:var(--accent)}
   .comments-head span{font-size:14px;color:var(--muted)}
   .comment{display:flex;gap:12px;padding:14px 0;font-family:var(--ui)}
-  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:var(--line)!important;color:var(--muted);font-size:14px;font-weight:700}
+  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
   .comment .name{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:2px}
   .comment .name small{font-weight:400}
   .comment .txt{font-size:16px;line-height:1.45}
@@ -170,7 +177,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:300;color:var(--muted)}
   .faq details[open] summary::after{content:"–"}
   .faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-  .faq .a{padding:0 0 16px;font-size:16px;line-height:1.6;color:#3b3437}
+  .faq .a{padding:0 0 16px;font-size:16px;line-height:1.6;color:var(--ink)}
 
   .ps{font-style:italic}
 
@@ -184,9 +191,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .buybar.show{transform:none}
   .buybar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px;font-family:var(--ui)}
   .buybar .p{flex:1;line-height:1.25;font-size:13px;color:var(--muted)}
+  .buybar a{color:var(--bg)!important}
   .buybar .p b{display:block;color:var(--ink);font-size:16px}
   .buybar .p s{margin-left:4px}
-  .buybar a{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
+  .buybar a{background:var(--accent);color:var(--bg);text-decoration:none;font-weight:700;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -334,19 +342,19 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <h2 id="comments" style="scroll-margin-top:16px">what other eldest daughters said</h2>
   <div class="comments-head"><b>★★★★★ 4.8</b><span>· 600 reviews</span></div>
 
-  <div class="comment"><span class="av" style="background:#C8893A">p</span><div><div class="name">priya m. <small>· mumbai</small></div><div class="txt">i didn't plan on getting personally attacked today, but here we are 😭 every single page felt too close to home. if you know, you know.</div></div></div>
-  <div class="comment"><span class="av" style="background:#B5502F">f</span><div><div class="name">fatima zahra <small>· casablanca</small></div><div class="txt">everyone always expected something from me. needed something from me. i could never rest. this workbook finally gave me permission to.</div></div></div>
-  <div class="comment"><span class="av" style="background:#7A8466">c</span><div><div class="name">chisom <small>· lagos</small></div><div class="txt">the inner child worksheet made me realize how young i was when i started acting like the adult. i cried for 20 mins straight.</div></div></div>
-  <div class="comment"><span class="av" style="background:#56713F">z</span><div><div class="name">zara <small>· london</small></div><div class="txt">reading this felt like someone finally handed me back to myself. honestly didn't expect a workbook to hit this hard.</div></div></div>
-  <div class="comment"><span class="av" style="background:#8F3C22">r</span><div><div class="name">renée l. <small>· paris</small></div><div class="txt">confusing being loved with being useful. ouch. i had to put it down for a minute and just sit with that. chapter 3 absolutely wrecked me. 💔</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-2);color:var(--ink)">p</span><div><div class="name">priya m. <small>· mumbai</small></div><div class="txt">i didn't plan on getting personally attacked today, but here we are 😭 every single page felt too close to home. if you know, you know.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">f</span><div><div class="name">fatima zahra <small>· casablanca</small></div><div class="txt">everyone always expected something from me. needed something from me. i could never rest. this workbook finally gave me permission to.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-3);color:var(--ink)">c</span><div><div class="name">chisom <small>· lagos</small></div><div class="txt">the inner child worksheet made me realize how young i was when i started acting like the adult. i cried for 20 mins straight.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-5);color:var(--bg)">z</span><div><div class="name">zara <small>· london</small></div><div class="txt">reading this felt like someone finally handed me back to myself. honestly didn't expect a workbook to hit this hard.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-1);color:var(--ink)">r</span><div><div class="name">renée l. <small>· paris</small></div><div class="txt">confusing being loved with being useful. ouch. i had to put it down for a minute and just sit with that. chapter 3 absolutely wrecked me. 💔</div></div></div>
   <details class="more">
     <summary>view 6 more replies ⌄</summary>
-    <div class="comment"><span class="av" style="background:#9A5B43">y</span><div><div class="name">yara al-hassan <small>· beirut</small></div><div class="txt">i finally had words for why rest felt impossible. it felt like someone understood the part of me i always hide. get this workbook now.</div></div></div>
-    <div class="comment"><span class="av" style="background:#C8893A">l</span><div><div class="name">leila <small>· dubai</small></div><div class="txt">the prompts were direct without being harsh. i cried, but in the way that makes space afterward. you need to try this.</div></div></div>
-    <div class="comment"><span class="av" style="background:#B5502F">n</span><div><div class="name">nora <small>· sydney</small></div><div class="txt">i kept stopping because every page felt too accurate. in a good way. i felt so seen without feeling judged 🤍</div></div></div>
-    <div class="comment"><span class="av" style="background:#7A8466">a</span><div><div class="name">adaeze o. <small>· accra</small></div><div class="txt">called me out and made me cry. described me to a t. i sent it to every eldest daughter i know. you will cry but in the best way.</div></div></div>
-    <div class="comment"><span class="av" style="background:#56713F">c</span><div><div class="name">claire dubois <small>· brussels</small></div><div class="txt">it gave me language for the guilt. i didn't know how much i needed that until i wrote it down. highly recommend 🌱</div></div></div>
-    <div class="comment"><span class="av" style="background:#8F3C22">a</span><div><div class="name">amara <small>· nairobi</small></div><div class="txt">i bought it for the workbook but the poems were what broke me open. soft, honest, painfully familiar.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">y</span><div><div class="name">yara al-hassan <small>· beirut</small></div><div class="txt">i finally had words for why rest felt impossible. it felt like someone understood the part of me i always hide. get this workbook now.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-2);color:var(--ink)">l</span><div><div class="name">leila <small>· dubai</small></div><div class="txt">the prompts were direct without being harsh. i cried, but in the way that makes space afterward. you need to try this.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">n</span><div><div class="name">nora <small>· sydney</small></div><div class="txt">i kept stopping because every page felt too accurate. in a good way. i felt so seen without feeling judged 🤍</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-3);color:var(--ink)">a</span><div><div class="name">adaeze o. <small>· accra</small></div><div class="txt">called me out and made me cry. described me to a t. i sent it to every eldest daughter i know. you will cry but in the best way.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-5);color:var(--bg)">c</span><div><div class="name">claire dubois <small>· brussels</small></div><div class="txt">it gave me language for the guilt. i didn't know how much i needed that until i wrote it down. highly recommend 🌱</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-1);color:var(--ink)">a</span><div><div class="name">amara <small>· nairobi</small></div><div class="txt">i bought it for the workbook but the poems were what broke me open. soft, honest, painfully familiar.</div></div></div>
   </details>
 
   <!-- ===== BRIDGE TO OFFER ===== -->
@@ -434,8 +442,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the bundle for $12 →</a>
     <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
-
-  <hr class="dots">
 
   <p class="big">you spent years becoming who everyone else needed.</p>
   <p class="big"><em>it's finally time to become you.</em></p>
