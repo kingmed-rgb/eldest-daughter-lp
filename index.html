@@ -167,8 +167,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .includes li:last-child{border-bottom:1px solid var(--line)}
   .includes li::before{content:"✓";color:var(--accent);font-weight:600;flex:none}
   .includes .tag{margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--muted);white-space:nowrap;align-self:center}
-  .steps{list-style:none;margin:18px 0 0;padding:0;font-family:var(--body);font-size:15px;color:var(--muted);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
-  .steps b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
   .guarantee{font-family:var(--body);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
   .guarantee svg{flex:none;margin-top:2px;color:var(--accent)}
   .pay{display:flex;justify-content:center;margin-top:14px}
@@ -381,11 +379,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <!-- REPLACE-CHECKOUT: point href to your checkout -->
     <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get instant access →</a>
 
-    <ol class="steps">
-      <li><b>1. checkout</b>secure, via stripe</li>
-      <li><b>2. download</b>sent to your email instantly</li>
-      <li><b>3. begin</b>one page at a time</li>
-    </ol>
 
     <div class="guarantee">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
