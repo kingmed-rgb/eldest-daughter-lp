@@ -106,12 +106,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   /* the three parts */
   .path{margin:0 0 22px;display:flex;flex-direction:column;gap:16px}
-  .path h3{font-family:var(--body);font-style:italic;font-weight:400;font-size:19px;color:var(--accent);margin:0 0 2px}
+  .path h3{font-family:var(--body);font-weight:600;font-size:20px;color:var(--accent);margin:0 0 6px;display:flex;align-items:center;gap:10px}
   .path p{margin:0!important}
+  .step{font-size:13px;font-weight:600;line-height:1;letter-spacing:.02em;background:var(--accent);color:var(--bg);padding:5px 9px 6px;border-radius:999px;white-space:nowrap}
 
   /* before / after as two plain lists */
   .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:4px 0 26px;font-family:var(--body);font-size:16px;line-height:1.5}
-  .ba h3{font-family:var(--body);font-style:italic;font-weight:400;font-size:19px;margin:0 0 8px;color:var(--muted)}
+  .ba h3{font-family:var(--body);font-weight:600;font-size:20px;margin:0 0 8px;color:var(--tint-4)}
   .ba ul{list-style:none;margin:0;padding:0}
   .ba li{padding:8px 0;border-top:1px solid var(--line)}
   .ba .after h3{color:var(--accent)}
@@ -121,7 +122,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .toc{font-family:var(--body);margin:6px 0 26px}
   .toc .toc-title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:30px;color:var(--accent);text-align:center;margin:0 0 4px!important;letter-spacing:-.01em}
   .toc .toc-sub{text-align:center;color:var(--muted);font-size:15px;margin:0 0 6px!important}
-  .toc h3{font-family:var(--body);font-style:italic;font-weight:400;font-size:19px;color:var(--accent);margin:22px 0 6px;display:flex;align-items:center;gap:12px}
+  .toc h3{font-family:var(--body);font-weight:600;font-size:20px;color:var(--accent);margin:26px 0 8px;display:flex;align-items:center;gap:10px}
   .toc h3::after{content:"";flex:1;height:1px;background:var(--tint-3)}
   .toc ol{margin:0;padding:0;list-style:none}
   .toc li{display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:18px;line-height:1.4}
@@ -275,9 +276,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <p>this book isn't about fixing yourself overnight. it's about walking step by step into a lighter way of living. here's the path:</p>
 
   <div class="path">
-    <div><h3>step 1 · awareness</h3><p>see the wound clearly. name the guilt, the pressure, and the roles you were forced to play.</p></div>
-    <div><h3>step 2 · release</h3><p>loosen the grip. let go of guilt, anger, and perfectionism. give yourself permission to stop being everyone's fixer.</p></div>
-    <div><h3>step 3 · reclaiming joy</h3><p>rebuild. set boundaries, create relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p></div>
+    <div><h3><span class="step">step 1</span>awareness</h3><p>see the wound clearly. name the guilt, the pressure, and the roles you were forced to play.</p></div>
+    <div><h3><span class="step">step 2</span>release</h3><p>loosen the grip. let go of guilt, anger, and perfectionism. give yourself permission to stop being everyone's fixer.</p></div>
+    <div><h3><span class="step">step 3</span>reclaiming joy</h3><p>rebuild. set boundaries, create relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p></div>
   </div>
 
   <!-- ===== WHAT'S INSIDE ===== -->
@@ -287,7 +288,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="toc">
     <p class="toc-title">contents</p>
     <p class="toc-sub">16 chapters in 3 steps</p>
-    <h3>step 1 · awareness</h3>
+    <h3><span class="step">step 1</span>awareness</h3>
     <ol>
       <li><span>01</span><b>the weight you never chose</b><i></i><em>p. 3</em></li>
       <li><span>02</span><b>where it all started</b><i></i><em>p. 9</em></li>
@@ -295,7 +296,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <li><span>04</span><b>your healing starts here</b><i></i><em>p. 21</em></li>
       <li><span>05</span><b>the day my childhood ended</b><i></i><em>p. 22</em></li>
     </ol>
-    <h3>step 2 · release</h3>
+    <h3><span class="step">step 2</span>release</h3>
     <ol>
       <li><span>06</span><b>older sister guilt (the guilt dump &amp; sort)</b><i></i><em>p. 32</em></li>
       <li><span>07</span><b>the angry mean sister (the rage timeline)</b><i></i><em>p. 41</em></li>
@@ -303,7 +304,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <li><span>09</span><b>your job isn't your worth</b><i></i><em>p. 54</em></li>
       <li><span>10</span><b>the body remembers everything</b><i></i><em>p. 66</em></li>
     </ol>
-    <h3>step 3 · reclaiming joy</h3>
+    <h3><span class="step">step 3</span>reclaiming joy</h3>
     <ol>
       <li><span>11</span><b>loved, not just needed</b><i></i><em>p. 74</em></li>
       <li><span>12</span><b>the family atm (financial boundaries)</b><i></i><em>p. 85</em></li>
