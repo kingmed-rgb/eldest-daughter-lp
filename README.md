@@ -8,25 +8,34 @@ Static landing page for [eldestdaughtercore.com](https://www.eldestdaughtercore.
 - Self-hosted fonts (Inter, Fraunces) in `fonts/`
 - WebP images in `images/` and `pages/`
 - Tracking: GA4 · Microsoft Clarity · Meta Pixel
-- Hosting: GitHub Pages · Domain: Cloudflare
 
 ## Deployment
 
-Hosted on **GitHub Pages**, served from the `main` branch (repo root).
-Every push to `main` publishes the site within a minute or two.
+Deployed on **Vercel** via automatic Git integration.
 
-The domain is managed in **Cloudflare** (DNS only, grey cloud):
+Every push to `main` triggers a new production deployment.
 
-| Type  | Name | Value                    |
-|-------|------|--------------------------|
-| A     | @    | `185.199.108.153`        |
-| A     | @    | `185.199.109.153`        |
-| A     | @    | `185.199.110.153`        |
-| A     | @    | `185.199.111.153`        |
-| CNAME | www  | `kingmed-rgb.github.io`  |
+### First-time setup
 
-`CNAME` holds the custom domain for GitHub Pages; `.nojekyll` serves the files as-is.
-Checkout is the Stripe payment link in `index.html`.
+1. Go to [vercel.com](https://vercel.com) → **Add New Project**
+2. Import the `eldest-daughter-lp` GitHub repository
+3. Framework preset: **Other** (no build command, output directory: `./`)
+4. Click **Deploy**
+
+### Custom domain
+
+1. In Vercel dashboard → **Settings → Domains**
+2. Add `www.eldestdaughtercore.com` and `eldestdaughtercore.com`
+3. Update DNS records (see below)
+
+### DNS records
+
+| Type  | Name | Value                  |
+|-------|------|------------------------|
+| A     | @    | `76.76.21.21`          |
+| CNAME | www  | `cname.vercel-dns.com` |
+
+> Allow up to 48 hours for DNS propagation. Vercel provisions HTTPS automatically.
 
 ## Project structure
 
@@ -41,8 +50,8 @@ Checkout is the Stripe payment link in `index.html`.
 ├── images/                 # Avatars, hero, bundle images (WebP)
 ├── pages/                  # Page preview cards (WebP)
 ├── favicon.png
-├── CNAME                   # Custom domain for GitHub Pages
-└── .nojekyll               # Serve files as-is (no Jekyll)
+├── vercel.json             # Clean URLs + cache headers
+└── .vercelignore           # Excludes source PNGs and duplicate files
 ```
 
 ## Environment variables
