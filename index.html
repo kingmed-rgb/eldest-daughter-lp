@@ -202,6 +202,18 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .buybar .p s{margin-left:4px}
   .buybar .bp{color:var(--ink);font-weight:600}
   .buybar a{background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
+
+  /* stripe checkout pop-up */
+  .co{position:fixed;inset:0;z-index:50;background:rgba(43,18,24,.55);display:flex;align-items:flex-end;justify-content:center}
+  .co[hidden]{display:none}
+  .co-sheet{background:#FFFFFF;width:100%;max-width:520px;max-height:94vh;overflow:auto;border-radius:16px 16px 0 0;padding:10px 0 calc(16px + env(safe-area-inset-bottom))}
+  .co-head{display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-family:var(--body);font-size:15px;color:var(--muted)}
+  .co-head span{flex:1}
+  .co-close{background:none;border:0;font:inherit;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
+  .co-close:focus-visible{outline:2px solid var(--ink);border-radius:6px}
+  .co-load{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;padding:60px 16px}
+  body.co-open{overflow:hidden}
+  @media(min-width:560px){.co{align-items:center}.co-sheet{border-radius:16px}}
 </style>
 </head>
 <body>
@@ -451,6 +463,14 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <p>need help? <a href="mailto:eldestdaughterbook@gmail.com" style="margin:0">eldestdaughterbook@gmail.com</a></p>
 </footer>
 
+<!-- stripe embedded checkout opens here; buttons fall back to the payment link if it can't start -->
+<div class="co" id="co" hidden role="dialog" aria-modal="true" aria-label="checkout">
+  <div class="co-sheet">
+    <div class="co-head"><span>secure checkout · stripe</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
+    <div id="co-mount"><p class="co-load">loading secure checkout…</p></div>
+  </div>
+</div>
+
 <!-- sticky buy bar: appears after the intro, hides while the offer or a checkout button is on screen -->
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="in">
@@ -479,12 +499,37 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   // which checkout button got the click (shows up in Clarity + GA4)
   document.querySelectorAll('.js-checkout').forEach(function(a,i){
-    a.addEventListener('click',function(){
+    a.addEventListener('click',function(e){
       var where=a.closest('#offer')?'offer':a.closest('#buybar')?'sticky_bar':'after_faq';
       try{window.clarity&&clarity('event','checkout_click_'+where);}catch(e){}
       try{gtag('event','begin_checkout',{location:where,value:12,currency:'USD'});}catch(e){}
+      e.preventDefault();
+      openCheckout(a.href);
     });
   });
+
+  // stripe embedded checkout in a pop-up; any failure sends the buyer to the payment link instead
+  var co=document.getElementById('co'), checkout=null, starting=false;
+  function loadStripe(){
+    return window.Stripe ? Promise.resolve() : new Promise(function(ok,fail){
+      var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
+    });
+  }
+  function showCo(on){ co.hidden=!on; document.body.classList.toggle('co-open',on); if(on) document.getElementById('co-close').focus(); }
+  function openCheckout(fallback){
+    showCo(true);
+    if(checkout||starting) return;
+    starting=true;
+    fetch('/api/create-checkout-session',{method:'POST'})
+      .then(function(r){ if(!r.ok) throw new Error('checkout unavailable'); return r.json(); })
+      .then(function(d){ return loadStripe().then(function(){ return Stripe(d.publishableKey).initEmbeddedCheckout({fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); }); })
+      .then(function(c){ checkout=c; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
+      .catch(function(){ location.href=fallback; })
+      .then(function(){ starting=false; });
+  }
+  document.getElementById('co-close').addEventListener('click',function(){showCo(false);});
+  co.addEventListener('click',function(e){ if(e.target===co) showCo(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!co.hidden) showCo(false); });
 
   var like=document.getElementById('like');
   like.addEventListener('click',function(){var on=like.classList.toggle('liked');like.setAttribute('aria-pressed',on);});
