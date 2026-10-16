@@ -76,12 +76,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   /* article column */
   .post{max-width:640px;margin:0 auto;padding:0 20px}
   .post-head{padding:44px 0 0}
-  h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,8vw,44px);line-height:1.08;letter-spacing:-.02em;margin:0 0 22px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,10vw,44px);line-height:1.08;letter-spacing:-.02em;margin:0 0 22px}
   .byline{display:flex;align-items:center;gap:12px;font-family:var(--body);padding-bottom:16px}
   .byline img{width:40px;height:40px;border-radius:50%}
-  .byline .who{font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1.3}
+  .byline .who{font-size:15px;font-weight:600;letter-spacing:.02em;line-height:1.3}
   .byline .meta{font-size:13px;color:var(--muted)}
-  .actions{display:flex;gap:18px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:30px;font-family:var(--body);font-size:14px;color:var(--muted)}
+  .actions{display:flex;gap:18px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:30px;font-family:var(--body);font-size:15px;color:var(--muted)}
   .actions a,.actions button{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:inherit;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-transform:inherit}
   .actions .spacer{flex:1}
   .actions svg{width:19px;height:19px}
@@ -91,28 +91,24 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .post p,.post li,.faq .a{text-wrap:pretty}
   h1,h2,.faq summary{text-wrap:balance}
   .post p{margin:0 0 22px}
-  .post h2{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.2;letter-spacing:-.015em;margin:40px 0 14px}
+  .post h2{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.2;letter-spacing:-.015em;margin:40px 0 14px}
   .post h2.first{margin-top:0}
   .big{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.01em}
   .figure{margin:4px 0 26px}
   .figure img{width:100%;height:auto;mix-blend-mode:multiply}
   hr.dots{border:0;text-align:center;margin:40px 0}
-  hr.dots::before{content:"✦ ✦ ✦";color:var(--muted);letter-spacing:.6em;font-size:12px}
+  hr.dots::before{content:"✦ ✦ ✦";color:var(--muted);letter-spacing:.6em;font-size:13px}
 
   /* signs checklist, the book's own ❒ boxes */
   .signs{list-style:none;margin:0 0 22px;padding:0}
   .signs li{position:relative;padding:7px 0 7px 32px;line-height:1.5}
   .signs li::before{content:"❒";position:absolute;left:2px;top:7px;color:var(--muted)}
 
-  /* the three parts */
-  .path{margin:0 0 22px;display:flex;flex-direction:column;gap:16px}
-  .path h3{font-family:var(--body);font-weight:600;font-size:20px;color:var(--accent);margin:0 0 6px;display:flex;align-items:center;gap:10px}
-  .path p{margin:0!important}
-  .step{font-size:13px;font-weight:600;line-height:1;letter-spacing:.02em;background:var(--accent);color:var(--bg);padding:5px 9px 6px;border-radius:999px;white-space:nowrap}
+  .step{font-size:15px;font-weight:600;line-height:1;letter-spacing:.02em;background:var(--accent);color:var(--bg);padding:5px 9px 6px;border-radius:999px;white-space:nowrap}
 
   /* before / after as two plain lists */
-  .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:4px 0 26px;font-family:var(--body);font-size:16px;line-height:1.5}
-  .ba h3{font-family:var(--body);font-weight:600;font-size:20px;margin:0 0 8px;color:var(--accent)}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:4px 0 26px;font-family:var(--body);font-size:17px;line-height:1.5}
+  .ba h3{font-family:var(--body);font-weight:600;font-size:24px;margin:0 0 8px;color:var(--accent)}
   .ba ul{list-style:none;margin:0;padding:0}
   .ba li{padding:8px 0;border-top:1px solid var(--line)}
   .ba .after h3{color:var(--accent)}
@@ -122,10 +118,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .toc{font-family:var(--body);margin:6px 0 26px}
   .toc .toc-title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:30px;color:var(--accent);text-align:center;margin:0 0 4px!important;letter-spacing:-.01em}
   .toc .toc-sub{text-align:center;color:var(--muted);font-size:15px;margin:0 0 6px!important}
-  .toc h3{font-family:var(--body);font-weight:600;font-size:20px;color:var(--accent);margin:26px 0 8px;display:flex;align-items:center;gap:10px}
+  .toc h3{font-family:var(--body);font-weight:600;font-size:24px;color:var(--accent);margin:26px 0 8px;display:flex;align-items:center;gap:10px}
   .toc h3::after{content:"";flex:1;height:1px;background:var(--tint-3)}
+  .toc .step-desc{color:var(--muted);font-size:17px;line-height:1.5;margin:0 0 6px!important}
   .toc ol{margin:0;padding:0;list-style:none}
-  .toc li{display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:18px;line-height:1.4}
+  .toc li{display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:19px;line-height:1.4}
   .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:22px;font-size:15px;font-weight:600}
   .toc li i{flex:1;border-bottom:1.5px dotted var(--tint-3);transform:translateY(-5px);min-width:16px;font-style:normal}
   .toc li b{font-weight:400;min-width:0}
@@ -143,32 +140,32 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   /* comments (TikTok style reviews) */
   .comments-head{font-family:var(--body);display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
   .comments-head b{font-size:17px;color:var(--accent)}
-  .comments-head span{font-size:14px;color:var(--muted)}
+  .comments-head span{font-size:15px;color:var(--muted)}
   .comment{display:flex;gap:12px;padding:14px 0;font-family:var(--body)}
-  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
+  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600}
   .comment .name{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:2px}
   .comment .name small{font-weight:400}
-  .comment .txt{font-size:16px;line-height:1.45}
-  .more summary{font-family:var(--body);font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;list-style:none;padding:6px 0 0 48px}
+  .comment .txt{font-size:17px;line-height:1.45}
+  .more summary{font-family:var(--body);font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;list-style:none;padding:6px 0 0 48px}
   .more summary::-webkit-details-marker{display:none}
   .more[open] summary{display:none}
 
   /* offer */
   .offer{border:1.5px solid var(--ink);border-radius:14px;padding:26px 22px 22px;margin:8px 0 10px;scroll-margin-top:16px}
-  .offer .kicker{font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--muted);margin:0 0 6px!important;text-align:center}
-  .offer h2{margin:0 0 4px!important;text-align:center;font-size:25px}
+  .offer .kicker{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--muted);margin:0 0 6px!important;text-align:center}
+  .offer h2{margin:0 0 4px!important;text-align:center;font-size:24px}
   .offer .sub{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
   .offer .bundle{margin:0 -6px 6px;mix-blend-mode:multiply}
   .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 4px;font-family:var(--body)}
   .price .now{font-family:var(--serif);font-size:48px;font-weight:600;line-height:1}
-  .price .was{color:var(--muted);text-decoration:line-through;font-size:20px}
-  .price-note{font-family:var(--body);font-size:14px;color:var(--muted);text-align:center;margin:0 0 18px!important}
-  .includes{list-style:none;margin:0 0 20px;padding:0;font-family:var(--body);font-size:16px}
+  .price .was{color:var(--muted);text-decoration:line-through;font-size:24px}
+  .price-note{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 18px!important}
+  .includes{list-style:none;margin:0 0 20px;padding:0;font-family:var(--body);font-size:17px}
   .includes li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);line-height:1.4}
   .includes li:last-child{border-bottom:1px solid var(--line)}
   .includes li::before{content:"✓";color:var(--ink);font-weight:600;flex:none}
-  .includes .tag{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--muted);white-space:nowrap;padding-left:8px}
-  .steps{list-style:none;margin:18px 0 0;padding:0;font-family:var(--body);font-size:14px;color:var(--muted);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+  .includes .tag{margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--muted);white-space:nowrap;padding-left:8px}
+  .steps{list-style:none;margin:18px 0 0;padding:0;font-family:var(--body);font-size:15px;color:var(--muted);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
   .steps b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
   .guarantee{font-family:var(--body);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
   .guarantee svg{flex:none;margin-top:2px}
@@ -179,12 +176,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .faq{font-family:var(--body);margin:0 0 10px}
   .faq details{border-bottom:1px solid var(--line)}
   .faq details:first-of-type{border-top:1px solid var(--line)}
-  .faq summary{cursor:pointer;list-style:none;padding:16px 34px 16px 0;font-weight:600;font-size:16px;line-height:1.4;position:relative}
+  .faq summary{cursor:pointer;list-style:none;padding:16px 34px 16px 0;font-weight:600;font-size:17px;line-height:1.4;position:relative}
   .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:300;color:var(--muted)}
+  .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:300;color:var(--muted)}
   .faq details[open] summary::after{content:"–"}
   .faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-  .faq .a{padding:0 0 16px;font-size:16px;line-height:1.6;color:var(--ink)}
+  .faq .a{padding:0 0 16px;font-size:17px;line-height:1.6;color:var(--ink)}
 
   .ps{font-style:italic}
 
@@ -199,7 +196,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .buybar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px;font-family:var(--body)}
   .buybar .p{flex:1;line-height:1.25;font-size:13px;color:var(--muted)}
   .buybar a{color:var(--bg)!important}
-  .buybar .p b{display:block;color:var(--ink);font-size:16px}
+  .buybar .p b{display:block;color:var(--ink);font-size:17px}
   .buybar .p s{margin-left:4px}
   .buybar a{background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
 </style>
@@ -273,22 +270,15 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <img src="images/eds book.webp" alt="the eldest daughter workbook" width="1536" height="1024" loading="lazy" decoding="async">
   </figure>
 
-  <p>this book isn't about fixing yourself overnight. it's about walking step by step into a lighter way of living. here's the path:</p>
-
-  <div class="path">
-    <div><h3><span class="step">step 1</span>awareness</h3><p>see the wound clearly. name the guilt, the pressure, and the roles you were forced to play.</p></div>
-    <div><h3><span class="step">step 2</span>release</h3><p>loosen the grip. let go of guilt, anger, and perfectionism. give yourself permission to stop being everyone's fixer.</p></div>
-    <div><h3><span class="step">step 3</span>reclaiming joy</h3><p>rebuild. set boundaries, create relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p></div>
-  </div>
-
   <!-- ===== WHAT'S INSIDE ===== -->
   <h2>what's inside</h2>
-  <p>16 chapters of guided exercises built on proven therapeutic principles, walking you from naming the wound to finally setting it down. you write, you reflect, you try things.</p>
+  <p>this book isn't about fixing yourself overnight. it's about walking step by step into a lighter way of living. 16 chapters of guided exercises built on proven therapeutic principles. you write, you reflect, you try things.</p>
 
   <div class="toc">
     <p class="toc-title">contents</p>
     <p class="toc-sub">16 chapters in 3 steps</p>
     <h3><span class="step">step 1</span>awareness</h3>
+    <p class="step-desc">see the wound clearly. name the guilt, the pressure, and the roles you were forced to play.</p>
     <ol>
       <li><span>01</span><b>the weight you never chose</b><i></i><em>p. 3</em></li>
       <li><span>02</span><b>where it all started</b><i></i><em>p. 9</em></li>
@@ -297,6 +287,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <li><span>05</span><b>the day my childhood ended</b><i></i><em>p. 22</em></li>
     </ol>
     <h3><span class="step">step 2</span>release</h3>
+    <p class="step-desc">loosen the grip. let go of guilt, anger, and perfectionism. give yourself permission to stop being everyone's fixer.</p>
     <ol>
       <li><span>06</span><b>older sister guilt (the guilt dump &amp; sort)</b><i></i><em>p. 32</em></li>
       <li><span>07</span><b>the angry mean sister (the rage timeline)</b><i></i><em>p. 41</em></li>
@@ -305,6 +296,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <li><span>10</span><b>the body remembers everything</b><i></i><em>p. 66</em></li>
     </ol>
     <h3><span class="step">step 3</span>reclaiming joy</h3>
+    <p class="step-desc">rebuild. set boundaries, create relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p>
     <ol>
       <li><span>11</span><b>loved, not just needed</b><i></i><em>p. 74</em></li>
       <li><span>12</span><b>the family atm (financial boundaries)</b><i></i><em>p. 85</em></li>
