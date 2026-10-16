@@ -60,6 +60,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     --tint-3:#C98F95;
     --tint-4:#9C4F5C;
     --tint-5:#6E2433;
+    --pop:#C8102E;           /* bright cherry: price, offer highlights, stars */
+    --pop-soft:#FBE1E1;      /* cherry wash behind small tags */
     --accent:#4D0619;        /* buttons only */
     --accent-dark:#36040F;
     --serif:'Fraunces',Georgia,serif;
@@ -122,7 +124,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .toc h3.first-step{margin-top:4px}
   .toc ol{margin:0;padding:0;list-style:none}
   .toc li{display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:19px;line-height:1.4}
-  .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:22px;font-size:15px;font-weight:600}
+  .toc li span{color:var(--pop);font-variant-numeric:tabular-nums lining-nums;min-width:22px;font-size:15px;font-weight:600}
   .toc li i{flex:1;border-bottom:1.5px dotted var(--tint-3);transform:translateY(-5px);min-width:16px;font-style:normal}
   .toc li b{font-weight:400;min-width:0}
   .toc li em{color:var(--muted);font-style:italic;font-size:15px;white-space:nowrap}
@@ -134,11 +136,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .cta:active{transform:scale(.99)}
   .cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
   .cta-wrap{margin:22px 0 26px}
-  .cta-note{font-family:var(--body);font-size:13px;color:var(--muted);text-align:center;margin:10px 0 0!important}
+  .cta-note{font-family:var(--body);font-size:13px;color:var(--pop);font-weight:600;text-align:center;margin:10px 0 0!important}
 
   /* comments (TikTok style reviews) */
   .comments-head{font-family:var(--body);display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
-  .comments-head b{font-size:17px;color:var(--accent)}
+  .comments-head b{font-size:17px;color:var(--pop)}
   .comments-head span{font-size:15px;color:var(--muted)}
   .comment{display:flex;gap:12px;padding:14px 0;font-family:var(--body)}
   .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600}
@@ -151,23 +153,24 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   /* offer */
   .offer{border:1.5px solid var(--ink);border-radius:14px;padding:26px 22px 22px;margin:8px 0 10px;scroll-margin-top:16px}
-  .offer .kicker{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--muted);margin:0 0 6px!important;text-align:center}
+  .offer .kicker{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--bg);background:var(--pop);border-radius:999px;padding:5px 12px;width:max-content;margin:0 auto 10px!important;text-align:center}
   .offer h2{margin:0 0 4px!important;text-align:center;font-size:24px}
   .offer .sub{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
   .offer .bundle{margin:0 -6px 6px;mix-blend-mode:multiply}
   .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 4px;font-family:var(--body)}
-  .price .now{font-family:var(--serif);font-size:48px;font-weight:600;line-height:1}
+  .price .now{font-family:var(--serif);font-size:48px;font-weight:600;line-height:1;color:var(--pop)}
   .price .was{color:var(--muted);text-decoration:line-through;font-size:24px}
+  .price .save{align-self:center;font-size:13px;font-weight:600;color:var(--pop);background:var(--pop-soft);border-radius:999px;padding:4px 10px}
   .price-note{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 18px!important}
   .includes{list-style:none;margin:0 0 20px;padding:0;font-family:var(--body);font-size:17px}
   .includes li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);line-height:1.4}
   .includes li:last-child{border-bottom:1px solid var(--line)}
-  .includes li::before{content:"✓";color:var(--ink);font-weight:600;flex:none}
-  .includes .tag{margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--muted);white-space:nowrap;padding-left:8px}
+  .includes li::before{content:"✓";color:var(--pop);font-weight:600;flex:none}
+  .includes .tag{margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--pop);background:var(--pop-soft);border-radius:999px;padding:2px 9px;white-space:nowrap;align-self:center}
   .steps{list-style:none;margin:18px 0 0;padding:0;font-family:var(--body);font-size:15px;color:var(--muted);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
-  .steps b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
+  .steps b{display:block;color:var(--pop);font-size:13px;margin-bottom:2px}
   .guarantee{font-family:var(--body);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
-  .guarantee svg{flex:none;margin-top:2px}
+  .guarantee svg{flex:none;margin-top:2px;color:var(--pop)}
   .pay{display:flex;justify-content:center;margin-top:14px}
   .pay img{height:24px;width:auto;opacity:.75;mix-blend-mode:multiply}
 
@@ -197,6 +200,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .buybar a{color:var(--bg)!important}
   .buybar .p b{display:block;color:var(--ink);font-size:17px}
   .buybar .p s{margin-left:4px}
+  .buybar .bp{color:var(--pop);font-weight:600}
   .buybar a{background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
 </style>
 </head>
@@ -365,7 +369,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <h2>the eldest daughter healing bundle™</h2>
     <img class="bundle" src="images/eds bundle image.webp" alt="the eldest daughter workbook, poems &amp; letters, and inner child healing worksheet" width="2640" height="1485" loading="lazy" decoding="async">
 
-    <div class="price"><span class="now">$12</span><span class="was">$49</span></div>
+    <div class="price"><span class="now">$12</span><span class="was">$49</span><span class="save">save 75%</span></div>
     <p class="price-note">one-time payment. no subscription. yours forever.</p>
 
     <ul class="includes">
@@ -453,7 +457,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 <!-- sticky buy bar: appears after the intro, hides while the offer or a checkout button is on screen -->
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="in">
-    <div class="p"><b>the healing bundle™</b>$12 <s>$49</s> · instant download</div>
+    <div class="p"><b>the healing bundle™</b><span class="bp">$12</span> <s>$49</s> · instant download</div>
     <a class="js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00" tabindex="-1">get it now →</a>
   </div>
 </div>
