@@ -455,7 +455,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="in">
     <div class="p"><b>the healing bundle™</b><span class="bp">$12</span> <s>$49</s> · instant download</div>
-    <a class="js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00" tabindex="-1">get it now →</a>
+    <a href="#offer" tabindex="-1">get it now →</a>
   </div>
 </div>
 
@@ -480,7 +480,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   // which checkout button got the click (shows up in Clarity + GA4)
   document.querySelectorAll('.js-checkout').forEach(function(a,i){
     a.addEventListener('click',function(){
-      var where=a.closest('#offer')?'offer':a.closest('#buybar')?'sticky_bar':'after_faq';
+      var where=a.closest('#offer')?'offer':'after_faq';
       try{window.clarity&&clarity('event','checkout_click_'+where);}catch(e){}
       try{gtag('event','begin_checkout',{location:where,value:12,currency:'USD'});}catch(e){}
     });
