@@ -60,8 +60,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     --tint-3:#C98F95;
     --tint-4:#9C4F5C;
     --tint-5:#6E2433;
-    --pop:#C8102E;           /* bright cherry: price, offer highlights, stars */
-    --pop-soft:#FBE1E1;      /* cherry wash behind small tags */
+    --pop:#8E1B3A;           /* the burgundy, lifted: price, founding price, bonus, instant download */
+    --pop-soft:#F5DEE2;      /* light wash of the same hue behind small tags */
     --accent:#4D0619;        /* buttons only */
     --accent-dark:#36040F;
     --serif:'Fraunces',Georgia,serif;
@@ -124,7 +124,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .toc h3.first-step{margin-top:4px}
   .toc ol{margin:0;padding:0;list-style:none}
   .toc li{display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:19px;line-height:1.4}
-  .toc li span{color:var(--pop);font-variant-numeric:tabular-nums lining-nums;min-width:22px;font-size:15px;font-weight:600}
+  .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:22px;font-size:15px;font-weight:600}
   .toc li i{flex:1;border-bottom:1.5px dotted var(--tint-3);transform:translateY(-5px);min-width:16px;font-style:normal}
   .toc li b{font-weight:400;min-width:0}
   .toc li em{color:var(--muted);font-style:italic;font-size:15px;white-space:nowrap}
@@ -140,7 +140,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   /* comments (TikTok style reviews) */
   .comments-head{font-family:var(--body);display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
-  .comments-head b{font-size:17px;color:var(--pop)}
+  .comments-head b{font-size:17px;color:var(--accent)}
   .comments-head span{font-size:15px;color:var(--muted)}
   .comment{display:flex;gap:12px;padding:14px 0;font-family:var(--body)}
   .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600}
@@ -165,12 +165,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .includes{list-style:none;margin:0 0 20px;padding:0;font-family:var(--body);font-size:17px}
   .includes li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);line-height:1.4}
   .includes li:last-child{border-bottom:1px solid var(--line)}
-  .includes li::before{content:"✓";color:var(--pop);font-weight:600;flex:none}
+  .includes li::before{content:"✓";color:var(--accent);font-weight:600;flex:none}
   .includes .tag{margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--pop);background:var(--pop-soft);border-radius:999px;padding:2px 9px;white-space:nowrap;align-self:center}
   .steps{list-style:none;margin:18px 0 0;padding:0;font-family:var(--body);font-size:15px;color:var(--muted);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
-  .steps b{display:block;color:var(--pop);font-size:13px;margin-bottom:2px}
+  .steps b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
   .guarantee{font-family:var(--body);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
-  .guarantee svg{flex:none;margin-top:2px;color:var(--pop)}
+  .guarantee svg{flex:none;margin-top:2px;color:var(--accent)}
   .pay{display:flex;justify-content:center;margin-top:14px}
   .pay img{height:24px;width:auto;opacity:.75;mix-blend-mode:multiply}
 
