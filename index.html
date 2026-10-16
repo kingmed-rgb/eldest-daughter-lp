@@ -107,12 +107,14 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .step{font-size:15px;font-weight:600;line-height:1;letter-spacing:.02em;background:var(--accent);color:var(--bg);padding:5px 9px 6px;border-radius:999px;white-space:nowrap}
 
   /* before / after as two plain lists */
-  .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:0 0 20px;font-family:var(--body);font-size:17px;line-height:1.5}
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;margin:32px 0 20px;font-family:var(--body);font-size:17px;line-height:1.5}
   .ba h3{font-family:var(--body);font-weight:600;font-size:24px;margin:0 0 8px;color:var(--accent)}
   .ba ul{list-style:none;margin:0;padding:0}
   .ba li{padding:8px 0;border-top:1px solid var(--line)}
   .ba .after h3{color:var(--accent)}
-  @media(max-width:520px){.ba{grid-template-columns:1fr;gap:18px}}
+  .ba-arrow{align-self:center;color:var(--accent);display:flex;justify-content:center}
+  .ba-arrow svg{width:30px;height:30px}
+  @media(max-width:520px){.ba{grid-template-columns:1fr;gap:6px}.ba-arrow svg{transform:rotate(90deg)}.ba-arrow{padding:6px 0 10px}}
 
   /* chapters */
   .toc{font-family:var(--body);margin:0 0 20px}
@@ -308,7 +310,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <p>plus the exercises people message me about the most: the mom call drill (a real script for high-trigger calls: time limit, safe topics, exit line, after-care) and the permission slip, where you officially give yourself back the childhood you never got.</p>
 
   <!-- ===== BEFORE / AFTER ===== -->
-  <h2>the cycle ends with you</h2>
   <div class="ba">
     <div>
       <h3>right now</h3>
@@ -320,6 +321,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
         <li>everyone's therapist, nobody's patient</li>
       </ul>
     </div>
+    <div class="ba-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
     <div class="after">
       <h3>after the workbook</h3>
       <ul>
