@@ -521,10 +521,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     if(checkout||starting) return;
     starting=true;
     fetch('/api/create-checkout-session',{method:'POST'})
-      .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); })
+      .then(function(r){ if(!r.ok) throw new Error('checkout unavailable'); return r.json(); })
       .then(function(d){ return loadStripe().then(function(){ return Stripe(d.publishableKey).initEmbeddedCheckout({fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); }); })
       .then(function(c){ checkout=c; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
-      .catch(function(err){ try{console.warn('embedded checkout fell back to payment link:',err&&err.message);}catch(e){} location.href=fallback; })
+      .catch(function(){ location.href=fallback; })
       .then(function(){ starting=false; });
   }
   document.getElementById('co-close').addEventListener('click',function(){showCo(false);});
