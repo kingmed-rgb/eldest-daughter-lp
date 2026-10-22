@@ -105,7 +105,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .signs li{position:relative;padding:5px 0 5px 32px;line-height:1.5}
   .signs li::before{content:"❒";position:absolute;left:2px;top:7px;color:var(--muted)}
 
-  .step{font-size:15px;font-weight:600;line-height:1;letter-spacing:.02em;background:var(--accent);color:var(--bg);padding:5px 9px 6px;border-radius:999px;white-space:nowrap}
 
   /* before / after as two plain lists */
   .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;margin:32px 0 20px;font-family:var(--body);font-size:18px;line-height:1.5}
@@ -118,11 +117,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   @media(max-width:520px){.ba{grid-template-columns:1fr;gap:6px}.ba-arrow svg{transform:rotate(90deg)}.ba-arrow{padding:6px 0 10px}}
 
   /* chapters */
-  .steps-list{display:flex;flex-direction:column;gap:18px;margin:4px 0 26px}
-  .steps-list h3{font-family:var(--body);font-weight:600;font-size:24px;color:var(--accent);margin:0 0 6px;display:flex;align-items:center;gap:10px}
-  .steps-list h3::after{content:"";flex:1;height:1px;background:var(--tint-3)}
-  .steps-list .step-desc{color:var(--ink);font-size:18px;line-height:1.7;margin:0!important}
-  .toc{font-family:var(--body);margin:0 0 20px;padding-top:12px;border-top:1px solid var(--line)}
+  .toc{font-family:var(--body);margin:4px 0 20px}
   .toc .toc-title{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);margin:0 0 6px}
   .toc ol{margin:0;padding:0;list-style:none}
   .toc li{display:flex;align-items:baseline;gap:10px;padding:7px 0;font-size:18px;line-height:1.4}
@@ -273,17 +268,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </figure>
 
   <!-- ===== WHAT'S INSIDE ===== -->
-  <h2>what's inside</h2>
+  <h2 id="inside">what's inside</h2>
   <p>this book isn't about fixing yourself overnight. it's about walking step by step into a lighter way of living. 16 chapters of guided exercises built on proven therapeutic principles. you write, you reflect, you try things.</p>
-
-  <div class="steps-list">
-    <div><h3><span class="step">step 1</span>awareness</h3>
-    <p class="step-desc">the goal: see the wound clearly. you name the guilt, the pressure, and the roles you were handed as a kid, so you finally understand why you feel the way you do.</p></div>
-    <div><h3><span class="step">step 2</span>release</h3>
-    <p class="step-desc">the goal: loosen the grip. you let go of the guilt, anger, and perfectionism you've been carrying, and give yourself permission to stop being everyone's fixer.</p></div>
-    <div><h3><span class="step">step 3</span>reclaiming joy</h3>
-    <p class="step-desc">the goal: rebuild. you set boundaries that hold, build relationships where you are loved, not just needed, and reconnect with the kid you never got to be.</p></div>
-  </div>
 
   <div class="toc">
     <h3 class="toc-title">table of contents</h3>
@@ -451,7 +437,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <p>need help? <a href="mailto:eldestdaughterbook@gmail.com" style="margin:0">eldestdaughterbook@gmail.com</a></p>
 </footer>
 
-<!-- sticky buy bar: appears after the intro, hides while the offer or a checkout button is on screen -->
+<!-- sticky buy bar: appears after "what's inside", hides while the offer or a checkout button is on screen -->
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="in">
     <div class="p"><b>the healing bundle™</b><span class="bp">$12</span> <s>$49</s> · instant download</div>
@@ -462,7 +448,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 <script>
 (function(){
   var bar=document.getElementById('buybar');
-  var head=document.querySelector('.post-head');
+  var head=document.getElementById('inside');  // bar appears once the reader has scrolled past "what's inside"
   var blockers=document.querySelectorAll('#offer, .cta-wrap');
   var pastHead=false, visible=new Set();
   function update(){
