@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>la psicología de las hijas mayores</title>
+<meta name="description" content="Un libro de ejercicios guiados para hijas mayores que ya no quieren cargar con todos y quieren empezar a sanar. 16 capítulos, hojas imprimibles y descarga inmediata.">
+<link rel="alternate" hreflang="en" href="https://www.eldestdaughtercore.com/">
+<link rel="alternate" hreflang="es" href="https://www.eldestdaughtercore.com/es">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','4363206913920168');
+
+// Dedup key shared with the server-side PageView event (Conversions API).
+// Expose it (window var + cookie) so a server-side tag/backend can reuse the same id.
+var pageViewEventId = (crypto.randomUUID ? crypto.randomUUID() : 'pv_' + Date.now() + '_' + Math.random().toString(36).slice(2));
+window.__fbPageViewEventId = pageViewEventId;
+document.cookie = 'fb_pageview_event_id=' + pageViewEventId + ';path=/;max-age=1800;SameSite=Lax';
+
+fbq('track','PageView',{},{eventID:pageViewEventId});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4363206913920168&ev=PageView&noscript=1"/></noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-874XF1X3E3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-874XF1X3E3');
+</script>
+<script>
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "x7irk4dqm3");
+</script>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/fraunces.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/source-serif.woff2" crossorigin>
+<style>
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url('../fonts/source-serif.woff2') format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url('../fonts/source-serif-italic.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:400 600;font-display:swap;src:url('../fonts/fraunces.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url('../fonts/fraunces-italic.woff2') format('woff2')}
+</style>
+<style>
+  /* One background, one accent. Everything else is type + hairlines. All lowercase, like the book. */
+  :root{
+    --bg:#FEF7EC;
+    --ink:#2B1218;           /* darkest burgundy, all body text */
+    --muted:#5E434A;         /* burgundy-grey, secondary text (7:1 on cream) */
+    --line:#EBDCCD;          /* hairlines */
+    --tint-1:#F2DED6;        /* burgundy tints, used only for avatars */
+    --tint-2:#E3BDB8;
+    --tint-3:#C98F95;
+    --tint-4:#9C4F5C;
+    --tint-5:#6E2433;
+    --accent:#4D0619;        /* buttons only */
+    --accent-dark:#36040F;
+    --serif:'Fraunces',Georgia,serif;
+    --body:'Source Serif 4',Georgia,'Noto Serif',serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.7;
+       -webkit-font-smoothing:antialiased;overflow-x:clip;text-transform:lowercase}
+  a{color:inherit}
+  img{max-width:100%;height:auto;display:block}
+
+  /* article column */
+  .post{max-width:640px;margin:0 auto;padding:0 20px}
+  .post-head{padding:44px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.08;letter-spacing:-.02em;margin:0 0 22px}
+  @media(min-width:660px){h1{white-space:nowrap}}  /* one line on desktop, two big lines on phones */
+  .byline{display:flex;align-items:center;gap:12px;font-family:var(--body);padding-bottom:16px}
+  .byline img{width:40px;height:40px;border-radius:50%}
+  .byline .who{font-size:15px;font-weight:400;letter-spacing:.02em;line-height:1.3}
+  .byline .meta{font-size:15px;color:var(--muted)}
+  .actions{display:flex;gap:18px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:30px;font-family:var(--body);font-size:15px;color:var(--muted)}
+  .actions a,.actions button{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:inherit;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-transform:inherit}
+  .actions .spacer{flex:1}
+  .actions svg{width:19px;height:19px}
+  .actions .liked svg{fill:var(--ink);stroke:var(--ink)}
+
+  /* prose */
+  .post p,.post li,.faq .a{text-wrap:pretty}
+  h1,h2,.faq summary{text-wrap:balance}
+  .post p{margin:0 0 16px}
+  .post h2{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:32px 0 10px}
+  .post h2.first{margin-top:0}
+  .big{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.01em}
+  .figure{margin:0 0 16px}
+  .figure img{width:100%;height:auto;mix-blend-mode:multiply}
+  hr.dots{border:0;text-align:center;margin:40px 0}
+  hr.dots::before{content:"✦ ✦ ✦";color:var(--muted);letter-spacing:.6em;font-size:15px}
+
+  /* signs checklist, the book's own ❒ boxes */
+  .signs{list-style:none;margin:0 0 16px;padding:0}
+  .signs li{position:relative;padding:5px 0 5px 32px;line-height:1.5}
+  .signs li::before{content:"❒";position:absolute;left:2px;top:7px;color:var(--muted)}
+
+
+  /* before / after as two plain lists */
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;margin:32px 0 20px;font-family:var(--body);font-size:18px;line-height:1.5}
+  .ba h3{font-family:var(--body);font-weight:600;font-size:24px;margin:0 0 8px;color:var(--accent)}
+  .ba ul{list-style:none;margin:0;padding:0}
+  .ba li{padding:8px 0;border-top:1px solid var(--line)}
+  .ba .after h3{color:var(--accent)}
+  .ba-arrow{align-self:center;color:var(--accent);display:flex;justify-content:center}
+  .ba-arrow svg{width:30px;height:30px}
+  @media(max-width:520px){.ba{grid-template-columns:1fr;gap:6px}.ba-arrow svg{transform:rotate(90deg)}.ba-arrow{padding:6px 0 10px}}
+
+  /* chapters */
+  .toc{font-family:var(--body);margin:4px 0 20px}
+  .toc .toc-title{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);margin:0 0 6px}
+  .toc ol{margin:0;padding:0;list-style:none}
+  .toc li{display:flex;align-items:baseline;gap:10px;padding:7px 0;font-size:18px;line-height:1.4}
+  .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:54px;font-size:15px;font-weight:400;white-space:nowrap}
+  .toc li i{flex:1;border-bottom:1.5px dotted var(--tint-3);transform:translateY(-5px);min-width:16px;font-style:normal}
+  .toc li b{font-weight:400;min-width:0;text-wrap:wrap}
+  .toc li{text-wrap:wrap}
+  .toc li em{color:var(--muted);font-style:italic;font-size:15px;white-space:nowrap}
+
+  /* buttons */
+  .cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--accent);color:var(--bg);font-family:var(--body);font-weight:600;font-size:18px;
+       text-decoration:none;padding:17px 22px;border-radius:10px;transition:background .15s ease,transform .15s ease}
+  .cta:hover{background:var(--accent-dark)}
+  .cta:active{transform:scale(.99)}
+  .cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .cta-wrap{margin:22px 0 26px}
+  .cta-note{font-family:var(--body);font-size:15px;color:var(--accent);font-weight:400;text-align:center;margin:10px 0 0!important}
+
+  /* comments (TikTok style reviews) */
+  .comments-head{font-family:var(--body);display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
+  .comments-head b{font-weight:400;font-size:18px;color:var(--accent)}
+  .comments-head span{font-size:15px;color:var(--muted)}
+  .comment{display:flex;gap:12px;padding:14px 0;font-family:var(--body)}
+  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:400}
+  .comment .name{font-size:15px;color:var(--muted);font-weight:400;margin-bottom:2px}
+  .comment .name small{font-weight:400}
+  .comment .txt{font-size:18px;line-height:1.45}
+  .more summary{font-family:var(--body);font-size:15px;font-weight:400;color:var(--muted);cursor:pointer;list-style:none;padding:6px 0 0 48px}
+  .more summary::-webkit-details-marker{display:none}
+  .more[open] summary{display:none}
+
+  /* offer */
+  .offer{border:1.5px solid var(--ink);border-radius:14px;padding:26px 22px 22px;margin:8px 0 10px;scroll-margin-top:16px}
+  .offer h2{margin:0 0 4px!important;text-align:center;font-size:24px}
+  .offer .sub{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
+  .offer .bundle{margin:0 -6px 6px;mix-blend-mode:multiply}
+  .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 4px;font-family:var(--body)}
+  .price .now{font-family:var(--serif);font-size:32px;font-weight:600;line-height:1;color:var(--accent)}
+  .price .was{color:var(--muted);text-decoration:line-through;font-size:24px}
+  .price .save{align-self:center;font-size:15px;color:var(--muted)}
+  .price-note{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 18px!important}
+  .includes{list-style:none;margin:0 0 20px;padding:0;font-family:var(--body);font-size:18px}
+  .includes li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);line-height:1.4}
+  .includes li:last-child{border-bottom:1px solid var(--line)}
+  .includes li::before{content:"✓";color:var(--accent);font-weight:400;flex:none}
+  .includes .tag{margin-left:auto;font-size:15px;font-weight:400;letter-spacing:.04em;color:var(--muted);white-space:nowrap;align-self:center}
+  .guarantee{font-family:var(--body);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
+  .guarantee svg{flex:none;margin-top:2px;color:var(--accent)}
+  .pay{display:flex;justify-content:center;margin-top:14px}
+  .pay img{height:24px;width:auto;opacity:.75;mix-blend-mode:multiply}
+
+  /* faq */
+  .faq{font-family:var(--body);margin:0 0 10px}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq details:first-of-type{border-top:1px solid var(--line)}
+  .faq summary{cursor:pointer;list-style:none;padding:16px 34px 16px 0;font-weight:400;font-size:18px;line-height:1.4;position:relative}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:400;color:var(--muted)}
+  .faq details[open] summary::after{content:"–"}
+  .faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .faq .a{padding:0 0 16px;font-size:18px;line-height:1.6;color:var(--ink)}
+
+  .ps{font-style:italic}
+
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 20px 110px;text-align:center;font-family:var(--body);font-size:15px;color:var(--muted)}
+  footer a{margin:0 8px}
+  footer p{max-width:520px;margin:12px auto 0;line-height:1.6}
+
+  /* sticky buy bar */
+  .buybar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(254,247,236,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+          border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .25s ease}
+  .buybar.show{transform:none}
+  .buybar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px;font-family:var(--body)}
+  .buybar .p{flex:1;line-height:1.25;font-size:15px;color:var(--muted)}
+  .buybar a{color:var(--bg)!important}
+  .buybar .p b{font-weight:400;display:block;color:var(--ink);font-size:18px}
+  .buybar .p s{margin-left:4px}
+  .buybar .bp{color:var(--ink);font-weight:400}
+  .buybar a{background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<main class="post">
+
+  <!-- ===== HEADER ===== -->
+  <div class="post-head">
+    <h1>la psicología de las hijas mayores</h1>
+    <div class="byline">
+      <img src="../images/author-pfp.webp" alt="anna celestina" width="40" height="40">
+      <div>
+        <div class="who">anna celestina</div>
+        <div class="meta">6 min de lectura</div>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" id="like" aria-pressed="false" aria-label="me gusta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></svg>
+      </button>
+      <a href="#comments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>
+        600
+      </a>
+      <span class="spacer"></span>
+      <button type="button" id="share" aria-label="compartir">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        compartir
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== HOOK ===== -->
+  <h2 class="first">¿cuántas veces te dijeron &ldquo;eres muy madura para tu edad&rdquo;?</h2>
+  <p>al principio sonaba a cumplido. pero para muchas de nosotras, esas palabras traían un acuerdo que nadie dijo en voz alta: sé responsable. sé madura. y no le compliques la vida a nadie.</p>
+  <p>en algún momento, que te necesitaran empezó a sentirse más seguro que tener tus propias necesidades.</p>
+  <p>así que te volviste la responsable. la que lo arregla todo. la que leía el ambiente antes de que alguien abriera la boca.</p>
+  <p>no te volviste así porque algo estuviera mal contigo. te convertiste en lo que necesitabas ser para sobrevivir. y con el tiempo, sobrevivir se volvió lo normal.</p>
+
+  <!-- ===== THE WOUND ===== -->
+  <h2>la verdadera razón por la que te sientes así</h2>
+  <p>la herida de la hija mayor no es un diagnóstico que vas a encontrar en un libro de medicina, pero se vive de verdad y se queda grabada en tu sistema nervioso. se nota en cómo te mueves por la vida: siempre responsable, siempre confiable, siempre alerta.</p>
+  <p>es lo que pasa cuando tu valor se mide por lo útil que eres, cuando el cariño depende de lo que logras y cuando descansar se siente como flojera en vez de como algo que te sana.</p>
+  <p>deja huellas en todo. en cómo pides perdón por existir. en la culpa que te da querer más. en lo mucho que te cuesta pedir ayuda porque, en el fondo, aprendiste que nadie va a venir.</p>
+  <p>no es solo estrés y tampoco es tu personalidad. es una identidad hecha de deber, culpa y acuerdos invisibles que nunca aceptaste firmar.</p>
+
+  <!-- ===== TRANSITION + WHY I WROTE THIS ===== -->
+  <h2>por qué escribí esto</h2>
+  <p>yo también soy hija mayor. durante años cargué un peso que nunca elegí. era la que cuidaba a todos, la fuerte, la que sostenía todo. la niña brillante que terminó agotada y nunca aprendió a descansar.</p>
+  <p>podía explicar la herida a la perfección. había leído los posts, visto los videos, se los mandaba a mis amigas con un &ldquo;literal soy yo&rdquo;. y aun así me sentía culpable cada vez que me sentaba a descansar.</p>
+  <p>porque darte cuenta no cambia los patrones que viven en tu sistema nervioso. tienes que hacer algo con eso. escribirlo. ordenarlo. llorarlo. decir que no una vez y ver qué pasa.</p>
+  <p>así que escribí el libro que me hubiera gustado que alguien me diera. empieza con una prueba sencilla. sé honesta:</p>
+
+  <ul class="signs">
+    <li>pido perdón por emociones que podrían incomodar a los demás.</li>
+    <li>siento la tensión en un lugar antes de que alguien hable.</li>
+    <li>soy &ldquo;madura para mi edad&rdquo; desde los 8 años.</li>
+    <li>me siento culpable cuando no estoy haciendo algo productivo.</li>
+    <li>soy la psicóloga de todos, pero nadie me escucha a mí.</li>
+    <li>pedir ayuda se siente como debilidad.</li>
+    <li>en secreto quisiera que alguien me cuidara a mí.</li>
+    <li>confundo que me quieran con ser útil.</li>
+  </ul>
+
+  <p>¿marcaste aunque sea una? bienvenida al club de las hijas mayores.</p>
+
+  <figure class="figure">
+    <img src="../images/sindrome-hija-mayor.webp" alt="síndrome de la hija mayor, de anna celestina" width="736" height="753" loading="lazy" decoding="async">
+  </figure>
+
+  <!-- ===== WHAT'S INSIDE ===== -->
+  <h2 id="inside">qué hay adentro</h2>
+  <p>este libro no se trata de arreglarte de la noche a la mañana. se trata de avanzar paso a paso hacia una vida más ligera. 16 capítulos de ejercicios guiados basados en principios terapéuticos comprobados. escribes, reflexionas y pruebas cosas nuevas.</p>
+
+  <div class="toc">
+    <h3 class="toc-title">índice</h3>
+    <ol>
+      <li><span>cap. 01</span><b>el peso que nunca elegiste</b><i></i><em>p. 3</em></li>
+      <li><span>cap. 02</span><b>dónde empezó todo</b><i></i><em>p. 9</em></li>
+      <li><span>cap. 03</span><b>por qué fingir que estás bien no funciona</b><i></i><em>p. 18</em></li>
+      <li><span>cap. 04</span><b>aquí empieza tu sanación</b><i></i><em>p. 21</em></li>
+      <li><span>cap. 05</span><b>el día que se terminó mi infancia</b><i></i><em>p. 22</em></li>
+      <li><span>cap. 06</span><b>la culpa de la hermana mayor (vacía y ordena tu culpa)</b><i></i><em>p. 32</em></li>
+      <li><span>cap. 07</span><b>la hermana enojona (la línea del tiempo de tu rabia)</b><i></i><em>p. 41</em></li>
+      <li><span>cap. 08</span><b>la mentira de &ldquo;no necesito a nadie&rdquo; (el test de alergia a la ayuda)</b><i></i><em>p. 48</em></li>
+      <li><span>cap. 09</span><b>tu trabajo no define tu valor</b><i></i><em>p. 54</em></li>
+      <li><span>cap. 10</span><b>el cuerpo lo recuerda todo</b><i></i><em>p. 66</em></li>
+      <li><span>cap. 11</span><b>amada, no solo necesitada</b><i></i><em>p. 74</em></li>
+      <li><span>cap. 12</span><b>el cajero automático de la familia (límites con el dinero)</b><i></i><em>p. 85</em></li>
+      <li><span>cap. 13</span><b>las heridas que heredamos</b><i></i><em>p. 90</em></li>
+      <li><span>cap. 14</span><b>soy tu hermana, no tu mamá</b><i></i><em>p. 97</em></li>
+      <li><span>cap. 15</span><b>volver a ser la niña que no pudiste ser</b><i></i><em>p. 105</em></li>
+      <li><span>cap. 16</span><b>el ciclo termina contigo</b><i></i><em>p. 117</em></li>
+    </ol>
+  </div>
+
+  <p>y los ejercicios por los que más me escriben: el ensayo para la llamada con mamá (un guion real para esas llamadas que te mueven todo: tiempo límite, temas seguros, una frase para colgar y cómo cuidarte después) y el permiso firmado, donde oficialmente te devuelves la infancia que no tuviste.</p>
+
+  <!-- ===== BEFORE / AFTER ===== -->
+  <div class="ba">
+    <div>
+      <h3>ahora mismo</h3>
+      <ul>
+        <li>te sientes culpable cuando no estás haciendo algo productivo</li>
+        <li>confundes que te quieran con ser útil</li>
+        <li>estás agotada en el cuerpo, no solo en la mente</li>
+        <li>lees el ambiente antes de que alguien hable</li>
+        <li>la psicóloga de todos, pero nadie te escucha a ti</li>
+      </ul>
+    </div>
+    <div class="ba-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="after">
+      <h3>después del libro</h3>
+      <ul>
+        <li>tu sistema nervioso por fin baja la guardia</li>
+        <li>un cuerpo que ya no vive esperando el próximo problema</li>
+        <li>límites que se respetan, incluso en casa</li>
+        <li>descansar sin culpa</li>
+        <li>que te quieran por quien eres, no por lo que haces</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <a class="cta" href="#offer">quiero el libro por $12 →</a>
+    <p class="cta-note">descarga inmediata · reembolso en 14 días</p>
+  </div>
+
+  <!-- ===== COMMENTS / REVIEWS ===== -->
+  <h2 id="comments" style="scroll-margin-top:16px">lo que dicen otras hijas mayores</h2>
+  <div class="comments-head"><b>★★★★★ 4.8</b><span>· 600 reseñas</span></div>
+
+  <div class="comment"><span class="av" style="background:var(--tint-2);color:var(--ink)">p</span><div><div class="name">priya m. <small>· mumbai</small></div><div class="txt">no estaba lista para sentirme tan expuesta hoy, pero aquí estamos 😭 cada página me tocó demasiado de cerca. la que sabe, sabe.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">f</span><div><div class="name">fatima zahra <small>· casablanca</small></div><div class="txt">todos siempre esperaban algo de mí. necesitaban algo de mí. nunca podía descansar. este libro por fin me dio permiso.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-3);color:var(--ink)">c</span><div><div class="name">chisom <small>· lagos</small></div><div class="txt">la hoja de la niña interior me hizo ver lo chiquita que era cuando empecé a actuar como la adulta. lloré 20 minutos seguidos.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-5);color:var(--bg)">z</span><div><div class="name">zara <small>· londres</small></div><div class="txt">leer esto fue como si alguien por fin me devolviera a mí misma. la verdad no esperaba que un libro de ejercicios me pegara tan fuerte.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-1);color:var(--ink)">r</span><div><div class="name">renée l. <small>· parís</small></div><div class="txt">confundir que te quieran con ser útil. auch. tuve que dejarlo un ratito y quedarme con eso. el capítulo 3 me destrozó. 💔</div></div></div>
+  <details class="more">
+    <summary>ver 6 respuestas más ⌄</summary>
+    <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">y</span><div><div class="name">yara al-hassan <small>· beirut</small></div><div class="txt">por fin tuve palabras para explicar por qué descansar me parecía imposible. sentí que alguien entendía la parte de mí que siempre escondo. cómprenlo ya.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-2);color:var(--ink)">l</span><div><div class="name">leila <small>· dubai</small></div><div class="txt">las preguntas son directas sin ser duras. lloré, pero de esa forma que después te deja más liviana. tienes que probarlo.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">n</span><div><div class="name">nora <small>· sydney</small></div><div class="txt">tenía que parar a cada rato porque cada página le atinaba demasiado. en el buen sentido. me sentí vista sin sentirme juzgada 🤍</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-3);color:var(--ink)">a</span><div><div class="name">adaeze o. <small>· accra</small></div><div class="txt">me leyó completa y me hizo llorar. me describió tal cual. se lo mandé a todas las hijas mayores que conozco. vas a llorar, pero de la mejor manera.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-5);color:var(--bg)">c</span><div><div class="name">claire dubois <small>· bruselas</small></div><div class="txt">me dio palabras para la culpa. no sabía cuánto lo necesitaba hasta que lo escribí. lo recomiendo muchísimo 🌱</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-1);color:var(--ink)">a</span><div><div class="name">amara <small>· nairobi</small></div><div class="txt">lo compré por el libro, pero los poemas fueron los que me abrieron el corazón. suaves, honestos, dolorosamente familiares.</div></div></div>
+  </details>
+
+  <!-- ===== BRIDGE TO OFFER ===== -->
+  <h2>aquí empieza tu sanación</h2>
+  <p>no tienes que hacerlo todo de una vez. ve a tu ritmo. algunos ejercicios se van a sentir ligeros y otros te van a doler. es normal. lo único que te pido es que seas honesta, no perfecta.</p>
+  <p>respira hondo. pasa la página. empecemos.</p>
+
+  <!-- ===== OFFER ===== -->
+  <section class="offer" id="offer">
+    <h2>kit de sanación de la hija mayor™</h2>
+    <img class="bundle" src="../images/eds bundle image.webp" alt="el libro, poemas y cartas, y la hoja para sanar a tu niña interior" width="2640" height="1485" loading="lazy" decoding="async">
+
+    <div class="price"><span class="now">$12</span><span class="was">$49</span><span class="save">ahorras 75%</span></div>
+    <p class="price-note">un solo pago. sin suscripción. es tuyo para siempre.</p>
+
+    <ul class="includes">
+      <li>el libro síndrome de la hija mayor (16 capítulos)</li>
+      <li>poemas y cartas<span class="tag">regalo</span></li>
+      <li>hoja para sanar a tu niña interior<span class="tag">regalo</span></li>
+      <li>acceso inmediato y de por vida, en cualquier dispositivo</li>
+    </ul>
+
+    <!-- REPLACE-CHECKOUT: point href to your checkout -->
+    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">quiero acceso ahora →</a>
+
+
+    <div class="guarantee">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      <div>garantía de reembolso de 14 días. si sientes que no es para ti, escríbeme dentro de los 14 días y te devuelvo tu dinero. sin preguntas.</div>
+    </div>
+
+    <div class="pay"><img src="../images/payment-methods.jpg" alt="paypal, visa, mastercard, american express, discover" width="492" height="49" loading="lazy" decoding="async"></div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <h2>preguntas frecuentes</h2>
+  <div class="faq">
+    <details>
+      <summary>¿es un libro físico?</summary>
+      <div class="a">no, es digital. por eso puedes empezar hoy mismo sin esperar un envío.</div>
+    </details>
+
+    <details>
+      <summary>¿y si no me sirve?</summary>
+      <div class="a">escríbeme a <a href="mailto:eldestdaughterbook@gmail.com">eldestdaughterbook@gmail.com</a> dentro de los 14 días y te devuelvo todo tu dinero. no tienes que dar explicaciones.</div>
+    </details>
+
+    <details>
+      <summary>¿cómo lo recibo después de pagar?</summary>
+      <div class="a">apenas termines de pagar te llega un enlace de descarga a tu correo. es un kit digital, así que lo puedes abrir en tu celular, tablet o computadora, o imprimir las páginas en las que quieras escribir.</div>
+    </details>
+
+    <details>
+      <summary>no soy la hija mayor. ¿igual me sirve?</summary>
+      <div class="a">sí. esto tiene que ver con el papel que te tocó, no con el orden en que naciste. muchas hijas únicas, hermanas menores y hermanas del medio también fueron la responsable: la que arregla, la que pone paz, el apoyo emocional de todos. si esa eres tú, estás en el lugar correcto.</div>
+    </details>
+
+    <details>
+      <summary>ya fui a terapia y leí muchos libros. ¿por qué esto me ayudaría?</summary>
+      <div class="a">porque darte cuenta y sanar son dos cosas distintas. puedes describir la herida de la hija mayor a la perfección y aun así repetir el mismo patrón todos los días. este libro es para escribir, reflexionar y probar, ejercicio por ejercicio. combina muy bien con la terapia, pero no la reemplaza.</div>
+    </details>
+
+    <details>
+      <summary>todo lo que avanzo se me borra apenas estoy con mi familia.</summary>
+      <div class="a">justo para eso están el ensayo para la llamada con mamá y el capítulo de límites con el dinero: guiones prácticos para los momentos que más te desarman, como la llamada que te hace sentir culpable o cuando te piden dinero.</div>
+    </details>
+
+    <details>
+      <summary>¿tengo que terminarlo de una vez?</summary>
+      <div class="a">no. está hecho para ir despacio. una página, una pregunta o una sección, cuando tengas la energía.</div>
+    </details>
+
+    <details>
+      <summary>¿lo puedo regalar?</summary>
+      <div class="a">sí. muchas se lo regalan a una hermana, a una amiga o a su mamá, que en silencio carga el mismo peso.</div>
+    </details>
+  </div>
+
+  <div class="cta-wrap">
+    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">quiero el kit por $12 →</a>
+    <p class="cta-note">descarga inmediata · reembolso en 14 días</p>
+  </div>
+
+  <p class="big">pasaste años convirtiéndote en lo que todos necesitaban.<br><em>ya es hora de convertirte en ti.</em></p>
+  <p>con cariño,<br>anna</p>
+  <p class="ps">pd: el precio de lanzamiento es $12 (normalmente $49). si estás dudando, cómpralo, haz el primer capítulo esta noche y, si no te convence, te devuelvo tu dinero. <a href="#offer">quiero el libro →</a></p>
+
+</main>
+
+<footer>
+  <div><a href="/privacy-policy">política de privacidad</a> · <a href="/terms-of-service">términos del servicio</a></div>
+  <p>este programa es educativo y de desarrollo personal. no es terapia ni atención médica, y no reemplaza un tratamiento profesional de salud mental.</p>
+  <p>¿necesitas ayuda? <a href="mailto:eldestdaughterbook@gmail.com" style="margin:0">eldestdaughterbook@gmail.com</a></p>
+</footer>
+
+<!-- sticky buy bar: appears after "what's inside", hides while the offer or a checkout button is on screen -->
+<div class="buybar" id="buybar" aria-hidden="true">
+  <div class="in">
+    <div class="p"><b>kit de sanación™</b><span class="bp">$12</span> <s>$49</s> · descarga inmediata</div>
+    <a href="#offer" tabindex="-1">lo quiero →</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var bar=document.getElementById('buybar');
+  var head=document.getElementById('inside');  // bar appears once the reader has scrolled past "what's inside"
+  var blockers=document.querySelectorAll('#offer, .cta-wrap');
+  var pastHead=false, visible=new Set();
+  function update(){
+    var show=pastHead && visible.size===0;
+    bar.classList.toggle('show',show);
+    bar.setAttribute('aria-hidden',show?'false':'true');
+    bar.querySelector('a').tabIndex=show?0:-1;
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){pastHead=!e[0].isIntersecting&&e[0].boundingClientRect.top<0;update();}).observe(head);
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?visible.add(e.target):visible.delete(e.target);});update();});
+    blockers.forEach(function(b){io.observe(b);});
+  }
+
+  // which checkout button got the click (shows up in Clarity + GA4)
+  document.querySelectorAll('.js-checkout').forEach(function(a,i){
+    a.addEventListener('click',function(){
+      var where=a.closest('#offer')?'offer':'after_faq';
+      try{window.clarity&&clarity('event','checkout_click_'+where);}catch(e){}
+      try{gtag('event','begin_checkout',{location:where,value:12,currency:'USD'});}catch(e){}
+    });
+  });
+
+  var like=document.getElementById('like');
+  like.addEventListener('click',function(){var on=like.classList.toggle('liked');like.setAttribute('aria-pressed',on);});
+
+  document.getElementById('share').addEventListener('click',function(){
+    var data={title:document.title,text:'esto me hizo sentir tan vista 🥹',url:location.origin+location.pathname};
+    if(navigator.share){navigator.share(data).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(data.url);this.lastChild.textContent=' enlace copiado';}
+  });
+})();
+</script>
+
+</body>
+</html>
