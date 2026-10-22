@@ -25,28 +25,6 @@
       "permanent": true
     }
   ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "hijamayor.com"
-        }
-      ],
-      "destination": "/es"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.hijamayor.com"
-        }
-      ],
-      "destination": "/es"
-    }
-  ],
   "headers": [
     {
       "source": "/fonts/(.*)",
