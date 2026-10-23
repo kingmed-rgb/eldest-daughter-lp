@@ -508,7 +508,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     starting=true;
     fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'es'})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); })
-      .then(function(d){ return loadStripe().then(function(){ return Stripe(d.publishableKey).initEmbeddedCheckout({fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); }); })
+      .then(function(d){ return loadStripe().then(function(){ var s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); }); })
       .then(function(c){ checkout=c; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
       .catch(function(err){ try{console.warn('embedded checkout fell back to payment link:',err&&err.message);}catch(e){} location.href=fallback; })
       .then(function(){ starting=false; });
