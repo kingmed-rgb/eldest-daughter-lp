@@ -211,7 +211,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-close{background:none;border:0;font:inherit;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
   .co-close:focus-visible{outline:2px solid var(--ink);border-radius:6px}
   .co-load{font-family:var(--body);text-align:center;padding:56px 16px 64px;display:flex;flex-direction:column;align-items:center;gap:10px}
-  .co-load b{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink)}
   .co-load span{font-size:15px;color:var(--muted)}
   .co-spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:co-spin .8s linear infinite;margin-bottom:6px}
   @keyframes co-spin{to{transform:rotate(360deg)}}
@@ -457,7 +456,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 <div class="co" id="co" hidden role="dialog" aria-modal="true" aria-label="checkout">
   <div class="co-sheet">
     <div class="co-head"><span>pago seguro · stripe</span><button type="button" class="co-close" id="co-close" aria-label="cerrar el pago">×</button></div>
-    <div id="co-mount"><div class="co-load"><div class="co-spin" aria-hidden="true"></div><b>síndrome de la hija mayor · $9</b><span>preparando tu pago seguro…</span></div></div>
+    <div id="co-mount"><div class="co-load"><div class="co-spin" aria-hidden="true"></div><span>preparando tu pago seguro…</span></div></div>
   </div>
 </div>
 
