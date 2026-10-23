@@ -201,9 +201,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .buybar a{background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
 
   /* stripe checkout pop-up: buyers pay without leaving the page */
-  .co{position:fixed;inset:0;z-index:50;background:rgba(43,18,24,.55);display:flex;align-items:flex-end;justify-content:center}
+  .co{position:fixed;inset:0;z-index:50;background:rgba(43,18,24,.55);display:flex;align-items:flex-end;justify-content:center;overscroll-behavior:contain;touch-action:none}
   .co[hidden]{display:none}
-  .co-sheet{background:#FFFFFF;width:100%;max-width:520px;max-height:94vh;overflow:auto;border-radius:16px 16px 0 0;padding:10px 0 calc(16px + env(safe-area-inset-bottom))}
+  .co-sheet{background:#FFFFFF;width:100%;max-width:520px;height:calc(100dvh - 28px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;border-radius:16px 16px 0 0;padding:10px 0 calc(16px + env(safe-area-inset-bottom))}
+  .co-head{position:sticky;top:-10px;z-index:1;background:#FFFFFF;padding-top:14px!important}
   .co-head{display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-family:var(--body);font-size:15px;color:var(--muted)}
   .co-head span{flex:1}
   .co-close{background:none;border:0;font:inherit;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
@@ -212,8 +213,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-load span{font-size:15px;color:var(--muted)}
   .co-spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:co-spin .8s linear infinite;margin-bottom:6px}
   @keyframes co-spin{to{transform:rotate(360deg)}}
-  body.co-open{overflow:hidden}
-  @media(min-width:560px){.co{align-items:center}.co-sheet{border-radius:16px}}
+  body.co-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+  html.co-open{overflow:hidden;scroll-behavior:auto}
+  body.co-open .buybar{display:none}
+  @media(min-width:560px){.co{align-items:center}.co-sheet{height:auto;max-height:90vh;border-radius:16px}}
 </style>
 </head>
 <body>
@@ -512,7 +515,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     var warm=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ warm.disconnect(); fetch('/api/create-checkout-session').catch(function(){}); } },{rootMargin:'1200px 0px'});
     warm.observe(document.getElementById('offer'));
   }
-  function showCo(on){ co.hidden=!on; document.body.classList.toggle('co-open',on); if(on) document.getElementById('co-close').focus(); }
+  var lockedY=0;
+  function showCo(on){
+    if(on===!co.hidden) return;
+    var b=document.body, d=document.documentElement;
+    if(on){ lockedY=window.scrollY; b.style.top=(-lockedY)+'px'; d.classList.add('co-open'); b.classList.add('co-open'); co.hidden=false; document.getElementById('co-close').focus({preventScroll:true}); }
+    else { co.hidden=true; b.classList.remove('co-open'); b.style.top=''; window.scrollTo(0,lockedY); d.classList.remove('co-open'); }
+  }
   function openCheckout(fallback){
     showCo(true);
     if(checkout||starting) return;
