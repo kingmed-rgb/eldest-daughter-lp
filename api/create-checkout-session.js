@@ -67,7 +67,7 @@ module.exports = async (req, res) => {
 
   try {
     const session = await stripe('checkout/sessions', secret, 'POST', {
-      ui_mode: 'embedded',
+      ui_mode: 'embedded_page',
       mode: 'payment',
       locale: lang === 'es' ? 'es-419' : 'en',
       'line_items[0][quantity]': '1',
