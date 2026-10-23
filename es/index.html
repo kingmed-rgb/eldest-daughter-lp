@@ -210,7 +210,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-head span{flex:1}
   .co-close{background:none;border:0;font:inherit;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
   .co-close:focus-visible{outline:2px solid var(--ink);border-radius:6px}
-  .co-load{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;padding:60px 16px}
+  .co-load{font-family:var(--body);text-align:center;padding:56px 16px 64px;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .co-load b{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink)}
+  .co-load span{font-size:15px;color:var(--muted)}
+  .co-spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:co-spin .8s linear infinite;margin-bottom:6px}
+  @keyframes co-spin{to{transform:rotate(360deg)}}
   body.co-open{overflow:hidden}
   @media(min-width:560px){.co{align-items:center}.co-sheet{border-radius:16px}}
 </style>
@@ -453,7 +457,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 <div class="co" id="co" hidden role="dialog" aria-modal="true" aria-label="checkout">
   <div class="co-sheet">
     <div class="co-head"><span>pago seguro · stripe</span><button type="button" class="co-close" id="co-close" aria-label="cerrar el pago">×</button></div>
-    <div id="co-mount"><p class="co-load">cargando el pago seguro…</p></div>
+    <div id="co-mount"><div class="co-load"><div class="co-spin" aria-hidden="true"></div><b>síndrome de la hija mayor · $9</b><span>preparando tu pago seguro…</span></div></div>
   </div>
 </div>
 
@@ -501,14 +505,21 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
     });
   }
+  // get ready before anyone taps: stripe.js after load, and wake the server function as the offer gets close
+  window.addEventListener('load',function(){ setTimeout(function(){ loadStripe().catch(function(){}); },1500); });
+  if('IntersectionObserver' in window){
+    var warm=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ warm.disconnect(); fetch('/api/create-checkout-session').catch(function(){}); } },{rootMargin:'1200px 0px'});
+    warm.observe(document.getElementById('offer'));
+  }
   function showCo(on){ co.hidden=!on; document.body.classList.toggle('co-open',on); if(on) document.getElementById('co-close').focus(); }
   function openCheckout(fallback){
     showCo(true);
     if(checkout||starting) return;
     starting=true;
-    fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'es'})})
-      .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); })
-      .then(function(d){ return loadStripe().then(function(){ var s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); }); })
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'es'})})
+      .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
+    Promise.all([session, loadStripe()])
+      .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
       .then(function(c){ checkout=c; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
       .catch(function(err){ try{console.warn('embedded checkout fell back to payment link:',err&&err.message);}catch(e){} location.href=fallback; })
       .then(function(){ starting=false; });
