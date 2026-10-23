@@ -9,10 +9,10 @@ const PUBLISHABLE_KEYS = {
   live: 'pk_live_51TciB1AsMiI0w2mO6D6OjO4WepQjTUOb6cbxogZrvy6Hxm4cHf6cQjhvlDXaineb8A21VtGWFXZHIv3UiZTiawRv00ecjNtsMq',
 };
 
-// What each page sells. Amounts are in cents (USD).
+// What each page sells. Amounts are in cents (USD). thankYou is a path on this site or a full URL.
 const PRODUCTS = {
   en: { name: 'The Eldest Daughter Healing Bundle', amount: 1200, thankYou: '/get-xk7f2' },
-  es: { name: 'Síndrome de la hija mayor (ebook)', amount: 900, thankYou: '/get-xk7f2' },
+  es: { name: 'Síndrome de la hija mayor (ebook)', amount: 900, thankYou: 'https://hijamayor.carrd.co/?session_id={CHECKOUT_SESSION_ID}#done' },
 };
 
 function keyMode(secret) {
@@ -76,7 +76,7 @@ module.exports = async (req, res) => {
       'line_items[0][price_data][product_data][name]': product.name,
       'metadata[page]': lang,
       // The thank-you page reads session_id to deduplicate the Purchase event.
-      return_url: 'https://' + host + product.thankYou + '?session_id={CHECKOUT_SESSION_ID}',
+      return_url: /^https?:/.test(product.thankYou) ? product.thankYou : 'https://' + host + product.thankYou + '?session_id={CHECKOUT_SESSION_ID}',
     });
     return res.status(200).json({ clientSecret: session.client_secret, publishableKey: PUBLISHABLE_KEYS[mode] });
   } catch (err) {
