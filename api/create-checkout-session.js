@@ -11,9 +11,24 @@ const PUBLISHABLE_KEYS = {
 
 // What each page sells. Amounts are in cents (USD). thankYou is a path on this site or a full URL.
 const PRODUCTS = {
-  en: { name: 'The Eldest Daughter Healing Bundle', amount: 1200, thankYou: '/get-xk7f2' },
+  en: { name: 'The Eldest Daughter Workbook + Poems & Letters', amount: 999, thankYou: '/get-xk7f2' },
   es: { name: 'Síndrome de la hija mayor (ebook)', amount: 900, thankYou: 'https://hijamayor.carrd.co/?session_id={CHECKOUT_SESSION_ID}#done' },
 };
+
+// Optional extras on the English page (+$7 each). Keep available:false until the file can be delivered;
+// the page hides them too (ADDONS_ON in index.html). Only ids listed here can ever be charged.
+const ADDONS = {
+  audiobook: { name: 'The Eldest Daughter Audiobook', amount: 700, available: false },
+  journal: { name: 'The Eldest Daughter Journal', amount: 700, available: false },
+};
+
+function readAddons(req, lang) {
+  if (lang !== 'en') return [];
+  let body = req.body;
+  if (typeof body === 'string') { try { body = JSON.parse(body); } catch (e) { body = {}; } }
+  const wanted = Array.isArray(body && body.addons) ? body.addons : [];
+  return [...new Set(wanted)].filter((id) => ADDONS[id] && ADDONS[id].available);
+}
 
 function keyMode(secret) {
   if (/^(sk|rk)_live_/.test(secret)) return 'live';
@@ -42,6 +57,17 @@ function readLang(req) {
   return PRODUCTS[lang] ? lang : 'en';
 }
 
+function lineItems(items) {
+  const out = {};
+  items.forEach((item, i) => {
+    out['line_items[' + i + '][quantity]'] = '1';
+    out['line_items[' + i + '][price_data][currency]'] = 'usd';
+    out['line_items[' + i + '][price_data][unit_amount]'] = String(item.amount);
+    out['line_items[' + i + '][price_data][product_data][name]'] = item.name;
+  });
+  return out;
+}
+
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   const secret = (process.env.STRIPE_SECRET_KEY || '').trim();
@@ -63,6 +89,7 @@ module.exports = async (req, res) => {
 
   const lang = readLang(req);
   const product = PRODUCTS[lang];
+  const addons = readAddons(req, lang);
   const host = req.headers['x-forwarded-host'] || req.headers.host;
 
   try {
@@ -70,11 +97,9 @@ module.exports = async (req, res) => {
       ui_mode: 'embedded_page',
       mode: 'payment',
       locale: lang === 'es' ? 'es-419' : 'en',
-      'line_items[0][quantity]': '1',
-      'line_items[0][price_data][currency]': 'usd',
-      'line_items[0][price_data][unit_amount]': String(product.amount),
-      'line_items[0][price_data][product_data][name]': product.name,
+      ...lineItems([{ name: product.name, amount: product.amount }, ...addons.map((id) => ADDONS[id])]),
       'metadata[page]': lang,
+      'metadata[addons]': addons.join(',') || 'none',
       // The thank-you page reads session_id to deduplicate the Purchase event.
       return_url: /^https?:/.test(product.thankYou) ? product.thankYou : 'https://' + host + product.thankYou + '?session_id={CHECKOUT_SESSION_ID}',
     });

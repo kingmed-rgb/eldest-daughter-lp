@@ -171,6 +171,19 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .pay{display:flex;justify-content:center;margin-top:14px}
   .pay img{height:24px;width:auto;opacity:.75;mix-blend-mode:multiply}
 
+  /* add-ons */
+  .addons{margin:0 0 18px}
+  .addons-title{font-size:15px;color:var(--muted);margin:0 0 8px!important}
+  .addon{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;font-size:18px;line-height:1.35}
+  .addon:has(input:checked){border-color:var(--accent);background:var(--tint-1)}
+  .addon input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent);flex:none}
+  .addon span{flex:1;display:flex;flex-direction:column;gap:2px}
+  .addon b{font-weight:400}
+  .addon small{font-size:15px;color:var(--muted)}
+  .addon em{font-style:normal;color:var(--accent);white-space:nowrap}
+  .addons-total{text-align:right;font-size:15px;color:var(--muted);margin:4px 0 0!important}
+  .addons-total b{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);margin-left:6px}
+
   /* faq */
   .faq{font-family:var(--body);margin:0 0 10px}
   .faq details{border-bottom:1px solid var(--line)}
@@ -341,7 +354,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </div>
 
   <div class="cta-wrap">
-    <a class="cta" href="#offer">get the workbook for $12 →</a>
+    <a class="cta" href="#offer">get the workbook for $9.99 →</a>
     <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
 
@@ -372,17 +385,24 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
     <h2>the eldest daughter healing bundle™</h2>
-    <img class="bundle" src="images/eds bundle image.webp" alt="the eldest daughter workbook, poems &amp; letters, and inner child healing worksheet" width="2640" height="1485" loading="lazy" decoding="async">
+    <img class="bundle" src="images/eds bundle image.webp" alt="the eldest daughter workbook and poems &amp; letters" width="2640" height="1485" loading="lazy" decoding="async">
 
-    <div class="price"><span class="now">$12</span><span class="was">$49</span><span class="save">save 75%</span></div>
+    <div class="price"><span class="now">$9.99</span><span class="was">$29</span><span class="save">save 66%</span></div>
     <p class="price-note">one-time payment. no subscription. yours forever.</p>
 
     <ul class="includes">
       <li>the eldest daughter workbook (16 chapters)</li>
       <li>poems &amp; letters<span class="tag">bonus</span></li>
-      <li>inner child healing worksheet<span class="tag">bonus</span></li>
       <li>instant lifetime access, on any device</li>
     </ul>
+
+    <!-- add-ons: shown only when ADDONS_ON is true in the script below (and available in api/create-checkout-session.js) -->
+    <div class="addons" id="addons" hidden>
+      <p class="addons-title">add to your order</p>
+      <label class="addon"><input type="checkbox" value="audiobook" data-price="7"><span><b>the eldest daughter audiobook</b><small>listen to the whole book, anywhere</small></span><em>+$7</em></label>
+      <label class="addon"><input type="checkbox" value="journal" data-price="7"><span><b>the eldest daughter journal</b><small>guided pages to work through it, day by day</small></span><em>+$7</em></label>
+      <p class="addons-total">total <b id="addons-total">$9.99</b></p>
+    </div>
 
     <!-- REPLACE-CHECKOUT: point href to your checkout -->
     <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get instant access →</a>
@@ -441,13 +461,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </div>
 
   <div class="cta-wrap">
-    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the bundle for $12 →</a>
+    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9.99 →</a>
     <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
 
   <p class="big">you spent years becoming who everyone else needed.<br><em>it's finally time to become you.</em></p>
   <p>with love,<br>anna</p>
-  <p class="ps">p.s. the founding price is $12 (normally $49). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
+  <p class="ps">p.s. it's $9.99 right now (it used to be $29). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
 
 </main>
 
@@ -468,7 +488,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 <!-- sticky buy bar: appears after "what's inside", hides while the offer or a checkout button is on screen -->
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="in">
-    <div class="p"><b>the healing bundle™</b><span class="bp">$12</span> <s>$49</s> · instant download</div>
+    <div class="p"><b>the healing bundle™</b><span class="bp">$9.99</span> <s>$29</s> · instant download</div>
     <a href="#offer" tabindex="-1">get it now →</a>
   </div>
 </div>
@@ -491,19 +511,29 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     blockers.forEach(function(b){io.observe(b);});
   }
 
+  // add-ons: flip to true once the audiobook and journal can be delivered (also set available:true in the api)
+  var ADDONS_ON=false, BASE=9.99;
+  var addonBoxes=[].slice.call(document.querySelectorAll('#addons input'));
+  function chosenAddons(){ return ADDONS_ON ? addonBoxes.filter(function(b){return b.checked;}) : []; }
+  function orderTotal(){ return Math.round((BASE+chosenAddons().reduce(function(s,b){return s+Number(b.dataset.price);},0))*100)/100; }
+  if(ADDONS_ON){
+    document.getElementById('addons').hidden=false;
+    addonBoxes.forEach(function(b){ b.addEventListener('change',function(){ document.getElementById('addons-total').textContent='$'+orderTotal().toFixed(2); if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} } checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML; }); });
+  }
+
   // which checkout button got the click (shows up in Clarity + GA4)
   document.querySelectorAll('.js-checkout').forEach(function(a,i){
     a.addEventListener('click',function(e){
       var where=a.closest('#offer')?'offer':'after_faq';
       try{window.clarity&&clarity('event','checkout_click_'+where);}catch(e){}
-      try{gtag('event','begin_checkout',{location:where,value:12,currency:'USD'});}catch(e){}
+      try{gtag('event','begin_checkout',{location:where,value:orderTotal(),currency:'USD'});}catch(e){}
       e.preventDefault();
       openCheckout(a.href);
     });
   });
 
   // stripe embedded checkout in a pop-up; any failure sends the buyer to the payment link instead
-  var co=document.getElementById('co'), checkout=null, starting=false;
+  var co=document.getElementById('co'), checkout=null, starting=false, loaderHTML=document.getElementById('co-mount').innerHTML;
   function loadStripe(){
     return window.Stripe ? Promise.resolve() : new Promise(function(ok,fail){
       var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
@@ -526,7 +556,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     showCo(true);
     if(checkout||starting) return;
     starting=true;
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en'})})
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',addons:chosenAddons().map(function(b){return b.value;})})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
