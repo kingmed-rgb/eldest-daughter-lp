@@ -17,3 +17,6 @@ pages/page-47.png
 # Unused font CSS files (fonts are self-hosted via @font-face in HTML)
 fonts/google-fonts.css
 fonts/google-fonts-woff2.css
+
+# Internal docs — never served on the site
+docs/
