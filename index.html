@@ -169,7 +169,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .guarantee{font-family:var(--body);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
   .guarantee svg{flex:none;margin-top:2px;color:var(--accent)}
   .pay{display:flex;justify-content:center;margin-top:14px}
-  .pay img{height:24px;width:auto;opacity:.75;mix-blend-mode:multiply}
+  .pay{flex-wrap:wrap;align-items:center;gap:6px}
+  .pay img{height:24px;width:auto;opacity:.8;mix-blend-mode:multiply}
+  .pay-badge{font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-transform:none;font-size:12px;font-weight:600;line-height:1;letter-spacing:0;color:#111;background:#fff;border:1px solid #d8cfc4;border-radius:5px;padding:5px 7px}
+  .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
 
   /* faq */
   .faq{font-family:var(--body);margin:0 0 10px}
@@ -393,7 +396,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <div>14-day money-back guarantee. if it doesn't feel right for you, email me within 14 days and i'll refund you. no questions asked.</div>
     </div>
 
-    <div class="pay"><img src="images/payment-methods.jpg" alt="paypal, visa, mastercard, american express, discover" width="492" height="49" loading="lazy" decoding="async"></div>
+    <div class="pay"><span class="pay-badge">Apple Pay</span><span class="pay-badge">Google Pay</span><span class="pay-badge pay-link">Link</span><img src="images/card-logos.jpg" alt="visa, mastercard, american express, discover" width="366" height="49" loading="lazy" decoding="async"></div>
   </section>
 
   <!-- ===== FAQ ===== -->
