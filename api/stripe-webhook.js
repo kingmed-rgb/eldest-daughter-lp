@@ -217,6 +217,3 @@ module.exports = async (req, res) => {
 module.exports.sendFor = sendFor;
 module.exports.stripeGet = stripeGet;
 module.exports.languageOf = languageOf;
-module.exports.resend = resend;
-module.exports.fromAddress = fromAddress;
-module.exports.REPLY_TO = REPLY_TO;

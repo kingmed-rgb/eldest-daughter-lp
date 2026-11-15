@@ -48,12 +48,4 @@ function filesFor(session) {
   return { lang, keys: ['legacy'], files: legacy.map((f) => FILES[f]) };
 }
 
-// One-click upsell on the thank-you page, charged to the card saved at checkout.
-const AUDIT = {
-  amount: 3700,          // cents. change here to reprice (e.g. 4700 for $47)
-  weeklySpots: 10,       // stop offering once this many sold in the last 7 days
-  inbox: 'eldestdaughterbook@gmail.com', // where the buyer's story is sent
-  name: { en: 'The Pattern Audit', es: 'La lectura de tu patrón' },
-};
-
-module.exports = { FILES, OFFERS, AUDIT, languageOf, filesFor };
+module.exports = { FILES, OFFERS, languageOf, filesFor };

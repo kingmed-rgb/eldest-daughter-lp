@@ -52,25 +52,6 @@ p{margin:0 0 16px}
 .rule{border:0;border-top:1px solid var(--line);margin:30px 0 18px}
 a.plain{color:var(--accent)}
 [hidden]{display:none!important}
-/* pattern audit upsell */
-.audit{margin:34px 0 8px;border:1.5px solid var(--ink);border-radius:16px;padding:22px 20px}
-.audit h2,.intake h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 6px}
-.audit .price{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:24px;color:#6B0F28;margin:0 0 12px}
-.audit .hook{font-size:18px;margin:0 0 14px}
-.audit ol{list-style:none;padding:0;margin:0 0 14px;counter-reset:s}
-.audit ol li{counter-increment:s;display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);line-height:1.5}
-.audit ol li:last-child{border-bottom:1px solid var(--line)}
-.audit ol li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;background:#F2DED6;color:var(--accent);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;margin-top:2px}
-.audit p{margin:0 0 10px}
-.btn{display:block;width:100%;border:0;cursor:pointer;background:#6B0F28;color:var(--bg);font:inherit;font-weight:600;font-size:18px;padding:16px 20px;border-radius:10px;margin:16px 0 10px}
-.btn:hover{background:var(--accent)}
-.btn[disabled]{opacity:.6;cursor:default}
-.fine{font-size:15px;line-height:1.5;color:var(--muted);margin:0 0 6px!important}
-.err{font-size:15px;color:#9C1C2E;margin:6px 0 0!important}
-.intake{margin:34px 0 8px;border-radius:16px;padding:22px 20px;background:#F2DED6}
-.intake textarea{width:100%;min-height:180px;border:1px solid #E3BDB8;border-radius:10px;padding:12px 14px;font:inherit;font-size:16px;line-height:1.5;background:var(--bg);color:var(--ink);text-transform:none;resize:vertical}
-.intake textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
-
 </style>
 </head>
 <body>
@@ -83,33 +64,6 @@ a.plain{color:var(--accent)}
     <div class="files" id="files"></div>
     <p class="muted" id="emailnote"></p>
   </div>
-
-  <section class="audit" id="audit" hidden>
-    <h2 id="a-title"></h2>
-    <p class="price" id="a-price"></p>
-    <p class="hook" id="a-hook"></p>
-    <ol><li id="a-s1"></li><li id="a-s2"></li></ol>
-    <p id="a-p1"></p>
-    <p id="a-p2"></p>
-    <button type="button" class="btn" id="a-buy"></button>
-    <p class="err" id="a-err" hidden></p>
-    <p class="fine" id="a-fine"></p>
-    <p class="fine" id="a-care"></p>
-  </section>
-
-  <section class="intake" id="intake" hidden>
-    <h2 id="i-title"></h2>
-    <p id="i-lead"></p>
-    <textarea id="i-text" maxlength="8000"></textarea>
-    <button type="button" class="btn" id="i-send"></button>
-    <p class="err" id="i-err" hidden></p>
-    <p class="fine" id="i-fine"></p>
-  </section>
-
-  <section class="intake" id="sent" hidden>
-    <h2 id="s-title"></h2>
-    <p id="s-lead"></p>
-  </section>
 
   <div id="nope" hidden>
     <p id="nopetext"></p>
@@ -125,38 +79,12 @@ a.plain{color:var(--accent)}
     title: 'gracias por tu compra', lead: 'aquí está todo lo que compraste. toca para descargar:', open: 'descargar',
     email: 'también te mandamos estos enlaces a tu correo. si no lo ves en unos minutos, revisa spam o promociones.',
     nope: 'si acabas de comprar, tus enlaces de descarga te llegan por correo en unos minutos. revisa también spam o promociones.',
-    help: '¿algún problema? escríbeme a',
-    a: { title: 'la lectura de tu patrón', hook: 'seamos honestas: ya sabes que algo te está manejando. solo que desde adentro no se ve.',
-      s1: 'me mandas un párrafo (o cinco) sobre dónde estás atorada. tu mamá. tu matrimonio. tu negocio. eso a lo que sigues diciendo que sí.',
-      s2: 'en menos de 48 horas te mando: el patrón que te está manejando, de dónde viene y tu siguiente paso exacto.',
-      p1: 'sin llamadas. sin cámara. sin tareas que te hagan sentir culpable por no hacerlas.',
-      p2: 'solo la verdad, con cariño, de alguien que se dedica a reconocer los patrones de las hijas mayores.',
-      buy: 'agregar la lectura · $', busy: 'procesando…',
-      fine: function(n){ return 'se cobra a la tarjeta que acabas de usar. un solo pago. quedan ' + n + ' de 10 lugares esta semana.'; },
-      care: 'esto no es terapia. si estás en crisis, busca de inmediato una línea de ayuda de tu país.',
-      declined: 'tu banco no aprobó el cobro. no se te cobró nada.', full: 'ya no quedan lugares esta semana. no se te cobró nada.', fail: 'algo salió mal. no se te cobró nada. intenta de nuevo.' },
-    i: { title: 'listo, tu lugar está apartado.', lead: 'cuéntame dónde estás atorada. tómate tu tiempo: un párrafo o cinco.',
-      ph: 'tu mamá. tu matrimonio. tu negocio. eso a lo que sigues diciendo que sí…', send: 'mandárselo a anna', busy: 'enviando…',
-      fine: 'también puedes responder al correo que te acabamos de mandar.', short: 'escribe un poquito más para que pueda ayudarte.', fail: 'no se pudo enviar. intenta de nuevo o responde al correo.' },
-    s: { title: 'lo recibí.', lead: function(e){ return 'te respondo en menos de 48 horas' + (e ? ', a ' + e : '') + '.'; } }
+    help: '¿algún problema? escríbeme a'
   } : {
     title: 'thank you for your order', lead: "here's everything you bought. tap to download:", open: 'download',
     email: "we've also emailed you these links. if you don't see it in a few minutes, check spam or promotions.",
     nope: "if you just bought, your download links are on their way to your email. check spam or promotions too.",
-    help: 'any trouble? email me at',
-    a: { title: 'the pattern audit', hook: "lowkey... you already know something's running you. you just can't see it from the inside.",
-      s1: "you send me a paragraph (or 5) about where you're stuck. your mom. your marriage. your business. the thing you keep saying yes to.",
-      s2: 'within 48 hours, i send back: the pattern running you, where it came from, and your exact next move.',
-      p1: "no calls. no camera. no homework you'll feel guilty about not doing.",
-      p2: 'just the truth, with love, from someone who clocks eldest daughter patterns for a living.',
-      buy: 'add the pattern audit · $', busy: 'processing…',
-      fine: function(n){ return 'charged to the card you just used. one payment. ' + n + ' of 10 spots left this week.'; },
-      care: "this isn't therapy. if you're in crisis, please contact a local crisis line right away.",
-      declined: "your bank didn't approve the charge. you weren't charged.", full: "this week's spots just filled up. you weren't charged.", fail: "something went wrong. you weren't charged. please try again." },
-    i: { title: "you're in. your spot is saved.", lead: "tell me where you're stuck. take your time: a paragraph or five.",
-      ph: 'your mom. your marriage. your business. the thing you keep saying yes to…', send: 'send it to anna', busy: 'sending…',
-      fine: 'you can also just reply to the email we sent you.', short: 'write a little more so i can actually help.', fail: "couldn't send it. try again, or reply to the email." },
-    s: { title: 'got it.', lead: function(e){ return "you'll hear from me within 48 hours" + (e ? ', at ' + e : '') + '.'; } }
+    help: 'any trouble? email me at'
   };
   document.documentElement.lang = es ? 'es' : 'en';
   document.title = (es ? 'gracias' : 'thank you') + ' · ' + (es ? 'hija mayor' : 'eldest daughter');
@@ -194,57 +122,7 @@ a.plain{color:var(--accent)}
       try { window.clarity && clarity('event', 'purchase_' + d.items.join('_')); } catch (e) {}
       try { localStorage.setItem(key, '1'); } catch (e) {}
     }
-    audit();
   }).catch(nope);
-
-  // ---------- the pattern audit (one-click upsell) ----------
-  function $(x){ return document.getElementById(x); }
-  function post(body){ return fetch('/api/audit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(function(r){ return r.json().then(function(d){ d._status = r.status; return d; }); }); }
-  function showIntake(){ $('audit').hidden = true; $('intake').hidden = false; $('i-title').textContent = T.i.title; $('i-lead').textContent = T.i.lead; $('i-text').placeholder = T.i.ph; $('i-send').textContent = T.i.send; $('i-fine').textContent = T.i.fine; }
-  var buyerEmail = '', price = 37;
-  function audit(){
-    fetch('/api/audit?session_id=' + encodeURIComponent(id)).then(function(r){ return r.json(); }).then(function(a){
-      if (a.bought) return showIntake();
-      if (!a.available) return;
-      price = a.price;
-      $('a-title').textContent = T.a.title; $('a-price').textContent = '$' + a.price; $('a-hook').textContent = T.a.hook;
-      $('a-s1').textContent = T.a.s1; $('a-s2').textContent = T.a.s2; $('a-p1').textContent = T.a.p1; $('a-p2').textContent = T.a.p2;
-      $('a-buy').textContent = T.a.buy + a.price + ' →'; $('a-fine').textContent = T.a.fine(a.spotsLeft); $('a-care').textContent = T.a.care;
-      $('audit').hidden = false;
-      try { window.clarity && clarity('event', 'audit_shown'); } catch (e) {}
-    }).catch(function(){});
-  }
-  function bought(d){
-    buyerEmail = d.email || '';
-    try { fbq('track', 'Purchase', { value: price, currency: 'USD', contents: [{ id: 'audit', quantity: 1 }] }, { eventID: 'audit-' + id }); } catch (e) {}
-    try { gtag('event', 'purchase', { value: price, currency: 'USD', transaction_id: 'audit-' + id }); } catch (e) {}
-    try { window.clarity && clarity('event', 'audit_bought'); } catch (e) {}
-    showIntake();
-  }
-  function auditError(msg){ var b = $('a-buy'); b.disabled = false; b.textContent = T.a.buy + price + ' →'; $('a-err').textContent = msg; $('a-err').hidden = false; }
-  $('a-buy').addEventListener('click', function(){
-    var b = this; b.disabled = true; b.textContent = T.a.busy; $('a-err').hidden = true;
-    post({ action: 'buy', session_id: id }).then(function(d){
-      if (d.ok) return bought(d);
-      if (d.requiresAction) {
-        return new Promise(function(ok, fail){ if (window.Stripe) return ok(); var sc = document.createElement('script'); sc.src = 'https://js.stripe.com/v3/'; sc.onload = ok; sc.onerror = fail; document.head.appendChild(sc); })
-          .then(function(){ return Stripe(d.publishableKey).handleNextAction({ clientSecret: d.clientSecret }); })
-          .then(function(r){ if (r.error || !r.paymentIntent) throw new Error('declined'); return post({ action: 'confirm', session_id: id, payment_intent: r.paymentIntent.id }); })
-          .then(function(c){ if (c.ok) bought(c); else auditError(T.a.declined); })
-          .catch(function(){ auditError(T.a.declined); });
-      }
-      auditError(d._status === 409 ? T.a.full : d._status === 402 ? T.a.declined : T.a.fail);
-    }).catch(function(){ auditError(T.a.fail); });
-  });
-  $('i-send').addEventListener('click', function(){
-    var t = $('i-text').value.trim(), b = this;
-    if (t.length < 20) { $('i-err').textContent = T.i.short; $('i-err').hidden = false; return; }
-    b.disabled = true; b.textContent = T.i.busy; $('i-err').hidden = true;
-    post({ action: 'intake', session_id: id, text: t }).then(function(d){
-      if (!d.ok) throw new Error('fail');
-      $('intake').hidden = true; $('sent').hidden = false; $('s-title').textContent = T.s.title; $('s-lead').textContent = T.s.lead(buyerEmail);
-    }).catch(function(){ b.disabled = false; b.textContent = T.i.send; $('i-err').textContent = T.i.fail; $('i-err').hidden = false; });
-  });
 })();
 </script>
 </body>
