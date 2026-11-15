@@ -58,11 +58,11 @@ const savedCard = (s) => {
 
 const EMAIL = {
   en: {
-    bought: { subject: 'your pattern audit: next step', body: (p) => `you're in. your pattern audit spot is saved.\n\nreply to this email with a paragraph (or 5) about where you're stuck: your mom, your marriage, your business, the thing you keep saying yes to.\n\nif you already sent it from the thank-you page, you're all set. you'll hear from me within 48 hours of sending it.\n\nthis is personal reflection, not therapy. if you're in crisis, please contact a local crisis line right away.\n\nwith love,\nanna` },
+    bought: { subject: 'your pattern audit: next step', body: (p) => `you're in. your pattern audit spot is saved.\n\nreply to this email with a paragraph (or 5) about where you're stuck: your mom, your marriage, your business, the thing you keep saying yes to.\n\nif you already sent it from the thank-you page, you're all set. you'll hear from me within 48 hours of sending it.\n\nwith love,\nanna` },
     got: { subject: 'got it: your pattern audit', body: () => `got it. i'm reading what you sent, and you'll hear from me within 48 hours.\n\nwith love,\nanna` },
   },
   es: {
-    bought: { subject: 'tu lectura de patrón: siguiente paso', body: () => `listo. tu lugar para la lectura de tu patrón está apartado.\n\nresponde a este correo con un párrafo (o cinco) sobre dónde estás atorada: tu mamá, tu matrimonio, tu negocio, eso a lo que sigues diciendo que sí.\n\nsi ya lo mandaste desde la página de gracias, no tienes que hacer nada más. te respondo en menos de 48 horas desde que lo mandes.\n\nesto es para reflexionar, no es terapia. si estás en crisis, busca de inmediato una línea de ayuda de tu país.\n\ncon cariño,\nanna` },
+    bought: { subject: 'tu lectura de patrón: siguiente paso', body: () => `listo. tu lugar para la lectura de tu patrón está apartado.\n\nresponde a este correo con un párrafo (o cinco) sobre dónde estás atorada: tu mamá, tu matrimonio, tu negocio, eso a lo que sigues diciendo que sí.\n\nsi ya lo mandaste desde la página de gracias, no tienes que hacer nada más. te respondo en menos de 48 horas desde que lo mandes.\n\ncon cariño,\nanna` },
     got: { subject: 'lo recibí: tu lectura de patrón', body: () => `lo recibí. ya lo estoy leyendo y te respondo en menos de 48 horas.\n\ncon cariño,\nanna` },
   },
 };

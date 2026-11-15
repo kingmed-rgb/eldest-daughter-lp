@@ -94,7 +94,6 @@ a.plain{color:var(--accent)}
     <button type="button" class="btn" id="a-buy"></button>
     <p class="err" id="a-err" hidden></p>
     <p class="fine" id="a-fine"></p>
-    <p class="fine" id="a-care"></p>
   </section>
 
   <section class="intake" id="intake" hidden>
@@ -133,7 +132,6 @@ a.plain{color:var(--accent)}
       p2: 'solo la verdad, con cariño, de alguien que se dedica a reconocer los patrones de las hijas mayores.',
       buy: 'agregar la lectura · $', busy: 'procesando…',
       fine: function(n){ return 'se cobra a la tarjeta que acabas de usar. un solo pago. quedan ' + n + ' de 10 lugares esta semana.'; },
-      care: 'esto no es terapia. si estás en crisis, busca de inmediato una línea de ayuda de tu país.',
       declined: 'tu banco no aprobó el cobro. no se te cobró nada.', full: 'ya no quedan lugares esta semana. no se te cobró nada.', fail: 'algo salió mal. no se te cobró nada. intenta de nuevo.' },
     i: { title: 'listo, tu lugar está apartado.', lead: 'cuéntame dónde estás atorada. tómate tu tiempo: un párrafo o cinco.',
       ph: 'tu mamá. tu matrimonio. tu negocio. eso a lo que sigues diciendo que sí…', send: 'mandárselo a anna', busy: 'enviando…',
@@ -151,7 +149,6 @@ a.plain{color:var(--accent)}
       p2: 'just the truth, with love, from someone who clocks eldest daughter patterns for a living.',
       buy: 'add the pattern audit · $', busy: 'processing…',
       fine: function(n){ return 'charged to the card you just used. one payment. ' + n + ' of 10 spots left this week.'; },
-      care: "this isn't therapy. if you're in crisis, please contact a local crisis line right away.",
       declined: "your bank didn't approve the charge. you weren't charged.", full: "this week's spots just filled up. you weren't charged.", fail: "something went wrong. you weren't charged. please try again." },
     i: { title: "you're in. your spot is saved.", lead: "tell me where you're stuck. take your time: a paragraph or five.",
       ph: 'your mom. your marriage. your business. the thing you keep saying yes to…', send: 'send it to anna', busy: 'sending…',
@@ -209,7 +206,7 @@ a.plain{color:var(--accent)}
       price = a.price;
       $('a-title').textContent = T.a.title; $('a-price').textContent = '$' + a.price; $('a-hook').textContent = T.a.hook;
       $('a-s1').textContent = T.a.s1; $('a-s2').textContent = T.a.s2; $('a-p1').textContent = T.a.p1; $('a-p2').textContent = T.a.p2;
-      $('a-buy').textContent = T.a.buy + a.price + ' →'; $('a-fine').textContent = T.a.fine(a.spotsLeft); $('a-care').textContent = T.a.care;
+      $('a-buy').textContent = T.a.buy + a.price + ' →'; $('a-fine').textContent = T.a.fine(a.spotsLeft);
       $('audit').hidden = false;
       try { window.clarity && clarity('event', 'audit_shown'); } catch (e) {}
     }).catch(function(){});
