@@ -4,12 +4,12 @@
 const FILES_DIR = 'files/e2b0943418c5d310d9'; // unguessable folder, not indexed (see vercel.json)
 
 const FILES = {
-  workbook_en: { label: 'the eldest daughter workbook', url: 'https://drive.google.com/file/d/1uST3jP6d1VloCdCvBEyCtvD2JTofDXpg/view?usp=sharing' },
-  poems_en: { label: 'dear angry eldest daughter', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/dear-angry-eldest-daughter-en.pdf` },
-  journal_en: { label: 'the eldest daughter journal', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/the-eldest-daughter-journal-en.pdf` },
-  ebook_es: { label: 'síndrome de la hija mayor', url: 'https://drive.google.com/uc?export=download&id=11qYyNgbQSvzttHweeHf-WAbHuA7o4Jw9' },
-  poems_es: { label: 'querida hija mayor enojada', url: `https://www.hijamayor.com/${FILES_DIR}/querida-hija-mayor-enojada-es.pdf` },
-  journal_es: { label: 'el diario de la hija mayor', url: `https://www.hijamayor.com/${FILES_DIR}/el-diario-de-la-hija-mayor-es.pdf` },
+  workbook_en: { kind: 'workbook', img: '/images/offer-workbook.webp', label: 'the eldest daughter workbook', url: 'https://drive.google.com/file/d/1uST3jP6d1VloCdCvBEyCtvD2JTofDXpg/view?usp=sharing' },
+  poems_en: { kind: 'poetry', img: '/images/bump-poems-en.webp', label: 'dear angry eldest daughter', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/dear-angry-eldest-daughter-en.pdf` },
+  journal_en: { kind: 'guided journal', img: '/images/bump-journal-en.webp', label: 'the eldest daughter journal', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/the-eldest-daughter-journal-en.pdf` },
+  ebook_es: { kind: 'libro', img: '/images/sindrome-hija-mayor-3d.webp', label: 'síndrome de la hija mayor', url: 'https://drive.google.com/uc?export=download&id=11qYyNgbQSvzttHweeHf-WAbHuA7o4Jw9' },
+  poems_es: { kind: 'poesía', img: '/images/bump-poems-es.webp', label: 'querida hija mayor enojada', url: `https://www.hijamayor.com/${FILES_DIR}/querida-hija-mayor-enojada-es.pdf` },
+  journal_es: { kind: 'diario guiado', img: '/images/bump-journal-es.webp', label: 'el diario de la hija mayor', url: `https://www.hijamayor.com/${FILES_DIR}/el-diario-de-la-hija-mayor-es.pdf` },
 };
 
 // Amounts in cents (USD).
