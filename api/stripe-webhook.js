@@ -32,6 +32,7 @@ const EMAILS = {
       ['poems & letters', 'https://drive.google.com/file/d/1fmpT9Cs5dSTxVqiCkojP8w85hUxty_n2/view?usp=sharing'],
       ['inner child healing worksheet', 'https://drive.google.com/file/d/1-8AtRRz9L7xtuZoX6At3-qoCJh1JoTB_/view?usp=sharing'],
     ],
+    late: "sorry this is so late. a problem on our side kept your download email from going out, and it's fixed now.",
     tip: "save this email so you can come back to the files anytime. start with chapter one, at your own pace.",
     help: "if a link doesn't open or anything feels off, just reply to this email.",
     signoff: 'with love,<br>anna',
@@ -44,6 +45,7 @@ const EMAILS = {
     files: [
       ['síndrome de la hija mayor (pdf)', 'https://drive.google.com/uc?export=download&id=11qYyNgbQSvzttHweeHf-WAbHuA7o4Jw9'],
     ],
+    late: 'perdón por la demora. un error de nuestro lado impidió que te llegara el correo de descarga, y ya está resuelto.',
     tip: 'guarda este correo para volver al archivo cuando quieras. ve a tu ritmo.',
     help: 'si el enlace no abre o algo no funciona, responde a este correo.',
     signoff: 'con cariño,<br>anna',
@@ -51,6 +53,17 @@ const EMAILS = {
 };
 
 // ---------- helpers ----------
+
+async function stripePost(path, body) {
+  const res = await fetch('https://api.stripe.com/v1/' + path, {
+    method: 'POST',
+    headers: { Authorization: 'Bearer ' + (process.env.STRIPE_SECRET_KEY || '').trim(), 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(body).toString(),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error((data.error && data.error.message) || 'Stripe request failed');
+  return data;
+}
 
 async function stripeGet(path) {
   const res = await fetch('https://api.stripe.com/v1/' + path, {
@@ -116,7 +129,7 @@ function signatureOk(raw, header, secret) {
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function renderEmail(c) {
+function renderEmail(c, late) {
   const buttons = c.files.map(([label, url]) =>
     `<tr><td style="padding:0 0 12px"><a href="${esc(url)}" style="display:block;background:#4D0619;color:#FEF7EC;text-decoration:none;font-family:Georgia,serif;font-size:16px;font-weight:600;padding:15px 18px;border-radius:10px;text-align:center">${esc(label)} &rarr;</a></td></tr>`).join('');
   const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -125,6 +138,7 @@ function renderEmail(c) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FEF7EC"><tr><td align="center" style="padding:32px 20px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;font-family:Georgia,serif;color:#2B1218;font-size:17px;line-height:1.6">
 <tr><td style="padding:0 0 16px">${c.hello}</td></tr>
+${late ? `<tr><td style="padding:0 0 16px">${esc(c.late)}</td></tr>` : ''}
 <tr><td style="padding:0 0 20px">${esc(c.intro)}</td></tr>
 ${buttons}
 <tr><td style="padding:8px 0 16px">${esc(c.tip)}</td></tr>
@@ -132,7 +146,7 @@ ${buttons}
 <tr><td style="padding:0 0 24px">${c.signoff}</td></tr>
 <tr><td style="border-top:1px solid #EBDCCD;padding:16px 0 0;color:#5E434A;font-size:13px">${esc(REPLY_TO)}</td></tr>
 </table></td></tr></table></body></html>`;
-  const text = [c.hello, '', c.intro, '', ...c.files.map(([l, u]) => l + ': ' + u), '', c.tip, c.help, '', c.signoff.replace('<br>', '\n')].join('\n');
+  const text = [c.hello, '', ...(late ? [c.late, ''] : []), c.intro, '', ...c.files.map(([l, u]) => l + ': ' + u), '', c.tip, c.help, '', c.signoff.replace('<br>', '\n')].join('\n');
   return { html, text };
 }
 
@@ -144,18 +158,24 @@ function languageOf(session) {
   return 'en';
 }
 
-async function sendFor(session) {
+async function sendFor(session, { late = false } = {}) {
   const to = (session.customer_details && session.customer_details.email) || session.customer_email;
   if (!to) throw new Error('session ' + session.id + ' has no customer email');
   const lang = languageOf(session);
   const c = EMAILS[lang];
-  const { html, text } = renderEmail(c);
+  const { html, text } = renderEmail(c, late);
   // One email per checkout session, even if Stripe retries or sends both events.
   const sent = await resend('emails', 'POST', {
     from: await fromAddress(lang), to: [to], reply_to: REPLY_TO, subject: c.subject, html, text,
     tags: [{ name: 'lang', value: lang }],
   }, 'delivery-' + session.id);
-  console.log('delivery email sent', JSON.stringify({ session: session.id, lang, email_id: sent.id }));
+  console.log('delivery email sent', JSON.stringify({ session: session.id, lang, email_id: sent.id, late }));
+  // Mark the payment in Stripe so a later resend never emails this buyer twice.
+  const pi = typeof session.payment_intent === 'string' ? session.payment_intent : session.payment_intent && session.payment_intent.id;
+  if (pi) {
+    try { await stripePost('payment_intents/' + pi, { 'metadata[delivery_email]': sent.id }); }
+    catch (e) { console.error('could not mark payment', pi, e.message); }
+  }
   return sent;
 }
 
@@ -208,3 +228,7 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: err.message }); // non-2xx → Stripe retries
   }
 };
+
+module.exports.sendFor = sendFor;
+module.exports.stripeGet = stripeGet;
+module.exports.languageOf = languageOf;
