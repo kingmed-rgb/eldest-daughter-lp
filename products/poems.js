@@ -4,7 +4,7 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const T = {
   en: {
     title: 'dear angry eldest daughter',
-    cover: ['dear', 'angry', 'eldest daughter'],
+    cover: ['dear', 'angry', 'eldest', 'daughter'],
     sub: 'poems &amp; letters',
     author: 'anna celestina',
     fileTitle: 'Dear Angry Eldest Daughter',
@@ -80,10 +80,8 @@ const CSS = `
 .pcover{background:#141414!important;color:#FFFFFF!important;justify-content:space-between!important;padding:.75in .5in .7in!important}
 .pcover .pframe{position:absolute;inset:.28in;border:1px solid rgba(255,255,255,.3);border-radius:4px;pointer-events:none}
 .pcover .pk{font-size:10pt;letter-spacing:.32em;opacity:.85}
-.pcover h1{display:flex;flex-direction:column;align-items:center;line-height:.86;font-weight:600;letter-spacing:-.03em}
-.pcover h1 em{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:34pt;line-height:1;color:#BDBDBD;margin-bottom:8pt}
-.pcover h1 span{font-size:34pt;line-height:1.05}
-.pcover h1 span.big{font-size:66pt;line-height:.95;margin-bottom:4pt}
+.pcover h1{display:flex;flex-direction:column;align-items:center;line-height:1;font-weight:600;letter-spacing:-.02em;color:#FFFFFF}
+.pcover h1 span{font-size:60pt;line-height:1}
 .pcover .ps{font-family:'Fraunces';font-style:italic;font-size:14pt;opacity:.9}
 :root{--pw:5.5in;--ph:8.5in}
 @page{size:5.5in 8.5in;margin:.85in .75in .9in .75in;background:#FEF7EC;
@@ -140,7 +138,7 @@ function render(lang, items, pages = {}) {
 
   return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>${t.fileTitle}</title>
 <link rel="stylesheet" href="shared.css"><style>${CSS}</style></head><body>
-<section class="full pcover"><div class="pframe"></div><div class="pk">${t.author}</div><h1><em>${t.cover[0]}</em><span class="big">${t.cover[1]}</span><span>${t.cover[2]}</span></h1><div class="ps"></div></section>
+<section class="full pcover"><div class="pframe"></div><div class="pk">${t.author}</div><h1>${t.cover.map((w) => `<span>${w}</span>`).join('')}</h1><div class="ps"></div></section>
 <section class="plain"><div class="copy"><p>${t.copyright}</p><p style="margin-top:8pt">${t.disclaimer}</p></div></section>
 ${letter(t.open, 'open')}
 ${toc}
