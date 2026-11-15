@@ -10,7 +10,6 @@ const T = {
     fileTitle: 'Dear Angry Eldest Daughter',
     contents: 'contents',
     copyright: '© 2025 anna celestina. all rights reserved.<br>for personal use only. please don’t share or resell this file.',
-    disclaimer: 'this book is personal reflection, not therapy or medical advice.',
     open: {
       title: 'dear eldest daughter,',
       paras: [
@@ -46,7 +45,6 @@ const T = {
     fileTitle: 'Querida hija mayor enojada',
     contents: 'contenido',
     copyright: '© 2025 anna celestina. todos los derechos reservados.<br>solo para uso personal. por favor no compartas ni revendas este archivo.',
-    disclaimer: 'este libro es para reflexionar. no es terapia ni consejo médico.',
     open: {
       title: 'querida hija mayor,',
       paras: [
@@ -139,7 +137,7 @@ function render(lang, items, pages = {}) {
   return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>${t.fileTitle}</title>
 <link rel="stylesheet" href="shared.css"><style>${CSS}</style></head><body>
 <section class="full pcover"><div class="pframe"></div><div class="pk">${t.author}</div><h1>${t.cover.map((w) => `<span>${w}</span>`).join('')}</h1><div class="ps"></div></section>
-<section class="plain"><div class="copy"><p>${t.copyright}</p><p style="margin-top:8pt">${t.disclaimer}</p></div></section>
+<section class="plain"><div class="copy"><p>${t.copyright}</p></div></section>
 ${letter(t.open, 'open')}
 ${toc}
 ${t.parts.map((p) => part(p) + items.slice(p.from, p.to).map((x, j) => piece(x, p.from + j)).join('')).join('')}

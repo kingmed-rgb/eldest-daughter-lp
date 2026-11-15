@@ -94,7 +94,7 @@ function render(lang, J) {
 
   // cover + copyright
   add(`<div class="jk">${esc(m.author)}</div><h1>${m.coverPre ? `<span class="pre">${esc(m.coverPre)}</span>` : ''}<span class="big">${esc(m.coverBig)}</span>${m.coverPost ? `<span class="post">${esc(m.coverPost)}</span>` : ''}</h1><div class="jl"><i></i><i></i><i></i><i></i><i></i></div>`, 'jcover', { noNumber: true });
-  add(`<div style="flex:1"></div><p style="font-size:9.5pt;line-height:1.6;color:var(--muted);max-width:5in">${esc(m.copyright)}</p><p style="font-size:9.5pt;line-height:1.6;color:var(--muted);max-width:5in;margin-top:8pt">${esc(m.disclaimer)}</p>`, '', { noNumber: true });
+  add(`<div style="flex:1"></div><p style="font-size:9.5pt;line-height:1.6;color:var(--muted);max-width:5in">${esc(m.copyright)}</p>`, '', { noNumber: true });
 
   let tocIndex = -1;
   for (const p of J.pages) {
