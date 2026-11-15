@@ -387,17 +387,17 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
     <h2>síndrome de la hija mayor</h2>
-    <img class="bundle bundle--pair" src="../images/offer-libro-poemas.webp" alt="síndrome de la hija mayor y poemas y cartas, de anna celestina" width="924" height="885" loading="lazy" decoding="async">
+    <img class="bundle bundle--book" src="../images/sindrome-hija-mayor-3d.webp" alt="síndrome de la hija mayor, de anna celestina" width="604" height="900" loading="lazy" decoding="async">
 
     <div class="price"><span class="now">$9</span><span class="was">$29</span><span class="save">ahorras 69%</span></div>
     <p class="price-note">un solo pago. sin suscripción. es tuyo para siempre.</p>
 
     <ul class="includes">
       <li>el libro síndrome de la hija mayor, en ebook</li>
-      <li>poemas y cartas<span class="tag">regalo</span></li>
       <li>acceso inmediato y de por vida, en cualquier dispositivo</li>
     </ul>
 
+    <label class="bump"><input type="checkbox" id="bump-poems"><img src="../images/poems-cover-es.webp" alt="" width="250" height="370" loading="lazy" decoding="async"><span class="bt"><span class="bh"><b>agrega poemas y cartas</b><span class="bp">+$7</span></span>11 poemas y 23 cartas cortas sobre los papeles que nos tocaron.</span></label>
     <label class="bump"><input type="checkbox" id="bump-journal"><img src="../images/journal-cover-es.webp" alt="" width="250" height="314" loading="lazy" decoding="async"><span class="bt"><span class="bh"><b>agrega el diario de la hija mayor</b><span class="bp">+$7</span></span>49 páginas para imprimir: preguntas, permisos y 14 días de registro.</span></label>
     <p class="total">total <b id="total">$9</b></p>
 
@@ -509,15 +509,16 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     blockers.forEach(function(b){io.observe(b);});
   }
 
-  // order bump: the journal tick box changes the total and restarts the checkout with the new items
-  var BASE=9, JOURNAL=7, bump=document.getElementById('bump-journal');
-  function orderTotal(){ return BASE+(bump&&bump.checked?JOURNAL:0); }
-  if(bump) bump.addEventListener('change',function(){
+  // order bumps: each tick box adds $7, updates the total and restarts the checkout with the new items
+  var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('.bump input'));
+  function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
+  function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
+  bumps.forEach(function(b){ b.addEventListener('change',function(){
     document.getElementById('total').textContent='$'+orderTotal();
-    try{window.clarity&&clarity('event',bump.checked?'bump_on':'bump_off');}catch(e){}
+    try{window.clarity&&clarity('event',b.id+(b.checked?'_on':'_off'));}catch(e){}
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
     checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
-  });
+  }); });
 
   // which checkout button got the click (shows up in Clarity + GA4)
   document.querySelectorAll('.js-checkout').forEach(function(a,i){
@@ -554,7 +555,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     showCo(true);
     if(checkout||starting) return;
     starting=true;
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'es',journal:!!(bump&&bump.checked)})})
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'es',poems:chosen('poems'),journal:chosen('journal')})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })

@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({
       paid: true,
       lang,
-      journal: keys.includes('journal') || keys.includes('legacy') && lang === 'en',
+      items: keys,
       value: (s.amount_total || 0) / 100,
       currency: (s.currency || 'usd').toUpperCase(),
       files,

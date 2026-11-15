@@ -108,9 +108,9 @@ a.plain{color:var(--accent)}
     var key = 'purchase_sent_' + id, sent = false;
     try { sent = localStorage.getItem(key) === '1'; } catch (e) {}
     if (!sent) {
-      try { fbq('track', 'Purchase', { value: d.value, currency: d.currency, contents: [{ id: d.journal ? 'main+journal' : 'main', quantity: 1 }] }, { eventID: id }); } catch (e) {}
+      try { fbq('track', 'Purchase', { value: d.value, currency: d.currency, contents: d.items.map(function(k){ return { id: k, quantity: 1 }; }) }, { eventID: id }); } catch (e) {}
       try { gtag('event', 'purchase', { value: d.value, currency: d.currency, transaction_id: id }); } catch (e) {}
-      try { window.clarity && clarity('event', d.journal ? 'purchase_with_journal' : 'purchase'); } catch (e) {}
+      try { window.clarity && clarity('event', 'purchase_' + d.items.join('_')); } catch (e) {}
       try { localStorage.setItem(key, '1'); } catch (e) {}
     }
   }).catch(nope);

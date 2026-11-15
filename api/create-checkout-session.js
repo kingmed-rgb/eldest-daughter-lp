@@ -39,7 +39,7 @@ function readBody(req) {
   if (typeof body === 'string') { try { body = JSON.parse(body); } catch (e) { body = {}; } }
   body = body || {};
   const lang = body.lang || (req.query && req.query.lang);
-  return { lang: OFFERS[lang] ? lang : 'en', journal: body.journal === true };
+  return { lang: OFFERS[lang] ? lang : 'en', poems: body.poems === true, journal: body.journal === true };
 }
 
 module.exports = async (req, res) => {
@@ -61,9 +61,9 @@ module.exports = async (req, res) => {
   }
   if (!mode) return res.status(503).json({ error: 'Checkout is not configured' }); // page falls back to the payment link
 
-  const { lang, journal } = readBody(req);
+  const { lang, poems, journal } = readBody(req);
   const offer = OFFERS[lang];
-  const items = journal ? ['main', 'journal'] : ['main'];
+  const items = ['main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
   const host = req.headers['x-forwarded-host'] || req.headers.host;
 
   const params = {

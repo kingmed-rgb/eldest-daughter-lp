@@ -15,11 +15,13 @@ const FILES = {
 // Amounts in cents (USD).
 const OFFERS = {
   en: {
-    main: { name: 'The Eldest Daughter Workbook + Poems & Letters', amount: 900, files: ['workbook_en', 'poems_en'] },
+    main: { name: 'The Eldest Daughter Workbook', amount: 900, files: ['workbook_en'] },
+    poems: { name: 'Poems & Letters', amount: 700, files: ['poems_en'] },
     journal: { name: 'The Eldest Daughter Journal', amount: 700, files: ['journal_en'] },
   },
   es: {
-    main: { name: 'Síndrome de la hija mayor + Poemas y cartas', amount: 900, files: ['ebook_es', 'poems_es'] },
+    main: { name: 'Síndrome de la hija mayor', amount: 900, files: ['ebook_es'] },
+    poems: { name: 'Poemas y cartas', amount: 700, files: ['poems_es'] },
     journal: { name: 'El diario de la hija mayor', amount: 700, files: ['journal_es'] },
   },
 };

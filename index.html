@@ -184,6 +184,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .bump .bp{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--accent);white-space:nowrap}
   .total{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--body);font-size:15px;color:var(--muted);margin:0 2px 14px!important}
   .total b{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink)}
+  .offer .bundle--book{width:62%;max-width:260px;margin:6px auto 8px}
   .offer .bundle--pair{display:block;width:84%;max-width:380px;margin:4px auto 10px}
 
   /* faq */
@@ -387,17 +388,17 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
     <h2>the eldest daughter workbook</h2>
-    <img class="bundle bundle--pair" src="images/offer-workbook-poems.webp" alt="the eldest daughter workbook and poems &amp; letters" width="909" height="900" loading="lazy" decoding="async">
+    <img class="bundle bundle--book" src="images/offer-workbook.webp" alt="the eldest daughter workbook" width="585" height="900" loading="lazy" decoding="async">
 
     <div class="price"><span class="now">$9</span><span class="was">$29</span><span class="save">save 69%</span></div>
     <p class="price-note">one-time payment. no subscription. yours forever.</p>
 
     <ul class="includes">
       <li>the eldest daughter workbook (16 chapters)</li>
-      <li>poems &amp; letters<span class="tag">bonus</span></li>
       <li>instant lifetime access, on any device</li>
     </ul>
 
+    <label class="bump"><input type="checkbox" id="bump-poems"><img src="images/poems-cover-en.webp" alt="" width="250" height="370" loading="lazy" decoding="async"><span class="bt"><span class="bh"><b>add poems &amp; letters</b><span class="bp">+$7</span></span>11 poems and 23 short letters about the roles we were handed.</span></label>
     <label class="bump"><input type="checkbox" id="bump-journal"><img src="images/journal-cover-en.webp" alt="" width="250" height="314" loading="lazy" decoding="async"><span class="bt"><span class="bh"><b>add the eldest daughter journal</b><span class="bp">+$7</span></span>49 printable pages: prompts, permission slips and 14 daily check-ins.</span></label>
     <p class="total">total <b id="total">$9</b></p>
 
@@ -509,15 +510,16 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     blockers.forEach(function(b){io.observe(b);});
   }
 
-  // order bump: the journal tick box changes the total and restarts the checkout with the new items
-  var BASE=9, JOURNAL=7, bump=document.getElementById('bump-journal');
-  function orderTotal(){ return BASE+(bump&&bump.checked?JOURNAL:0); }
-  if(bump) bump.addEventListener('change',function(){
+  // order bumps: each tick box adds $7, updates the total and restarts the checkout with the new items
+  var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('.bump input'));
+  function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
+  function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
+  bumps.forEach(function(b){ b.addEventListener('change',function(){
     document.getElementById('total').textContent='$'+orderTotal();
-    try{window.clarity&&clarity('event',bump.checked?'bump_on':'bump_off');}catch(e){}
+    try{window.clarity&&clarity('event',b.id+(b.checked?'_on':'_off'));}catch(e){}
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
     checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
-  });
+  }); });
 
   // which checkout button got the click (shows up in Clarity + GA4)
   document.querySelectorAll('.js-checkout').forEach(function(a,i){
@@ -554,7 +556,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     showCo(true);
     if(checkout||starting) return;
     starting=true;
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',journal:!!(bump&&bump.checked)})})
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',poems:chosen('poems'),journal:chosen('journal')})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
