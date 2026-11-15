@@ -52,7 +52,7 @@ p{margin:0 0 16px}
 .rule{border:0;border-top:1px solid var(--line);margin:30px 0 18px}
 a.plain{color:var(--accent)}
 [hidden]{display:none!important}
-/* love report upsell */
+/* pattern audit upsell */
 .audit{margin:34px 0 8px;border:1.5px solid var(--ink);border-radius:16px;padding:22px 20px}
 .audit h2,.intake h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:24px;line-height:1.2;margin:0 0 6px}
 .audit .price{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:24px;color:#6B0F28;margin:0 0 12px}
@@ -62,11 +62,6 @@ a.plain{color:var(--accent)}
 .audit ol li:last-child{border-bottom:1px solid var(--line)}
 .audit ol li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;background:#F2DED6;color:var(--accent);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;margin-top:2px}
 .audit p{margin:0 0 10px}
-.audit ul.what{list-style:none;padding:0;margin:0 0 14px}
-.audit ul.what li{position:relative;padding:6px 0 6px 22px;line-height:1.45}
-.audit ul.what li::before{content:'';position:absolute;left:4px;top:15px;width:6px;height:6px;border-radius:50%;background:#6B0F28}
-.intake input.short{width:100%;margin-top:8px;border:1px solid #E3BDB8;border-radius:10px;padding:10px 14px;font:inherit;font-size:16px;background:var(--bg);color:var(--ink);text-transform:none}
-.intake input.short:focus{outline:2px solid var(--accent);outline-offset:1px}
 .btn{display:block;width:100%;border:0;cursor:pointer;background:#6B0F28;color:var(--bg);font:inherit;font-weight:600;font-size:18px;padding:16px 20px;border-radius:10px;margin:16px 0 10px}
 .btn:hover{background:var(--accent)}
 .btn[disabled]{opacity:.6;cursor:default}
@@ -116,7 +111,6 @@ a.plain{color:var(--accent)}
     <p class="price" id="a-price"></p>
     <p class="hook" id="a-hook"></p>
     <ol><li id="a-s1"></li><li id="a-s2"></li></ol>
-    <ul class="what" id="a-list"></ul>
     <p id="a-p1"></p>
     <p id="a-p2"></p>
     <button type="button" class="btn" id="a-buy"></button>
@@ -156,37 +150,35 @@ a.plain{color:var(--accent)}
     email: 'también te mandamos estos enlaces a tu correo. si no lo ves en unos minutos, revisa spam o promociones.',
     nope: 'si acabas de comprar, tus enlaces de descarga te llegan por correo en unos minutos. revisa también spam o promociones.',
     help: '¿algún problema? escríbeme a',
-    a: { title: 'el reporte de amor de la hija mayor', hook: 'siempre terminas en la misma relación con distintas personas. hay una razón, y empezó en tu familia.',
-      s1: 'contestas un cuestionario corto (unos 8 minutos): tu familia y la persona con la que estás o que te interesa. ¿dudando entre dos? agrega a las dos.',
-      s2: 'en menos de 48 horas te mando tu reporte personal:',
-      list: ['tu papel en el amor y el patrón que se sigue repitiendo', 'cómo su lugar entre sus hermanos y su historia familiar lo moldean', 'dónde van a conectar, las peleas que van a seguir teniendo y qué decir cuando empiecen', '¿dudando entre dos personas? cuál es mejor para ti, y por qué', '¿soltera? el tipo que siempre eliges y qué buscar en su lugar'],
-      p1: 'sin llamadas. sin cámara. escrito para ti, por mí.',
-      p2: '',
-      buy: 'agregar el reporte · $', busy: 'procesando…',
+    a: { title: 'la lectura de tu patrón', hook: 'seamos honestas: ya sabes que algo te está manejando. solo que desde adentro no se ve.',
+      s1: 'contestas un cuestionario corto (unos 8 minutos): tu familia, tu patrón y un momento real donde estás atorada. tu mamá. tu pareja. tu negocio. eso a lo que sigues diciendo que sí.',
+      s2: 'en menos de 48 horas te mando: el patrón que te está manejando, de dónde viene y tu siguiente paso exacto.',
+      p1: 'sin llamadas. sin cámara. sin tareas que te hagan sentir culpable por no hacerlas.',
+      p2: 'solo la verdad, con cariño, de alguien que se dedica a reconocer los patrones de las hijas mayores.',
+      buy: 'agregar la lectura · $', busy: 'procesando…',
       fine: function(n){ return 'se cobra a la tarjeta que acabas de usar. un solo pago. quedan ' + n + ' de 10 lugares esta semana.'; },
       declined: 'tu banco no aprobó el cobro. no se te cobró nada.', full: 'ya no quedan lugares esta semana. no se te cobró nada.', fail: 'algo salió mal. no se te cobró nada. intenta de nuevo.' },
-    i: { title: 'listo. ahora cuéntame de ti.', lead: '',
+    i: { title: 'listo, tu lugar está apartado.', lead: '',
       ph: 'tu mamá. tu matrimonio. tu negocio. eso a lo que sigues diciendo que sí…', send: 'mandárselo a anna', busy: 'enviando…',
       fine: 'si no puedes ahora, el correo que te mandamos tiene un enlace para volver aquí.', short: 'escribe un poquito más para que pueda ayudarte.', fail: 'no se pudo enviar. intenta de nuevo o responde al correo.' },
-    s: { title: 'lo recibí.', lead: function(e){ return 'tu reporte te llega a tu correo' + (e ? ' (' + e + ')' : '') + ' en menos de 48 horas.'; } }
+    s: { title: 'lo recibí.', lead: function(e){ return 'te respondo en menos de 48 horas' + (e ? ', a ' + e : '') + '.'; } }
   } : {
     title: 'thank you for your order', lead: "here's everything you bought. tap to download:", open: 'download',
     email: "we've also emailed you these links. if you don't see it in a few minutes, check spam or promotions.",
     nope: "if you just bought, your download links are on their way to your email. check spam or promotions too.",
     help: 'any trouble? email me at',
-    a: { title: 'the eldest daughter love report', hook: "you keep ending up in the same relationship with different people. there's a reason, and it started in your family.",
-      s1: "you answer a short questionnaire (about 8 minutes): your family, and the person you're with or interested in. torn between two? add both.",
-      s2: 'within 48 hours, i send you your personal report:',
-      list: ['your role in love, and the pattern that keeps repeating', 'how their birth order and family story shape them', "where you'll click, the fights you'll keep having, and what to say when they start", "torn between two people? which one is better for you, and why", "single? the type you keep choosing, and what to look for instead"],
-      p1: "no calls. no camera. written for you, by me.",
-      p2: '',
-      buy: 'add the love report · $', busy: 'processing…',
+    a: { title: 'the pattern audit', hook: "lowkey... you already know something's running you. you just can't see it from the inside.",
+      s1: "you answer a short questionnaire (about 8 minutes): your family, your pattern, and one real moment where you're stuck. your mom. your marriage. your business. the thing you keep saying yes to.",
+      s2: 'within 48 hours, i send back: the pattern running you, where it came from, and your exact next move.',
+      p1: "no calls. no camera. no homework you'll feel guilty about not doing.",
+      p2: 'just the truth, with love, from someone who clocks eldest daughter patterns for a living.',
+      buy: 'add the pattern audit · $', busy: 'processing…',
       fine: function(n){ return 'charged to the card you just used. one payment. ' + n + ' of 10 spots left this week.'; },
       declined: "your bank didn't approve the charge. you weren't charged.", full: "this week's spots just filled up. you weren't charged.", fail: "something went wrong. you weren't charged. please try again." },
-    i: { title: "you're in. now tell me about you.", lead: '',
+    i: { title: "you're in. your spot is saved.", lead: '',
       ph: 'your mom. your marriage. your business. the thing you keep saying yes to…', send: 'send it to anna', busy: 'sending…',
       fine: 'no time right now? the email we sent you has a link back to this page.', short: 'write a little more so i can actually help.', fail: "couldn't send it. try again, or reply to the email." },
-    s: { title: 'got it.', lead: function(e){ return 'your report will be in your inbox' + (e ? ' (' + e + ')' : '') + ' within 48 hours.'; } }
+    s: { title: 'got it.', lead: function(e){ return "you'll hear from me within 48 hours" + (e ? ', at ' + e : '') + '.'; } }
   };
   document.documentElement.lang = es ? 'es' : 'en';
   document.title = (es ? 'gracias' : 'thank you') + ' · ' + (es ? 'hija mayor' : 'eldest daughter');
@@ -227,7 +219,7 @@ a.plain{color:var(--accent)}
     audit();
   }).catch(nope);
 
-  // ---------- the love report (one-click upsell) ----------
+  // ---------- the pattern audit (one-click upsell) ----------
   function $(x){ return document.getElementById(x); }
   function post(body){ return fetch('/api/audit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(function(r){ return r.json().then(function(d){ d._status = r.status; return d; }); }); }
   // ---------- the questionnaire ----------
@@ -251,14 +243,11 @@ a.plain{color:var(--accent)}
       if (q.opt) { qq.appendChild(document.createTextNode(' ')); qq.appendChild(el('span', 'opt', '(' + QZ.optional + ')')); }
       box.appendChild(qq);
       if (q.hint) box.appendChild(el('p', 'qh', q.hint));
-      if (q.type === 'short') {
-        var inp1 = el('input', 'short'); inp1.type = 'text'; inp1.maxLength = 300; inp1.value = qzAns[q.id] || '';
-        inp1.addEventListener('input', function(){ qzAns[q.id] = inp1.value; }); box.appendChild(inp1);
-      } else if (q.type === 'text') {
+      if (q.type === 'text') {
         var ta = el('textarea'); ta.maxLength = 3000; ta.value = qzAns[q.id] || '';
         ta.addEventListener('input', function(){ qzAns[q.id] = ta.value; }); box.appendChild(ta);
       } else {
-        var opts = q.o, multi = q.type === 'many';
+        var opts = q.type === 'scale' ? QZ.scale : q.o, multi = q.type === 'many';
         var wrap = el('div', q.type === 'scale' ? 'ch sc' : 'ch');
         opts.forEach(function(o){
           var lab = el('label'), inp = el('input'); inp.type = multi ? 'checkbox' : 'radio'; inp.name = 'q-' + q.id; inp.value = o;
@@ -279,7 +268,6 @@ a.plain{color:var(--accent)}
     return QZ.sections[qzStep].questions.every(function(q){
       if (q.opt) return true; var v = qzAns[q.id];
       if (q.type === 'text') return (v || '').trim().length >= 10;
-      if (q.type === 'short') return (v || '').trim().length > 0;
       if (q.type === 'many') return v && v.length > 0;
       return !!v;
     });
@@ -292,8 +280,7 @@ a.plain{color:var(--accent)}
       if (!a.available) return;
       price = a.price;
       $('a-title').textContent = T.a.title; $('a-price').textContent = '$' + a.price; $('a-hook').textContent = T.a.hook;
-      $('a-s1').textContent = T.a.s1; $('a-s2').textContent = T.a.s2; $('a-p1').textContent = T.a.p1; $('a-p2').textContent = T.a.p2; $('a-p2').hidden = !T.a.p2;
-      var ul = $('a-list'); ul.innerHTML = ''; T.a.list.forEach(function(x){ ul.appendChild(el('li', null, x)); });
+      $('a-s1').textContent = T.a.s1; $('a-s2').textContent = T.a.s2; $('a-p1').textContent = T.a.p1; $('a-p2').textContent = T.a.p2;
       $('a-buy').textContent = T.a.buy + a.price + ' →'; $('a-fine').textContent = T.a.fine(a.spotsLeft);
       $('audit').hidden = false;
       try { window.clarity && clarity('event', 'audit_shown'); } catch (e) {}
