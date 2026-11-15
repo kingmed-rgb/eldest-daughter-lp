@@ -7,14 +7,19 @@
 //   STRIPE_SECRET_KEY      already set; used to re-fetch each event from Stripe, so a forged POST can't send mail
 //   RESEND_API_KEY         Resend API key
 //   STRIPE_WEBHOOK_SECRET  optional extra check (whsec_…); when set, the Stripe-Signature header must match
-//   EMAIL_FROM             optional override of the sender (default below)
+//   EMAIL_FROM / EMAIL_FROM_ES  optional overrides of the senders (defaults below)
 //
 // Opening this URL in a browser (GET) reports whether everything is set up, never the keys.
 
 const crypto = require('crypto');
 
 const REPLY_TO = 'eldestdaughterbook@gmail.com';
-const DEFAULT_FROM = 'anna from eldest daughter core <anna@eldestdaughtercore.com>';
+// Sender per language. Spanish uses hijamayor.com once that domain is verified in Resend,
+// and falls back to the English sender until then.
+const SENDERS = {
+  en: { from: 'anna from eldest daughter core <anna@eldestdaughtercore.com>', domain: 'eldestdaughtercore.com' },
+  es: { from: 'anna de hija mayor <anna@hijamayor.com>', domain: 'hijamayor.com' },
+};
 
 const EMAILS = {
   en: {
@@ -72,8 +77,20 @@ async function verifiedDomains() {
   return (list.data || []).filter((d) => d.status === 'verified').map((d) => d.name);
 }
 
-async function fromAddress() {
-  return (process.env.EMAIL_FROM || DEFAULT_FROM).trim();
+let domainsCache = { at: 0, list: null };
+async function cachedDomains() {
+  if (domainsCache.list && Date.now() - domainsCache.at < 10 * 60 * 1000) return domainsCache.list;
+  domainsCache = { at: Date.now(), list: await verifiedDomains() };
+  return domainsCache.list;
+}
+
+async function fromAddress(lang) {
+  if (lang === 'es' && process.env.EMAIL_FROM_ES) return process.env.EMAIL_FROM_ES.trim();
+  if (lang !== 'es' && process.env.EMAIL_FROM) return process.env.EMAIL_FROM.trim();
+  const wanted = SENDERS[lang] || SENDERS.en;
+  if (wanted === SENDERS.en) return SENDERS.en.from;
+  try { if ((await cachedDomains()).includes(wanted.domain)) return wanted.from; } catch (e) { /* key can't list domains */ }
+  return SENDERS.en.from;
 }
 
 function readRaw(req) {
@@ -135,7 +152,7 @@ async function sendFor(session) {
   const { html, text } = renderEmail(c);
   // One email per checkout session, even if Stripe retries or sends both events.
   const sent = await resend('emails', 'POST', {
-    from: await fromAddress(), to: [to], reply_to: REPLY_TO, subject: c.subject, html, text,
+    from: await fromAddress(lang), to: [to], reply_to: REPLY_TO, subject: c.subject, html, text,
     tags: [{ name: 'lang', value: lang }],
   }, 'delivery-' + session.id);
   console.log('delivery email sent', JSON.stringify({ session: session.id, lang, email_id: sent.id }));
@@ -153,7 +170,8 @@ module.exports = async (req, res) => {
     const status = { stripeKey: stripeReady, resendKey: resendReady, webhookSecret: Boolean(process.env.STRIPE_WEBHOOK_SECRET), emailFrom: process.env.EMAIL_FROM || null };
     if (resendReady) {
       try { status.verifiedDomains = await verifiedDomains(); } catch (e) { status.resendError = e.message; }
-      try { status.sender = await fromAddress(); } catch (e) { status.senderError = e.message; }
+      status.sender = await fromAddress('en');
+      status.senderEs = await fromAddress('es');
     }
     status.ready = stripeReady && resendReady && Boolean(status.sender);
     return res.status(200).json(status);
