@@ -77,11 +77,11 @@ const T = {
 };
 
 const CSS = `
-.pcover{justify-content:space-between!important;padding:.75in .5in .7in!important}
-.pcover .pframe{position:absolute;inset:.28in;border:1px solid rgba(254,247,236,.35);border-radius:4px;pointer-events:none}
+.pcover{background:#141414!important;color:#FFFFFF!important;justify-content:space-between!important;padding:.75in .5in .7in!important}
+.pcover .pframe{position:absolute;inset:.28in;border:1px solid rgba(255,255,255,.3);border-radius:4px;pointer-events:none}
 .pcover .pk{font-size:10pt;letter-spacing:.32em;opacity:.85}
 .pcover h1{display:flex;flex-direction:column;align-items:center;line-height:.86;font-weight:600;letter-spacing:-.03em}
-.pcover h1 em{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:34pt;line-height:1;color:#E3BDB8;margin-bottom:8pt}
+.pcover h1 em{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:34pt;line-height:1;color:#BDBDBD;margin-bottom:8pt}
 .pcover h1 span{font-size:34pt;line-height:1.05}
 .pcover h1 span.big{font-size:66pt;line-height:.95;margin-bottom:4pt}
 .pcover .ps{font-family:'Fraunces';font-style:italic;font-size:14pt;opacity:.9}
