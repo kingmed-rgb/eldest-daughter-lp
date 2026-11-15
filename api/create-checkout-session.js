@@ -72,6 +72,9 @@ module.exports = async (req, res) => {
     locale: lang === 'es' ? 'es-419' : 'en',
     'metadata[page]': lang,
     'metadata[items]': items.join(','),
+    // Save the payment method so the thank-you page can offer a one-click add-on (the pattern audit).
+    customer_creation: 'always',
+    'payment_intent_data[setup_future_usage]': 'off_session',
     // The thank-you page reads session_id to show the right downloads and count the purchase once.
     return_url: 'https://' + host + THANK_YOU[lang] + '?session_id={CHECKOUT_SESSION_ID}',
   };
