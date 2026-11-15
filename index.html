@@ -173,17 +173,41 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .pay img{height:24px;width:auto;opacity:.8;mix-blend-mode:multiply}
   .pay-badge{font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-transform:none;font-size:12px;font-weight:600;line-height:1;letter-spacing:0;color:#111;background:#fff;border:1px solid #d8cfc4;border-radius:5px;padding:5px 7px}
   .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
-  /* order bump */
-  .bump{display:flex;gap:10px;align-items:center;border:1.5px dashed var(--accent);border-radius:10px;padding:12px 14px;margin:0 0 10px;cursor:pointer;font-family:var(--body);background:var(--bg);transition:background .15s}
-  .bump:has(input:checked){border-style:solid;background:var(--tint-1)}
-  .bump input{width:22px;height:22px;margin:0;accent-color:var(--accent);flex:none}
-  .bump img{width:40px;height:auto;flex:none;mix-blend-mode:multiply}
-  .bump .bt{flex:1;display:flex;flex-direction:column;gap:2px;font-size:15px;line-height:1.4;color:var(--muted)}
-  .bump .bt b{font-weight:600;font-size:18px;line-height:1.3;color:var(--ink)}
-  .bump .bh{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-  .bump .bp{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--accent);white-space:nowrap}
-  .total{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--body);font-size:15px;color:var(--muted);margin:0 2px 14px!important}
-  .total b{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink)}
+  /* checkout step 1: order bumps */
+  .co-sheet{background:var(--bg)}
+  .co-head{background:var(--bg)}
+  .co-sheet.paying,.co-sheet.paying .co-head{background:#FFFFFF}
+  .co-back{background:none;border:0;font:inherit;font-size:15px;color:var(--muted);cursor:pointer;padding:4px 0}
+  .co-back[hidden]{display:none}
+  .up{padding:4px 18px 26px;font-family:var(--body)}
+  .up-kick{font-size:15px;color:var(--accent);margin:0 0 2px!important;letter-spacing:.02em}
+  .up-h{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:0 0 16px}
+  .upc{display:block;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 14px;cursor:pointer;background:#fff;transition:border-color .15s,box-shadow .15s}
+  .upc:has(input:checked){border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .upc input{position:absolute;opacity:0;pointer-events:none}
+  .upi{position:relative;display:block;aspect-ratio:16/9;overflow:hidden}
+  .upi img{width:100%;height:100%;object-fit:cover;display:block}
+  .upp{position:absolute;top:12px;right:12px;background:var(--bg);color:var(--accent);font-family:var(--serif);font-weight:600;font-size:18px;line-height:1;padding:8px 12px;border-radius:999px;box-shadow:0 2px 10px rgba(43,18,24,.18)}
+  .upb{display:block;padding:14px 16px 16px}
+  .upb b{display:block;font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.15;color:var(--ink)}
+  .upb .d{display:block;font-size:18px;line-height:1.4;color:var(--ink);margin:6px 0 4px}
+  .upb .m{display:block;font-size:15px;color:var(--muted)}
+  .upt{display:flex;align-items:center;gap:10px;margin-top:14px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--accent);color:var(--accent);font-weight:600;font-size:18px}
+  .upt i{width:22px;height:22px;border:2px solid var(--accent);border-radius:6px;flex:none;position:relative}
+  .upt .on{display:none}
+  .upc:has(input:checked) .upt{background:var(--accent);color:var(--bg)}
+  .upc:has(input:checked) .upt i{background:var(--bg);border-color:var(--bg)}
+  .upc:has(input:checked) .upt i::after{content:'';position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid var(--accent);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+  .upc:has(input:checked) .upt .on{display:inline}.upc:has(input:checked) .upt .off{display:none}
+  .upc:focus-within{outline:2px solid var(--ink);outline-offset:2px}
+  .up-foot{position:sticky;bottom:0;background:var(--bg);margin:0 -18px -26px;padding:0 18px 18px;box-shadow:0 -10px 16px -12px rgba(43,18,24,.25)}
+  .up-sum{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding:12px 0 12px;font-size:15px;color:var(--muted)}
+  .up-sum div{display:flex;justify-content:space-between}
+  .up-sum div[hidden]{display:none}
+  .up-sum .tot{font-size:18px;color:var(--ink);padding-top:4px}
+  .up-sum .tot b{font-family:var(--serif);font-weight:600;font-size:24px}
+  .up .cta{width:100%;border:0;cursor:pointer;font:inherit}
+  .up-note{text-align:center;font-size:15px;color:var(--muted);margin:10px 0 0!important}
   .offer .bundle--book{width:62%;max-width:260px;margin:6px auto 8px}
   .offer .bundle--pair{display:block;width:84%;max-width:380px;margin:4px auto 10px}
 
@@ -223,6 +247,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-head{position:sticky;top:-10px;z-index:1;background:#FFFFFF;padding-top:14px!important}
   .co-head{display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-family:var(--body);font-size:15px;color:var(--muted)}
   .co-head span{flex:1}
+  .co-sheet:not(.paying) #co-title{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);letter-spacing:-.015em}
   .co-close{background:none;border:0;font:inherit;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
   .co-close:focus-visible{outline:2px solid var(--ink);border-radius:6px}
   .co-load{font-family:var(--body);text-align:center;padding:56px 16px 64px;display:flex;flex-direction:column;align-items:center;gap:10px}
@@ -398,9 +423,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <li>instant lifetime access, on any device</li>
     </ul>
 
-    <label class="bump"><input type="checkbox" id="bump-poems"><img src="images/poems-cover-en.webp" alt="" width="250" height="370" loading="lazy" decoding="async"><span class="bt"><span class="bh"><b>add poems &amp; letters</b><span class="bp">+$7</span></span>11 poems and 23 short letters about the roles we were handed.</span></label>
-    <label class="bump"><input type="checkbox" id="bump-journal"><img src="images/journal-cover-en.webp" alt="" width="250" height="314" loading="lazy" decoding="async"><span class="bt"><span class="bh"><b>add the eldest daughter journal</b><span class="bp">+$7</span></span>49 printable pages: prompts, permission slips and 14 daily check-ins.</span></label>
-    <p class="total">total <b id="total">$9</b></p>
 
     <!-- REPLACE-CHECKOUT: point href to your checkout -->
     <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get instant access →</a>
@@ -477,9 +499,19 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
 <!-- stripe embedded checkout opens here; buttons fall back to the payment link if it can't start -->
 <div class="co" id="co" hidden role="dialog" aria-modal="true" aria-label="checkout">
-  <div class="co-sheet">
-    <div class="co-head"><span>secure checkout · stripe</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
-    <div id="co-mount"><div class="co-load"><div class="co-spin" aria-hidden="true"></div><span>preparing your secure checkout…</span></div></div>
+  <div class="co-sheet" id="co-sheet">
+    <div class="co-head"><button type="button" class="co-back" id="co-back" hidden>← back</button><span id="co-title">add to your order?</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
+    <div class="up" id="co-step1">
+      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="1200" height="750" loading="lazy" decoding="async"><span class="upp">$7</span></span><span class="upb"><b>dear angry eldest daughter</b><span class="upt"><i></i><span class="off">yes, add this</span><span class="on">added to your order</span></span></span></label>
+      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="1200" height="750" loading="lazy" decoding="async"><span class="upp">$7</span></span><span class="upb"><b>the eldest daughter journal</b><span class="upt"><i></i><span class="off">yes, add this</span><span class="on">added to your order</span></span></span></label>
+      <div class="up-foot">
+      <div class="up-sum"><div><span>the eldest daughter workbook</span><span>$9</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
+      <button type="button" class="cta" id="co-continue">continue to payment →</button>
+      </div>
+    </div>
+    <div id="co-step2" hidden>
+      <div id="co-mount"><div class="co-load"><div class="co-spin" aria-hidden="true"></div><span>preparing your secure checkout…</span></div></div>
+    </div>
   </div>
 </div>
 
@@ -510,30 +542,31 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     blockers.forEach(function(b){io.observe(b);});
   }
 
-  // order bumps: each tick box adds $7, updates the total and restarts the checkout with the new items
-  var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('.bump input'));
+  // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
+  var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
   function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
   function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
+  function orderKey(){ return (chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
   bumps.forEach(function(b){ b.addEventListener('change',function(){
     document.getElementById('total').textContent='$'+orderTotal();
+    document.getElementById('sum-'+b.id.replace('bump-','')).hidden=!b.checked;
     try{window.clarity&&clarity('event',b.id+(b.checked?'_on':'_off'));}catch(e){}
-    if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
-    checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
   }); });
 
   // which checkout button got the click (shows up in Clarity + GA4)
+  var fallbackUrl='';
   document.querySelectorAll('.js-checkout').forEach(function(a,i){
     a.addEventListener('click',function(e){
       var where=a.closest('#offer')?'offer':'after_faq';
       try{window.clarity&&clarity('event','checkout_click_'+where);}catch(e){}
-      try{gtag('event','begin_checkout',{location:where,value:orderTotal(),currency:'USD'});}catch(e){}
       e.preventDefault();
-      openCheckout(a.href);
+      fallbackUrl=a.href;
+      openCheckout();
     });
   });
 
   // stripe embedded checkout in a pop-up; any failure sends the buyer to the payment link instead
-  var co=document.getElementById('co'), starting=false, loaderHTML=document.getElementById('co-mount').innerHTML;
+  var co=document.getElementById('co'), sheet=document.getElementById('co-sheet'), starting=false, mountedKey=null, loaderHTML=document.getElementById('co-mount').innerHTML;
   function loadStripe(){
     return window.Stripe ? Promise.resolve() : new Promise(function(ok,fail){
       var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
@@ -552,18 +585,35 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     if(on){ lockedY=window.scrollY; b.style.top=(-lockedY)+'px'; d.classList.add('co-open'); b.classList.add('co-open'); co.hidden=false; document.getElementById('co-close').focus({preventScroll:true}); }
     else { co.hidden=true; b.classList.remove('co-open'); b.style.top=''; window.scrollTo(0,lockedY); d.classList.remove('co-open'); }
   }
-  function openCheckout(fallback){
-    showCo(true);
-    if(checkout||starting) return;
+  function step(n){
+    document.getElementById('co-step1').hidden=n!==1;
+    document.getElementById('co-step2').hidden=n!==2;
+    document.getElementById('co-back').hidden=n!==2;
+    document.getElementById('co-title').textContent=n===1?'add to your order?':'secure checkout · stripe';
+    sheet.classList.toggle('paying',n===2);
+    sheet.scrollTop=0;
+  }
+  function openCheckout(){ step(1); showCo(true); }
+  function pay(){
+    step(2);
+    try{gtag('event','begin_checkout',{value:orderTotal(),currency:'USD',items:[{item_id:'main'}].concat(chosen('poems')?[{item_id:'poems'}]:[],chosen('journal')?[{item_id:'journal'}]:[])});}catch(e){}
+    try{window.clarity&&clarity('event','continue_to_payment_'+(orderKey()||'none'));}catch(e){}
+    var key=orderKey();
+    if(checkout&&mountedKey===key) return;
+    if(starting) return;
+    if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
+    checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
     starting=true;
     var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',poems:chosen('poems'),journal:chosen('journal')})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
-      .then(function(c){ checkout=c; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
-      .catch(function(err){ try{console.warn('embedded checkout fell back to payment link:',err&&err.message);}catch(e){} location.href=fallback; })
+      .then(function(c){ checkout=c; mountedKey=key; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
+      .catch(function(err){ try{console.warn('embedded checkout fell back to payment link:',err&&err.message);}catch(e){} location.href=fallbackUrl; })
       .then(function(){ starting=false; });
   }
+  document.getElementById('co-continue').addEventListener('click',pay);
+  document.getElementById('co-back').addEventListener('click',function(){ step(1); });
   document.getElementById('co-close').addEventListener('click',function(){showCo(false);});
   co.addEventListener('click',function(e){ if(e.target===co) showCo(false); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!co.hidden) showCo(false); });

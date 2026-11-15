@@ -7,6 +7,15 @@ const CSS = `
 .pg{width:8.5in;height:11in;padding:.8in .85in .75in;display:flex;flex-direction:column;break-after:page;position:relative;background:var(--bg);overflow:hidden}
 .pg.full{background:var(--accent);color:var(--bg);padding:0 16%;justify-content:center;align-items:center}
 .pg.full h1{font-size:46pt}.pg.full h2{font-size:34pt}.pg.full .sub{font-size:16pt}.pg.full .kicker{font-size:11pt}
+/* journal cover */
+.pg.jcover{background:#F2DED6;color:var(--accent);padding:1in .9in .9in;justify-content:space-between}
+.jcover .jk{font-size:11pt;letter-spacing:.32em;color:var(--muted)}
+.jcover h1{display:flex;flex-direction:column;line-height:.9;letter-spacing:-.03em;font-weight:600}
+.jcover .pre,.jcover .post{font-size:38pt;line-height:1.05}
+.jcover .big{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:150pt;line-height:.85;margin:6pt 0 4pt -6pt}
+.jcover .jl{display:flex;flex-direction:column;gap:.36in;margin-top:.2in}
+.jcover .jl i{display:block;height:1.2px;background:#C98F95}
+.jcover .js{font-family:'Fraunces';font-style:italic;font-size:18pt;color:var(--ink)}
 .pg .no{position:absolute;bottom:.4in;left:0;right:0;text-align:center;font-size:9pt;color:var(--muted)}
 .pg .run{position:absolute;top:.42in;left:.85in;right:.85in;display:flex;justify-content:space-between;font-family:'Fraunces';font-size:8.5pt;letter-spacing:.16em;color:var(--muted)}
 h2.t{font-size:24pt;color:var(--accent);line-height:1.15;margin-bottom:8pt}
@@ -84,7 +93,7 @@ function render(lang, J) {
   const ex = (pair) => pair ? pair : null;
 
   // cover + copyright
-  add(`<div class="kicker">${esc(m.author)}</div><h1>${esc(m.title)}</h1><div class="orn"><b></b><i></i><b></b></div><div class="sub">${esc(m.sub)}</div>`, 'full', { noNumber: true });
+  add(`<div class="jk">${esc(m.author)}</div><h1>${m.coverPre ? `<span class="pre">${esc(m.coverPre)}</span>` : ''}<span class="big">${esc(m.coverBig)}</span>${m.coverPost ? `<span class="post">${esc(m.coverPost)}</span>` : ''}</h1><div class="jl"><i></i><i></i><i></i><i></i><i></i></div>`, 'jcover', { noNumber: true });
   add(`<div style="flex:1"></div><p style="font-size:9.5pt;line-height:1.6;color:var(--muted);max-width:5in">${esc(m.copyright)}</p><p style="font-size:9.5pt;line-height:1.6;color:var(--muted);max-width:5in;margin-top:8pt">${esc(m.disclaimer)}</p>`, '', { noNumber: true });
 
   let tocIndex = -1;
@@ -99,7 +108,7 @@ function render(lang, J) {
       tocIndex = pages.length; add('TOC');
     } else if (p.type === 'part') {
       part = p.kicker;
-      const at = add(`<div class="kicker">${esc(p.kicker)}</div><h2>${esc(p.title)}</h2><div class="orn"><b></b><i></i><b></b></div><div class="sub">${esc(p.sub)}</div>`, 'full', { noNumber: true });
+      const at = add(`<div class="kicker">${esc(p.kicker)}</div><h2>${esc(p.title)}</h2><div class="orn"><b></b><i></i><b></b></div>`, 'full', { noNumber: true });
       toc.push({ part: p.kicker + ' · ' + p.title, at });
     } else if (p.type === 'prompts') {
       const qs = p.prompts.map((q) => `<div class="block"><div class="q">${esc(q)}</div><div class="lines"></div></div>`).join('');

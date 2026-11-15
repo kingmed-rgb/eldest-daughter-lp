@@ -11,7 +11,7 @@ const [, , product = 'poems', lang = 'en'] = process.argv;
 const dir = __dirname;
 const mod = require('./' + product + '.js');
 const items = JSON.parse(fs.readFileSync(path.join(dir, 'src', `${product}-${lang}.json`), 'utf8'));
-const names = { poems: { en: 'poems-and-letters-en', es: 'poemas-y-cartas-es' }, journal: { en: 'the-eldest-daughter-journal-en', es: 'el-diario-de-la-hija-mayor-es' } };
+const names = { poems: { en: 'dear-angry-eldest-daughter-en', es: 'querida-hija-mayor-enojada-es' }, journal: { en: 'the-eldest-daughter-journal-en', es: 'el-diario-de-la-hija-mayor-es' } };
 const out = path.join(dir, 'dist', names[product][lang] + '.pdf');
 fs.mkdirSync(path.dirname(out), { recursive: true });
 

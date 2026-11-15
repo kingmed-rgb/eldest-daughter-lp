@@ -5,10 +5,10 @@ const FILES_DIR = 'files/e2b0943418c5d310d9'; // unguessable folder, not indexed
 
 const FILES = {
   workbook_en: { label: 'the eldest daughter workbook', url: 'https://drive.google.com/file/d/1uST3jP6d1VloCdCvBEyCtvD2JTofDXpg/view?usp=sharing' },
-  poems_en: { label: 'poems & letters', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/poems-and-letters-en.pdf` },
+  poems_en: { label: 'dear angry eldest daughter', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/dear-angry-eldest-daughter-en.pdf` },
   journal_en: { label: 'the eldest daughter journal', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/the-eldest-daughter-journal-en.pdf` },
   ebook_es: { label: 'síndrome de la hija mayor', url: 'https://drive.google.com/uc?export=download&id=11qYyNgbQSvzttHweeHf-WAbHuA7o4Jw9' },
-  poems_es: { label: 'poemas y cartas', url: `https://www.hijamayor.com/${FILES_DIR}/poemas-y-cartas-es.pdf` },
+  poems_es: { label: 'querida hija mayor enojada', url: `https://www.hijamayor.com/${FILES_DIR}/querida-hija-mayor-enojada-es.pdf` },
   journal_es: { label: 'el diario de la hija mayor', url: `https://www.hijamayor.com/${FILES_DIR}/el-diario-de-la-hija-mayor-es.pdf` },
 };
 
@@ -16,12 +16,12 @@ const FILES = {
 const OFFERS = {
   en: {
     main: { name: 'The Eldest Daughter Workbook', amount: 900, files: ['workbook_en'] },
-    poems: { name: 'Poems & Letters', amount: 700, files: ['poems_en'] },
+    poems: { name: 'Dear Angry Eldest Daughter (poems)', amount: 700, files: ['poems_en'] },
     journal: { name: 'The Eldest Daughter Journal', amount: 700, files: ['journal_en'] },
   },
   es: {
     main: { name: 'Síndrome de la hija mayor', amount: 900, files: ['ebook_es'] },
-    poems: { name: 'Poemas y cartas', amount: 700, files: ['poems_es'] },
+    poems: { name: 'Querida hija mayor enojada (poemas)', amount: 700, files: ['poems_es'] },
     journal: { name: 'El diario de la hija mayor', amount: 700, files: ['journal_es'] },
   },
 };

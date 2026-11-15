@@ -3,10 +3,11 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 
 const T = {
   en: {
-    title: 'poems &amp; letters',
-    sub: 'for the eldest daughter',
+    title: 'dear angry eldest daughter',
+    cover: ['dear', 'angry', 'eldest daughter'],
+    sub: 'poems &amp; letters',
     author: 'anna celestina',
-    fileTitle: 'Poems & Letters for the Eldest Daughter',
+    fileTitle: 'Dear Angry Eldest Daughter',
     contents: 'contents',
     copyright: '© 2025 anna celestina. all rights reserved.<br>for personal use only. please don’t share or resell this file.',
     disclaimer: 'this book is personal reflection, not therapy or medical advice.',
@@ -38,10 +39,11 @@ const T = {
     back: 'eldestdaughtercore.com',
   },
   es: {
-    title: 'poemas y cartas',
-    sub: 'para la hija mayor',
+    title: 'querida hija mayor enojada',
+    cover: ['querida', 'hija mayor', 'enojada'],
+    sub: 'poemas y cartas',
     author: 'anna celestina',
-    fileTitle: 'Poemas y cartas para la hija mayor',
+    fileTitle: 'Querida hija mayor enojada',
     contents: 'contenido',
     copyright: '© 2025 anna celestina. todos los derechos reservados.<br>solo para uso personal. por favor no compartas ni revendas este archivo.',
     disclaimer: 'este libro es para reflexionar. no es terapia ni consejo médico.',
@@ -75,6 +77,14 @@ const T = {
 };
 
 const CSS = `
+.pcover{justify-content:space-between!important;padding:.75in .5in .7in!important}
+.pcover .pframe{position:absolute;inset:.28in;border:1px solid rgba(254,247,236,.35);border-radius:4px;pointer-events:none}
+.pcover .pk{font-size:10pt;letter-spacing:.32em;opacity:.85}
+.pcover h1{display:flex;flex-direction:column;align-items:center;line-height:.86;font-weight:600;letter-spacing:-.03em}
+.pcover h1 em{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:34pt;line-height:1;color:#E3BDB8;margin-bottom:8pt}
+.pcover h1 span{font-size:34pt;line-height:1.05}
+.pcover h1 span.big{font-size:66pt;line-height:.95;margin-bottom:4pt}
+.pcover .ps{font-family:'Fraunces';font-style:italic;font-size:14pt;opacity:.9}
 :root{--pw:5.5in;--ph:8.5in}
 @page{size:5.5in 8.5in;margin:.85in .75in .9in .75in;background:#FEF7EC;
   @bottom-center{content:counter(page);font-family:'Source Serif 4';font-size:8.5pt;color:#5E434A}}
@@ -106,7 +116,7 @@ const CSS = `
 
 function render(lang, items, pages = {}) {
   const t = T[lang];
-  const part = (p) => `<section class="full"><div class="kicker">${p.kicker}</div><h2>${p.name}</h2><div class="orn"><b></b><i></i><b></b></div><div class="sub">${p.sub}</div></section>`;
+  const part = (p) => `<section class="full"><div class="kicker">${p.kicker}</div><h2>${p.name}</h2><div class="orn"><b></b><i></i><b></b></div></section>`;
   const piece = (x, i) => {
     const id = 'p' + i;
     if (x.type === 'poem') {
@@ -130,7 +140,7 @@ function render(lang, items, pages = {}) {
 
   return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>${t.fileTitle}</title>
 <link rel="stylesheet" href="shared.css"><style>${CSS}</style></head><body>
-<section class="full"><div class="kicker">${t.author}</div><h1>${t.title}</h1><div class="orn"><b></b><i></i><b></b></div><div class="sub">${t.sub}</div></section>
+<section class="full pcover"><div class="pframe"></div><div class="pk">${t.author}</div><h1><em>${t.cover[0]}</em><span class="big">${t.cover[1]}</span><span>${t.cover[2]}</span></h1><div class="ps"></div></section>
 <section class="plain"><div class="copy"><p>${t.copyright}</p><p style="margin-top:8pt">${t.disclaimer}</p></div></section>
 ${letter(t.open, 'open')}
 ${toc}
