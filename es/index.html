@@ -186,13 +186,15 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .upc input{position:absolute;opacity:0;pointer-events:none}
   .upi{width:104px;height:104px;flex:none;border-radius:10px;overflow:hidden;display:block}
   .upi img{width:100%;height:100%;object-fit:cover;display:block}
-  .upb{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;padding-top:2px}
+  .upb{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;padding-top:2px}
   .upb b{font-family:var(--serif);font-weight:600;font-size:18px;line-height:1.25;color:var(--ink)}
-  .upb .why{font-size:15px;line-height:1.4;color:var(--ink);margin-top:-4px}
-  .upt{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);font-size:15px;font-weight:600;line-height:1}
-  .upt .on{display:none}
-  .upc:has(input:checked) .upt{background:var(--accent);color:var(--bg)}
-  .upc:has(input:checked) .upt .on{display:inline}.upc:has(input:checked) .upt .off{display:none}
+  .upb .why{font-size:15px;line-height:1.4;color:var(--ink)}
+  .upp{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--accent)}
+  .side{display:flex;flex-direction:column;align-items:center;gap:6px;align-self:center;flex:none;margin-right:4px}
+  .tick{width:26px;height:26px;flex:none;border:1.5px solid var(--muted);border-radius:7px;position:relative;margin-right:4px;transition:background .15s,border-color .15s}
+  .upc:has(input:checked){background:var(--tint-1)}
+  .upc:has(input:checked) .tick{background:var(--accent);border-color:var(--accent)}
+  .upc:has(input:checked) .tick::after{content:'';position:absolute;left:8px;top:3px;width:6px;height:12px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
   .up-foot{position:sticky;bottom:0;background:var(--bg);margin:0 -18px -26px;padding:0 18px 18px;}
   .up-sum{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding:12px 0 12px;font-size:15px;color:var(--muted)}
   .up-sum div{display:flex;justify-content:space-between}
@@ -492,8 +494,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="co-sheet" id="co-sheet">
     <div class="co-head"><button type="button" class="co-back" id="co-back" hidden>← atrás</button><span id="co-title">¿agregas algo a tu pedido?</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
     <div class="up" id="co-step1">
-      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="../images/bump-poems-es.webp" alt="querida hija mayor enojada" width="360" height="360" loading="lazy" decoding="async"></span><span class="upb"><b>querida hija mayor enojada</b><span class="why">para las noches en que no te da para hacer ejercicios. 11 poemas que dicen lo que nunca pudiste.</span><span class="upt"><span class="off">+ agregar · $7</span><span class="on">✓ agregado</span></span></span></label>
-      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="../images/bump-journal-es.webp" alt="el diario de la hija mayor" width="360" height="360" loading="lazy" decoding="async"></span><span class="upb"><b>el diario de la hija mayor</b><span class="why">el libro le pone nombre al patrón. el diario es donde lo rompes, cinco minutos al día.</span><span class="upt"><span class="off">+ agregar · $7</span><span class="on">✓ agregado</span></span></span></label>
+      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="../images/bump-poems-es.webp" alt="querida hija mayor enojada" width="360" height="360" loading="lazy" decoding="async"></span><span class="upb"><b>querida hija mayor enojada</b><span class="why">para las noches en que no te da para hacer ejercicios. 11 poemas que dicen lo que nunca pudiste.</span></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span></label>
+      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="../images/bump-journal-es.webp" alt="el diario de la hija mayor" width="360" height="360" loading="lazy" decoding="async"></span><span class="upb"><b>el diario de la hija mayor</b><span class="why">el libro le pone nombre al patrón. el diario es donde lo rompes, cinco minutos al día.</span></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span></label>
       <div class="up-foot">
       <div class="up-sum"><div><span>síndrome de la hija mayor</span><span>$9</span></div><div id="sum-poems" hidden><span>querida hija mayor enojada</span><span>$7</span></div><div id="sum-journal" hidden><span>el diario de la hija mayor</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
       <button type="button" class="cta" id="co-continue">continuar al pago →</button>
