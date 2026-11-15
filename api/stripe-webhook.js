@@ -7,14 +7,14 @@
 //   STRIPE_SECRET_KEY      already set; used to re-fetch each event from Stripe, so a forged POST can't send mail
 //   RESEND_API_KEY         Resend API key
 //   STRIPE_WEBHOOK_SECRET  optional extra check (whsec_…); when set, the Stripe-Signature header must match
-//   EMAIL_FROM             optional, e.g. "anna celestina <anna@eldestdaughtercore.com>";
-//                          if missing, anna@<first verified Resend domain> is used
+//   EMAIL_FROM             optional override of the sender (default below)
 //
 // Opening this URL in a browser (GET) reports whether everything is set up, never the keys.
 
 const crypto = require('crypto');
 
 const REPLY_TO = 'eldestdaughterbook@gmail.com';
+const DEFAULT_FROM = 'anna from eldest daughter core <anna@eldestdaughtercore.com>';
 
 const EMAILS = {
   en: {
@@ -72,15 +72,8 @@ async function verifiedDomains() {
   return (list.data || []).filter((d) => d.status === 'verified').map((d) => d.name);
 }
 
-let cachedFrom;
 async function fromAddress() {
-  if (process.env.EMAIL_FROM) return process.env.EMAIL_FROM.trim();
-  if (cachedFrom) return cachedFrom;
-  const domains = await verifiedDomains();
-  if (!domains.length) throw new Error('no verified domain in Resend and EMAIL_FROM is not set');
-  const domain = domains.find((d) => /eldestdaughter/.test(d)) || domains[0];
-  cachedFrom = 'anna celestina <anna@' + domain + '>';
-  return cachedFrom;
+  return (process.env.EMAIL_FROM || DEFAULT_FROM).trim();
 }
 
 function readRaw(req) {
