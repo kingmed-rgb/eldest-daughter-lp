@@ -173,6 +173,17 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .pay img{height:24px;width:auto;opacity:.8;mix-blend-mode:multiply}
   .pay-badge{font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-transform:none;font-size:12px;font-weight:600;line-height:1;letter-spacing:0;color:#111;background:#fff;border:1px solid #d8cfc4;border-radius:5px;padding:5px 7px}
   .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
+  /* offer, compact */
+  .offer{padding:24px 22px 20px;text-align:center}
+  .offer .bundle--book{width:auto;max-width:none;height:200px;margin:0 auto 14px;display:block}
+  .offer h2{margin:0 0 4px!important}
+  .offer-meta{font-family:var(--body);font-size:15px;color:var(--muted);margin:0 0 12px!important}
+  .offer .price{margin:0 0 16px}
+  .offer-trust{display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--body);font-size:15px;color:var(--muted);margin:12px 0 0!important}
+  .offer-trust svg{color:var(--accent)}
+  .offer .pay{margin-top:12px;gap:6px}
+  .offer .pay-badge{background:transparent;border-color:var(--line);color:var(--muted);font-weight:500}
+  .offer .pay img{height:20px;filter:grayscale(1);opacity:.55}
   /* checkout step 1: order bumps */
   .co-sheet:not(.paying),.co-sheet:not(.paying) .co-head{background:var(--bg)!important}
   .co-back{background:none;border:0;font:inherit;font-size:15px;color:var(--muted);cursor:pointer;padding:4px 0}
@@ -405,28 +416,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
-    <h2>the eldest daughter workbook</h2>
     <img class="bundle bundle--book" src="images/offer-workbook.webp" alt="the eldest daughter workbook" width="585" height="900" loading="lazy" decoding="async">
-
+    <h2>the eldest daughter workbook</h2>
+    <p class="offer-meta">16 chapters · instant download</p>
     <div class="price"><span class="now">$9</span><span class="was">$29</span><span class="save">save 69%</span></div>
-    <p class="price-note">one-time payment. no subscription. yours forever.</p>
-
-    <ul class="includes">
-      <li>the eldest daughter workbook (16 chapters)</li>
-      <li>instant lifetime access, on any device</li>
-    </ul>
-
-
-    <!-- REPLACE-CHECKOUT: point href to your checkout -->
     <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get instant access →</a>
-
-
-    <div class="guarantee">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-      <div>14-day money-back guarantee. if it doesn't feel right for you, email me within 14 days and i'll refund you. no questions asked.</div>
-    </div>
-
-    <div class="pay"><span class="pay-badge">Apple Pay</span><span class="pay-badge">Google Pay</span><span class="pay-badge pay-link">Link</span><img src="images/card-logos.jpg" alt="visa, mastercard, american express, discover" width="366" height="49" loading="lazy" decoding="async"></div>
+    <p class="offer-trust"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>14-day money-back guarantee</p>
+    <div class="pay"><span class="pay-badge">Apple Pay</span><span class="pay-badge">Google Pay</span><span class="pay-badge">Link</span><img src="images/card-logos.jpg" alt="visa, mastercard, american express, discover" width="366" height="49" loading="lazy" decoding="async"></div>
   </section>
 
   <!-- ===== FAQ ===== -->
