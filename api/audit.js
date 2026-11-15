@@ -1,4 +1,4 @@
-// The Pattern Audit: one-click upsell on the thank-you page.
+// The Eldest Daughter Love Report: one-click upsell on the thank-you page (internally still called "audit").
 //
 //   GET  /api/audit?session_id=cs_…             → { available, spotsLeft, price }
 //   POST /api/audit { action:'buy', session_id }  → charges the card saved at checkout (once per checkout)
@@ -58,12 +58,12 @@ const savedCard = (s) => {
 
 const EMAIL = {
   en: {
-    bought: { subject: 'your pattern audit: next step', body: (link) => `you're in. your pattern audit spot is saved.\n\nthe next step is a short questionnaire (about 8 minutes): your family, your pattern, and one real moment where you're stuck.\n\nif you didn't finish it on the thank-you page, it's here:\n${link}\n\nyou'll hear from me within 48 hours of sending it.\n\nwith love,\nanna` },
-    got: { subject: 'got it: your pattern audit', body: () => `got it. i'm reading what you sent, and you'll hear from me within 48 hours.\n\nwith love,\nanna` },
+    bought: { subject: 'your love report: next step', body: (link) => `you're in. your love report is on its way.\n\nthe next step is a short questionnaire (about 8 minutes): your family, and the person you're with or interested in.\n\nif you didn't finish it on the thank-you page, it's here:\n${link}\n\nyou'll hear from me within 48 hours of sending it.\n\nwith love,\nanna` },
+    got: { subject: 'got it: your love report', body: () => `got it. i'm reading what you sent, and your report will be in your inbox within 48 hours.\n\nwith love,\nanna` },
   },
   es: {
-    bought: { subject: 'tu lectura de patrón: siguiente paso', body: (link) => `listo. tu lugar para la lectura de tu patrón está apartado.\n\nel siguiente paso es un cuestionario corto (unos 8 minutos): tu familia, tu patrón y un momento real donde estás atorada.\n\nsi no lo terminaste en la página de gracias, está aquí:\n${link}\n\nte respondo en menos de 48 horas desde que lo mandes.\n\ncon cariño,\nanna` },
-    got: { subject: 'lo recibí: tu lectura de patrón', body: () => `lo recibí. ya lo estoy leyendo y te respondo en menos de 48 horas.\n\ncon cariño,\nanna` },
+    bought: { subject: 'tu reporte de amor: siguiente paso', body: (link) => `listo. tu reporte de amor está en camino.\n\nel siguiente paso es un cuestionario corto (unos 8 minutos): tu familia y la persona con la que estás o que te interesa.\n\nsi no lo terminaste en la página de gracias, está aquí:\n${link}\n\nte respondo en menos de 48 horas desde que lo mandes.\n\ncon cariño,\nanna` },
+    got: { subject: 'lo recibí: tu reporte de amor', body: () => `lo recibí. ya lo estoy leyendo y tu reporte te llega en menos de 48 horas.\n\ncon cariño,\nanna` },
   },
 };
 
@@ -166,8 +166,8 @@ module.exports = async (req, res) => {
       if (!paid) return res.status(403).json({ error: 'audit not purchased' });
       await resend('emails', 'POST', {
         from: await fromAddress(lang), to: [AUDIT.inbox], reply_to: email || undefined,
-        subject: `pattern audit (${lang}) · ${email || s.id}`,
-        text: `new pattern audit (questionnaire)\n\nbuyer: ${email || 'unknown'}\nlanguage: ${lang}\npaid: ${new Date(paid.created * 1000).toISOString()}\nreply within 48 hours (just reply to this email)\n\n---\n\n${text}`,
+        subject: `love report (${lang}) · ${email || s.id}`,
+        text: `new love report request\n\nbuyer: ${email || 'unknown'}\nlanguage: ${lang}\npaid: ${new Date(paid.created * 1000).toISOString()}\nreply within 48 hours (just reply to this email)\n\n---\n\n${text}`,
       });
       if (email) await mail(lang, email, 'got', 'audit-got-' + s.id, s.id).catch((e) => console.error('audit email failed:', e.message));
       return res.status(200).json({ ok: true });

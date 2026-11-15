@@ -1,68 +1,77 @@
-// The Pattern Audit questionnaire (thank-you page, after the one-click purchase).
-// types: one (single choice), many (multi choice), scale (never → always), text (open answer)
+// The Eldest Daughter Love Report questionnaire (thank-you page, after the one-click purchase).
+// types: one (single choice), many (multi choice), short (one line), text (open answer)
+// opt: true = optional. A section with opt: true can be skipped entirely.
 // Edit wording here; the page and the email to the inbox both read from this file.
 window.AUDIT_QUESTIONS = {
   en: {
-    intro: "this takes about 8 minutes. the more honest and specific you are, the more exact your audit will be. nobody sees this but me.",
+    intro: 'about 8 minutes. the more specific you are, the more exact your report will be. nobody sees this but me.',
     next: 'next', back: 'back', send: 'send my answers', sending: 'sending…', optional: 'optional', required: 'answer this one to continue.',
-    scale: ['never', 'sometimes', 'often', 'always'],
     sections: [
-      { title: 'where it started', questions: [
+      { title: 'you', questions: [
+        { id: 'age', type: 'one', q: 'how old are you?', o: ['18 to 24', '25 to 34', '35 to 44', '45 or older'] },
         { id: 'place', type: 'one', q: 'where are you in your family?', o: ['the eldest daughter', 'an only child', 'not the eldest, but i was the responsible one'] },
-        { id: 'gap', type: 'one', q: 'how much older are you than the next sibling?', o: ['less than 2 years', '2 to 5 years', '6 to 10 years', 'more than 10 years', 'no siblings'] },
-        { id: 'who', type: 'many', q: 'who needed you most growing up?', o: ['my mom', 'my dad', 'my siblings', 'my grandparents', 'the whole house'] },
-        { id: 'jobs', type: 'many', q: 'what did you do for them?', o: ['cooking, cleaning, chores', 'looking after my siblings', 'listening to adult problems', 'keeping the peace between people', 'translating, paperwork, calls', 'money', 'being the one who made them proud'] },
-        { id: 'events', type: 'many', q: 'did any of this happen while you were growing up?', opt: true, o: ['divorce or separation', 'money problems', 'a parent who was sick, drinking, or using', 'losing someone', 'moving countries', 'a parent who was there but emotionally absent', 'none of these'] },
+        { id: 'sibs', type: 'text', q: 'tell me about your siblings.', hint: 'older or younger, boy or girl, and the age gap with each. for example: "a brother 3 years younger and a sister 7 years younger."' },
+        { id: 'loss', type: 'one', q: 'before you were 17, did you lose a parent or sibling?', hint: 'through death, divorce, separation, or a parent leaving.', o: ['no', 'yes'] },
+        { id: 'lossd', type: 'short', opt: true, q: 'if yes: who, how, and how old were you?' },
+        { id: 'conflict', type: 'one', q: 'growing up, did you have more conflict with a parent than most of your friends did?', o: ['no', 'yes, with my mom', 'yes, with my dad', 'yes, with both'] },
       ] },
-      { title: 'the pattern today', note: 'how often is this true for you?', questions: [
-        { id: 'guilt', type: 'scale', q: 'i feel guilty when i rest.' },
-        { id: 'yes', type: 'scale', q: 'i say yes when i mean no.' },
-        { id: 'moods', type: 'scale', q: "i feel responsible for other people's moods." },
-        { id: 'help', type: 'scale', q: 'asking for help feels impossible.' },
-        { id: 'anger', type: 'scale', q: 'my anger comes out, then i feel guilty for it.' },
-        { id: 'money', type: 'one', q: 'do you support your family with money?', o: ['no', 'sometimes, and it\'s fine', 'sometimes, and it stresses me', 'regularly, and it stresses me'] },
+      { title: 'your love life', questions: [
+        { id: 'status', type: 'one', q: 'where are you right now?', o: ["in a relationship", "interested in someone", "torn between two people", "single"] },
+        { id: 'story', type: 'text', q: "what's going on? what keeps repeating?", hint: 'the fights, the feeling, the type you keep ending up with. 3 to 6 sentences is perfect.' },
       ] },
-      { title: "where you're stuck", questions: [
-        { id: 'where', type: 'one', q: 'where does it hurt most right now?', o: ['my mom or parents', 'my partner', 'my siblings', 'work or my business', 'money', 'friendships', 'me: rest, my body, my time'] },
-        { id: 'moment', type: 'text', q: 'tell me about one recent moment it showed up.', hint: 'what happened, who said what, what you felt. 3 to 6 sentences is perfect.' },
-        { id: 'react', type: 'text', q: 'what did you do in that moment, and what do you wish you had done?' },
-        { id: 'tried', type: 'many', q: 'what have you already tried?', o: ['therapy', 'books or podcasts', 'the workbook', 'talking to them about it', 'putting distance between us', 'nothing yet'] },
+      { title: 'them', opt: true, note: "single? skip this step.", questions: [
+        { id: 'p1name', type: 'short', opt: true, q: 'their name or nickname', hint: 'a made-up name is fine. i\'ll use it in your report.' },
+        { id: 'p1age', type: 'short', opt: true, q: 'their age (roughly)' },
+        { id: 'p1order', type: 'one', opt: true, q: 'their birth order', o: ['firstborn', 'middle child', 'youngest', 'only child', 'twin', 'not sure'] },
+        { id: 'p1sibs', type: 'short', opt: true, q: 'their siblings: older or younger, and the age gaps' },
+        { id: 'p1loss', type: 'short', opt: true, q: 'did they lose a parent or sibling before 17, or have a lot of conflict with a parent?' },
       ] },
-      { title: 'what you want', questions: [
-        { id: 'want', type: 'text', q: 'if this pattern loosened its grip, what would be different 3 months from now?' },
+      { title: 'the second person', opt: true, note: 'only if you\'re torn between two people. otherwise, skip.', questions: [
+        { id: 'p2name', type: 'short', opt: true, q: 'their name or nickname' },
+        { id: 'p2age', type: 'short', opt: true, q: 'their age (roughly)' },
+        { id: 'p2order', type: 'one', opt: true, q: 'their birth order', o: ['firstborn', 'middle child', 'youngest', 'only child', 'twin', 'not sure'] },
+        { id: 'p2sibs', type: 'short', opt: true, q: 'their siblings: older or younger, and the age gaps' },
+        { id: 'p2loss', type: 'short', opt: true, q: 'did they lose a parent or sibling before 17, or have a lot of conflict with a parent?' },
+      ] },
+      { title: 'last thing', questions: [
+        { id: 'ask', type: 'text', q: 'what do you most want to know?' },
         { id: 'tone', type: 'one', q: 'how direct do you want me to be?', o: ['gentle', 'honest', "don't hold back"] },
         { id: 'else', type: 'text', opt: true, q: 'anything else i should know?' },
       ] },
     ],
   },
   es: {
-    intro: 'te toma unos 8 minutos. entre más honesta y específica seas, más exacta va a ser tu lectura. nadie ve esto más que yo.',
+    intro: 'unos 8 minutos. entre más específica seas, más exacto va a ser tu reporte. nadie ve esto más que yo.',
     next: 'siguiente', back: 'atrás', send: 'mandar mis respuestas', sending: 'enviando…', optional: 'opcional', required: 'contesta esta para continuar.',
-    scale: ['nunca', 'a veces', 'seguido', 'siempre'],
     sections: [
-      { title: 'donde empezó', questions: [
+      { title: 'tú', questions: [
+        { id: 'age', type: 'one', q: '¿cuántos años tienes?', o: ['de 18 a 24', 'de 25 a 34', 'de 35 a 44', '45 o más'] },
         { id: 'place', type: 'one', q: '¿qué lugar ocupas en tu familia?', o: ['la hija mayor', 'hija única', 'no soy la mayor, pero fui la responsable'] },
-        { id: 'gap', type: 'one', q: '¿cuántos años le llevas a tu siguiente hermano o hermana?', o: ['menos de 2 años', 'de 2 a 5 años', 'de 6 a 10 años', 'más de 10 años', 'no tengo hermanos'] },
-        { id: 'who', type: 'many', q: '¿quién te necesitaba más de niña?', o: ['mi mamá', 'mi papá', 'mis hermanos', 'mis abuelos', 'toda la casa'] },
-        { id: 'jobs', type: 'many', q: '¿qué hacías por ellos?', o: ['cocinar, limpiar, quehaceres', 'cuidar a mis hermanos', 'escuchar problemas de adultos', 'mantener la paz entre todos', 'traducir, trámites, llamadas', 'dinero', 'ser la que los hacía sentir orgullosos'] },
-        { id: 'events', type: 'many', q: '¿pasó algo de esto mientras crecías?', opt: true, o: ['divorcio o separación', 'problemas de dinero', 'un papá o mamá enfermo, que tomaba o consumía', 'la pérdida de alguien', 'mudarnos de país', 'un papá o mamá presente pero emocionalmente ausente', 'nada de esto'] },
+        { id: 'sibs', type: 'text', q: 'cuéntame de tus hermanos.', hint: 'mayores o menores, hombre o mujer, y cuántos años de diferencia con cada uno. por ejemplo: "un hermano 3 años menor y una hermana 7 años menor."' },
+        { id: 'loss', type: 'one', q: 'antes de los 17, ¿perdiste a tu papá, tu mamá o a un hermano?', hint: 'por muerte, divorcio, separación o porque se fue.', o: ['no', 'sí'] },
+        { id: 'lossd', type: 'short', opt: true, q: 'si sí: ¿a quién, cómo y qué edad tenías?' },
+        { id: 'conflict', type: 'one', q: 'de niña, ¿tuviste más conflicto con alguno de tus papás que la mayoría de tus amigas?', o: ['no', 'sí, con mi mamá', 'sí, con mi papá', 'sí, con los dos'] },
       ] },
-      { title: 'el patrón hoy', note: '¿qué tan seguido es cierto para ti?', questions: [
-        { id: 'guilt', type: 'scale', q: 'me siento culpable cuando descanso.' },
-        { id: 'yes', type: 'scale', q: 'digo que sí cuando quiero decir que no.' },
-        { id: 'moods', type: 'scale', q: 'me siento responsable del estado de ánimo de los demás.' },
-        { id: 'help', type: 'scale', q: 'pedir ayuda se me hace imposible.' },
-        { id: 'anger', type: 'scale', q: 'mi enojo explota y luego me siento culpable.' },
-        { id: 'money', type: 'one', q: '¿apoyas a tu familia con dinero?', o: ['no', 'a veces, y está bien', 'a veces, y me estresa', 'seguido, y me estresa'] },
+      { title: 'tu vida amorosa', questions: [
+        { id: 'status', type: 'one', q: '¿en qué punto estás ahorita?', o: ['en una relación', 'me interesa alguien', 'dudando entre dos personas', 'soltera'] },
+        { id: 'story', type: 'text', q: '¿qué está pasando? ¿qué se repite?', hint: 'las peleas, lo que sientes, el tipo de persona con la que siempre terminas. de 3 a 6 frases es perfecto.' },
       ] },
-      { title: 'dónde estás atorada', questions: [
-        { id: 'where', type: 'one', q: '¿dónde te duele más ahorita?', o: ['mi mamá o mis papás', 'mi pareja', 'mis hermanos', 'el trabajo o mi negocio', 'el dinero', 'las amistades', 'yo: descanso, mi cuerpo, mi tiempo'] },
-        { id: 'moment', type: 'text', q: 'cuéntame de un momento reciente en que apareció.', hint: 'qué pasó, quién dijo qué, qué sentiste. de 3 a 6 frases es perfecto.' },
-        { id: 'react', type: 'text', q: '¿qué hiciste en ese momento, y qué te hubiera gustado hacer?' },
-        { id: 'tried', type: 'many', q: '¿qué has intentado ya?', o: ['terapia', 'libros o podcasts', 'el libro', 'hablarlo con ellos', 'poner distancia', 'nada todavía'] },
+      { title: 'la otra persona', opt: true, note: '¿soltera? sáltate este paso.', questions: [
+        { id: 'p1name', type: 'short', opt: true, q: 'su nombre o apodo', hint: 'puede ser inventado. lo voy a usar en tu reporte.' },
+        { id: 'p1age', type: 'short', opt: true, q: 'su edad (aproximada)' },
+        { id: 'p1order', type: 'one', opt: true, q: 'su lugar entre sus hermanos', o: ['primogénito', 'de en medio', 'el menor', 'hijo único', 'gemelo', 'no sé'] },
+        { id: 'p1sibs', type: 'short', opt: true, q: 'sus hermanos: mayores o menores, y la diferencia de edad' },
+        { id: 'p1loss', type: 'short', opt: true, q: '¿perdió a su papá, mamá o un hermano antes de los 17, o tuvo mucho conflicto con alguno de sus papás?' },
       ] },
-      { title: 'lo que quieres', questions: [
-        { id: 'want', type: 'text', q: 'si este patrón te soltara un poco, ¿qué sería diferente dentro de 3 meses?' },
+      { title: 'la segunda persona', opt: true, note: 'solo si estás dudando entre dos personas. si no, sáltate este paso.', questions: [
+        { id: 'p2name', type: 'short', opt: true, q: 'su nombre o apodo' },
+        { id: 'p2age', type: 'short', opt: true, q: 'su edad (aproximada)' },
+        { id: 'p2order', type: 'one', opt: true, q: 'su lugar entre sus hermanos', o: ['primogénito', 'de en medio', 'el menor', 'hijo único', 'gemelo', 'no sé'] },
+        { id: 'p2sibs', type: 'short', opt: true, q: 'sus hermanos: mayores o menores, y la diferencia de edad' },
+        { id: 'p2loss', type: 'short', opt: true, q: '¿perdió a su papá, mamá o un hermano antes de los 17, o tuvo mucho conflicto con alguno de sus papás?' },
+      ] },
+      { title: 'por último', questions: [
+        { id: 'ask', type: 'text', q: '¿qué es lo que más quieres saber?' },
         { id: 'tone', type: 'one', q: '¿qué tan directa quieres que sea contigo?', o: ['suave', 'honesta', 'sin rodeos'] },
         { id: 'else', type: 'text', opt: true, q: '¿algo más que deba saber?' },
       ] },
