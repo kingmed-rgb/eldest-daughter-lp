@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "title": "the eldest daughter journal",
+    "sub": "a place to put it down",
+    "author": "anna celestina",
+    "fileTitle": "The Eldest Daughter Journal",
+    "contents": "contents",
+    "page": "page",
+    "copyright": "© 2025 anna celestina. all rights reserved. for personal use only. please don’t share or resell this file. you’re welcome to print as many copies as you need for yourself.",
+    "disclaimer": "this journal is for personal reflection. it is not therapy or medical care. if something here brings up more than you can hold, please reach out to someone you trust or a mental health professional.",
+    "back": "eldestdaughtercore.com",
+    "date": "date",
+    "lines_hint": ""
+  },
+  "pages": [
+    { "type": "letter", "id": "note", "title": "before you start", "paras": [
+      "this journal is the companion to the workbook. the workbook walks you through the wound. this is where you write your way out of it, one page at a time.",
+      "there’s no right way to fill it in. print it and write by hand, or open it on your tablet. skip pages. come back to them in a month. write one word if that’s all you have.",
+      "some prompts will feel light. some will sting. if one is too heavy today, turn the page. it’ll still be here.",
+      "nobody is going to read this. not your mom, not your siblings, not me. you don’t have to be the responsible one in here."
+    ], "sign": "with love,<br>anna" },
+    { "type": "how", "id": "how", "title": "how to use this journal", "items": [
+      ["part one · the little girl you were", "go back to where it started. a memory, a timeline, a letter to her."],
+      ["part two · what you carried", "sort what was yours from what was handed to you. guilt, anger, the help you never asked for."],
+      ["part three · who you are now", "permission slips, boundaries, and the things you like when nobody needs you."],
+      ["daily pages", "fourteen days of short check-ins. five minutes, before bed or with your morning coffee."],
+      ["weekly look back", "two pages to notice what changed. small counts."]
+    ], "foot": "go at your own pace. your only job is honesty, not perfection." },
+    { "type": "toc", "id": "toc" },
+
+    { "type": "part", "id": "part1", "kicker": "part one", "title": "the little girl you were", "sub": "before you were the responsible one" },
+    { "type": "prompts", "id": "memory", "title": "revisiting a childhood memory",
+      "intro": "some memories hurt so much that we push them away so we don’t have to feel them. looking at one gently, as an adult, can help you see what happened and what it did to you. pick one memory. it doesn’t have to be the worst one.",
+      "prompts": [
+        "describe the memory. what was happening, and how old were you?",
+        "was anything else going on in your family at that time?"
+      ] },
+    { "type": "prompts", "id": "memory2", "title": "revisiting a childhood memory", "cont": true, "prompts": [
+        "who is in this memory? what were they doing?",
+        "what did you feel? what did you do with that feeling?",
+        "does anyone else know about this memory? why did you tell them, or keep it to yourself?"
+      ] },
+    { "type": "prompts", "id": "memory3", "title": "revisiting a childhood memory", "cont": true, "prompts": [
+        "how has this memory shaped you? what do you still carry from it?",
+        "what can you do to support yourself now, as an adult?",
+        "is there anyone you’d like to talk to about it? a parent, a friend, a therapist?"
+      ] },
+    { "type": "prompts", "id": "memory4", "title": "revisiting a childhood memory", "cont": true, "prompts": [
+        "if your inner child could say anything to you now, what would it be?"
+      ], "quote": "you were a kid. you were allowed to need things." },
+    { "type": "table", "id": "timeline", "title": "your childhood timeline",
+      "intro": "write down the moments that changed things, from birth to your early twenties. big or small. for example: age 5, a sibling was born. age 9, dad lost his job. age 12, mom started telling me about her problems.",
+      "cols": [["age", 0.12], ["what happened", 0.5], ["what i felt", 0.38]], "rows": 13 },
+    { "type": "table", "id": "timeline2", "title": "your childhood timeline", "cont": true,
+      "cols": [["age", 0.12], ["what happened", 0.5], ["what i felt", 0.38]], "rows": 17 },
+    { "type": "prompts", "id": "firstday", "title": "the day you became the responsible one",
+      "intro": "most of us can’t name a date. but there’s usually a moment we remember: the first diaper, the first fight we stopped, the first time someone said “you’re so mature”.",
+      "prompts": [
+        "what is the first moment you remember being the grown-up in the room?",
+        "what did you have to stop doing, or stop being, after that?",
+        "who noticed? who didn’t?"
+      ] },
+    { "type": "two", "id": "needed", "title": "what she needed",
+      "intro": "on the left, write what you needed as a kid and didn’t get. on the right, one small way you can give it to yourself now.",
+      "left": "what i needed then", "right": "what i can give her now", "rows": 12,
+      "example": ["someone to ask how my day was", "ask myself every night, and answer honestly"] },
+    { "type": "lined", "id": "letterher", "title": "a letter to her",
+      "intro": "write to yourself at the age you first became the responsible one. tell her what you know now. tell her what wasn’t her job.",
+      "start": "dear little me," },
+
+    { "type": "part", "id": "part2", "kicker": "part two", "title": "what you carried", "sub": "and what was never yours to carry" },
+    { "type": "table", "id": "weight", "title": "the weight inventory",
+      "intro": "list everything you’re carrying right now: tasks, worries, people, money, secrets. then ask one question for each: was this ever mine? circle one.",
+      "cols": [["what i’m carrying", 0.62], ["whose is it?", 0.38]], "rows": 14, "fill": "mine · not mine · shared" },
+    { "type": "prompts", "id": "weight2", "title": "the weight inventory", "cont": true, "prompts": [
+        "look at everything you marked “not mine”. which one could you set down first?",
+        "what do you think would happen if you did? what would actually happen?",
+        "what’s one thing you’ll stop doing this month?"
+      ] },
+    { "type": "table", "id": "guilt", "title": "guilt check-in",
+      "intro": "guilt shows up loud and convincing. write down what it says, then write the truth next to it. you don’t have to believe the truth yet. just write it.",
+      "cols": [["the guilt says", 0.5], ["the truth is", 0.5]], "rows": 9,
+      "example": ["you’re selfish for not answering her call", "i’m allowed to call back tomorrow"] },
+    { "type": "prompts", "id": "anger", "title": "anger that makes sense",
+      "intro": "you were probably told your anger was too much. it usually isn’t. it’s just late. anger often guards something softer underneath.",
+      "prompts": [
+        "what am i angry about right now? say it without softening it.",
+        "what is this anger protecting? (hurt, fear, exhaustion, grief?)",
+        "what would i say if i knew nobody would get upset?"
+      ] },
+    { "type": "prompts", "id": "help", "title": "the help you never asked for",
+      "intro": "asking for help can feel like failing. it isn’t. it’s just new.",
+      "prompts": [
+        "when was the last time i asked for help? what happened?",
+        "what’s one thing i could ask for help with this week? who could i ask?",
+        "how will i ask? write the exact words."
+      ], "quote": "practice line: “i’ve got a lot on. could you take this one?”" },
+    { "type": "lined", "id": "unsent", "title": "the letter you won’t send",
+      "intro": "write to the person you needed something from. a parent, a sibling, anyone. say all of it. you’re not going to send this, so you don’t have to be fair, calm, or nice.",
+      "start": "dear" },
+
+    { "type": "part", "id": "part3", "kicker": "part three", "title": "who you are now", "sub": "when nobody needs anything from you" },
+    { "type": "slips", "id": "slips", "title": "permission slips",
+      "intro": "nobody gave you permission to rest, to say no, or to want things. so give it to yourself. fill one in, cut it out, keep it in your wallet.",
+      "slipLabel": "permission slip", "slip": ["i,", "give myself permission to", "even if", "signed", "date"], "count": 4 },
+    { "type": "list", "id": "like", "title": "things i like when nobody needs me",
+      "intro": "foods, songs, places, smells, hobbies you dropped, things you’d try if you had a free saturday. write anything. it’s allowed to be small or silly.", "rows": 22, "cols": 2 },
+    { "type": "table", "id": "boundaries", "title": "boundaries i’m practicing",
+      "intro": "write the situations that keep pulling you back into the old role, then the exact words you’ll use next time. short is better. you don’t owe a reason.",
+      "cols": [["when…", 0.45], ["i will say…", 0.55]], "rows": 8,
+      "example": ["mom calls to vent about dad", "“i love you, but i can’t be in the middle of this.”"] },
+    { "type": "prompts", "id": "future", "title": "a letter from your future self",
+      "intro": "imagine yourself one year from now, a little lighter. she’s writing back to you today.",
+      "prompts": [
+        "what does a normal tuesday look like for her?",
+        "what did she stop doing? what did she start?",
+        "what does she want you to know right now?"
+      ] },
+
+    { "type": "part", "id": "daily", "kicker": "daily pages", "title": "fourteen days", "sub": "five minutes a day. that’s it." },
+    { "type": "daily", "id": "day", "count": 14,
+      "label": "day",
+      "fields": ["today i carried", "today i put down", "one thing i did just for me", "something i want to say out loud"],
+      "body": "my body feels", "bodyOpts": ["tight", "tired", "heavy", "okay", "light"] },
+    { "type": "weekly", "id": "week", "count": 2, "label": "week", "tocTitle": "weekly look back",
+      "fields": ["what felt different this week?", "a moment i chose myself", "what was hard?", "what i want to try next week"] },
+    { "type": "letter", "id": "end", "title": "you made it to the end", "paras": [
+      "or maybe you skipped here first. that’s fine too.",
+      "whatever you wrote in these pages, you said things you’ve been holding for a long time. that took more courage than people know.",
+      "print a fresh copy whenever you need one. start again as many times as you like. healing isn’t a straight line, and you don’t have to do it perfectly.",
+      "you spent years becoming who everyone else needed. this is where you get to become you."
+    ], "sign": "with love,<br>anna" }
+  ]
+}

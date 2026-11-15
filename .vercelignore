@@ -20,3 +20,6 @@ fonts/google-fonts-woff2.css
 
 # Internal docs — never served on the site
 docs/
+
+# Product sources and build output (the served copies live in files/)
+products/

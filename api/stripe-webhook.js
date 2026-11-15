@@ -12,6 +12,7 @@
 // Opening this URL in a browser (GET) reports whether everything is set up, never the keys.
 
 const crypto = require('crypto');
+const { filesFor, languageOf } = require('./_lib/catalog.js');
 
 const REPLY_TO = 'eldestdaughterbook@gmail.com';
 // Sender per language. Spanish uses hijamayor.com once that domain is verified in Resend,
@@ -23,31 +24,23 @@ const SENDERS = {
 
 const EMAILS = {
   en: {
-    subject: 'your eldest daughter healing bundle is here',
-    preheader: 'your three downloads are inside. save this email.',
+    subject: 'your eldest daughter workbook is here',
+    preheader: 'your downloads are inside. save this email.',
     hello: 'hi,',
-    intro: "thank you for buying the eldest daughter healing bundle. here's everything, ready to download:",
-    files: [
-      ['the eldest daughter workbook', 'https://drive.google.com/file/d/1uST3jP6d1VloCdCvBEyCtvD2JTofDXpg/view?usp=sharing'],
-      ['poems & letters', 'https://drive.google.com/file/d/1fmpT9Cs5dSTxVqiCkojP8w85hUxty_n2/view?usp=sharing'],
-      ['inner child healing worksheet', 'https://drive.google.com/file/d/1-8AtRRz9L7xtuZoX6At3-qoCJh1JoTB_/view?usp=sharing'],
-    ],
     late: "sorry this is so late. a problem on our side kept your download email from going out, and it's fixed now.",
-    tip: "save this email so you can come back to the files anytime. start with chapter one, at your own pace.",
+    intro: "thank you for your order. here's everything, ready to download:",
+    tip: 'save this email so you can come back to the files anytime. start with chapter one, at your own pace.',
     help: "if a link doesn't open or anything feels off, just reply to this email.",
     signoff: 'with love,<br>anna',
   },
   es: {
-    subject: 'tu ebook síndrome de la hija mayor ya está aquí',
-    preheader: 'tu descarga está adentro. guarda este correo.',
+    subject: 'tu libro síndrome de la hija mayor ya está aquí',
+    preheader: 'tus descargas están adentro. guarda este correo.',
     hello: 'hola,',
-    intro: 'gracias por comprar síndrome de la hija mayor. aquí tienes tu ebook, listo para descargar:',
-    files: [
-      ['síndrome de la hija mayor (pdf)', 'https://drive.google.com/uc?export=download&id=11qYyNgbQSvzttHweeHf-WAbHuA7o4Jw9'],
-    ],
     late: 'perdón por la demora. un error de nuestro lado impidió que te llegara el correo de descarga, y ya está resuelto.',
-    tip: 'guarda este correo para volver al archivo cuando quieras. ve a tu ritmo.',
-    help: 'si el enlace no abre o algo no funciona, responde a este correo.',
+    intro: 'gracias por tu compra. aquí tienes todo, listo para descargar:',
+    tip: 'guarda este correo para volver a tus archivos cuando quieras. ve a tu ritmo.',
+    help: 'si algún enlace no abre o algo no funciona, responde a este correo.',
     signoff: 'con cariño,<br>anna',
   },
 };
@@ -129,8 +122,8 @@ function signatureOk(raw, header, secret) {
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function renderEmail(c, late) {
-  const buttons = c.files.map(([label, url]) =>
+function renderEmail(c, files, late) {
+  const buttons = files.map(({ label, url }) =>
     `<tr><td style="padding:0 0 12px"><a href="${esc(url)}" style="display:block;background:#4D0619;color:#FEF7EC;text-decoration:none;font-family:Georgia,serif;font-size:16px;font-weight:600;padding:15px 18px;border-radius:10px;text-align:center">${esc(label)} &rarr;</a></td></tr>`).join('');
   const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;background:#FEF7EC">
@@ -146,28 +139,20 @@ ${buttons}
 <tr><td style="padding:0 0 24px">${c.signoff}</td></tr>
 <tr><td style="border-top:1px solid #EBDCCD;padding:16px 0 0;color:#5E434A;font-size:13px">${esc(REPLY_TO)}</td></tr>
 </table></td></tr></table></body></html>`;
-  const text = [c.hello, '', ...(late ? [c.late, ''] : []), c.intro, '', ...c.files.map(([l, u]) => l + ': ' + u), '', c.tip, c.help, '', c.signoff.replace('<br>', '\n')].join('\n');
+  const text = [c.hello, '', ...(late ? [c.late, ''] : []), c.intro, '', ...files.map((f) => f.label + ': ' + f.url), '', c.tip, c.help, '', c.signoff.replace('<br>', '\n')].join('\n');
   return { html, text };
-}
-
-function languageOf(session) {
-  const page = session.metadata && session.metadata.page;
-  if (EMAILS[page]) return page;
-  if (session.locale && /^es/.test(session.locale)) return 'es';
-  if (session.amount_total === 900) return 'es'; // Spanish payment link (no metadata)
-  return 'en';
 }
 
 async function sendFor(session, { late = false } = {}) {
   const to = (session.customer_details && session.customer_details.email) || session.customer_email;
   if (!to) throw new Error('session ' + session.id + ' has no customer email');
-  const lang = languageOf(session);
+  const { lang, keys, files } = filesFor(session);
   const c = EMAILS[lang];
-  const { html, text } = renderEmail(c, late);
+  const { html, text } = renderEmail(c, files, late);
   // One email per checkout session, even if Stripe retries or sends both events.
   const sent = await resend('emails', 'POST', {
     from: await fromAddress(lang), to: [to], reply_to: REPLY_TO, subject: c.subject, html, text,
-    tags: [{ name: 'lang', value: lang }],
+    tags: [{ name: 'lang', value: lang }, { name: 'items', value: keys.join('_') }],
   }, 'delivery-' + session.id);
   console.log('delivery email sent', JSON.stringify({ session: session.id, lang, email_id: sent.id, late }));
   // Mark the payment in Stripe so a later resend never emails this buyer twice.

@@ -1,0 +1,31 @@
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;src:url('../fonts/fraunces.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;src:url('../fonts/fraunces-italic.woff2') format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:200 900;src:url('../fonts/source-serif.woff2') format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;src:url('../fonts/source-serif-italic.woff2') format('woff2')}
+
+:root{
+  --bg:#FEF7EC; --ink:#2B1218; --muted:#5E434A; --line:#EBDCCD;
+  --accent:#4D0619; --tint1:#F2DED6; --tint2:#E3BDB8; --tint3:#C98F95;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:'Source Serif 4',Georgia,serif;color:var(--ink);background:var(--bg);text-transform:lowercase;font-optical-sizing:auto}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em}
+
+/* full-bleed pages (cover, part openers) */
+@page full{margin:0}
+.full{page:full;break-before:page;break-after:page;height:var(--ph);width:var(--pw);background:var(--accent);color:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 14%;position:relative}
+.full.light{background:var(--bg);color:var(--ink)}
+.full .kicker{font-size:10pt;letter-spacing:.18em;opacity:.8;margin-bottom:18pt}
+.full h1{font-size:34pt;line-height:1.05;font-weight:600}
+.full h2{font-size:24pt;line-height:1.15}
+.full .sub{font-family:'Fraunces';font-style:italic;font-size:13pt;margin-top:14pt;opacity:.9}
+.full .foot{position:absolute;bottom:9%;left:0;right:0;font-size:10pt;letter-spacing:.18em;opacity:.8}
+.full .note{font-size:10.5pt;line-height:1.6;margin-top:22pt;opacity:.85;max-width:30em}
+
+.orn{display:flex;align-items:center;justify-content:center;gap:8pt;margin:20pt auto}
+.orn i{display:block;width:5pt;height:5pt;transform:rotate(45deg);background:currentColor;opacity:.7}
+.orn b{display:block;width:34pt;height:1px;background:currentColor;opacity:.35}
+
+.page{break-before:page}

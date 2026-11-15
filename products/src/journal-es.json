@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "title": "el diario de la hija mayor",
+    "sub": "un lugar para soltarlo",
+    "author": "anna celestina",
+    "fileTitle": "El diario de la hija mayor",
+    "contents": "contenido",
+    "page": "página",
+    "copyright": "© 2025 anna celestina. todos los derechos reservados. solo para uso personal. por favor no compartas ni revendas este archivo. puedes imprimir todas las copias que necesites para ti.",
+    "disclaimer": "este diario es para reflexionar. no es terapia ni atención médica. si algo de aquí te remueve más de lo que puedes cargar, busca a alguien de confianza o a un profesional de salud mental.",
+    "back": "hijamayor.com",
+    "date": "fecha"
+  },
+  "pages": [
+    { "type": "letter", "id": "note", "title": "antes de empezar", "paras": [
+      "este diario acompaña al libro. el libro te explica la herida. aquí es donde escribes para ir saliendo de ella, una página a la vez.",
+      "no hay una forma correcta de llenarlo. imprímelo y escribe a mano, o ábrelo en tu tablet. sáltate páginas. regresa a ellas en un mes. escribe una sola palabra si es lo único que tienes.",
+      "algunas preguntas se van a sentir ligeras. otras van a doler. si una pesa demasiado hoy, pasa a la siguiente. aquí va a seguir.",
+      "nadie va a leer esto. ni tu mamá, ni tus hermanos, ni yo. aquí no tienes que ser la responsable."
+    ], "sign": "con cariño,<br>anna" },
+    { "type": "how", "id": "how", "title": "cómo usar este diario", "items": [
+      ["primera parte · la niña que fuiste", "regresa a donde empezó todo. un recuerdo, una línea del tiempo, una carta para ella."],
+      ["segunda parte · lo que cargaste", "separa lo que era tuyo de lo que te tocó cargar. la culpa, el enojo, la ayuda que nunca pediste."],
+      ["tercera parte · quién eres ahora", "permisos, límites y las cosas que te gustan cuando nadie te necesita."],
+      ["páginas diarias", "catorce días de preguntas cortitas. cinco minutos, antes de dormir o con tu café de la mañana."],
+      ["mirada semanal", "dos páginas para notar qué cambió. lo pequeño también cuenta."]
+    ], "foot": "ve a tu ritmo. tu único trabajo es ser honesta, no perfecta." },
+    { "type": "toc", "id": "toc" },
+
+    { "type": "part", "id": "part1", "kicker": "primera parte", "title": "la niña que fuiste", "sub": "antes de ser la responsable" },
+    { "type": "prompts", "id": "memory", "title": "volver a un recuerdo de la infancia",
+      "intro": "hay recuerdos que duelen tanto que los empujamos lejos para no sentirlos. mirarlos con cuidado, ya de adulta, te puede ayudar a ver qué pasó y qué te dejó. elige un recuerdo. no tiene que ser el peor.",
+      "prompts": [
+        "describe el recuerdo. ¿qué estaba pasando y cuántos años tenías?",
+        "¿pasaba algo más en tu familia en ese momento?"
+      ] },
+    { "type": "prompts", "id": "memory2", "title": "volver a un recuerdo de la infancia", "cont": true, "prompts": [
+        "¿quiénes están en este recuerdo? ¿qué estaban haciendo?",
+        "¿qué sentiste? ¿qué hiciste con eso que sentías?",
+        "¿alguien más sabe de este recuerdo? ¿por qué se lo contaste, o por qué te lo guardaste?"
+      ] },
+    { "type": "prompts", "id": "memory3", "title": "volver a un recuerdo de la infancia", "cont": true, "prompts": [
+        "¿cómo te marcó este recuerdo? ¿qué sigues cargando de él?",
+        "¿qué puedes hacer hoy, como adulta, para apoyarte?",
+        "¿hay alguien con quien te gustaría hablarlo? ¿tu mamá, tu papá, una amiga, una terapeuta?"
+      ] },
+    { "type": "prompts", "id": "memory4", "title": "volver a un recuerdo de la infancia", "cont": true, "prompts": [
+        "si tu niña interior pudiera decirte algo hoy, ¿qué te diría?"
+      ], "quote": "eras una niña. tenías permiso de necesitar cosas." },
+    { "type": "table", "id": "timeline", "title": "la línea del tiempo de tu infancia",
+      "intro": "anota los momentos que cambiaron las cosas, desde que naciste hasta tus veintitantos. grandes o pequeños. por ejemplo: a los 5, nació mi hermano. a los 9, mi papá se quedó sin trabajo. a los 12, mi mamá empezó a contarme sus problemas.",
+      "cols": [["edad", 0.12], ["qué pasó", 0.5], ["qué sentí", 0.38]], "rows": 13 },
+    { "type": "table", "id": "timeline2", "title": "la línea del tiempo de tu infancia", "cont": true,
+      "cols": [["edad", 0.12], ["qué pasó", 0.5], ["qué sentí", 0.38]], "rows": 17 },
+    { "type": "prompts", "id": "firstday", "title": "el día que te volviste la responsable",
+      "intro": "casi ninguna puede decir una fecha. pero casi siempre hay un momento que recordamos: el primer pañal, la primera pelea que separamos, la primera vez que alguien nos dijo “eres muy madura”.",
+      "prompts": [
+        "¿cuál es el primer momento en que recuerdas ser la adulta del cuarto?",
+        "¿qué dejaste de hacer, o de ser, después de eso?",
+        "¿quién se dio cuenta? ¿quién no?"
+      ] },
+    { "type": "two", "id": "needed", "title": "lo que ella necesitaba",
+      "intro": "a la izquierda, escribe lo que necesitabas de niña y no recibiste. a la derecha, una forma pequeña de dártelo tú hoy.",
+      "left": "lo que necesitaba entonces", "right": "lo que le puedo dar hoy", "rows": 12,
+      "example": ["que alguien me preguntara cómo me fue", "preguntármelo cada noche y contestar con honestidad"] },
+    { "type": "lined", "id": "letterher", "title": "una carta para ella",
+      "intro": "escríbele a la niña que eras cuando te volviste la responsable. dile lo que sabes ahora. dile lo que nunca le tocaba.",
+      "start": "querida yo chiquita," },
+
+    { "type": "part", "id": "part2", "kicker": "segunda parte", "title": "lo que cargaste", "sub": "y lo que nunca te tocaba cargar" },
+    { "type": "table", "id": "weight", "title": "el inventario del peso",
+      "intro": "anota todo lo que estás cargando ahora: pendientes, preocupaciones, personas, dinero, secretos. luego hazte una sola pregunta por cada cosa: ¿esto alguna vez fue mío? encierra una opción.",
+      "cols": [["lo que cargo", 0.62], ["¿de quién es?", 0.38]], "rows": 14, "fill": "mío · no es mío · compartido" },
+    { "type": "prompts", "id": "weight2", "title": "el inventario del peso", "cont": true, "prompts": [
+        "mira todo lo que marcaste “no es mío”. ¿cuál podrías soltar primero?",
+        "¿qué crees que pasaría si lo sueltas? ¿qué pasaría de verdad?",
+        "¿qué es una cosa que vas a dejar de hacer este mes?"
+      ] },
+    { "type": "table", "id": "guilt", "title": "revisión de la culpa",
+      "intro": "la culpa llega fuerte y muy convincente. escribe lo que te dice y, al lado, escribe la verdad. no tienes que creerte la verdad todavía. solo escríbela.",
+      "cols": [["la culpa dice", 0.5], ["la verdad es", 0.5]], "rows": 9,
+      "example": ["eres egoísta por no contestarle", "tengo permiso de llamarle mañana"] },
+    { "type": "prompts", "id": "anger", "title": "un enojo que tiene sentido",
+      "intro": "seguramente te dijeron que tu enojo era demasiado. casi nunca lo es. solo llegó tarde. el enojo muchas veces cuida algo más suave que hay debajo.",
+      "prompts": [
+        "¿qué me enoja ahorita? dilo sin suavizarlo.",
+        "¿qué está protegiendo este enojo? (¿dolor, miedo, cansancio, tristeza?)",
+        "¿qué diría si supiera que nadie se va a molestar?"
+      ] },
+    { "type": "prompts", "id": "help", "title": "la ayuda que nunca pediste",
+      "intro": "pedir ayuda se puede sentir como fallar. no lo es. solo es nuevo.",
+      "prompts": [
+        "¿cuándo fue la última vez que pedí ayuda? ¿qué pasó?",
+        "¿con qué podría pedir ayuda esta semana? ¿a quién se la podría pedir?",
+        "¿cómo la voy a pedir? escribe las palabras exactas."
+      ], "quote": "para practicar: “tengo muchas cosas encima. ¿me ayudas con esta?”" },
+    { "type": "lined", "id": "unsent", "title": "la carta que no vas a mandar",
+      "intro": "escríbele a la persona de quien necesitabas algo. tu mamá, tu papá, un hermano, quien sea. dilo todo. no la vas a mandar, así que no tienes que ser justa, tranquila ni amable.",
+      "start": "querida/o" },
+
+    { "type": "part", "id": "part3", "kicker": "tercera parte", "title": "quién eres ahora", "sub": "cuando nadie te necesita para nada" },
+    { "type": "slips", "id": "slips", "title": "permisos", "slipLabel": "permiso",
+      "intro": "nadie te dio permiso de descansar, de decir que no o de querer cosas. así que dátelo tú. llena uno, recórtalo y guárdalo en tu cartera.",
+      "slip": ["yo,", "me doy permiso de", "aunque", "firma", "fecha"], "count": 4 },
+    { "type": "list", "id": "like", "title": "lo que me gusta cuando nadie me necesita",
+      "intro": "comidas, canciones, lugares, olores, pasatiempos que dejaste, cosas que probarías si tuvieras un sábado libre. escribe lo que sea. puede ser pequeño o tonto.", "rows": 22, "cols": 2 },
+    { "type": "table", "id": "boundaries", "title": "los límites que estoy practicando",
+      "intro": "escribe las situaciones que te regresan al papel de siempre y, al lado, las palabras exactas que vas a usar la próxima vez. entre más corto, mejor. no le debes una explicación a nadie.",
+      "cols": [["cuando…", 0.45], ["voy a decir…", 0.55]], "rows": 8,
+      "example": ["mi mamá me llama para quejarse de mi papá", "“te quiero, pero no puedo estar en medio de esto.”"] },
+    { "type": "prompts", "id": "future", "title": "una carta de tu yo del futuro",
+      "intro": "imagínate dentro de un año, un poco más ligera. ella te está escribiendo hoy.",
+      "prompts": [
+        "¿cómo es un martes normal para ella?",
+        "¿qué dejó de hacer? ¿qué empezó a hacer?",
+        "¿qué quiere que sepas ahorita?"
+      ] },
+
+    { "type": "part", "id": "daily", "kicker": "páginas diarias", "title": "catorce días", "sub": "cinco minutos al día. nada más." },
+    { "type": "daily", "id": "day", "count": 14,
+      "label": "día",
+      "fields": ["hoy cargué", "hoy solté", "una cosa que hice solo para mí", "algo que quiero decir en voz alta"],
+      "body": "mi cuerpo se siente", "bodyOpts": ["tenso", "cansado", "pesado", "bien", "ligero"] },
+    { "type": "weekly", "id": "week", "count": 2, "label": "semana", "tocTitle": "mirada semanal",
+      "fields": ["¿qué se sintió diferente esta semana?", "un momento en que me elegí a mí", "¿qué fue difícil?", "lo que quiero probar la próxima semana"] },
+    { "type": "letter", "id": "end", "title": "llegaste al final", "paras": [
+      "o tal vez te saltaste hasta aquí primero. también está bien.",
+      "lo que hayas escrito en estas páginas, dijiste cosas que llevabas mucho tiempo guardando. eso requiere más valor del que la gente cree.",
+      "imprime una copia nueva cuando la necesites. empieza de nuevo las veces que quieras. sanar no es una línea recta, y no tienes que hacerlo perfecto.",
+      "pasaste años convirtiéndote en lo que todos los demás necesitaban. aquí es donde te toca convertirte en ti."
+    ], "sign": "con cariño,<br>anna" }
+  ]
+}

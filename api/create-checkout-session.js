@@ -9,11 +9,10 @@ const PUBLISHABLE_KEYS = {
   live: 'pk_live_51TciB1AsMiI0w2mO6D6OjO4WepQjTUOb6cbxogZrvy6Hxm4cHf6cQjhvlDXaineb8A21VtGWFXZHIv3UiZTiawRv00ecjNtsMq',
 };
 
-// What each page sells. Amounts are in cents (USD). thankYou is a path on this site or a full URL.
-const PRODUCTS = {
-  en: { name: 'The Eldest Daughter Healing Bundle', amount: 1200, thankYou: '/get-xk7f2' },
-  es: { name: 'Síndrome de la hija mayor (ebook)', amount: 900, thankYou: 'https://hijamayor.carrd.co/?session_id={CHECKOUT_SESSION_ID}#done' },
-};
+const { OFFERS } = require('./_lib/catalog.js');
+
+// Thank-you page per language (on the same domain the buyer came from).
+const THANK_YOU = { en: '/get-xk7f2', es: '/gracias' };
 
 function keyMode(secret) {
   if (/^(sk|rk)_live_/.test(secret)) return 'live';
@@ -35,11 +34,12 @@ async function stripe(path, secret, method = 'GET', body) {
   return data;
 }
 
-function readLang(req) {
+function readBody(req) {
   let body = req.body;
   if (typeof body === 'string') { try { body = JSON.parse(body); } catch (e) { body = {}; } }
-  const lang = (body && body.lang) || (req.query && req.query.lang);
-  return PRODUCTS[lang] ? lang : 'en';
+  body = body || {};
+  const lang = body.lang || (req.query && req.query.lang);
+  return { lang: OFFERS[lang] ? lang : 'en', journal: body.journal === true };
 }
 
 module.exports = async (req, res) => {
@@ -61,23 +61,29 @@ module.exports = async (req, res) => {
   }
   if (!mode) return res.status(503).json({ error: 'Checkout is not configured' }); // page falls back to the payment link
 
-  const lang = readLang(req);
-  const product = PRODUCTS[lang];
+  const { lang, journal } = readBody(req);
+  const offer = OFFERS[lang];
+  const items = journal ? ['main', 'journal'] : ['main'];
   const host = req.headers['x-forwarded-host'] || req.headers.host;
 
+  const params = {
+    ui_mode: 'embedded_page',
+    mode: 'payment',
+    locale: lang === 'es' ? 'es-419' : 'en',
+    'metadata[page]': lang,
+    'metadata[items]': items.join(','),
+    // The thank-you page reads session_id to show the right downloads and count the purchase once.
+    return_url: 'https://' + host + THANK_YOU[lang] + '?session_id={CHECKOUT_SESSION_ID}',
+  };
+  items.forEach((k, i) => {
+    params[`line_items[${i}][quantity]`] = '1';
+    params[`line_items[${i}][price_data][currency]`] = 'usd';
+    params[`line_items[${i}][price_data][unit_amount]`] = String(offer[k].amount);
+    params[`line_items[${i}][price_data][product_data][name]`] = offer[k].name;
+  });
+
   try {
-    const session = await stripe('checkout/sessions', secret, 'POST', {
-      ui_mode: 'embedded_page',
-      mode: 'payment',
-      locale: lang === 'es' ? 'es-419' : 'en',
-      'line_items[0][quantity]': '1',
-      'line_items[0][price_data][currency]': 'usd',
-      'line_items[0][price_data][unit_amount]': String(product.amount),
-      'line_items[0][price_data][product_data][name]': product.name,
-      'metadata[page]': lang,
-      // The thank-you page reads session_id to deduplicate the Purchase event.
-      return_url: /^https?:/.test(product.thankYou) ? product.thankYou : 'https://' + host + product.thankYou + '?session_id={CHECKOUT_SESSION_ID}',
-    });
+    const session = await stripe('checkout/sessions', secret, 'POST', params);
     return res.status(200).json({ clientSecret: session.client_secret, publishableKey: PUBLISHABLE_KEYS[mode] });
   } catch (err) {
     console.error('checkout session failed:', err.message);

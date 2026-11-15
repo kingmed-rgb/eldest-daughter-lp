@@ -173,6 +173,18 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .pay img{height:24px;width:auto;opacity:.8;mix-blend-mode:multiply}
   .pay-badge{font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-transform:none;font-size:12px;font-weight:600;line-height:1;letter-spacing:0;color:#111;background:#fff;border:1px solid #d8cfc4;border-radius:5px;padding:5px 7px}
   .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
+  /* order bump */
+  .bump{display:flex;gap:10px;align-items:center;border:1.5px dashed var(--accent);border-radius:10px;padding:12px 14px;margin:0 0 10px;cursor:pointer;font-family:var(--body);background:var(--bg);transition:background .15s}
+  .bump:has(input:checked){border-style:solid;background:var(--tint-1)}
+  .bump input{width:22px;height:22px;margin:0;accent-color:var(--accent);flex:none}
+  .bump img{width:40px;height:auto;flex:none;mix-blend-mode:multiply}
+  .bump .bt{flex:1;display:flex;flex-direction:column;gap:2px;font-size:15px;line-height:1.4;color:var(--muted)}
+  .bump .bt b{font-weight:600;font-size:18px;line-height:1.3;color:var(--ink)}
+  .bump .bh{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .bump .bp{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--accent);white-space:nowrap}
+  .total{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--body);font-size:15px;color:var(--muted);margin:0 2px 14px!important}
+  .total b{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink)}
+  .offer .bundle--pair{display:block;width:84%;max-width:380px;margin:4px auto 10px}
 
   /* faq */
   .faq{font-family:var(--body);margin:0 0 10px}
@@ -344,7 +356,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </div>
 
   <div class="cta-wrap">
-    <a class="cta" href="#offer">get the workbook for $12 →</a>
+    <a class="cta" href="#offer">get the workbook for $9 →</a>
     <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
 
@@ -374,18 +386,20 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
-    <h2>the eldest daughter healing bundle™</h2>
-    <img class="bundle" src="images/eds bundle image.webp" alt="the eldest daughter workbook, poems &amp; letters, and inner child healing worksheet" width="2640" height="1485" loading="lazy" decoding="async">
+    <h2>the eldest daughter workbook</h2>
+    <img class="bundle bundle--pair" src="images/offer-workbook-poems.webp" alt="the eldest daughter workbook and poems &amp; letters" width="909" height="900" loading="lazy" decoding="async">
 
-    <div class="price"><span class="now">$12</span><span class="was">$49</span><span class="save">save 75%</span></div>
+    <div class="price"><span class="now">$9</span><span class="was">$29</span><span class="save">save 69%</span></div>
     <p class="price-note">one-time payment. no subscription. yours forever.</p>
 
     <ul class="includes">
       <li>the eldest daughter workbook (16 chapters)</li>
       <li>poems &amp; letters<span class="tag">bonus</span></li>
-      <li>inner child healing worksheet<span class="tag">bonus</span></li>
       <li>instant lifetime access, on any device</li>
     </ul>
+
+    <label class="bump"><input type="checkbox" id="bump-journal"><img src="images/journal-cover-en.webp" alt="" width="250" height="314" loading="lazy" decoding="async"><span class="bt"><span class="bh"><b>add the eldest daughter journal</b><span class="bp">+$7</span></span>49 printable pages: prompts, permission slips and 14 daily check-ins.</span></label>
+    <p class="total">total <b id="total">$9</b></p>
 
     <!-- REPLACE-CHECKOUT: point href to your checkout -->
     <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get instant access →</a>
@@ -444,13 +458,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </div>
 
   <div class="cta-wrap">
-    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the bundle for $12 →</a>
+    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
     <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
 
   <p class="big">you spent years becoming who everyone else needed.<br><em>it's finally time to become you.</em></p>
   <p>with love,<br>anna</p>
-  <p class="ps">p.s. the founding price is $12 (normally $49). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
+  <p class="ps">p.s. it's $9 right now (normally $29). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
 
 </main>
 
@@ -471,13 +485,14 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 <!-- sticky buy bar: appears after "what's inside", hides while the offer or a checkout button is on screen -->
 <div class="buybar" id="buybar" aria-hidden="true">
   <div class="in">
-    <div class="p"><b>the healing bundle™</b><span class="bp">$12</span> <s>$49</s> · instant download</div>
+    <div class="p"><b>the eldest daughter workbook</b><span class="bp">$9</span> <s>$29</s> · instant download</div>
     <a href="#offer" tabindex="-1">get it now →</a>
   </div>
 </div>
 
 <script>
 (function(){
+  var checkout=null;
   var bar=document.getElementById('buybar');
   var head=document.getElementById('inside');  // bar appears once the reader has scrolled past "what's inside"
   var blockers=document.querySelectorAll('#offer, .cta-wrap');
@@ -494,19 +509,29 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     blockers.forEach(function(b){io.observe(b);});
   }
 
+  // order bump: the journal tick box changes the total and restarts the checkout with the new items
+  var BASE=9, JOURNAL=7, bump=document.getElementById('bump-journal');
+  function orderTotal(){ return BASE+(bump&&bump.checked?JOURNAL:0); }
+  if(bump) bump.addEventListener('change',function(){
+    document.getElementById('total').textContent='$'+orderTotal();
+    try{window.clarity&&clarity('event',bump.checked?'bump_on':'bump_off');}catch(e){}
+    if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
+    checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
+  });
+
   // which checkout button got the click (shows up in Clarity + GA4)
   document.querySelectorAll('.js-checkout').forEach(function(a,i){
     a.addEventListener('click',function(e){
       var where=a.closest('#offer')?'offer':'after_faq';
       try{window.clarity&&clarity('event','checkout_click_'+where);}catch(e){}
-      try{gtag('event','begin_checkout',{location:where,value:12,currency:'USD'});}catch(e){}
+      try{gtag('event','begin_checkout',{location:where,value:orderTotal(),currency:'USD'});}catch(e){}
       e.preventDefault();
       openCheckout(a.href);
     });
   });
 
   // stripe embedded checkout in a pop-up; any failure sends the buyer to the payment link instead
-  var co=document.getElementById('co'), checkout=null, starting=false;
+  var co=document.getElementById('co'), starting=false, loaderHTML=document.getElementById('co-mount').innerHTML;
   function loadStripe(){
     return window.Stripe ? Promise.resolve() : new Promise(function(ok,fail){
       var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
@@ -529,7 +554,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     showCo(true);
     if(checkout||starting) return;
     starting=true;
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en'})})
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',journal:!!(bump&&bump.checked)})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
