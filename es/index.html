@@ -157,7 +157,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer h2{margin:0 0 4px!important;text-align:center;font-size:24px}
   .offer .sub{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
   .offer .bundle{margin:0 -6px 6px;mix-blend-mode:multiply}
-  .offer .bundle--book{width:62%;max-width:260px;margin:6px auto 8px}
   .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 4px;font-family:var(--body)}
   .price .now{font-family:var(--serif);font-size:32px;font-weight:600;line-height:1;color:var(--accent)}
   .price .was{color:var(--muted);text-decoration:line-through;font-size:24px}
@@ -175,17 +174,24 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .pay img{height:24px;width:auto;opacity:.8;mix-blend-mode:multiply}
   .pay-badge{font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-transform:none;font-size:12px;font-weight:600;line-height:1;letter-spacing:0;color:#111;background:#fff;border:1px solid #d8cfc4;border-radius:5px;padding:5px 7px}
   .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
-  /* offer, compact */
-  .offer{padding:24px 22px 20px;text-align:center}
-  .offer .bundle--book{width:auto;max-width:none;height:200px;margin:0 auto 14px;display:block}
-  .offer h2{margin:0 0 4px!important}
-  .offer-meta{font-family:var(--body);font-size:15px;color:var(--muted);margin:0 0 12px!important}
-  .offer .price{margin:0 0 16px}
+  /* offer */
+  .offer{padding:26px 22px 22px;text-align:center}
+  .offer img.bundle--book{width:auto!important;max-width:none!important;height:210px!important;margin:0 auto 16px;display:block;mix-blend-mode:multiply}
+  .offer h2{margin:0 0 2px!important;text-align:inherit!important}
+  .offer-meta{font-family:var(--body);font-size:15px;color:var(--muted);margin:0 0 10px!important}
+  .offer .price{margin:0 0 14px}
+  .offer-quote{font-family:var(--body);font-style:italic;font-size:15px;line-height:1.45;color:var(--ink);margin:0 0 16px!important}
+  .offer-quote span{display:block;font-style:normal;color:var(--muted);margin-top:2px}
   .offer-trust{display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--body);font-size:15px;color:var(--muted);margin:12px 0 0!important}
-  .offer-trust svg{color:var(--accent)}
+  .offer-trust svg{color:var(--accent);flex:none}
   .offer .pay{margin-top:12px;gap:6px}
   .offer .pay-badge{background:transparent;border-color:var(--line);color:var(--muted);font-weight:500}
   .offer .pay img{height:20px;filter:grayscale(1);opacity:.55}
+  @media(min-width:600px){
+    .offer{display:grid;grid-template-columns:auto 1fr;column-gap:28px;text-align:left;align-items:center;padding:28px}
+    .offer img.bundle--book{grid-row:1/span 7;margin:0;height:260px!important}
+    .offer .price,.offer-trust,.offer .pay{justify-content:flex-start}
+  }
   /* checkout step 1: order bumps */
   .co-sheet:not(.paying),.co-sheet:not(.paying) .co-head{background:var(--bg)!important}
   .co-back{background:none;border:0;font:inherit;font-size:15px;color:var(--muted);cursor:pointer;padding:4px 0}
@@ -214,7 +220,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .up-sum .tot b{font-family:var(--serif);font-weight:600;font-size:24px}
   .up .cta{width:100%;border:0;cursor:pointer;font:inherit}
   .up-note{text-align:center;font-size:15px;color:var(--muted);margin:10px 0 0!important}
-  .offer .bundle--pair{display:block;width:84%;max-width:380px;margin:4px auto 10px}
 
   /* faq */
   .faq{font-family:var(--body);margin:0 0 10px}
@@ -419,6 +424,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <h2>síndrome de la hija mayor</h2>
     <p class="offer-meta">ebook · descarga inmediata · un solo pago</p>
     <div class="price"><span class="now">$9</span><span class="was">$29</span><span class="save">ahorras 69%</span></div>
+    <p class="offer-quote">“por fin tuve palabras para explicar por qué descansar me parecía imposible.”<span>yara al-hassan, beirut</span></p>
     <a class="cta js-checkout" href="https://buy.stripe.com/7sY3cu2F19bC3tfctr9sk01">quiero acceso ahora →</a>
     <p class="offer-trust"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>garantía de reembolso de 14 días</p>
     <div class="pay"><span class="pay-badge">Apple Pay</span><span class="pay-badge">Google Pay</span><span class="pay-badge">Link</span><img src="../images/card-logos.jpg" alt="visa, mastercard, american express, discover" width="366" height="49" loading="lazy" decoding="async"></div>
