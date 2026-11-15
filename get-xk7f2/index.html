@@ -68,32 +68,10 @@ a.plain{color:var(--accent)}
 .fine{font-size:15px;line-height:1.5;color:var(--muted);margin:0 0 6px!important}
 .err{font-size:15px;color:#9C1C2E;margin:6px 0 0!important}
 .intake{margin:34px 0 8px;border-radius:16px;padding:22px 20px;background:#F2DED6}
-.qz-top{display:flex;justify-content:space-between;font-size:15px;color:var(--muted);margin:14px 0 6px}
-.qz-top #qz-sec{font-family:'Fraunces',Georgia,serif;font-weight:600;color:var(--ink)}
-.qz-bar{height:4px;border-radius:4px;background:#E3BDB8;overflow:hidden;margin-bottom:14px}
-.qz-bar i{display:block;height:100%;background:#6B0F28;transition:width .3s}
-.qz{padding:16px 0;border-top:1px solid #E3BDB8}
-.qz:first-child{border-top:0;padding-top:4px}
-.qz .qq{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:18px;line-height:1.3;margin:0 0 4px}
-.qz .qh{font-size:15px;color:var(--muted);margin:0 0 8px}
-.qz .opt{font-size:15px;color:var(--muted);font-weight:400;font-family:'Source Serif 4',Georgia,serif}
-.qz .ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.qz .ch label{cursor:pointer}
-.qz .ch input{position:absolute;opacity:0;pointer-events:none}
-.qz .ch span{display:inline-block;border:1px solid #E3BDB8;background:var(--bg);border-radius:999px;padding:8px 14px;font-size:15px;line-height:1.3}
-.qz .ch input:checked+span{background:#6B0F28;border-color:#6B0F28;color:var(--bg)}
-.qz .ch input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
-.qz .sc{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
-.qz .sc span{display:block;text-align:center;padding:9px 4px}
-.qz-nav{display:flex;gap:12px;align-items:center;margin-top:8px}
-.qz-nav .btn{margin:8px 0 6px}
-.qz-back{background:none;border:0;font:inherit;font-size:15px;color:var(--muted);cursor:pointer;padding:8px 4px;white-space:nowrap}
-.qz-back[hidden]{display:none}
-.intake textarea{width:100%;min-height:110px;margin-top:8px;border:1px solid #E3BDB8;border-radius:10px;padding:12px 14px;font:inherit;font-size:16px;line-height:1.5;background:var(--bg);color:var(--ink);text-transform:none;resize:vertical}
+.intake textarea{width:100%;min-height:180px;border:1px solid #E3BDB8;border-radius:10px;padding:12px 14px;font:inherit;font-size:16px;line-height:1.5;background:var(--bg);color:var(--ink);text-transform:none;resize:vertical}
 .intake textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
 
 </style>
-<script src="/audit-questions.js"></script>
 </head>
 <body>
 <main>
@@ -121,12 +99,9 @@ a.plain{color:var(--accent)}
   <section class="intake" id="intake" hidden>
     <h2 id="i-title"></h2>
     <p id="i-lead"></p>
-    <div class="qz-top"><span id="qz-sec"></span><span id="qz-step"></span></div>
-    <div class="qz-bar"><i id="qz-fill"></i></div>
-    <p class="fine" id="qz-note"></p>
-    <div id="qz-body"></div>
+    <textarea id="i-text" maxlength="8000"></textarea>
+    <button type="button" class="btn" id="i-send"></button>
     <p class="err" id="i-err" hidden></p>
-    <div class="qz-nav"><button type="button" class="qz-back" id="qz-back"></button><button type="button" class="btn" id="i-send"></button></div>
     <p class="fine" id="i-fine"></p>
   </section>
 
@@ -151,16 +126,16 @@ a.plain{color:var(--accent)}
     nope: 'si acabas de comprar, tus enlaces de descarga te llegan por correo en unos minutos. revisa también spam o promociones.',
     help: '¿algún problema? escríbeme a',
     a: { title: 'la lectura de tu patrón', hook: 'seamos honestas: ya sabes que algo te está manejando. solo que desde adentro no se ve.',
-      s1: 'contestas un cuestionario corto (unos 8 minutos): tu familia, tu patrón y un momento real donde estás atorada. tu mamá. tu pareja. tu negocio. eso a lo que sigues diciendo que sí.',
+      s1: 'me mandas un párrafo (o cinco) sobre dónde estás atorada. tu mamá. tu matrimonio. tu negocio. eso a lo que sigues diciendo que sí.',
       s2: 'en menos de 48 horas te mando: el patrón que te está manejando, de dónde viene y tu siguiente paso exacto.',
       p1: 'sin llamadas. sin cámara. sin tareas que te hagan sentir culpable por no hacerlas.',
       p2: 'solo la verdad, con cariño, de alguien que se dedica a reconocer los patrones de las hijas mayores.',
       buy: 'agregar la lectura · $', busy: 'procesando…',
       fine: function(n){ return 'se cobra a la tarjeta que acabas de usar. un solo pago. quedan ' + n + ' de 10 lugares esta semana.'; },
       declined: 'tu banco no aprobó el cobro. no se te cobró nada.', full: 'ya no quedan lugares esta semana. no se te cobró nada.', fail: 'algo salió mal. no se te cobró nada. intenta de nuevo.' },
-    i: { title: 'listo, tu lugar está apartado.', lead: '',
+    i: { title: 'listo, tu lugar está apartado.', lead: 'cuéntame dónde estás atorada. tómate tu tiempo: un párrafo o cinco.',
       ph: 'tu mamá. tu matrimonio. tu negocio. eso a lo que sigues diciendo que sí…', send: 'mandárselo a anna', busy: 'enviando…',
-      fine: 'si no puedes ahora, el correo que te mandamos tiene un enlace para volver aquí.', short: 'escribe un poquito más para que pueda ayudarte.', fail: 'no se pudo enviar. intenta de nuevo o responde al correo.' },
+      fine: 'también puedes responder al correo que te acabamos de mandar.', short: 'escribe un poquito más para que pueda ayudarte.', fail: 'no se pudo enviar. intenta de nuevo o responde al correo.' },
     s: { title: 'lo recibí.', lead: function(e){ return 'te respondo en menos de 48 horas' + (e ? ', a ' + e : '') + '.'; } }
   } : {
     title: 'thank you for your order', lead: "here's everything you bought. tap to download:", open: 'download',
@@ -168,16 +143,16 @@ a.plain{color:var(--accent)}
     nope: "if you just bought, your download links are on their way to your email. check spam or promotions too.",
     help: 'any trouble? email me at',
     a: { title: 'the pattern audit', hook: "lowkey... you already know something's running you. you just can't see it from the inside.",
-      s1: "you answer a short questionnaire (about 8 minutes): your family, your pattern, and one real moment where you're stuck. your mom. your marriage. your business. the thing you keep saying yes to.",
+      s1: "you send me a paragraph (or 5) about where you're stuck. your mom. your marriage. your business. the thing you keep saying yes to.",
       s2: 'within 48 hours, i send back: the pattern running you, where it came from, and your exact next move.',
       p1: "no calls. no camera. no homework you'll feel guilty about not doing.",
       p2: 'just the truth, with love, from someone who clocks eldest daughter patterns for a living.',
       buy: 'add the pattern audit · $', busy: 'processing…',
       fine: function(n){ return 'charged to the card you just used. one payment. ' + n + ' of 10 spots left this week.'; },
       declined: "your bank didn't approve the charge. you weren't charged.", full: "this week's spots just filled up. you weren't charged.", fail: "something went wrong. you weren't charged. please try again." },
-    i: { title: "you're in. your spot is saved.", lead: '',
+    i: { title: "you're in. your spot is saved.", lead: "tell me where you're stuck. take your time: a paragraph or five.",
       ph: 'your mom. your marriage. your business. the thing you keep saying yes to…', send: 'send it to anna', busy: 'sending…',
-      fine: 'no time right now? the email we sent you has a link back to this page.', short: 'write a little more so i can actually help.', fail: "couldn't send it. try again, or reply to the email." },
+      fine: 'you can also just reply to the email we sent you.', short: 'write a little more so i can actually help.', fail: "couldn't send it. try again, or reply to the email." },
     s: { title: 'got it.', lead: function(e){ return "you'll hear from me within 48 hours" + (e ? ', at ' + e : '') + '.'; } }
   };
   document.documentElement.lang = es ? 'es' : 'en';
@@ -222,57 +197,7 @@ a.plain{color:var(--accent)}
   // ---------- the pattern audit (one-click upsell) ----------
   function $(x){ return document.getElementById(x); }
   function post(body){ return fetch('/api/audit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(function(r){ return r.json().then(function(d){ d._status = r.status; return d; }); }); }
-  // ---------- the questionnaire ----------
-  var QZ = (window.AUDIT_QUESTIONS || {})[es ? 'es' : 'en'], qzStep = 0, qzAns = {};
-  function showIntake(){
-    $('audit').hidden = true; $('intake').hidden = false;
-    $('i-title').textContent = T.i.title; $('i-lead').textContent = QZ.intro; $('i-fine').textContent = T.i.fine; $('qz-back').textContent = '← ' + QZ.back;
-    renderStep();
-  }
-  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-  function renderStep(){
-    var sec = QZ.sections[qzStep], body = $('qz-body'); body.innerHTML = '';
-    $('qz-sec').textContent = sec.title; $('qz-step').textContent = (qzStep + 1) + ' / ' + QZ.sections.length;
-    $('qz-fill').style.width = Math.round((qzStep + 1) / QZ.sections.length * 100) + '%';
-    $('qz-note').textContent = sec.note || ''; $('qz-note').hidden = !sec.note;
-    $('qz-back').hidden = qzStep === 0;
-    $('i-send').textContent = qzStep === QZ.sections.length - 1 ? QZ.send : QZ.next + ' →';
-    $('i-err').hidden = true;
-    sec.questions.forEach(function(q){
-      var box = el('div', 'qz'); var qq = el('p', 'qq', q.q);
-      if (q.opt) { qq.appendChild(document.createTextNode(' ')); qq.appendChild(el('span', 'opt', '(' + QZ.optional + ')')); }
-      box.appendChild(qq);
-      if (q.hint) box.appendChild(el('p', 'qh', q.hint));
-      if (q.type === 'text') {
-        var ta = el('textarea'); ta.maxLength = 3000; ta.value = qzAns[q.id] || '';
-        ta.addEventListener('input', function(){ qzAns[q.id] = ta.value; }); box.appendChild(ta);
-      } else {
-        var opts = q.type === 'scale' ? QZ.scale : q.o, multi = q.type === 'many';
-        var wrap = el('div', q.type === 'scale' ? 'ch sc' : 'ch');
-        opts.forEach(function(o){
-          var lab = el('label'), inp = el('input'); inp.type = multi ? 'checkbox' : 'radio'; inp.name = 'q-' + q.id; inp.value = o;
-          var cur = qzAns[q.id]; inp.checked = multi ? (cur || []).indexOf(o) > -1 : cur === o;
-          inp.addEventListener('change', function(){
-            if (multi) { var arr = (qzAns[q.id] || []).filter(function(x){ return x !== o; }); if (inp.checked) arr.push(o); qzAns[q.id] = arr; }
-            else qzAns[q.id] = o;
-          });
-          lab.appendChild(inp); lab.appendChild(el('span', null, o)); wrap.appendChild(lab);
-        });
-        box.appendChild(wrap);
-      }
-      body.appendChild(box);
-    });
-    $('intake').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  function stepComplete(){
-    return QZ.sections[qzStep].questions.every(function(q){
-      if (q.opt) return true; var v = qzAns[q.id];
-      if (q.type === 'text') return (v || '').trim().length >= 10;
-      if (q.type === 'many') return v && v.length > 0;
-      return !!v;
-    });
-  }
-  $('qz-back').addEventListener('click', function(){ if (qzStep > 0) { qzStep--; renderStep(); } });
+  function showIntake(){ $('audit').hidden = true; $('intake').hidden = false; $('i-title').textContent = T.i.title; $('i-lead').textContent = T.i.lead; $('i-text').placeholder = T.i.ph; $('i-send').textContent = T.i.send; $('i-fine').textContent = T.i.fine; }
   var buyerEmail = '', price = 37;
   function audit(){
     fetch('/api/audit?session_id=' + encodeURIComponent(id)).then(function(r){ return r.json(); }).then(function(a){
@@ -309,17 +234,13 @@ a.plain{color:var(--accent)}
     }).catch(function(){ auditError(T.a.fail); });
   });
   $('i-send').addEventListener('click', function(){
-    if (!stepComplete()) { $('i-err').textContent = QZ.required; $('i-err').hidden = false; return; }
-    if (qzStep < QZ.sections.length - 1) { qzStep++; try { window.clarity && clarity('event', 'audit_step_' + qzStep); } catch (e) {} return renderStep(); }
-    var answers = [], b = this;
-    QZ.sections.forEach(function(sec){ sec.questions.forEach(function(q){ var v = qzAns[q.id]; if (Array.isArray(v)) v = v.join(', '); answers.push({ s: sec.title, q: q.q, a: (v || '').trim() }); }); });
-    b.disabled = true; b.textContent = QZ.sending; $('i-err').hidden = true;
-    post({ action: 'intake', session_id: id, answers: answers }).then(function(d){
+    var t = $('i-text').value.trim(), b = this;
+    if (t.length < 20) { $('i-err').textContent = T.i.short; $('i-err').hidden = false; return; }
+    b.disabled = true; b.textContent = T.i.busy; $('i-err').hidden = true;
+    post({ action: 'intake', session_id: id, text: t }).then(function(d){
       if (!d.ok) throw new Error('fail');
-      try { window.clarity && clarity('event', 'audit_submitted'); } catch (e) {}
       $('intake').hidden = true; $('sent').hidden = false; $('s-title').textContent = T.s.title; $('s-lead').textContent = T.s.lead(buyerEmail);
-      $('sent').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }).catch(function(){ b.disabled = false; b.textContent = QZ.send; $('i-err').textContent = T.i.fail; $('i-err').hidden = false; });
+    }).catch(function(){ b.disabled = false; b.textContent = T.i.send; $('i-err').textContent = T.i.fail; $('i-err').hidden = false; });
   });
 })();
 </script>
