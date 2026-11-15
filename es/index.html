@@ -152,7 +152,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .more summary::-webkit-details-marker{display:none}
   .more[open] summary{display:none}
 
-  /* offer */
+  /* offer (base) */
   .offer{border:1.5px solid var(--ink);border-radius:14px;padding:26px 22px 22px;margin:8px 0 10px;scroll-margin-top:16px}
   .offer h2{margin:0 0 4px!important;text-align:center;font-size:24px}
   .offer .sub{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
@@ -175,22 +175,33 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .pay-badge{font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-transform:none;font-size:12px;font-weight:600;line-height:1;letter-spacing:0;color:#111;background:#fff;border:1px solid #d8cfc4;border-radius:5px;padding:5px 7px}
   .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
   /* offer */
-  .offer{padding:26px 22px 22px;text-align:center}
-  .offer img.bundle--book{width:auto!important;max-width:none!important;height:210px!important;margin:0 auto 16px;display:block;mix-blend-mode:multiply}
-  .offer h2{margin:0 0 2px!important;text-align:inherit!important}
-  .offer-meta{font-family:var(--body);font-size:15px;color:var(--muted);margin:0 0 10px!important}
-  .offer .price{margin:0 0 14px}
-  .offer-quote{font-family:var(--body);font-style:italic;font-size:15px;line-height:1.45;color:var(--ink);margin:0 0 16px!important}
-  .offer-quote span{display:block;font-style:normal;color:var(--muted);margin-top:2px}
-  .offer-trust{display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--body);font-size:15px;color:var(--muted);margin:12px 0 0!important}
-  .offer-trust svg{color:var(--accent);flex:none}
-  .offer .pay{margin-top:12px;gap:6px}
+  .offer{padding:24px 22px 22px}
+  .offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:6px}
+  .offer img.bundle--book{width:auto!important;max-width:none!important;height:220px!important;margin:0 0 10px;display:block;mix-blend-mode:multiply}
+  .offer-info{display:flex;flex-direction:column;gap:6px;align-items:inherit}
+  .offer h2{margin:0!important;text-align:inherit!important}
+  .offer .price{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0 0}
+  .offer .price .now{font-size:32px}
+  .offer .price .save{background:var(--tint-1);color:var(--accent);font-weight:600;font-size:15px;line-height:1;padding:6px 10px;border-radius:999px}
+  .offer .price-note{margin:0!important;font-size:15px;color:var(--muted)}
+  .offer .includes{margin:0 0 16px}
+  .offer .includes li{border-top:0;border-bottom:1px solid var(--line);padding:12px 0;align-items:center}
+  .offer .includes li:last-child{border-bottom:0}
+  .offer .includes li::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;background:var(--tint-1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234D0619' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 12.5 10 16.5 18 8'/%3E%3C/svg%3E") center/14px no-repeat}
+  .offer-quote{font-family:var(--body);font-style:italic;font-size:18px;line-height:1.45;color:var(--ink);margin:0 0 18px!important;padding-left:14px;border-left:2px solid var(--tint-3)}
+  .offer-quote span{display:block;font-style:normal;font-size:15px;color:var(--muted);margin-top:4px}
+  .offer .guarantee{border:0;background:var(--tint-1);border-radius:12px;padding:14px 16px;margin-top:16px}
+  .offer .guarantee b{display:block;font-weight:600;color:var(--ink);margin-bottom:2px}
+  .offer .guarantee div{color:var(--muted)}
+  .offer .pay{margin-top:14px;gap:6px;justify-content:center}
   .offer .pay-badge{background:transparent;border-color:var(--line);color:var(--muted);font-weight:500}
   .offer .pay img{height:20px;filter:grayscale(1);opacity:.55}
   @media(min-width:600px){
-    .offer{display:grid;grid-template-columns:auto 1fr;column-gap:28px;text-align:left;align-items:center;padding:28px}
-    .offer img.bundle--book{grid-row:1/span 7;margin:0;height:260px!important}
-    .offer .price,.offer-trust,.offer .pay{justify-content:flex-start}
+    .offer{padding:28px}
+    .offer-top{display:flex;flex-direction:row;align-items:center;gap:28px;text-align:left}
+    .offer-info{align-items:flex-start}
+    .offer img.bundle--book{height:230px!important;margin:0}
+    .offer .price{justify-content:flex-start}
   }
   /* checkout step 1: order bumps */
   .co-sheet:not(.paying),.co-sheet:not(.paying) .co-head{background:var(--bg)!important}
@@ -420,13 +431,29 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
-    <img class="bundle bundle--book" src="../images/sindrome-hija-mayor-3d.webp" alt="síndrome de la hija mayor, de anna celestina" width="604" height="900" loading="lazy" decoding="async">
-    <h2>síndrome de la hija mayor</h2>
-    <p class="offer-meta">ebook · descarga inmediata · un solo pago</p>
-    <div class="price"><span class="now">$9</span><span class="was">$29</span><span class="save">ahorras 69%</span></div>
+    <div class="offer-top">
+      <img class="bundle bundle--book" src="../images/sindrome-hija-mayor-3d.webp" alt="síndrome de la hija mayor, de anna celestina" width="604" height="900" loading="lazy" decoding="async">
+      <div class="offer-info">
+        <h2>síndrome de la hija mayor</h2>
+        <div class="price"><span class="now">$9</span><span class="was">$29</span><span class="save">ahorras 69%</span></div>
+        <p class="price-note">un solo pago. sin suscripción. es tuyo para siempre.</p>
+      </div>
+    </div>
+
+    <ul class="includes">
+      <li>el libro síndrome de la hija mayor, en ebook</li>
+      <li>acceso inmediato y de por vida, en cualquier dispositivo</li>
+    </ul>
+
     <p class="offer-quote">“por fin tuve palabras para explicar por qué descansar me parecía imposible.”<span>yara al-hassan, beirut</span></p>
+
     <a class="cta js-checkout" href="https://buy.stripe.com/7sY3cu2F19bC3tfctr9sk01">quiero acceso ahora →</a>
-    <p class="offer-trust"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>garantía de reembolso de 14 días</p>
+
+    <div class="guarantee">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      <div><b>garantía de reembolso de 14 días</b>si sientes que no es para ti, escríbeme dentro de los 14 días y te devuelvo tu dinero. sin preguntas.</div>
+    </div>
+
     <div class="pay"><span class="pay-badge">Apple Pay</span><span class="pay-badge">Google Pay</span><span class="pay-badge">Link</span><img src="../images/card-logos.jpg" alt="visa, mastercard, american express, discover" width="366" height="49" loading="lazy" decoding="async"></div>
   </section>
 
