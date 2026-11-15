@@ -178,14 +178,15 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-back{background:none;border:0;font:inherit;font-size:15px;color:var(--muted);cursor:pointer;padding:4px 0}
   .co-back[hidden]{display:none}
   .up{padding:4px 18px 26px;font-family:var(--body)}
-  .upc{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:10px;margin:0 0 12px;cursor:pointer;transition:border-color .15s}
+  .upc{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:10px;margin:0 0 12px;cursor:pointer;transition:border-color .15s}
   .upc:has(input:checked){border-color:var(--accent)}
   .upc:has(input:focus-visible){outline:2px solid var(--ink);outline-offset:2px}
   .upc input{position:absolute;opacity:0;pointer-events:none}
   .upi{width:104px;height:104px;flex:none;border-radius:10px;overflow:hidden;display:block}
   .upi img{width:100%;height:100%;object-fit:cover;display:block}
-  .upb{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0}
+  .upb{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;padding-top:2px}
   .upb b{font-family:var(--serif);font-weight:600;font-size:18px;line-height:1.25;color:var(--ink)}
+  .upb .why{font-size:15px;line-height:1.4;color:var(--ink);margin-top:-4px}
   .upt{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);font-size:15px;font-weight:600;line-height:1}
   .upt .on{display:none}
   .upc:has(input:checked) .upt{background:var(--accent);color:var(--bg)}
@@ -193,7 +194,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .up-foot{position:sticky;bottom:0;background:var(--bg);margin:0 -18px -26px;padding:0 18px 18px;}
   .up-sum{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding:12px 0 12px;font-size:15px;color:var(--muted)}
   .up-sum div{display:flex;justify-content:space-between}
-  .up-sum div[hidden]{display:none}
+  .up-sum div[hidden],.up-sum>div:not(.tot){display:none}
   .up-sum .tot{font-size:18px;color:var(--ink);padding-top:4px}
   .up-sum .tot b{font-family:var(--serif);font-weight:600;font-size:24px}
   .up .cta{width:100%;border:0;cursor:pointer;font:inherit}
@@ -492,8 +493,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="co-sheet" id="co-sheet">
     <div class="co-head"><button type="button" class="co-back" id="co-back" hidden>← back</button><span id="co-title">add to your order?</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
     <div class="up" id="co-step1">
-      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="320" height="320" loading="lazy" decoding="async"></span><span class="upb"><b>dear angry eldest daughter</b><span class="upt"><span class="off">+ add · $7</span><span class="on">✓ added</span></span></span></label>
-      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="320" height="320" loading="lazy" decoding="async"></span><span class="upb"><b>the eldest daughter journal</b><span class="upt"><span class="off">+ add · $7</span><span class="on">✓ added</span></span></span></label>
+      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="320" height="320" loading="lazy" decoding="async"></span><span class="upb"><b>dear angry eldest daughter</b><span class="why">for the nights you’re too tired to do the work. 11 poems that say what you never could.</span><span class="upt"><span class="off">+ add · $7</span><span class="on">✓ added</span></span></span></label>
+      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="320" height="320" loading="lazy" decoding="async"></span><span class="upb"><b>the eldest daughter journal</b><span class="why">the workbook names the pattern. the journal is where you break it, five minutes a day.</span><span class="upt"><span class="off">+ add · $7</span><span class="on">✓ added</span></span></span></label>
       <div class="up-foot">
       <div class="up-sum"><div><span>the eldest daughter workbook</span><span>$9</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
       <button type="button" class="cta" id="co-continue">continue to payment →</button>
