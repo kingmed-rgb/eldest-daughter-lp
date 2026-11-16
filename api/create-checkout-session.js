@@ -44,7 +44,7 @@ function readBody(req) {
   const t = (v, n) => String(v == null ? '' : v).trim().slice(0, n);
   const a = body.ship && typeof body.ship === 'object' ? body.ship : {};
   // paperback: the shipping address the buyer typed in the pop-up (step "where should we send it?")
-  const ship = { email: t(a.email, 120).toLowerCase(), name: t(a.name, 80), line1: t(a.line1, 120), line2: t(a.line2, 120), city: t(a.city, 80), state: t(a.state, 40).toUpperCase(),
+  const ship = { name: t(a.name, 80), line1: t(a.line1, 120), line2: t(a.line2, 120), city: t(a.city, 80), state: t(a.state, 40).toUpperCase(),
     postal: t(a.postal, 20).toUpperCase(), country: t(a.country, 2).toUpperCase(), phone: t(a.phone, 30).replace(/[^\d+]/g, '') };
   return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print', ship };
 }
@@ -52,7 +52,6 @@ function readBody(req) {
 // Checks the paperback address before payment. Returns null when fine, else { field, error } for the buyer.
 async function addressProblem(ship) {
   if (!PRINT.countries.includes(ship.country)) return { field: 'country', error: "we don't ship the paperback to this country yet." };
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(ship.email)) return { field: 'email', error: 'please enter your email (your pdf and tracking go there).' };
   if (ship.name.length < 2) return { field: 'name', error: 'please enter the full name for the parcel.' };
   if (ship.line1.length < 3) return { field: 'line1', error: 'please enter the street address.' };
   if (ship.city.length < 2) return { field: 'city', error: 'please enter the city.' };
@@ -130,17 +129,6 @@ module.exports = async (req, res) => {
     params[sh + '[address][postal_code]'] = ship.postal;
     params[sh + '[address][country]'] = ship.country;
     params['metadata[ship_country]'] = ship.country;
-    // the buyer already gave name + email in our pop-up: hand them to stripe on a customer, so its form doesn't ask again
-    // (email shown as already filled, cardholder name + billing address prefilled)
-    try {
-      const addr = { 'address[line1]': ship.line1, 'address[city]': ship.city, 'address[postal_code]': ship.postal, 'address[country]': ship.country };
-      if (ship.line2) addr['address[line2]'] = ship.line2;
-      if (ship.state) addr['address[state]'] = ship.state;
-      const cust = await stripe('customers', secret, 'POST', Object.assign({ email: ship.email, name: ship.name, phone: ship.phone, 'metadata[source]': 'paperback checkout' }, addr));
-      params.customer = cust.id;
-    } catch (e) {
-      params.customer_email = ship.email; // fallback: at least the email is filled in
-    }
   }
   items.forEach((k, i) => {
     params[`line_items[${i}][quantity]`] = '1';
