@@ -183,6 +183,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer{padding:24px 22px 22px}
   .offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:6px}
   .offer img.bundle--book{width:auto!important;max-width:none!important;height:220px!important;margin:0 0 10px;display:block;mix-blend-mode:multiply}
+  .offer .covers{position:relative;flex:none;width:176px;height:228px;margin:0 0 10px}
+  .offer .covers img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;margin:0;opacity:0;transition:opacity .2s}
+  .offer .covers img.on{opacity:1}
   .offer-info{display:flex;flex-direction:column;gap:6px;align-items:inherit}
   /* format options (digital / paperback): stacked cards, the chosen one gets the dark border */
   .fmt[hidden]{display:none}
@@ -220,6 +223,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     .offer-top{display:flex;flex-direction:row;align-items:center;gap:28px;text-align:left}
     .offer-info{align-items:flex-start}
     .offer img.bundle--book{height:230px!important;margin:0}
+    .offer .covers{margin:0}
     .offer .price{justify-content:flex-start}
   }
   /* checkout step 1: order bumps */
@@ -452,7 +456,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
     <div class="offer-top">
-      <img class="bundle bundle--book" src="images/offer-workbook.webp" alt="the eldest daughter workbook" width="585" height="900" loading="lazy" decoding="async">
+      <div class="covers">  <!-- both images sit in one fixed box and cross-fade, so nothing moves when the format changes -->
+        <img class="cover on" data-f="digital" src="images/offer-workbook-tablet.webp" alt="the eldest daughter workbook on a tablet" width="540" height="701" loading="lazy" decoding="async">
+        <img class="cover" data-f="print" src="images/offer-workbook.webp" alt="the eldest daughter workbook paperback" width="585" height="900" loading="lazy" decoding="async">
+      </div>
       <div class="offer-info">
         <h2>the eldest daughter workbook</h2>
         <div class="price"><span class="now" id="p-now">$9</span><span class="was" id="p-was">$29</span><span class="save" id="p-save">save 69%</span></div>
@@ -600,6 +607,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     document.getElementById('p-now').textContent='$'+PRICE[FORMAT]; document.getElementById('p-was').textContent=f.was; document.getElementById('p-was').hidden=!f.was;
     document.getElementById('p-save').textContent=f.save; document.getElementById('offer-cta').textContent=f.cta;
     var tot=document.getElementById('total'); if(tot) tot.textContent='$'+orderTotal();
+    [].forEach.call(document.querySelectorAll('.offer .covers img'),function(im){ im.classList.toggle('on',im.dataset.f===FORMAT); });
     try{window.clarity&&clarity('event','format_'+FORMAT);}catch(e){}
   }); });
   var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
