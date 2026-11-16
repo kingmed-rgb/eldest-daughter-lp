@@ -208,6 +208,21 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer:not(.has-fmt) .price{margin:6px 0 18px}
   .offer.has-fmt .price{display:none}
   .offer h2{margin:0!important;text-align:inherit!important}
+  .offer .offer-sub{margin:2px 0 4px!important;font-size:16px;line-height:1.55;color:var(--muted);max-width:460px;text-wrap:balance}
+  .offer .offer-quote{margin:0!important;font-size:15px;font-style:italic;color:var(--ink)}
+  /* delivery: order placed / pdf / paperback */
+  .offer .ship{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:12px 0 4px;font-size:15px;line-height:1.3}
+  .offer .ship div{display:flex;flex-direction:column;gap:3px}
+  .offer .ship div:last-child{text-align:right}
+  .offer .ship small{font-size:13px;color:var(--muted)}
+  .offer .ship b{font-weight:600;color:var(--ink);white-space:nowrap}
+  .offer .ship small{white-space:nowrap}
+  .offer:not(.has-fmt) .ship-print{display:none}
+  .offer:not(.has-fmt) .ship div:nth-child(2){text-align:right}
+  /* exclusivity row */
+  .offer .excl{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px}
+  .offer .excl-badge{display:inline-flex;align-items:center;gap:6px;background:var(--btn);color:#fff;font-weight:600;padding:6px 12px;border-radius:8px}
+  .offer .excl-note{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
   .offer .price{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0 0}
   .offer .price .now{font-size:32px}
   .offer .price .save{background:var(--tint-1);color:var(--accent);font-weight:600;font-size:15px;line-height:1;padding:6px 10px;border-radius:999px}
@@ -461,7 +476,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       </div>
       <div class="offer-info">
         <h2>the eldest daughter workbook</h2>
+        <p class="offer-sub">for the daughter who grew up too fast. name what you carried, put down what was never yours, and start choosing yourself without the guilt.</p>
         <div class="comments-head offer-rating"><b>★★★★★ 4.8</b><span>· 600 reviews</span></div>
+        <p class="offer-quote">"it felt like someone understood the part of me i always hide."</p>
         <div class="price"><span class="now" id="p-now">$9</span><span class="was" id="p-was">$29</span><span class="save" id="p-save">save 69%</span></div>
       </div>
     </div>
@@ -472,6 +489,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     </div>
 
     <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
+    <div class="ship">  <!-- when it arrives. the paperback column only shows when the paperback is on sale -->
+      <div><small>ordered</small><b>today</b></div>
+      <div><small>pdf arrives</small><b>instantly</b></div>
+      <div class="ship-print"><small>paperback arrives</small><b id="ship-eta">in 2 weeks</b></div>
+    </div>
     <ul class="includes">
       <li>read on any device, anywhere, anytime.</li>
       <li>lifetime access to all the materials.</li>
@@ -485,6 +507,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     </div>
 
     <div class="pay"><span class="pay-badge">Apple Pay</span><span class="pay-badge">Google Pay</span><span class="pay-badge pay-link">Link</span><img src="images/card-logos.jpg" alt="visa, mastercard, american express, discover" width="366" height="49" loading="lazy" decoding="async"></div>
+
+    <div class="excl">
+      <span class="excl-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7"/></svg>sold only here</span>
+      <span class="excl-note">not on amazon</span>
+    </div>
   </section>
 
   <!-- ===== FAQ ===== -->
@@ -596,6 +623,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   // format switch on the offer card: digital $9 or paperback $27 (pdf included, printed and shipped by lulu)
   // preview links (*.vercel.app) show it before launch so it can be tried with test cards
   if(/\.vercel\.app$/.test(location.hostname)){ var fmtEl=document.querySelector('.fmt'); if(fmtEl){ fmtEl.hidden=false; document.getElementById('offer').classList.add('has-fmt'); } }
+  (function(){ var el=document.getElementById('ship-eta'); if(!el) return;
+    function add(n){ var d=new Date(); while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()%6) n--; } return d; }
+    var f=function(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toLowerCase(); };
+    el.textContent=f(add(8))+' – '+f(add(14)); })();
   var FORMAT='digital', PRICE={digital:9,print:27};
   var FMT={digital:{was:'$29',save:'save 69%',note:'one-time payment. no subscription. yours forever.',cta:'get the workbook for $9 →',row:'the eldest daughter workbook'},
            print:{was:'',save:'pdf included',note:'free shipping to the us, uk, canada and australia. the pdf is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
