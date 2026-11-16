@@ -40,7 +40,7 @@ function readBody(req) {
   body = body || {};
   const lang = body.lang || (req.query && req.query.lang);
   const L = OFFERS[lang] ? lang : 'en';
-  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && !!OFFERS[L].print };
+  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print };
 }
 
 module.exports = async (req, res) => {
@@ -77,8 +77,9 @@ module.exports = async (req, res) => {
     return_url: 'https://' + host + THANK_YOU[lang] + '?session_id={CHECKOUT_SESSION_ID}',
   };
   if (print) {
-    // paperback: Stripe collects the shipping address (only countries Bookvault prints in for us)
+    // paperback: Stripe collects the shipping address (only countries we ship printed books to)
     PRINT.countries.forEach((c, i) => { params[`shipping_address_collection[allowed_countries][${i}]`] = c; });
+    params['phone_number_collection[enabled]'] = 'true'; // the printer needs a phone number for delivery
   }
   items.forEach((k, i) => {
     params[`line_items[${i}][quantity]`] = '1';

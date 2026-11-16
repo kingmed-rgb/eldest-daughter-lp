@@ -16,7 +16,7 @@ const FILES = {
 const OFFERS = {
   en: {
     main: { name: 'The Eldest Daughter Workbook', amount: 900, files: ['workbook_en'] },
-    // printed paperback (Bookvault print on demand), PDF included
+    // printed paperback (printed and shipped by Lulu), PDF included
     print: { name: 'The Eldest Daughter Workbook (paperback + PDF)', amount: 2700, files: ['workbook_en'] },
     poems: { name: 'Dear Angry Eldest Daughter (poems)', amount: 700, files: ['poems_en'] },
     journal: { name: 'The Eldest Daughter Journal', amount: 700, files: ['journal_en'] },
@@ -50,12 +50,18 @@ function filesFor(session) {
   return { lang, keys: ['legacy'], files: legacy.map((f) => FILES[f]) };
 }
 
-// Printed paperback: Bookvault title and where each country's copy is printed.
+// Printed paperback: printed and shipped by Lulu (Print API), PDF included.
+const PRINT_FILES = 'https://www.eldestdaughtercore.com/files/e2b0943418c5d310d9/print/';
 const PRINT = {
-  sku: '9676018000014',                  // Bookvault title (no-ISBN SKU)
-  countries: ['US', 'GB', 'CA', 'AU'],   // where we ship for now (each printed locally)
-  partner: { US: 'Bookvault_US', GB: 'Bookvault_UK', CA: 'Bookvault_CA', AU: 'Bookvault_AU' },
-  service: 'CheapestTracked',
+  enabled: false,                         // switch on once the live test passed (also hides/shows the option on the page)
+  podPackageId: '0614X0921.BW.STD.PB.080CW444.MXX', // royal 6.14x9.21, b&w standard, perfect bound, 80# white coated, matte
+  pageCount: 122,
+  interior: PRINT_FILES + 'eds-workbook-interior-royal.pdf',
+  cover: PRINT_FILES + 'eds-workbook-cover-royal.pdf',
+  title: 'The Eldest Daughter Workbook',
+  countries: ['US', 'GB', 'CA', 'AU'],    // where we ship for now
+  shippingLevel: 'MAIL',                  // lulu's cheapest tracked option
+  productionDelayMinutes: 120,            // window to cancel a mistaken order before printing starts
 };
 
 module.exports = { FILES, OFFERS, PRINT, languageOf, filesFor };
