@@ -620,6 +620,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <form class="shipf" id="co-ship" hidden novalidate>  <!-- paperback only: the address, before payment -->
       <p class="ship-note"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>free tracked shipping · arrives in about 2 weeks</p>
       <p class="ship-err" id="ship-err" role="alert" hidden></p>
+      <label class="f"><span>email</span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="your pdf and tracking go here" required></label>
       <label class="f"><span>full name</span><input name="name" autocomplete="shipping name" required></label>
       <label class="f"><span>country</span><select name="country" autocomplete="shipping country"><option value="US">united states</option><option value="GB">united kingdom</option><option value="CA">canada</option><option value="AU">australia</option></select></label>
       <label class="f"><span>street address</span><input name="line1" autocomplete="shipping address-line1" required></label>
@@ -729,7 +730,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   }
   try{ var reg=((navigator.language||'').split('-')[1]||'').toUpperCase(); if(reg==='UK') reg='GB'; if(['US','GB','CA','AU'].indexOf(reg)>=0) shipForm.country.value=reg; }catch(e){}
   fillStates(); shipForm.country.addEventListener('change',fillStates);
-  function shipData(){ var f=shipForm; return {name:f.name.value,line1:f.line1.value,line2:f.line2.value,city:f.city.value,state:f.state.value,postal:f.postal.value,country:f.country.value,phone:f.phone.value}; }
+  function shipData(){ var f=shipForm; return {email:f.email.value,name:f.name.value,line1:f.line1.value,line2:f.line2.value,city:f.city.value,state:f.state.value,postal:f.postal.value,country:f.country.value,phone:f.phone.value}; }
   function shipProblem(field,msg){
     [].forEach.call(shipForm.querySelectorAll('.f'),function(x){ x.classList.remove('bad'); });
     shipErr.textContent=msg||''; shipErr.hidden=!msg; if(msg) sheet.scrollTop=0;
@@ -737,7 +738,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   }
   shipForm.addEventListener('submit',function(e){
     e.preventDefault(); var d=shipData();
-    var need=[['name',d.name.trim().length>1,'please enter the full name for the parcel.'],['line1',d.line1.trim().length>2,'please enter the street address.'],['city',d.city.trim().length>1,'please enter the city.'],
+    var need=[['email',/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email.trim()),'please enter your email (your pdf and tracking go there).'],['name',d.name.trim().length>1,'please enter the full name for the parcel.'],['line1',d.line1.trim().length>2,'please enter the street address.'],['city',d.city.trim().length>1,'please enter the city.'],
       ['state',!STATES[d.country]||!!d.state,'please choose the '+(STATE_LABEL[d.country]||'state')+'.'],['postal',d.postal.trim().length>2,'please enter the '+(POSTAL_LABEL[d.country]||'postal code')+'.'],['phone',d.phone.replace(/\D/g,'').length>6,'please enter a phone number (the courier uses it for delivery).']];
     for(var i=0;i<need.length;i++) if(!need[i][1]) return shipProblem(need[i][0],need[i][2]);
     shipProblem(); pay();
