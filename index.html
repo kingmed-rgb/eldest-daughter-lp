@@ -193,27 +193,27 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   #total,.fmt .pr,.offer .price .now{font-variant-numeric:tabular-nums lining-nums}
   #total{display:inline-block;min-width:2.4em;text-align:right}
   .fmt{display:grid;grid-auto-rows:1fr;gap:18px;margin:24px 0 20px}  /* both cards always the same height */
-  .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:20px 16px 16px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
-  .fmt button.on{border-color:var(--ink);background:#FBEFE6}
-  .fmt .dot{flex:none;box-sizing:border-box;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);background:var(--bg);transition:all .15s}
+  .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--tint-2);background:#FFFCF7;border-radius:12px;padding:20px 16px 16px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+  .fmt button.on{border-color:var(--btn);background:var(--tint-1)}
+  .fmt .dot{flex:none;box-sizing:border-box;width:22px;height:22px;border-radius:50%;border:2px solid var(--tint-3);background:#FFFCF7;transition:all .15s}
   .fmt button.on .dot{border:6px solid var(--btn)}
   .fmt .txt{flex:1;min-width:0;line-height:1.35}
   .fmt .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-weight:600;font-size:19px;line-height:1.25}
   /* badge sits on the card's top edge, so it never competes with the name or the price */
-  .fmt .tag{position:absolute;top:-11px;left:52px;background:var(--bg);color:var(--btn);border:1px solid var(--btn);font-size:12.5px;font-weight:600;padding:2px 10px;border-radius:999px;line-height:1.35;transition:background .15s,color .15s}
+  .fmt .tag{position:absolute;top:-11px;left:52px;background:#FFFCF7;color:var(--btn);border:1px solid var(--btn);font-size:12.5px;font-weight:600;padding:2px 10px;border-radius:999px;line-height:1.35;transition:background .15s,color .15s}
   .fmt button.on .tag{background:var(--btn);color:#fff}
   .fmt .d{display:block;font-size:15px;color:var(--muted);margin-top:4px}
-  .fmt .pr{flex:none;font-weight:700;font-size:21px;color:var(--ink);white-space:nowrap}
+  .fmt .pr{flex:none;font-weight:700;font-size:21px;color:var(--btn);white-space:nowrap}
   .fmt .pr s{font-weight:400;font-size:15px;color:var(--muted);margin-right:7px}
   .offer:not(.has-fmt) .price{margin:6px 0 18px}
   .offer.has-fmt .price{display:none}
   .offer h2{margin:0!important;text-align:inherit!important}
-  .offer .offer-sub{margin:4px 0 0!important;font-size:16.5px;line-height:1.5;color:var(--muted);max-width:420px;text-wrap:balance}
+  .offer .offer-sub{margin:4px 0 0!important;font-size:16.5px;line-height:1.5;color:var(--tint-5);max-width:420px;text-wrap:balance}
   /* delivery: order placed / pdf / paperback */
-  .offer .ship{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:12px 0 4px;font-size:15px;line-height:1.3}
+  .offer .ship{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--tint-2);background:#FBEDE8;border-radius:12px;padding:12px 16px;margin:12px 0 4px;font-size:15px;line-height:1.3}
   .offer .ship div{display:flex;flex-direction:column;gap:3px}
   .offer .ship div:last-child{text-align:right}
-  .offer .ship small{font-size:13px;color:var(--muted)}
+  .offer .ship small{font-size:13px;color:var(--tint-4)}
   .offer .ship b{font-weight:600;color:var(--ink);white-space:nowrap}
   .offer .ship small{white-space:nowrap}
   .offer:not(.has-fmt) .ship-print{display:none}
@@ -225,8 +225,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer .price .save{background:var(--tint-1);color:var(--accent);font-weight:600;font-size:15px;line-height:1;padding:6px 10px;border-radius:999px}
   .offer .price-note{margin:0!important;font-size:15px;color:var(--muted)}
   .offer .includes{margin:14px auto 0;width:fit-content;max-width:100%}  /* centered as a group under the button */
-  .offer .includes li{border:0!important;padding:5px 0;align-items:center;font-size:16px;color:var(--muted)}
-  .offer .includes li::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;background:var(--tint-1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234D0619' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 12.5 10 16.5 18 8'/%3E%3C/svg%3E") center/14px no-repeat}
+  .offer .includes li{border:0!important;padding:5px 0;align-items:center;font-size:16px;color:var(--ink)}
+  .offer .includes li::before{content:"";width:20px;height:20px;flex:none;border-radius:50%;background:var(--btn) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 12.5 10 16.5 18 8'/%3E%3C/svg%3E") center/13px no-repeat}
   .offer .guarantee{border:0;background:var(--tint-1);border-radius:12px;padding:16px 20px;margin-top:16px;flex-direction:column;align-items:center;text-align:center;gap:6px}
   .offer .guarantee b{display:block;font-weight:600;color:var(--ink);margin-bottom:2px}
   .offer .guarantee div{color:var(--muted);text-wrap:balance}
