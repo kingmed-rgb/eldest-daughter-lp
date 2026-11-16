@@ -220,14 +220,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer h2{margin:0!important;text-align:inherit!important}
   .offer .offer-sub{margin:4px 0 0!important;font-size:18px;line-height:1.5;color:var(--muted);max-width:420px;text-wrap:balance}
   /* delivery: order placed / pdf / paperback */
-  .offer .ship{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:12px 0 4px;font-size:15px;line-height:1.3}
-  .offer .ship div{display:flex;flex-direction:column;gap:3px}
-  .offer .ship div:last-child{text-align:right}
-  .offer .ship small{font-size:13px;color:var(--muted)}
+  .offer .ship{display:flex;justify-content:center;align-items:center;gap:7px;margin:12px 0 0!important;font-size:15px;line-height:1.3;color:var(--muted)}
+  .offer .ship svg{flex:none;color:var(--btn)}
   .offer .ship b{font-weight:600;color:var(--ink);white-space:nowrap}
-  .offer .ship small{white-space:nowrap}
-  .offer:not(.has-fmt) .ship-print{display:none}
-  .offer:not(.has-fmt) .ship div:nth-child(2){text-align:right}
+  .offer:not(.has-fmt) .ship{display:none}
   /* exclusivity line */
   .offer .excl{display:flex;justify-content:center;align-items:center;gap:7px;margin:14px 0 0!important;font-size:15px;color:var(--btn);font-weight:600}
   .offer .price{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0 0}
@@ -489,11 +485,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     </div>
 
     <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
-    <div class="ship">  <!-- when it arrives. the paperback column only shows when the paperback is on sale -->
-      <div><small>ordered</small><b>today</b></div>
-      <div><small>pdf arrives</small><b>instantly</b></div>
-      <div class="ship-print"><small>paperback arrives</small><b id="ship-eta">in 2–3 weeks</b></div>
-    </div>
+    <p class="ship"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>paperback arrives <b id="ship-eta">in 2–3 weeks</b></p>  <!-- one line, only when the paperback is on sale -->
     <ul class="includes">
       <li>read on any device, anywhere, anytime.</li>
       <li>lifetime access to all the materials.</li>
