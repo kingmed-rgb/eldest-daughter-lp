@@ -9,7 +9,7 @@ const PUBLISHABLE_KEYS = {
   live: 'pk_live_51TciB1AsMiI0w2mO6D6OjO4WepQjTUOb6cbxogZrvy6Hxm4cHf6cQjhvlDXaineb8A21VtGWFXZHIv3UiZTiawRv00ecjNtsMq',
 };
 
-const { OFFERS } = require('./_lib/catalog.js');
+const { OFFERS, PRINT } = require('./_lib/catalog.js');
 
 // Thank-you page per language (on the same domain the buyer came from).
 const THANK_YOU = { en: '/get-xk7f2', es: '/gracias' };
@@ -39,7 +39,8 @@ function readBody(req) {
   if (typeof body === 'string') { try { body = JSON.parse(body); } catch (e) { body = {}; } }
   body = body || {};
   const lang = body.lang || (req.query && req.query.lang);
-  return { lang: OFFERS[lang] ? lang : 'en', poems: body.poems === true, journal: body.journal === true };
+  const L = OFFERS[lang] ? lang : 'en';
+  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && !!OFFERS[L].print };
 }
 
 module.exports = async (req, res) => {
@@ -61,9 +62,9 @@ module.exports = async (req, res) => {
   }
   if (!mode) return res.status(503).json({ error: 'Checkout is not configured' }); // page falls back to the payment link
 
-  const { lang, poems, journal } = readBody(req);
+  const { lang, poems, journal, print } = readBody(req);
   const offer = OFFERS[lang];
-  const items = ['main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
+  const items = [print ? 'print' : 'main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
   const host = req.headers['x-forwarded-host'] || req.headers.host;
 
   const params = {
@@ -75,6 +76,10 @@ module.exports = async (req, res) => {
     // The thank-you page reads session_id to show the right downloads and count the purchase once.
     return_url: 'https://' + host + THANK_YOU[lang] + '?session_id={CHECKOUT_SESSION_ID}',
   };
+  if (print) {
+    // paperback: Stripe collects the shipping address (only countries Bookvault prints in for us)
+    PRINT.countries.forEach((c, i) => { params[`shipping_address_collection[allowed_countries][${i}]`] = c; });
+  }
   items.forEach((k, i) => {
     params[`line_items[${i}][quantity]`] = '1';
     params[`line_items[${i}][price_data][currency]`] = 'usd';

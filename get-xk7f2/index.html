@@ -52,6 +52,7 @@ p{margin:0 0 16px}
 .rule{border:0;border-top:1px solid var(--line);margin:30px 0 18px}
 a.plain{color:var(--accent)}
 [hidden]{display:none!important}
+.printnote{background:#F2DED6;border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -111,6 +112,11 @@ a.plain{color:var(--accent)}
       var g = document.createElement('span'); g.className = 'go'; g.textContent = T.open + ' ↓'; a.appendChild(g);
       box.appendChild(a);
     });
+    if (d.print) {
+      var pn = document.createElement('p'); pn.className = 'printnote';
+      pn.textContent = es ? 'tu libro impreso ya se está preparando y te llega en unos días hábiles. el pdf de arriba ya es tuyo.' : "your paperback is being printed and ships to you in a few working days. the pdf above is yours now, so you can start tonight.";
+      box.parentNode.insertBefore(pn, box.nextSibling);
+    }
     document.getElementById('ok').hidden = false;
 
     // count the purchase once per checkout, at the real amount

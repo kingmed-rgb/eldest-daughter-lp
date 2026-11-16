@@ -16,6 +16,8 @@ const FILES = {
 const OFFERS = {
   en: {
     main: { name: 'The Eldest Daughter Workbook', amount: 900, files: ['workbook_en'] },
+    // printed paperback (Bookvault print on demand), PDF included
+    print: { name: 'The Eldest Daughter Workbook (paperback + PDF)', amount: 2700, files: ['workbook_en'] },
     poems: { name: 'Dear Angry Eldest Daughter (poems)', amount: 700, files: ['poems_en'] },
     journal: { name: 'The Eldest Daughter Journal', amount: 700, files: ['journal_en'] },
   },
@@ -48,4 +50,12 @@ function filesFor(session) {
   return { lang, keys: ['legacy'], files: legacy.map((f) => FILES[f]) };
 }
 
-module.exports = { FILES, OFFERS, languageOf, filesFor };
+// Printed paperback: Bookvault title and where each country's copy is printed.
+const PRINT = {
+  sku: '9676018000014',                  // Bookvault title (no-ISBN SKU)
+  countries: ['US', 'GB', 'CA', 'AU'],   // where we ship for now (each printed locally)
+  partner: { US: 'Bookvault_US', GB: 'Bookvault_UK', CA: 'Bookvault_CA', AU: 'Bookvault_AU' },
+  service: 'CheapestTracked',
+};
+
+module.exports = { FILES, OFFERS, PRINT, languageOf, filesFor };

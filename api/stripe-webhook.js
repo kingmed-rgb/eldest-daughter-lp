@@ -13,6 +13,7 @@
 
 const crypto = require('crypto');
 const { filesFor, languageOf } = require('./_lib/catalog.js');
+const { fulfilPrint, hasPrint } = require('./_lib/print.js');
 
 const REPLY_TO = 'eldestdaughterbook@gmail.com';
 // Sender per language. Spanish uses hijamayor.com once that domain is verified in Resend,
@@ -30,6 +31,7 @@ const EMAILS = {
     late: "sorry this is so late. a problem on our side kept your download email from going out, and it's fixed now.",
     intro: "thank you for your order. here's everything, ready to download:",
     tip: 'save this email so you can come back to the files anytime. start with chapter one, at your own pace.',
+    printed: 'your paperback is being printed now and ships to you in a few working days. the pdf above is yours too, so you can start tonight.',
     help: "if a link doesn't open or anything feels off, just reply to this email.",
     signoff: 'with love,<br>anna',
   },
@@ -122,7 +124,7 @@ function signatureOk(raw, header, secret) {
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function renderEmail(c, files, late) {
+function renderEmail(c, files, late, printed) {
   const buttons = files.map(({ label, url }) =>
     `<tr><td style="padding:0 0 12px"><a href="${esc(url)}" style="display:block;background:#4D0619;color:#FEF7EC;text-decoration:none;font-family:Georgia,serif;font-size:16px;font-weight:600;padding:15px 18px;border-radius:10px;text-align:center">${esc(label)} &rarr;</a></td></tr>`).join('');
   const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -134,12 +136,13 @@ function renderEmail(c, files, late) {
 ${late ? `<tr><td style="padding:0 0 16px">${esc(c.late)}</td></tr>` : ''}
 <tr><td style="padding:0 0 20px">${esc(c.intro)}</td></tr>
 ${buttons}
+${printed ? `<tr><td style="padding:8px 0 4px">${esc(printed)}</td></tr>` : ''}
 <tr><td style="padding:8px 0 16px">${esc(c.tip)}</td></tr>
 <tr><td style="padding:0 0 16px;color:#5E434A;font-size:15px">${esc(c.help)}</td></tr>
 <tr><td style="padding:0 0 24px">${c.signoff}</td></tr>
 <tr><td style="border-top:1px solid #EBDCCD;padding:16px 0 0;color:#5E434A;font-size:13px">${esc(REPLY_TO)}</td></tr>
 </table></td></tr></table></body></html>`;
-  const text = [c.hello, '', ...(late ? [c.late, ''] : []), c.intro, '', ...files.map((f) => f.label + ': ' + f.url), '', c.tip, c.help, '', c.signoff.replace('<br>', '\n')].join('\n');
+  const text = [c.hello, '', ...(late ? [c.late, ''] : []), ...(printed ? [printed, ''] : []), c.intro, '', ...files.map((f) => f.label + ': ' + f.url), '', c.tip, c.help, '', c.signoff.replace('<br>', '\n')].join('\n');
   return { html, text };
 }
 
@@ -148,7 +151,7 @@ async function sendFor(session, { late = false } = {}) {
   if (!to) throw new Error('session ' + session.id + ' has no customer email');
   const { lang, keys, files } = filesFor(session);
   const c = EMAILS[lang];
-  const { html, text } = renderEmail(c, files, late);
+  const { html, text } = renderEmail(c, files, late, keys.includes('print') ? c.printed : '');
   // One email per checkout session, even if Stripe retries or sends both events.
   const sent = await resend('emails', 'POST', {
     from: await fromAddress(lang), to: [to], reply_to: REPLY_TO, subject: c.subject, html, text,
@@ -207,6 +210,7 @@ module.exports = async (req, res) => {
       || (event.type === 'checkout.session.completed' && session.payment_status !== 'unpaid');
     if (!wanted || !session || session.object !== 'checkout.session') return res.status(200).json({ ignored: event.type });
     const sent = await sendFor(session);
+    if (hasPrint(session)) await fulfilPrint(session).catch((e) => console.error('print from webhook failed:', e.message));
     return res.status(200).json({ sent: true, email_id: sent.id });
   } catch (err) {
     console.error('delivery failed:', err.message);
@@ -217,3 +221,5 @@ module.exports = async (req, res) => {
 module.exports.sendFor = sendFor;
 module.exports.stripeGet = stripeGet;
 module.exports.languageOf = languageOf;
+module.exports.resend = resend;
+module.exports.fromAddress = fromAddress;

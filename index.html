@@ -184,6 +184,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:6px}
   .offer img.bundle--book{width:auto!important;max-width:none!important;height:220px!important;margin:0 0 10px;display:block;mix-blend-mode:multiply}
   .offer-info{display:flex;flex-direction:column;gap:6px;align-items:inherit}
+  .fmt{display:inline-flex;background:var(--tint-1);border-radius:999px;padding:3px;gap:2px;margin:4px 0 2px}
+  .fmt button{border:0;background:transparent;font:inherit;font-family:var(--body);font-size:15px;color:var(--muted);padding:7px 16px;border-radius:999px;cursor:pointer}
+  .fmt button.on{background:var(--bg);color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(43,18,24,.15)}
   .offer h2{margin:0!important;text-align:inherit!important}
   .offer .price{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0 0}
   .offer .price .now{font-size:32px}
@@ -439,8 +442,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <img class="bundle bundle--book" src="images/offer-workbook.webp" alt="the eldest daughter workbook" width="585" height="900" loading="lazy" decoding="async">
       <div class="offer-info">
         <h2>the eldest daughter workbook</h2>
-        <div class="price"><span class="now">$9</span><span class="was">$29</span><span class="save">save 69%</span></div>
-        <p class="price-note">one-time payment. no subscription. yours forever.</p>
+        <div class="fmt" role="radiogroup" aria-label="format">
+          <button type="button" role="radio" aria-checked="true" data-f="digital" class="on">digital</button>
+          <button type="button" role="radio" aria-checked="false" data-f="print">paperback</button>
+        </div>
+        <div class="price"><span class="now" id="p-now">$9</span><span class="was" id="p-was">$29</span><span class="save" id="p-save">save 69%</span></div>
+        <p class="price-note" id="p-note">one-time payment. no subscription. yours forever.</p>
       </div>
     </div>
 
@@ -451,7 +458,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     </ul>
 
 
-    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
+    <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
 
     <div class="guarantee">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
@@ -567,10 +574,22 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   }
 
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
+  // format switch on the offer card: digital $9 or paperback $27 (pdf included, shipped by bookvault)
+  var FORMAT='digital', PRICE={digital:9,print:27};
+  var FMT={digital:{was:'$29',save:'save 69%',note:'one-time payment. no subscription. yours forever.',cta:'get the workbook for $9 →',row:'the eldest daughter workbook'},
+           print:{was:'',save:'pdf included',note:'free shipping to the us, uk, canada and australia. the pdf is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
+  [].forEach.call(document.querySelectorAll('.fmt button'),function(btn){ btn.addEventListener('click',function(){
+    FORMAT=btn.dataset.f; BASE=PRICE[FORMAT]; var f=FMT[FORMAT];
+    [].forEach.call(document.querySelectorAll('.fmt button'),function(x){ var on=x===btn; x.classList.toggle('on',on); x.setAttribute('aria-checked',on?'true':'false'); });
+    document.getElementById('p-now').textContent='$'+PRICE[FORMAT]; document.getElementById('p-was').textContent=f.was; document.getElementById('p-was').hidden=!f.was;
+    document.getElementById('p-save').textContent=f.save; document.getElementById('p-note').textContent=f.note; document.getElementById('offer-cta').textContent=f.cta;
+    var tot=document.getElementById('total'); if(tot) tot.textContent='$'+orderTotal();
+    try{window.clarity&&clarity('event','format_'+FORMAT);}catch(e){}
+  }); });
   var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
   function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
   function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
-  function orderKey(){ return (chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
+  function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
   bumps.forEach(function(b){ b.addEventListener('change',function(){
     document.getElementById('total').textContent='$'+orderTotal();
     document.getElementById('sum-'+b.id.replace('bump-','')).hidden=!b.checked;
@@ -628,7 +647,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
     checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
     starting=true;
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',poems:chosen('poems'),journal:chosen('journal')})})
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',format:FORMAT,poems:chosen('poems'),journal:chosen('journal')})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
