@@ -17,7 +17,7 @@ const OFFERS = {
   en: {
     main: { name: 'The Eldest Daughter Workbook', amount: 900, files: ['workbook_en'] },
     // printed paperback (printed and shipped by Lulu), PDF included
-    print: { name: 'The Eldest Daughter Workbook (paperback + PDF)', amount: 1999, files: ['workbook_en'] },  // + shipping at cost
+    print: { name: 'The Eldest Daughter Workbook (paperback + PDF)', amount: 2700, files: ['workbook_en'] },
     poems: { name: 'Dear Angry Eldest Daughter (poems)', amount: 700, files: ['poems_en'] },
     journal: { name: 'The Eldest Daughter Journal', amount: 700, files: ['journal_en'] },
   },
@@ -51,8 +51,6 @@ function filesFor(session) {
 }
 
 // Printed paperback: printed and shipped by Lulu (Print API), PDF included.
-// Every country stripe checkout can collect a shipping address for.
-const COUNTRIES = ['AD','AE','AF','AG','AI','AL','AM','AO','AR','AT','AU','AW','AX','AZ','BA','BB','BD','BE','BF','BG','BH','BI','BJ','BL','BM','BN','BO','BQ','BR','BS','BT','BW','BZ','CA','CD','CF','CG','CH','CI','CK','CL','CM','CN','CO','CR','CV','CW','CY','CZ','DE','DJ','DK','DM','DO','DZ','EC','EE','EG','EH','ER','ES','ET','FI','FJ','FK','FO','FR','GA','GB','GD','GE','GF','GG','GH','GI','GL','GM','GN','GP','GQ','GR','GS','GT','GU','GW','GY','HK','HN','HR','HT','HU','ID','IE','IL','IM','IN','IQ','IS','IT','JE','JM','JO','JP','KE','KG','KH','KI','KM','KN','KR','KW','KY','KZ','LA','LB','LC','LI','LK','LR','LS','LT','LU','LV','LY','MA','MC','MD','ME','MF','MG','MK','ML','MM','MN','MO','MQ','MR','MS','MT','MU','MV','MW','MX','MY','MZ','NA','NC','NE','NG','NI','NL','NO','NP','NR','NU','NZ','OM','PA','PE','PF','PG','PH','PK','PL','PM','PN','PR','PS','PT','PY','QA','RE','RO','RS','RW','SA','SB','SC','SE','SG','SH','SI','SJ','SK','SL','SM','SN','SO','SR','SS','ST','SV','SX','SZ','TC','TD','TG','TH','TJ','TK','TL','TM','TN','TO','TR','TT','TV','TW','TZ','UA','UG','US','UY','UZ','VA','VC','VE','VG','VN','VU','WF','WS','YE','YT','ZA','ZM','ZW'];
 const PRINT_FILES = 'https://www.eldestdaughtercore.com/files/e2b0943418c5d310d9/print/';
 const PRINT = {
   enabled: true,                          // on sale (lulu test passed 2026-11-16). false hides it again: page option and checkout
@@ -61,12 +59,13 @@ const PRINT = {
   interior: PRINT_FILES + 'eds-workbook-interior-royal.pdf',
   cover: PRINT_FILES + 'eds-workbook-cover-royal.pdf',
   title: 'The Eldest Daughter Workbook',
-  // ships worldwide. the buyer pays lulu's real shipping (+ the tax lulu adds on it), quoted from the address
-  // they type at checkout (api/shipping-quote.js). left out: countries stripe can't ship to, and mexico + brazil
-  // (lulu needs the buyer's tax id there, which checkout doesn't collect)
-  countries: COUNTRIES.filter((c) => !['MX', 'BR'].includes(c)),
+  // where we ship, and what the buyer pays for shipping (cents). us + uk free; canada and australia
+  // pay lulu's mail cost plus the tax lulu adds on it (lulu quotes 2026-11-16: ca $12.42, au $8.79)
+  shipping: { US: 0, GB: 0, CA: 1300, AU: 1000 },
   shippingLevel: 'MAIL',                  // lulu's cheapest tracked option
   productionDelayMinutes: 120,            // window to cancel a mistaken order before printing starts
 };
+
+PRINT.countries = Object.keys(PRINT.shipping);
 
 module.exports = { FILES, OFFERS, PRINT, languageOf, filesFor };

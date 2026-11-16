@@ -201,9 +201,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .fmt[hidden]{display:none}
   .pb-only{display:none} html.pb .pb-only{display:inline} html.pb .pb-hide{display:none}  /* paperback on sale: html gets class pb */
   #total,.fmt .pr,.offer .price .now{font-variant-numeric:tabular-nums lining-nums}
-  #total{display:inline-block;min-width:3.3em;text-align:right}
-  #total-ship{font-size:15px;color:var(--muted);margin-right:6px}
-  #total-ship[hidden]{display:none}
+  #total{display:inline-block;min-width:2.4em;text-align:right}
   .fmt{display:grid;grid-auto-rows:1fr;gap:18px;margin:24px 0 20px}  /* both cards always the same height */
   .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:#FFFCF6;border-radius:12px;padding:20px 16px 16px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
   .fmt button.on{border-color:var(--ink);background:#FBF1EC}
@@ -267,8 +265,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .upc:has(input:checked) .tick{background:var(--accent);border-color:var(--accent)}
   .upc:has(input:checked) .tick::after{content:'';position:absolute;left:8px;top:3px;width:6px;height:12px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
   .up-foot{position:sticky;bottom:0;background:#FFFCF6;margin:0 -18px -26px;padding:0 18px 18px;}
-  .co-msg{margin:0 18px 10px!important;padding:10px 12px;border-radius:10px;background:var(--tint-1);color:var(--accent);font-size:15px;line-height:1.4}
-  .co-msg[hidden]{display:none}
+  .shipto{display:flex;align-items:center;justify-content:space-between;gap:12px;white-space:nowrap;border-top:1px solid var(--line);padding:12px 0 0;font-size:15px;color:var(--muted)}
+  .shipto[hidden]{display:none}
+  .shipto select{flex:1;max-width:270px;font:inherit;font-size:15px;color:var(--ink);background:#FFFCF6;border:1px solid var(--tint-2);border-radius:10px;padding:9px 10px}
   .up-sum{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding:12px 0 12px;font-size:15px;color:var(--muted)}
   .up-sum div{display:flex;justify-content:space-between}
   .up-sum div[hidden],.up-sum>div:not(.tot){display:none}
@@ -506,11 +505,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
     <div class="fmt" role="radiogroup" aria-label="choose your format">  <!-- paperback on sale. to hide it: add "hidden" here, remove "has-fmt" above and class="pb" on <html>, and set PRINT.enabled=false -->
       <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="tag">save 69%</span><span class="dot"></span><span class="txt"><span class="t"><span>digital</span><span class="pr"><s>$29</s>$9</span></span><span class="d">instant download. start tonight on any device.</span></span></button>
-      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$64.99</s>$19.99</span></span><span class="d">+ shipping, worldwide. pdf included.</span></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$87</s>$27</span></span><span class="d">free shipping in the us &amp; uk. pdf included.</span></span></button>
     </div>
 
     <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
-    <p class="ship"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg><span>ships worldwide · <b>about 2 weeks</b></span></p>  <!-- one line, only when the paperback is on sale -->
+    <p class="ship"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>paperback arrives <b id="ship-eta">in 2–3 weeks</b></p>  <!-- one line, only when the paperback is on sale -->
     <ul class="includes">
       <li>read on any device, anywhere, anytime.</li>
       <li>lifetime access to all the materials.</li>
@@ -592,12 +591,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">poetry</span><b>dear angry eldest daughter</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">a heartfelt poetry book that puts words to your hidden pain, understand your anger, and feel truly seen. the words you never knew you needed.</span></label>
       <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">guided journal</span><b>the eldest daughter journal</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">release buried emotions, break free from guilt and people-pleasing, and finally start choosing yourself. your safe space to let it all out.</span></label>
       <div class="up-foot">
-      <div class="up-sum"><div><span>the eldest daughter workbook</span><span>$9</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><span><small id="total-ship" hidden>+ shipping </small><b id="total">$9</b></span></div></div>
+      <div class="shipto" id="shipto" hidden><label for="ship-country">ship to</label><select id="ship-country"><option value="US">united states · free shipping</option><option value="GB">united kingdom · free shipping</option><option value="CA">canada · +$13 shipping</option><option value="AU">australia · +$10 shipping</option></select></div>
+      <div class="up-sum"><div><span>the eldest daughter workbook</span><span>$9</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
       <button type="button" class="cta" id="co-continue">continue to payment →</button>
       </div>
     </div>
     <div id="co-step2" hidden>
-      <p class="co-msg" id="co-msg" role="alert" hidden></p>
       <div id="co-mount"><div class="co-load"><div class="co-spin" aria-hidden="true"></div><span>preparing your secure checkout…</span></div></div>
     </div>
   </div>
@@ -609,27 +608,35 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   var checkout=null;
 
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
-  // format switch on the offer card: digital $9 or paperback $19.99 + shipping at cost (pdf included, printed and shipped by lulu)
-  var FORMAT='digital', PRICE={digital:9,print:19.99};
-  function money(n){ n=Math.round(n*100)/100; return '$'+(n%1?n.toFixed(2):n); }
-  function totalText(){ var t=document.getElementById('total-ship'); if(t) t.hidden=FORMAT!=='print'; return money(orderTotal()); }
+  // format switch on the offer card: digital $9 or paperback $27 (pdf included, printed and shipped by lulu)
+  // paperback delivery: 11-13 working days = lulu's own mail estimate for the us and australia (uk 8-10, canada 6-8)
+  (function(){ var el=document.getElementById('ship-eta'); if(!el) return;
+    function add(n){ var d=new Date(); while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()%6) n--; } return d; }
+    var f=function(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toLowerCase(); };
+    el.textContent=f(add(11))+' – '+f(add(13)); })();
+  var FORMAT='digital', PRICE={digital:9,print:27};
   var FMT={digital:{was:'$29',save:'save 69%',note:'one-time payment. no subscription. yours forever.',cta:'get the workbook for $9 →',row:'the eldest daughter workbook'},
-           print:{was:'$64.99',save:'save 69%',note:'',cta:'get the paperback for $19.99 →',row:'the eldest daughter workbook (paperback)'}};
+           print:{was:'$87',save:'save 69%',note:'free shipping to the us, uk, canada and australia. the pdf is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
   [].forEach.call(document.querySelectorAll('.fmt button'),function(btn){ btn.addEventListener('click',function(){
     FORMAT=btn.dataset.f; BASE=PRICE[FORMAT]; var f=FMT[FORMAT];
     [].forEach.call(document.querySelectorAll('.fmt button'),function(x){ var on=x===btn; x.classList.toggle('on',on); x.setAttribute('aria-checked',on?'true':'false'); });
-    document.getElementById('p-now').textContent=money(PRICE[FORMAT]); document.getElementById('p-was').textContent=f.was; document.getElementById('p-was').hidden=!f.was;
+    document.getElementById('p-now').textContent='$'+PRICE[FORMAT]; document.getElementById('p-was').textContent=f.was; document.getElementById('p-was').hidden=!f.was;
     document.getElementById('p-save').textContent=f.save; document.getElementById('offer-cta').textContent=f.cta;
-    var tot=document.getElementById('total'); if(tot) tot.textContent=totalText();
+    var tot=document.getElementById('total'); if(tot) tot.textContent='$'+orderTotal();
     [].forEach.call(document.querySelectorAll('.offer .covers img'),function(im){ im.classList.toggle('on',im.dataset.f===FORMAT); });
     try{window.clarity&&clarity('event','format_'+FORMAT);}catch(e){}
   }); });
   var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
   function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
-  function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
-  function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
+  // paperback shipping: us + uk free, canada and australia pay lulu's shipping (same table as the server)
+  var SHIP={US:0,GB:0,CA:13,AU:10}, shipSel=document.getElementById('ship-country');
+  try{ var reg=((navigator.language||'').split('-')[1]||'').toUpperCase(); if(reg==='UK') reg='GB'; if(reg in SHIP) shipSel.value=reg; }catch(e){}
+  function shipFee(){ return FORMAT==='print' ? SHIP[shipSel.value] : 0; }
+  shipSel.addEventListener('change',function(){ document.getElementById('total').textContent='$'+orderTotal(); });
+  function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP+shipFee(); }
+  function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':'')+(FORMAT==='print'?shipSel.value:''); }
   bumps.forEach(function(b){ b.addEventListener('change',function(){
-    document.getElementById('total').textContent=totalText();
+    document.getElementById('total').textContent='$'+orderTotal();
     document.getElementById('sum-'+b.id.replace('bump-','')).hidden=!b.checked;
     try{window.clarity&&clarity('event',b.id+(b.checked?'_on':'_off'));}catch(e){}
   }); });
@@ -650,7 +657,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   var co=document.getElementById('co'), sheet=document.getElementById('co-sheet'), starting=false, mountedKey=null, loaderHTML=document.getElementById('co-mount').innerHTML;
   function loadStripe(){
     return window.Stripe ? Promise.resolve() : new Promise(function(ok,fail){
-      var s=document.createElement('script'); s.src='https://js.stripe.com/endive/stripe.js'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
+      var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
     });
   }
   // get ready before anyone taps: stripe.js after load, and wake the server function as the offer gets close
@@ -674,7 +681,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     sheet.classList.toggle('paying',n===2);
     sheet.scrollTop=0;
   }
-  function openCheckout(){ document.getElementById('total').textContent=totalText(); step(1); showCo(true); }
+  function openCheckout(){ document.getElementById('shipto').hidden=FORMAT!=='print'; document.getElementById('total').textContent='$'+orderTotal(); step(1); showCo(true); }
   function pay(){
     step(2);
     try{gtag('event','begin_checkout',{value:orderTotal(),currency:'USD',items:[{item_id:'main'}].concat(chosen('poems')?[{item_id:'poems'}]:[],chosen('journal')?[{item_id:'journal'}]:[])});}catch(e){}
@@ -685,49 +692,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
     checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
     starting=true;
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',format:FORMAT,poems:chosen('poems'),journal:chosen('journal')})})
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',format:FORMAT,poems:chosen('poems'),journal:chosen('journal'),country:FORMAT==='print'?shipSel.value:undefined})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
-      .then(function(x){ var d=x[0], s=Stripe(d.publishableKey);
-        if(d.form) return mountForm(s,d);
-        var create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}})
-          .then(function(c){ document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); return c; }); })
-      .then(function(c){ checkout=c; mountedKey=key; })
-      .catch(function(err){ try{console.warn('embedded checkout failed:',err&&err.message);}catch(e){}
-        if(FORMAT==='print'){ document.getElementById('co-mount').innerHTML=''; coMsg("the checkout couldn't load. please close this and try again."); return; }
-        location.href=fallbackUrl; })
+      .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
+      .then(function(c){ checkout=c; mountedKey=key; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
+      .catch(function(err){ try{console.warn('embedded checkout fell back to payment link:',err&&err.message);}catch(e){} location.href=fallbackUrl; })
       .then(function(){ starting=false; });
-  }
-  // paperback: stripe's embedded form. once the shipping address is complete we ask our server for lulu's real
-  // shipping price (api/shipping-quote.js), which updates the total. paying is blocked until that worked.
-  // apple pay / google pay / link buttons are off here: they skip the address step, so shipping would not be added.
-  function coMsg(t){ var m=document.getElementById('co-msg'); m.textContent=t||''; m.hidden=!t; }
-  function mountForm(s,d){
-    coMsg('');
-    var ck=s.initCheckoutFormSdk({clientSecret:d.clientSecret, appearance:{variables:{colorPrimary:'#6B0F28'}}});
-    var form=ck.createForm({expressCheckout:{paymentMethods:{applePay:'never',googlePay:'never',link:'never',paypal:'never',amazonPay:'never'}}});
-    document.getElementById('co-mount').innerHTML=''; form.mount('#co-mount');
-    var shipOK=false, shipKey=null;
-    return ck.loadActions().then(function(r){
-      if(r.type!=='success') throw new Error('checkout actions unavailable');
-      var actions=r.actions;
-      form.on('change',function(ev){
-        var st=(ev&&ev.status)||{}, addr=ev&&ev.value&&ev.value.shippingAddress;
-        if(st.shippingAddress&&st.shippingAddress.complete&&addr){
-          var k=JSON.stringify(addr); if(k===shipKey) return; shipKey=k; shipOK=false; coMsg('');
-          actions.runServerUpdate(function(){
-            return fetch('/api/shipping-quote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({checkout_session_id:actions.getSession().id,shipping_details:addr})})
-              .then(function(x){ return x.json(); }).then(function(res){ if(res.type==='error') throw new Error(res.message); return res; });
-          }).then(function(){ if(shipKey===k) shipOK=true; })
-            .catch(function(e){ if(shipKey===k){ shipKey=null; coMsg((e&&e.message)||"we couldn't calculate shipping to this address."); } });
-        } else if(shipKey){ shipKey=null; shipOK=false; }
-      });
-      form.on('confirm',function(ev){
-        if(!shipOK){ coMsg('please finish your shipping address first, so shipping can be added.'); return; }
-        actions.confirm({formConfirmEvent:ev}).catch(function(e){ try{console.warn('confirm failed',e&&e.message);}catch(x){} });
-      });
-      return {destroy:function(){ try{form.unmount();}catch(e){} }};
-    });
   }
   document.getElementById('co-continue').addEventListener('click',pay);
   document.getElementById('co-back').addEventListener('click',function(){ step(1); });
