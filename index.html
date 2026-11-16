@@ -267,6 +267,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .upc:has(input:checked) .tick{background:var(--accent);border-color:var(--accent)}
   .upc:has(input:checked) .tick::after{content:'';position:absolute;left:8px;top:3px;width:6px;height:12px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
   .up-foot{position:sticky;bottom:0;background:#FFFCF6;margin:0 -18px -26px;padding:0 18px 18px;}
+  #co-mount.is-form{padding:4px 18px 24px}
   .co-msg{margin:0 18px 10px!important;padding:10px 12px;border-radius:10px;background:var(--tint-1);color:var(--accent);font-size:15px;line-height:1.4}
   .co-msg[hidden]{display:none}
   .up-sum{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding:12px 0 12px;font-size:15px;color:var(--muted)}
@@ -662,7 +663,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     if(checkout&&mountedKey===key) return;
     if(starting) return;
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
-    checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
+    checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML; document.getElementById('co-mount').classList.remove('is-form');
     starting=true;
     var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',format:FORMAT,poems:chosen('poems'),journal:chosen('journal')})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
@@ -685,7 +686,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     coMsg('');
     var ck=s.initCheckoutFormSdk({clientSecret:d.clientSecret, appearance:{variables:{colorPrimary:'#6B0F28'}}});
     var form=ck.createForm({expressCheckout:{paymentMethods:{applePay:'never',googlePay:'never',link:'never',paypal:'never',amazonPay:'never'}}});
-    document.getElementById('co-mount').innerHTML=''; form.mount('#co-mount');
+    var mnt=document.getElementById('co-mount'); mnt.innerHTML=''; mnt.classList.add('is-form'); form.mount('#co-mount');
     var shipOK=false, shipKey=null;
     return ck.loadActions().then(function(r){
       if(r.type!=='success') throw new Error('checkout actions unavailable');
