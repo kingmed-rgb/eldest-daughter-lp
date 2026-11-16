@@ -87,6 +87,15 @@ async function fulfilPrint(session) {
     return { status: 'failed', error: e.message };
   }
 
+  // Sandbox Stripe (preview site): only ask Bookvault to validate the order, never place it.
+  if (/^(sk|rk)_test_/.test((process.env.STRIPE_SECRET_KEY || '').trim())) {
+    const v = await bookvault('order/validate?type=FullButPayment', 'POST', order);
+    const valid = v.ok && v.data && (v.data.valid === true || v.data.Valid === true);
+    const msgs = (v.data && (v.data.messages || v.data.Messages)) || (v.data && v.data.message) || '';
+    await alert('print test: bookvault ' + (valid ? 'accepted' : 'did not accept') + ' the order', `this was a test from the preview site (sandbox payment). nothing was printed or charged.\n\nresult: ${valid ? 'VALID' : 'NOT VALID (HTTP ' + v.status + ')'}\nbookvault says: ${typeof msgs === 'string' ? msgs : JSON.stringify(msgs)}\n\norder that would be sent:\n${JSON.stringify(order, null, 2)}`);
+    return { status: valid ? 'validated' : 'failed', error: valid ? undefined : JSON.stringify(msgs) };
+  }
+
   const res = await bookvault('order', 'POST', order);
   const podRef = res.ok && res.data && (res.data.podRef || res.data.PodRef);
   if (podRef) {
