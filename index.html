@@ -735,7 +735,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   document.getElementById('co-continue').addEventListener('click',pay);
   document.getElementById('co-back').addEventListener('click',function(){ step(1); });
   document.getElementById('co-close').addEventListener('click',function(){showCo(false);});
-  co.addEventListener('click',function(e){ if(e.target===co) showCo(false); });
+  // tapping outside the pop-up does nothing: it only closes with the × (or esc on a keyboard)
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!co.hidden) showCo(false); });
 
   var like=document.getElementById('like');
