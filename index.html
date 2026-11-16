@@ -219,10 +219,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer .ship small{white-space:nowrap}
   .offer:not(.has-fmt) .ship-print{display:none}
   .offer:not(.has-fmt) .ship div:nth-child(2){text-align:right}
-  /* exclusivity row */
-  .offer .excl{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px}
-  .offer .excl-badge{display:inline-flex;align-items:center;gap:6px;background:var(--btn);color:#fff;font-weight:600;padding:6px 12px;border-radius:8px}
-  .offer .excl-note{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+  /* exclusivity line */
+  .offer .excl{display:flex;justify-content:center;align-items:center;gap:7px;margin:14px 0 0!important;font-size:14.5px;color:var(--btn);font-weight:600}
   .offer .price{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0 0}
   .offer .price .now{font-size:32px}
   .offer .price .save{background:var(--tint-1);color:var(--accent);font-weight:600;font-size:15px;line-height:1;padding:6px 10px;border-radius:999px}
@@ -501,17 +499,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     </ul>
 
 
-    <div class="guarantee">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-      <div><b>14-day money-back guarantee</b>if it doesn't feel right for you, email me within 14 days and i'll refund you. no questions asked.</div>
-    </div>
 
     <div class="pay"><span class="pay-badge">Apple Pay</span><span class="pay-badge">Google Pay</span><span class="pay-badge pay-link">Link</span><img src="images/card-logos.jpg" alt="visa, mastercard, american express, discover" width="366" height="49" loading="lazy" decoding="async"></div>
 
-    <div class="excl">
-      <span class="excl-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7"/></svg>sold only here</span>
-      <span class="excl-note">not on amazon</span>
-    </div>
+    <p class="excl"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7"/></svg>sold only here. not on amazon.</p>
   </section>
 
   <!-- ===== FAQ ===== -->
