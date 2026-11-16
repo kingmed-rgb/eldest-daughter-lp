@@ -181,7 +181,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
   /* offer */
   .offer{padding:24px 22px 22px}
-  .offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:6px}
+  .offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-bottom:4px;margin-bottom:0}
   .offer img.bundle--book{width:auto!important;max-width:none!important;height:220px!important;margin:0 0 10px;display:block;mix-blend-mode:multiply}
   .offer .covers{position:relative;flex:none;width:176px;height:228px;margin:0 0 10px}
   .offer .covers img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;margin:0;opacity:0;transition:opacity .2s}
@@ -191,26 +191,28 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .fmt[hidden]{display:none}
   #total,.fmt .pr,.offer .price .now{font-variant-numeric:tabular-nums lining-nums}
   #total{display:inline-block;min-width:2.4em;text-align:right}
-  .fmt{display:grid;grid-auto-rows:1fr;gap:10px;margin:16px 0 18px}  /* both cards always the same height */
-  .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:14px 16px;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+  .fmt{display:grid;grid-auto-rows:1fr;gap:18px;margin:24px 0 20px}  /* both cards always the same height */
+  .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:20px 16px 16px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
   .fmt button.on{border-color:var(--ink);background:#FBEFE6}
   .fmt .dot{flex:none;box-sizing:border-box;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);background:var(--bg);transition:all .15s}
   .fmt button.on .dot{border:6px solid var(--btn)}
   .fmt .txt{flex:1;min-width:0;line-height:1.35}
-  .fmt .t{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-weight:600;font-size:18px}
-  .fmt .tag{background:var(--btn);color:#fff;font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:999px;line-height:1.3}
-  .fmt .d{display:block;font-size:14.5px;color:var(--muted);margin-top:3px}
-  .fmt .pr{flex:none;text-align:right;font-weight:700;font-size:20px;color:var(--btn);line-height:1.2}
-  .fmt .pr s{display:block;font-weight:400;font-size:14px;color:var(--muted)}
+  .fmt .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-weight:600;font-size:19px;line-height:1.25}
+  /* badge sits on the card's top edge, so it never competes with the name or the price */
+  .fmt .tag{position:absolute;top:-11px;left:52px;background:var(--bg);color:var(--btn);border:1px solid var(--btn);font-size:12.5px;font-weight:600;padding:2px 10px;border-radius:999px;line-height:1.35;transition:background .15s,color .15s}
+  .fmt button.on .tag{background:var(--btn);color:#fff}
+  .fmt .d{display:block;font-size:15px;color:var(--muted);margin-top:4px}
+  .fmt .pr{flex:none;font-weight:700;font-size:21px;color:var(--ink);white-space:nowrap}
+  .fmt .pr s{font-weight:400;font-size:15px;color:var(--muted);margin-right:7px}
+  .offer:not(.has-fmt) .price{margin:6px 0 18px}
   .offer.has-fmt .price{display:none}
   .offer h2{margin:0!important;text-align:inherit!important}
   .offer .price{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0 0}
   .offer .price .now{font-size:32px}
   .offer .price .save{background:var(--tint-1);color:var(--accent);font-weight:600;font-size:15px;line-height:1;padding:6px 10px;border-radius:999px}
   .offer .price-note{margin:0!important;font-size:15px;color:var(--muted)}
-  .offer .includes{margin:0 0 16px}
-  .offer .includes li{border-top:0;border-bottom:1px solid var(--line);padding:12px 0;align-items:center}
-  .offer .includes li:last-child{border-bottom:0}
+  .offer .includes{margin:14px 0 0}
+  .offer .includes li{border:0!important;padding:5px 0;align-items:center;font-size:16px;color:var(--muted)}
   .offer .includes li::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;background:var(--tint-1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234D0619' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 12.5 10 16.5 18 8'/%3E%3C/svg%3E") center/14px no-repeat}
   .offer .guarantee{border:0;background:var(--tint-1);border-radius:12px;padding:14px 16px;margin-top:16px}
   .offer .guarantee b{display:block;font-weight:600;color:var(--ink);margin-bottom:2px}
@@ -463,18 +465,17 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     </div>
 
     <div class="fmt" role="radiogroup" aria-label="choose your format" hidden>  <!-- paperback: shown on preview links; on the live site once the lulu test passed -->
-      <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="dot"></span><span class="txt"><span class="t">digital <span class="tag">save 69%</span></span><span class="d">instant download. start tonight on any device.</span></span><span class="pr">$9<s>$29</s></span></button>
-      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="dot"></span><span class="txt"><span class="t">paperback <span class="tag">+ free pdf</span></span><span class="d">printed and shipped to your door. pdf included.</span></span><span class="pr">$27</span></button>
+      <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="tag">save 69%</span><span class="dot"></span><span class="txt"><span class="t"><span>digital</span><span class="pr"><s>$29</s>$9</span></span><span class="d">instant download. start tonight on any device.</span></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr">$27</span></span><span class="d">printed and shipped free to your door. pdf included.</span></span></button>
     </div>
 
+    <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
     <ul class="includes">
       <li>read on any device, anywhere, anytime.</li>
       <li>lifetime access to all the materials.</li>
       <li>14-day no-questions-asked money back guarantee.</li>
     </ul>
 
-
-    <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
 
     <div class="guarantee">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
