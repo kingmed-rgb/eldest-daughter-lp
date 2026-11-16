@@ -299,6 +299,31 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-head{display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-family:var(--body);font-size:15px;color:var(--muted)}
   .co-head span{flex:1}
   .co-sheet:not(.paying) #co-title{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);letter-spacing:-.015em}
+  /* paperback: shipping step */
+  .shipf{padding:2px 18px 26px;font-family:var(--body)}
+  .ship-note{display:flex;align-items:center;gap:8px;margin:0 0 14px!important;font-size:15px;color:var(--muted)}
+  .ship-note svg{flex:none;color:var(--btn)}
+  .shipf .f{display:block;margin:0 0 10px}
+  .shipf .f>span{display:block;font-size:13px;color:var(--muted);margin:0 0 4px}
+  .shipf input,.shipf select{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:16px;line-height:1.3;color:var(--ink);background:#fff;border:1px solid var(--tint-2);border-radius:10px;padding:11px 12px;-webkit-appearance:none;appearance:none}
+  .shipf select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E434A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") right 10px center/16px no-repeat;padding-right:32px}
+  .shipf input:focus,.shipf select:focus{outline:2px solid var(--btn);outline-offset:0;border-color:var(--btn)}
+  .shipf .f.bad input,.shipf .f.bad select{border-color:#B3261E;background-color:#FFF7F6}
+  .shipf .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .shipf input::placeholder{color:#B39A9F}
+  .shipf .row2 .f[hidden]{display:none}
+  .shipf .row2:has(.f[hidden]){grid-template-columns:1fr}
+  .ship-err{margin:2px 0 10px!important;padding:10px 12px;border-radius:10px;background:var(--tint-1);color:#8C1D18;font-size:15px;line-height:1.4}
+  .ship-err[hidden]{display:none}
+  .shipf .up-foot{padding-top:6px}
+  .shipf .cta{width:100%;border:0;cursor:pointer;font:inherit;font-weight:600}
+  @media (max-width:420px), (max-height:700px){
+    .shipf{padding:2px 14px 20px}
+    .shipf .up-foot{margin:0 -14px -20px;padding:6px 14px 14px}
+    .shipf .f{margin:0 0 8px}
+    .shipf input,.shipf select{padding:10px 11px}
+    .ship-note{font-size:14px;margin-bottom:10px!important}
+  }
   /* small phones (most of the audience): both add-ons and the button fit on one screen without scrolling */
   @media (max-width:420px), (max-height:700px){
     .co-sheet{height:calc(100dvh - 12px)}
@@ -592,6 +617,17 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <button type="button" class="cta" id="co-continue">continue to payment →</button>
       </div>
     </div>
+    <form class="shipf" id="co-ship" hidden novalidate>  <!-- paperback only: the address, before payment -->
+      <p class="ship-note"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>free tracked shipping · arrives in about 2 weeks</p>
+      <p class="ship-err" id="ship-err" role="alert" hidden></p>
+      <label class="f"><span>full name</span><input name="name" autocomplete="shipping name" required></label>
+      <label class="f"><span>country</span><select name="country" autocomplete="shipping country"><option value="US">united states</option><option value="GB">united kingdom</option><option value="CA">canada</option><option value="AU">australia</option></select></label>
+      <label class="f"><span>street address</span><input name="line1" autocomplete="shipping address-line1" required></label>
+      <label class="f"><span>apartment, suite, etc. (optional)</span><input name="line2" autocomplete="shipping address-line2"></label>
+      <div class="row2"><label class="f"><span>city</span><input name="city" autocomplete="shipping address-level2" required></label><label class="f" id="f-state"><span>state</span><select name="state" autocomplete="shipping address-level1"></select></label></div>
+      <div class="row2"><label class="f"><span id="postal-label">zip code</span><input name="postal" autocomplete="shipping postal-code" required></label><label class="f"><span>phone</span><input name="phone" type="tel" autocomplete="shipping tel" placeholder="for the courier" required></label></div>
+      <div class="up-foot"><button type="submit" class="cta" id="ship-continue">continue to payment →</button></div>
+    </form>
     <div id="co-step2" hidden>
       <div id="co-mount"><div class="co-load"><div class="co-spin" aria-hidden="true"></div><span>preparing your secure checkout…</span></div></div>
     </div>
@@ -625,7 +661,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
   function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
   function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
-  function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
+  function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':'')+(FORMAT==='print'?JSON.stringify(shipData()):''); }
   bumps.forEach(function(b){ b.addEventListener('change',function(){
     document.getElementById('total').textContent='$'+orderTotal();
     document.getElementById('sum-'+b.id.replace('bump-','')).hidden=!b.checked;
@@ -664,14 +700,48 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     if(on){ lockedY=window.scrollY; b.style.top=(-lockedY)+'px'; d.classList.add('co-open'); b.classList.add('co-open'); co.hidden=false; document.getElementById('co-close').focus({preventScroll:true}); }
     else { co.hidden=true; b.classList.remove('co-open'); b.style.top=''; window.scrollTo(0,lockedY); d.classList.remove('co-open'); }
   }
+  // steps: 1 = add-ons, 'ship' = shipping address (paperback only), 2 = stripe payment
+  var curStep=1;
   function step(n){
+    curStep=n;
     document.getElementById('co-step1').hidden=n!==1;
+    document.getElementById('co-ship').hidden=n!=='ship';
     document.getElementById('co-step2').hidden=n!==2;
-    document.getElementById('co-back').hidden=n!==2;
-    document.getElementById('co-title').textContent=n===1?'add to your order?':'secure checkout · stripe';
+    document.getElementById('co-back').hidden=n===1;
+    document.getElementById('co-title').textContent=n===1?'add to your order?':n==='ship'?'shipping address':'secure checkout · stripe';
     sheet.classList.toggle('paying',n===2);
     sheet.scrollTop=0;
   }
+
+  // shipping step (paperback): countries we ship to, their states, and what we send to the server
+  var shipForm=document.getElementById('co-ship'), shipErr=document.getElementById('ship-err');
+  var STATES={
+    US:'AL Alabama,AK Alaska,AZ Arizona,AR Arkansas,CA California,CO Colorado,CT Connecticut,DE Delaware,DC District of Columbia,FL Florida,GA Georgia,HI Hawaii,ID Idaho,IL Illinois,IN Indiana,IA Iowa,KS Kansas,KY Kentucky,LA Louisiana,ME Maine,MD Maryland,MA Massachusetts,MI Michigan,MN Minnesota,MS Mississippi,MO Missouri,MT Montana,NE Nebraska,NV Nevada,NH New Hampshire,NJ New Jersey,NM New Mexico,NY New York,NC North Carolina,ND North Dakota,OH Ohio,OK Oklahoma,OR Oregon,PA Pennsylvania,PR Puerto Rico,RI Rhode Island,SC South Carolina,SD South Dakota,TN Tennessee,TX Texas,UT Utah,VT Vermont,VA Virginia,WA Washington,WV West Virginia,WI Wisconsin,WY Wyoming',
+    CA:'AB Alberta,BC British Columbia,MB Manitoba,NB New Brunswick,NL Newfoundland and Labrador,NS Nova Scotia,NT Northwest Territories,NU Nunavut,ON Ontario,PE Prince Edward Island,QC Quebec,SK Saskatchewan,YT Yukon',
+    AU:'ACT Australian Capital Territory,NSW New South Wales,NT Northern Territory,QLD Queensland,SA South Australia,TAS Tasmania,VIC Victoria,WA Western Australia'};
+  var STATE_LABEL={US:'state',CA:'province',AU:'state'}, POSTAL_LABEL={US:'zip code',GB:'postcode',CA:'postal code',AU:'postcode'};
+  function fillStates(){
+    var c=shipForm.country.value, f=document.getElementById('f-state'), sel=shipForm.state;
+    document.getElementById('postal-label').textContent=POSTAL_LABEL[c]||'postal code';
+    if(!STATES[c]){ f.hidden=true; sel.innerHTML=''; return; }
+    f.hidden=false; f.querySelector('span').textContent=STATE_LABEL[c];
+    sel.innerHTML='<option value="">choose…</option>'+STATES[c].split(',').map(function(x){ var i=x.indexOf(' '); return '<option value="'+x.slice(0,i)+'">'+x.slice(i+1).toLowerCase()+'</option>'; }).join('');
+  }
+  try{ var reg=((navigator.language||'').split('-')[1]||'').toUpperCase(); if(reg==='UK') reg='GB'; if(['US','GB','CA','AU'].indexOf(reg)>=0) shipForm.country.value=reg; }catch(e){}
+  fillStates(); shipForm.country.addEventListener('change',fillStates);
+  function shipData(){ var f=shipForm; return {name:f.name.value,line1:f.line1.value,line2:f.line2.value,city:f.city.value,state:f.state.value,postal:f.postal.value,country:f.country.value,phone:f.phone.value}; }
+  function shipProblem(field,msg){
+    [].forEach.call(shipForm.querySelectorAll('.f'),function(x){ x.classList.remove('bad'); });
+    shipErr.textContent=msg||''; shipErr.hidden=!msg; if(msg) sheet.scrollTop=0;
+    var el=field&&shipForm[field]; if(el){ el.closest('.f').classList.add('bad'); try{ el.focus({preventScroll:true}); }catch(e){} }
+  }
+  shipForm.addEventListener('submit',function(e){
+    e.preventDefault(); var d=shipData();
+    var need=[['name',d.name.trim().length>1,'please enter the full name for the parcel.'],['line1',d.line1.trim().length>2,'please enter the street address.'],['city',d.city.trim().length>1,'please enter the city.'],
+      ['state',!STATES[d.country]||!!d.state,'please choose the '+(STATE_LABEL[d.country]||'state')+'.'],['postal',d.postal.trim().length>2,'please enter the '+(POSTAL_LABEL[d.country]||'postal code')+'.'],['phone',d.phone.replace(/\D/g,'').length>6,'please enter a phone number (the courier uses it for delivery).']];
+    for(var i=0;i<need.length;i++) if(!need[i][1]) return shipProblem(need[i][0],need[i][2]);
+    shipProblem(); pay();
+  });
   function openCheckout(){ step(1); showCo(true); }
   function pay(){
     step(2);
@@ -683,16 +753,18 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
     checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
     starting=true;
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',format:FORMAT,poems:chosen('poems'),journal:chosen('journal')})})
-      .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',format:FORMAT,poems:chosen('poems'),journal:chosen('journal'),ship:FORMAT==='print'?shipData():undefined})})
+      .then(function(r){ return r.json().then(function(d){ if(!r.ok){ var er=new Error(d.error||'checkout unavailable'); er.field=d.field; throw er; } return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
       .then(function(c){ checkout=c; mountedKey=key; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
-      .catch(function(err){ try{console.warn('embedded checkout fell back to payment link:',err&&err.message);}catch(e){} location.href=fallbackUrl; })
+      .catch(function(err){ try{console.warn('embedded checkout failed:',err&&err.message);}catch(e){}
+        if(FORMAT==='print'){ starting=false; step('ship'); shipProblem(err&&err.field, (err&&err.field)?err.message:"the checkout couldn't load. please try again."); return; }
+        location.href=fallbackUrl; })
       .then(function(){ starting=false; });
   }
-  document.getElementById('co-continue').addEventListener('click',pay);
-  document.getElementById('co-back').addEventListener('click',function(){ step(1); });
+  document.getElementById('co-continue').addEventListener('click',function(){ if(FORMAT==='print') step('ship'); else pay(); });
+  document.getElementById('co-back').addEventListener('click',function(){ step(curStep===2&&FORMAT==='print'?'ship':1); });
   document.getElementById('co-close').addEventListener('click',function(){showCo(false);});
   // tapping outside the pop-up does nothing: it only closes with the × (or esc on a keyboard)
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!co.hidden) showCo(false); });

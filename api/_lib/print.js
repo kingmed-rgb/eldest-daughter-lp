@@ -17,11 +17,13 @@ async function stripe(path, method = 'GET', body) {
 
 const hasPrint = (session) => String((session.metadata && session.metadata.items) || '').split(',').includes('print');
 
-function shippingOf(session) {
+// the address: typed in our pop-up and saved on the payment (pi.shipping), or collected by stripe (older orders)
+function shippingOf(session, pi) {
   const ci = session.collected_information || {};
-  const sd = ci.shipping_details || session.shipping_details || {};
+  const ps = (pi && pi.shipping) || null;
+  const sd = ci.shipping_details || session.shipping_details || ps || {};
   const cd = session.customer_details || {};
-  return { name: sd.name || cd.name || '', address: sd.address || cd.address || {}, phone: cd.phone || '', email: cd.email || session.customer_email || '' };
+  return { name: sd.name || cd.name || '', address: sd.address || cd.address || {}, phone: (ps && ps.phone) || cd.phone || '', email: cd.email || session.customer_email || '' };
 }
 
 // The address block Lulu expects.
@@ -40,8 +42,8 @@ function lineItem(ref) {
 }
 
 // The full print job for a paid checkout.
-function jobFor(session) {
-  const ship = shippingOf(session);
+function jobFor(session, pi) {
+  const ship = shippingOf(session, pi);
   const addr = luluAddress(ship);
   if (!PRINT.countries.includes(addr.country_code)) throw new Error('we do not ship printed books to ' + (addr.country_code || 'an unknown country'));
   if (!addr.phone_number) throw new Error('no phone number on the order (lulu needs one for delivery)');
@@ -88,7 +90,7 @@ async function fulfilPrint(session) {
     if (found) { await mark('lulu', found.id); return { status: 'sent', job: found.id }; }
 
     let job;
-    try { job = jobFor(session); } catch (e) {
+    try { job = jobFor(session, pi); } catch (e) {
       if (!(pi && pi.metadata && pi.metadata.print_alerted)) {
         await alert('printed order needs attention: ' + session.id, `couldn't send this paperback order to lulu.\n\nreason: ${e.message}\ncheckout: ${session.id}\nbuyer: ${buyer}\n\nplace it by hand in lulu, or refund it in stripe.`);
         await mark('print_alerted', '1');

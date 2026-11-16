@@ -10,6 +10,7 @@ const PUBLISHABLE_KEYS = {
 };
 
 const { OFFERS, PRINT } = require('./_lib/catalog.js');
+const { lulu } = require('./_lib/lulu.js');
 
 // Thank-you page per language (on the same domain the buyer came from).
 const THANK_YOU = { en: '/get-xk7f2', es: '/gracias' };
@@ -40,7 +41,43 @@ function readBody(req) {
   body = body || {};
   const lang = body.lang || (req.query && req.query.lang);
   const L = OFFERS[lang] ? lang : 'en';
-  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print' };
+  const t = (v, n) => String(v == null ? '' : v).trim().slice(0, n);
+  const a = body.ship && typeof body.ship === 'object' ? body.ship : {};
+  // paperback: the shipping address the buyer typed in the pop-up (step "where should we send it?")
+  const ship = { name: t(a.name, 80), line1: t(a.line1, 120), line2: t(a.line2, 120), city: t(a.city, 80), state: t(a.state, 40).toUpperCase(),
+    postal: t(a.postal, 20).toUpperCase(), country: t(a.country, 2).toUpperCase(), phone: t(a.phone, 30).replace(/[^\d+]/g, '') };
+  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print', ship };
+}
+
+// Checks the paperback address before payment. Returns null when fine, else { field, error } for the buyer.
+async function addressProblem(ship) {
+  if (!PRINT.countries.includes(ship.country)) return { field: 'country', error: "we don't ship the paperback to this country yet." };
+  if (ship.name.length < 2) return { field: 'name', error: 'please enter the full name for the parcel.' };
+  if (ship.line1.length < 3) return { field: 'line1', error: 'please enter the street address.' };
+  if (ship.city.length < 2) return { field: 'city', error: 'please enter the city.' };
+  if (['US', 'CA', 'AU'].includes(ship.country) && !ship.state) return { field: 'state', error: 'please choose the state or province.' };
+  if (ship.postal.length < 3) return { field: 'postal', error: 'please enter the postal code.' };
+  if (ship.phone.replace(/\D/g, '').length < 7) return { field: 'phone', error: 'please enter a phone number (the courier uses it for delivery).' };
+  // live site: ask lulu if it can deliver there (catches wrong postal codes before the buyer pays)
+  if (!(process.env.LULU_CLIENT_KEY || '').trim()) return null;
+  try {
+    const r = await lulu('/print-job-cost-calculations/', 'POST', {
+      line_items: [{ page_count: PRINT.pageCount, pod_package_id: PRINT.podPackageId, quantity: 1 }],
+      shipping_address: { name: ship.name, street1: ship.line1, street2: ship.line2 || undefined, city: ship.city, state_code: ship.state || undefined,
+        country_code: ship.country, postcode: ship.postal, phone_number: ship.phone },
+      shipping_option: PRINT.shippingLevel,
+    });
+    if (r.ok) return null;
+    const e = ((((r.data || {}).shipping_address || {}).detail || {}).errors || [])[0] || {};
+    console.log('paperback address refused by lulu', JSON.stringify({ country: ship.country, lulu: JSON.stringify(r.data).slice(0, 300) }));
+    if (e.path === 'postcode') return { field: 'postal', error: 'please check the postal code.' };
+    if (e.path === 'state' || e.path === 'state_code') return { field: 'state', error: 'please check the state or province.' };
+    if (e.path === 'city') return { field: 'city', error: 'please check the city.' };
+    if (e.path === 'phone_number') return { field: 'phone', error: 'please check the phone number.' };
+    return { field: 'line1', error: "the printer couldn't use this address. please check it." };
+  } catch (err) {
+    return null; // lulu unreachable: don't block the sale, the order is checked again when it's sent to print
+  }
 }
 
 module.exports = async (req, res) => {
@@ -62,9 +99,10 @@ module.exports = async (req, res) => {
   }
   if (!mode) return res.status(503).json({ error: 'Checkout is not configured' }); // page falls back to the payment link
 
-  const { lang, poems, journal, print, wantsPrint } = readBody(req);
+  const { lang, poems, journal, print, wantsPrint, ship } = readBody(req);
   // never charge a different product than the one shown: paperback asked for while it's switched off
   if (wantsPrint && !print) return res.status(409).json({ error: 'paperback not available yet' });
+  if (print) { const bad = await addressProblem(ship); if (bad) return res.status(400).json(bad); }
   const offer = OFFERS[lang];
   const items = [print ? 'print' : 'main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
   const host = req.headers['x-forwarded-host'] || req.headers.host;
@@ -79,9 +117,18 @@ module.exports = async (req, res) => {
     return_url: 'https://' + host + THANK_YOU[lang] + '?session_id={CHECKOUT_SESSION_ID}',
   };
   if (print) {
-    // paperback: Stripe collects the shipping address (only countries we ship printed books to)
-    PRINT.countries.forEach((c, i) => { params[`shipping_address_collection[allowed_countries][${i}]`] = c; });
-    params['phone_number_collection[enabled]'] = 'true'; // the printer needs a phone number for delivery
+    // paperback: the address was entered (and checked) in the pop-up before payment; it rides on the payment
+    // (payment_intent.shipping), so stripe's form only asks for email + card
+    const sh = 'payment_intent_data[shipping]';
+    params[sh + '[name]'] = ship.name;
+    params[sh + '[phone]'] = ship.phone;
+    params[sh + '[address][line1]'] = ship.line1;
+    if (ship.line2) params[sh + '[address][line2]'] = ship.line2;
+    params[sh + '[address][city]'] = ship.city;
+    if (ship.state) params[sh + '[address][state]'] = ship.state;
+    params[sh + '[address][postal_code]'] = ship.postal;
+    params[sh + '[address][country]'] = ship.country;
+    params['metadata[ship_country]'] = ship.country;
   }
   items.forEach((k, i) => {
     params[`line_items[${i}][quantity]`] = '1';
