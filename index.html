@@ -575,7 +575,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   }
 
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
-  // format switch on the offer card: digital $9 or paperback $27 (pdf included, shipped by bookvault)
+  // format switch on the offer card: digital $9 or paperback $27 (pdf included, printed and shipped by lulu)
+  // preview links (*.vercel.app) show it before launch so it can be tried with test cards
+  if(/\.vercel\.app$/.test(location.hostname)){ var fmtEl=document.querySelector('.fmt'); if(fmtEl) fmtEl.hidden=false; }
   var FORMAT='digital', PRICE={digital:9,print:27};
   var FMT={digital:{was:'$29',save:'save 69%',note:'one-time payment. no subscription. yours forever.',cta:'get the workbook for $9 →',row:'the eldest daughter workbook'},
            print:{was:'',save:'pdf included',note:'free shipping to the us, uk, canada and australia. the pdf is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
