@@ -492,7 +492,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <div class="ship">  <!-- when it arrives. the paperback column only shows when the paperback is on sale -->
       <div><small>ordered</small><b>today</b></div>
       <div><small>pdf arrives</small><b>instantly</b></div>
-      <div class="ship-print"><small>paperback arrives</small><b id="ship-eta">in 2 weeks</b></div>
+      <div class="ship-print"><small>paperback arrives</small><b id="ship-eta">in 2–3 weeks</b></div>
     </div>
     <ul class="includes">
       <li>read on any device, anywhere, anytime.</li>
@@ -592,10 +592,11 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
   // format switch on the offer card: digital $9 or paperback $27 (pdf included, printed and shipped by lulu)
+  // paperback delivery: 11-13 working days = lulu's own mail estimate for the us and australia (uk 8-10, canada 6-8)
   (function(){ var el=document.getElementById('ship-eta'); if(!el) return;
     function add(n){ var d=new Date(); while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()%6) n--; } return d; }
     var f=function(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toLowerCase(); };
-    el.textContent=f(add(8))+' – '+f(add(14)); })();
+    el.textContent=f(add(11))+' – '+f(add(13)); })();
   var FORMAT='digital', PRICE={digital:9,print:27};
   var FMT={digital:{was:'$29',save:'save 69%',note:'one-time payment. no subscription. yours forever.',cta:'get the workbook for $9 →',row:'the eldest daughter workbook'},
            print:{was:'$87',save:'save 69%',note:'free shipping to the us, uk, canada and australia. the pdf is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
