@@ -53,8 +53,7 @@ function filesFor(session) {
 // Printed paperback: printed and shipped by Lulu (Print API), PDF included.
 const PRINT_FILES = 'https://www.eldestdaughtercore.com/files/e2b0943418c5d310d9/print/';
 const PRINT = {
-  // live site: switch on once the lulu test passed. preview links (sandbox stripe, no lulu keys) always show it, nothing gets printed there.
-  enabled: false || process.env.VERCEL_ENV === 'preview',
+  enabled: true,                          // on sale (lulu test passed 2026-11-16). false hides it again: page option and checkout
   podPackageId: '0614X0921.BW.STD.PB.080CW444.MXX', // royal 6.14x9.21, b&w standard, perfect bound, 80# white coated, matte
   pageCount: 122,
   interior: PRINT_FILES + 'eds-workbook-interior-royal.pdf',

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="pb">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -469,7 +469,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <p>you don't have to do this all at once. go at your own pace. some exercises will feel light, others will sting. that's normal. your only job is honesty, not perfection.</p>
 
   <!-- ===== OFFER ===== -->
-  <section class="offer" id="offer">
+  <section class="offer has-fmt" id="offer">
     <div class="offer-top">
       <div class="covers">  <!-- both images sit in one fixed box and cross-fade, so nothing moves when the format changes -->
         <img class="cover on" data-f="digital" src="images/offer-workbook-tablet.webp" alt="the eldest daughter workbook on a tablet" width="540" height="701" loading="lazy" decoding="async">
@@ -483,7 +483,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       </div>
     </div>
 
-    <div class="fmt" role="radiogroup" aria-label="choose your format" hidden>  <!-- paperback: shown on preview links; on the live site once the lulu test passed -->
+    <div class="fmt" role="radiogroup" aria-label="choose your format">  <!-- paperback on sale. to hide it: add "hidden" here, remove "has-fmt" above and class="pb" on <html>, and set PRINT.enabled=false -->
       <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="tag">save 69%</span><span class="dot"></span><span class="txt"><span class="t"><span>digital</span><span class="pr"><s>$29</s>$9</span></span><span class="d">instant download. start tonight on any device.</span></span></button>
       <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$87</s>$27</span></span><span class="d">printed and shipped free to your door. pdf included.</span></span></button>
     </div>
@@ -592,8 +592,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
   // format switch on the offer card: digital $9 or paperback $27 (pdf included, printed and shipped by lulu)
-  // preview links (*.vercel.app) show it before launch so it can be tried with test cards
-  if(/\.vercel\.app$/.test(location.hostname)){ var fmtEl=document.querySelector('.fmt'); if(fmtEl){ fmtEl.hidden=false; document.getElementById('offer').classList.add('has-fmt'); document.documentElement.classList.add('pb'); } }
   (function(){ var el=document.getElementById('ship-eta'); if(!el) return;
     function add(n){ var d=new Date(); while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()%6) n--; } return d; }
     var f=function(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toLowerCase(); };

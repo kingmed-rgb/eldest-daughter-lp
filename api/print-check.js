@@ -4,6 +4,7 @@
 //   ?action=cost&country=US&zip=10001&state=NY&city=New%20York   exact price for 1 copy
 //   ?action=testorder                     create one real print job, then cancel it at once (nothing printed)
 //   ?action=job&id=123                    read a print job's status
+//   ?action=shipping&country=US&zip=10001   lulu shipping levels with delivery times
 const crypto = require('crypto');
 const { PRINT } = require('./_lib/catalog.js');
 const { lulu } = require('./_lib/lulu.js');
@@ -50,6 +51,11 @@ module.exports = async (req, res) => {
       let cancelled = null;
       if (created.ok && created.data && created.data.id) cancelled = await lulu('/print-jobs/' + created.data.id + '/status/', 'PUT', { name: 'CANCELED' });
       return res.status(200).json({ created, cancelled });
+    }
+    if (q.action === 'shipping') {
+      // lulu's shipping options for one copy: price and delivery time per level
+      const addr = { city: q.city || 'New York', state_code: q.state || undefined, country_code: (q.country || 'US').toUpperCase(), postcode: q.zip || '10001', street1: '1 Main St', phone_number: '5555555555' };
+      return res.status(200).json(await lulu('/shipping-options/', 'POST', { line_items: [{ page_count: PRINT.pageCount, pod_package_id: PRINT.podPackageId, quantity: 1 }], shipping_address: addr, currency: 'USD' }));
     }
     if (q.action === 'job' && q.id) {
       return res.status(200).json(await lulu('/print-jobs/' + encodeURIComponent(q.id) + '/'));
