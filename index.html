@@ -100,6 +100,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .big{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.01em}
   .figure{margin:0 0 16px}
   .figure img{width:100%;height:auto;mix-blend-mode:multiply}
+  .figure--book{display:flex;justify-content:center;padding:12px 0 8px}
+  .figure--book img{width:auto;height:260px}
   hr.dots{border:0;text-align:center;margin:40px 0}
   hr.dots::before{content:"✦ ✦ ✦";color:var(--muted);letter-spacing:.6em;font-size:15px}
 
@@ -190,6 +192,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer-info{display:flex;flex-direction:column;gap:6px;align-items:inherit}
   /* format options (digital / paperback): stacked cards, the chosen one gets the dark border */
   .fmt[hidden]{display:none}
+  .pb-only{display:none} html.pb .pb-only{display:inline} html.pb .pb-hide{display:none}  /* paperback on sale: html gets class pb */
   #total,.fmt .pr,.offer .price .now{font-variant-numeric:tabular-nums lining-nums}
   #total{display:inline-block;min-width:2.4em;text-align:right}
   .fmt{display:grid;grid-auto-rows:1fr;gap:18px;margin:24px 0 20px}  /* both cards always the same height */
@@ -379,8 +382,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <p>if you checked even one? welcome to the eldest daughter's club.</p>
   <p class="early"><a href="#offer">get the workbook for $9 ↓</a></p>
 
-  <figure class="figure">
-    <img src="images/eds book.webp" alt="the eldest daughter workbook" width="1536" height="1024" loading="lazy" decoding="async">
+  <figure class="figure figure--book">
+    <img src="images/offer-paperback.webp" alt="the eldest daughter workbook" width="585" height="797" loading="lazy" decoding="async">
   </figure>
 
   <!-- ===== WHAT'S INSIDE ===== -->
@@ -469,7 +472,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <div class="offer-top">
       <div class="covers">  <!-- both images sit in one fixed box and cross-fade, so nothing moves when the format changes -->
         <img class="cover on" data-f="digital" src="images/offer-workbook-tablet.webp" alt="the eldest daughter workbook on a tablet" width="540" height="701" loading="lazy" decoding="async">
-        <img class="cover" data-f="print" src="images/offer-paperback.webp" alt="the eldest daughter workbook paperback" width="585" height="839" loading="lazy" decoding="async">
+        <img class="cover" data-f="print" src="images/offer-paperback.webp" alt="the eldest daughter workbook paperback" width="585" height="797" loading="lazy" decoding="async">
       </div>
       <div class="offer-info">
         <h2>the eldest daughter workbook</h2>
@@ -508,7 +511,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="faq">
     <details>
       <summary>is this a physical book?</summary>
-      <div class="a">no, it's digital, which is why you can start tonight instead of waiting for shipping.</div>
+      <div class="a"><span class="pb-hide">no, it's digital, which is why you can start tonight instead of waiting for shipping.</span><span class="pb-only">both. the digital workbook arrives instantly. the paperback is printed and shipped to your door, and the pdf is included so you can start tonight.</span></div>
     </details>
 
     <details>
@@ -611,7 +614,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
   // format switch on the offer card: digital $9 or paperback $27 (pdf included, printed and shipped by lulu)
   // preview links (*.vercel.app) show it before launch so it can be tried with test cards
-  if(/\.vercel\.app$/.test(location.hostname)){ var fmtEl=document.querySelector('.fmt'); if(fmtEl){ fmtEl.hidden=false; document.getElementById('offer').classList.add('has-fmt'); } }
+  if(/\.vercel\.app$/.test(location.hostname)){ var fmtEl=document.querySelector('.fmt'); if(fmtEl){ fmtEl.hidden=false; document.getElementById('offer').classList.add('has-fmt'); document.documentElement.classList.add('pb'); } }
   (function(){ var el=document.getElementById('ship-eta'); if(!el) return;
     function add(n){ var d=new Date(); while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()%6) n--; } return d; }
     var f=function(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toLowerCase(); };
