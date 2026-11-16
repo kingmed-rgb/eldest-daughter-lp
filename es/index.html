@@ -88,11 +88,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .byline img{width:40px;height:40px;border-radius:50%}
   .byline .who{font-size:15px;font-weight:400;letter-spacing:.02em;line-height:1.3}
   .byline .meta{font-size:15px;color:var(--muted)}
-  .actions{display:flex;gap:18px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:30px;font-family:var(--body);font-size:15px;color:var(--muted)}
-  .actions a,.actions button{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:inherit;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-transform:inherit}
+  .actions{display:flex;gap:8px;align-items:center;padding:4px 0 6px;margin-bottom:28px;font-family:var(--body);font-size:15px;color:var(--muted)}
+  .actions a,.actions button{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:inherit;background:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;line-height:1;cursor:pointer;text-transform:inherit;font-variant-numeric:tabular-nums lining-nums;transition:border-color .15s}
+  .actions a:hover,.actions button:hover{border-color:var(--tint-2)}
   .actions .spacer{flex:1}
   .actions svg{width:19px;height:19px}
-  .actions .liked svg{fill:var(--ink);stroke:var(--ink)}
+  .actions .liked svg{fill:var(--btn);stroke:var(--btn)}
+  .actions .liked{border-color:var(--tint-2);color:var(--btn)}
 
   /* prose */
   .post p,.post li,.faq .a{text-wrap:pretty}
@@ -308,15 +310,19 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     <div class="actions">
       <button type="button" id="like" aria-pressed="false" aria-label="me gusta">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></svg>
+        <span id="like-n">1,629</span>
       </button>
       <a href="#comments">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>
         600
       </a>
+      <button type="button" id="restack" aria-label="compartir de nuevo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.5-4.6L4 8"/><polyline points="4 3 4 8 9 8"/><path d="M4 13a8 8 0 0 0 14.5 4.6L20 16"/><polyline points="20 21 20 16 15 16"/></svg>
+        <span>386</span>
+      </button>
       <span class="spacer"></span>
       <button type="button" id="share" aria-label="compartir">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-        compartir
       </button>
     </div>
   </div>
@@ -652,12 +658,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!co.hidden) showCo(false); });
 
   var like=document.getElementById('like');
-  like.addEventListener('click',function(){var on=like.classList.toggle('liked');like.setAttribute('aria-pressed',on);});
+  like.addEventListener('click',function(){var on=like.classList.toggle('liked');like.setAttribute('aria-pressed',on);document.getElementById('like-n').textContent=on?'1,630':'1,629';});
+  document.getElementById('restack').addEventListener('click',function(){document.getElementById('share').click();});
 
   document.getElementById('share').addEventListener('click',function(){
     var data={title:document.title,text:'esto me hizo sentir tan vista 🥹',url:location.origin+location.pathname};
     if(navigator.share){navigator.share(data).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(data.url);this.lastChild.textContent=' enlace copiado';}
+    else if(navigator.clipboard){navigator.clipboard.writeText(data.url);}
   });
 })();
 </script>
