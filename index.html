@@ -304,6 +304,27 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-head{display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-family:var(--body);font-size:15px;color:var(--muted)}
   .co-head span{flex:1}
   .co-sheet:not(.paying) #co-title{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);letter-spacing:-.015em}
+  /* small phones (most of the audience): both add-ons and the button fit on one screen without scrolling */
+  @media (max-width:420px), (max-height:700px){
+    .co-sheet{height:calc(100dvh - 12px)}
+    .co-sheet:not(.paying) #co-title{font-size:21px}
+    .co-sheet:not(.paying) .co-head{padding-top:10px!important;padding-bottom:6px}
+    .up{padding:2px 14px 20px}
+    .upc{grid-template-columns:62px 1fr auto;column-gap:10px;row-gap:4px;padding:8px 10px;margin:0 0 8px;border-radius:12px}
+    .upi{width:62px;height:62px}
+    .upi .pdf{font-size:10px;padding:2px 5px;bottom:3px;right:0}
+    .upb{gap:3px}
+    .upb .kind{font-size:13px}
+    .upb b{font-size:16px;line-height:1.2}
+    .upc .why{font-size:13.5px;line-height:1.4}
+    .tick{width:24px;height:24px}
+    .upc:has(input:checked) .tick::after{left:7px;top:3px;width:6px;height:11px}
+    .up-foot{margin:0 -14px -20px;padding:0 14px 14px}
+    .up-sum{padding:8px 0}
+    .up-sum .tot{font-size:16px;padding-top:0}
+    .up-sum .tot b{font-size:21px}
+    .up .cta{padding-top:13px;padding-bottom:13px}
+  }
   .co-close{background:none;border:0;font:inherit;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
   .co-close:focus-visible{outline:2px solid var(--ink);border-radius:6px}
   .co-load{font-family:var(--body);text-align:center;padding:56px 16px 64px;display:flex;flex-direction:column;align-items:center;gap:10px}
