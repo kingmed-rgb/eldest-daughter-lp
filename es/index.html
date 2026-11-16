@@ -220,9 +220,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .upc input{position:absolute;opacity:0;pointer-events:none}
   .upi{width:84px;height:84px;flex:none;display:block}
   .upi img{width:100%;height:100%;object-fit:cover;display:block}
+  .upi{position:relative}
+  .upi .pdf{position:absolute;right:2px;bottom:6px;background:var(--accent);color:var(--bg);font-size:11px;font-weight:600;letter-spacing:.04em;line-height:1;padding:3px 6px;border-radius:4px}  /* file badge: bumps are pdf only */
   .upb{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;padding-top:2px}
   .upb .kind{font-size:15px;line-height:1;color:var(--muted);margin-bottom:-2px}
-  .upb .pdf{display:inline-block;vertical-align:1px;margin-left:4px;font-size:13px;font-weight:600;line-height:1;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:2px 5px}  /* digital only, even when the paperback is chosen */
   .upb b{font-family:var(--serif);font-weight:600;font-size:18px;line-height:1.25;color:var(--ink)}
   .upc .why{grid-column:1/-1;font-size:15px;line-height:1.45;color:var(--ink)}
   .upp{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--accent)}
@@ -534,8 +535,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="co-sheet" id="co-sheet">
     <div class="co-head"><button type="button" class="co-back" id="co-back" hidden>← atrás</button><span id="co-title">¿agregas algo a tu pedido?</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
     <div class="up" id="co-step1">
-      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="../images/bump-poems-es.webp" alt="querida hija mayor enojada" width="360" height="360" loading="lazy" decoding="async"></span><span class="upb"><span class="kind">poesía <span class="pdf">pdf</span></span><b>querida hija mayor enojada</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">un libro de poesía que le pone palabras a tu dolor escondido. entiende tu enojo y siéntete vista de verdad. las palabras que no sabías que necesitabas.</span></label>
-      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="../images/bump-journal-es.webp" alt="el diario de la hija mayor" width="360" height="360" loading="lazy" decoding="async"></span><span class="upb"><span class="kind">diario guiado <span class="pdf">pdf</span></span><b>el diario de la hija mayor</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">suelta las emociones guardadas, libérate de la culpa y de querer complacer a todos, y por fin empieza a elegirte. tu espacio seguro para sacarlo todo.</span></label>
+      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="../images/bump-poems-es.webp" alt="querida hija mayor enojada" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">poesía</span><b>querida hija mayor enojada</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">un libro de poesía que le pone palabras a tu dolor escondido. entiende tu enojo y siéntete vista de verdad. las palabras que no sabías que necesitabas.</span></label>
+      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="../images/bump-journal-es.webp" alt="el diario de la hija mayor" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">diario guiado</span><b>el diario de la hija mayor</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">suelta las emociones guardadas, libérate de la culpa y de querer complacer a todos, y por fin empieza a elegirte. tu espacio seguro para sacarlo todo.</span></label>
       <div class="up-foot">
       <div class="up-sum"><div><span>síndrome de la hija mayor</span><span>$9</span></div><div id="sum-poems" hidden><span>querida hija mayor enojada</span><span>$7</span></div><div id="sum-journal" hidden><span>el diario de la hija mayor</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
       <button type="button" class="cta" id="co-continue">continuar al pago →</button>

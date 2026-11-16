@@ -252,9 +252,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .upc input{position:absolute;opacity:0;pointer-events:none}
   .upi{width:84px;height:84px;flex:none;display:block}
   .upi img{width:100%;height:100%;object-fit:cover;display:block}
+  .upi{position:relative}
+  .upi .pdf{position:absolute;right:2px;bottom:6px;background:var(--accent);color:var(--bg);font-size:11px;font-weight:600;letter-spacing:.04em;line-height:1;padding:3px 6px;border-radius:4px}  /* file badge: bumps are pdf only */
   .upb{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;padding-top:2px}
   .upb .kind{font-size:15px;line-height:1;color:var(--muted);margin-bottom:-2px}
-  .upb .pdf{display:inline-block;vertical-align:1px;margin-left:4px;font-size:13px;font-weight:600;line-height:1;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:2px 5px}  /* digital only, even when the paperback is chosen */
   .upb b{font-family:var(--serif);font-weight:600;font-size:18px;line-height:1.25;color:var(--ink)}
   .upc .why{grid-column:1/-1;font-size:15px;line-height:1.45;color:var(--ink)}
   .upp{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--accent)}
@@ -575,8 +576,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="co-sheet" id="co-sheet">
     <div class="co-head"><button type="button" class="co-back" id="co-back" hidden>← back</button><span id="co-title">add to your order?</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
     <div class="up" id="co-step1">
-      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="360" height="360" loading="lazy" decoding="async"></span><span class="upb"><span class="kind">poetry <span class="pdf">pdf</span></span><b>dear angry eldest daughter</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">a heartfelt poetry book that puts words to your hidden pain, understand your anger, and feel truly seen. the words you never knew you needed.</span></label>
-      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="360" height="360" loading="lazy" decoding="async"></span><span class="upb"><span class="kind">guided journal <span class="pdf">pdf</span></span><b>the eldest daughter journal</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">release buried emotions, break free from guilt and people-pleasing, and finally start choosing yourself. your safe space to let it all out.</span></label>
+      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">poetry</span><b>dear angry eldest daughter</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">a heartfelt poetry book that puts words to your hidden pain, understand your anger, and feel truly seen. the words you never knew you needed.</span></label>
+      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">guided journal</span><b>the eldest daughter journal</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">release buried emotions, break free from guilt and people-pleasing, and finally start choosing yourself. your safe space to let it all out.</span></label>
       <div class="up-foot">
       <div class="up-sum"><div><span>the eldest daughter workbook</span><span>$9</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
       <button type="button" class="cta" id="co-continue">continue to payment →</button>
