@@ -188,7 +188,9 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .pay-badge{font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-transform:none;font-size:12px;font-weight:600;line-height:1;letter-spacing:0;color:#111;background:#fff;border:1px solid #d8cfc4;border-radius:5px;padding:5px 7px}
   .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
   /* offer */
-  .offer{padding:24px 22px 22px}
+  .offer{padding:24px 22px 22px;background:#FFFDF9;border:0;box-shadow:0 1px 2px rgba(43,18,24,.06),0 12px 32px rgba(43,18,24,.10)}
+  /* titles: deep wine */
+  h1,.post h2,.ba h3,.toc .toc-title,.offer h2{color:var(--accent)}
   .offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-bottom:4px;margin-bottom:0}
   .offer img.bundle--book{width:auto!important;max-width:none!important;height:220px!important;margin:0 0 10px;display:block;mix-blend-mode:multiply}
   .offer .covers{position:relative;flex:none;width:160px;height:208px;margin:0 0 12px}
@@ -201,14 +203,14 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   #total,.fmt .pr,.offer .price .now{font-variant-numeric:tabular-nums lining-nums}
   #total{display:inline-block;min-width:2.4em;text-align:right}
   .fmt{display:grid;grid-auto-rows:1fr;gap:18px;margin:24px 0 20px}  /* both cards always the same height */
-  .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:20px 16px 16px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
-  .fmt button.on{border-color:var(--ink);background:#FBEFE6}
+  .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:#FFFDF9;border-radius:12px;padding:20px 16px 16px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+  .fmt button.on{border-color:var(--ink);background:#FBF1EC}
   .fmt .dot{flex:none;box-sizing:border-box;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);background:var(--bg);transition:all .15s}
   .fmt button.on .dot{border:6px solid var(--btn)}
   .fmt .txt{flex:1;min-width:0;line-height:1.35}
   .fmt .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-weight:600;font-size:18px;line-height:1.25}
   /* badge sits on the card's top edge, so it never competes with the name or the price */
-  .fmt .tag{position:absolute;top:-11px;left:52px;background:var(--bg);color:var(--btn);border:1px solid var(--btn);font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;line-height:1.35;transition:background .15s,color .15s}
+  .fmt .tag{position:absolute;top:-11px;left:52px;background:#FFFDF9;color:var(--btn);border:1px solid var(--btn);font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;line-height:1.35;transition:background .15s,color .15s}
   .fmt button.on .tag{background:var(--btn);color:#fff}
   .fmt .d{display:block;font-size:15px;color:var(--muted);margin-top:4px}
   .fmt .pr{flex:none;font-weight:600;font-size:21px;color:var(--ink);white-space:nowrap}
@@ -495,7 +497,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
     <div class="fmt" role="radiogroup" aria-label="choose your format" hidden>  <!-- paperback: shown on preview links; on the live site once the lulu test passed -->
       <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="tag">save 69%</span><span class="dot"></span><span class="txt"><span class="t"><span>digital</span><span class="pr"><s>$29</s>$9</span></span><span class="d">instant download. start tonight on any device.</span></span></button>
-      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr">$27</span></span><span class="d">printed and shipped free to your door. pdf included.</span></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$87</s>$27</span></span><span class="d">printed and shipped free to your door. pdf included.</span></span></button>
     </div>
 
     <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
@@ -632,7 +634,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     el.textContent=f(add(8))+' – '+f(add(14)); })();
   var FORMAT='digital', PRICE={digital:9,print:27};
   var FMT={digital:{was:'$29',save:'save 69%',note:'one-time payment. no subscription. yours forever.',cta:'get the workbook for $9 →',row:'the eldest daughter workbook'},
-           print:{was:'',save:'pdf included',note:'free shipping to the us, uk, canada and australia. the pdf is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
+           print:{was:'$87',save:'save 69%',note:'free shipping to the us, uk, canada and australia. the pdf is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
   [].forEach.call(document.querySelectorAll('.fmt button'),function(btn){ btn.addEventListener('click',function(){
     FORMAT=btn.dataset.f; BASE=PRICE[FORMAT]; var f=FMT[FORMAT];
     [].forEach.call(document.querySelectorAll('.fmt button'),function(x){ var on=x===btn; x.classList.toggle('on',on); x.setAttribute('aria-checked',on?'true':'false'); });
