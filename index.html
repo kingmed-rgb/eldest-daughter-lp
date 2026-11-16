@@ -186,10 +186,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer-info{display:flex;flex-direction:column;gap:6px;align-items:inherit}
   /* format options (digital / paperback): stacked cards, the chosen one gets the dark border */
   .fmt[hidden]{display:none}
-  .fmt{display:flex;flex-direction:column;gap:10px;margin:16px 0 18px}
+  #total,.fmt .pr,.offer .price .now{font-variant-numeric:tabular-nums lining-nums}
+  #total{display:inline-block;min-width:2.4em;text-align:right}
+  .fmt{display:grid;grid-auto-rows:1fr;gap:10px;margin:16px 0 18px}  /* both cards always the same height */
   .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:14px 16px;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
   .fmt button.on{border-color:var(--ink);background:#FBEFE6}
-  .fmt .dot{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);background:var(--bg);transition:all .15s}
+  .fmt .dot{flex:none;box-sizing:border-box;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);background:var(--bg);transition:all .15s}
   .fmt button.on .dot{border:6px solid var(--btn)}
   .fmt .txt{flex:1;min-width:0;line-height:1.35}
   .fmt .t{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-weight:600;font-size:18px}
@@ -460,7 +462,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
     <div class="fmt" role="radiogroup" aria-label="choose your format" hidden>  <!-- paperback: shown on preview links; on the live site once the lulu test passed -->
       <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="dot"></span><span class="txt"><span class="t">digital <span class="tag">save 69%</span></span><span class="d">instant download. start tonight on any device.</span></span><span class="pr">$9<s>$29</s></span></button>
-      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="dot"></span><span class="txt"><span class="t">paperback <span class="tag">+ free pdf</span></span><span class="d">printed and shipped to your door. start on the pdf while it travels.</span></span><span class="pr">$27</span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="dot"></span><span class="txt"><span class="t">paperback <span class="tag">+ free pdf</span></span><span class="d">printed and shipped to your door. pdf included.</span></span><span class="pr">$27</span></button>
     </div>
 
     <ul class="includes">
@@ -596,7 +598,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     FORMAT=btn.dataset.f; BASE=PRICE[FORMAT]; var f=FMT[FORMAT];
     [].forEach.call(document.querySelectorAll('.fmt button'),function(x){ var on=x===btn; x.classList.toggle('on',on); x.setAttribute('aria-checked',on?'true':'false'); });
     document.getElementById('p-now').textContent='$'+PRICE[FORMAT]; document.getElementById('p-was').textContent=f.was; document.getElementById('p-was').hidden=!f.was;
-    document.getElementById('p-save').textContent=f.save; document.getElementById('p-note').textContent=f.note; document.getElementById('offer-cta').textContent=f.cta;
+    document.getElementById('p-save').textContent=f.save; document.getElementById('offer-cta').textContent=f.cta;
     var tot=document.getElementById('total'); if(tot) tot.textContent='$'+orderTotal();
     try{window.clarity&&clarity('event','format_'+FORMAT);}catch(e){}
   }); });
