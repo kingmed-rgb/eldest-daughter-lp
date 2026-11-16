@@ -263,17 +263,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   footer a{margin:0 8px}
   footer p{max-width:520px;margin:12px auto 0;line-height:1.6}
 
-  /* sticky buy bar */
-  .buybar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(254,247,236,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-          border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .25s ease}
-  .buybar.show{transform:none}
-  .buybar .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px;font-family:var(--body)}
-  .buybar .p{flex:1;line-height:1.25;font-size:15px;color:var(--muted)}
-  .buybar a{color:var(--bg)!important}
-  .buybar .p b{font-weight:400;display:block;color:var(--ink);font-size:18px}
-  .buybar .p s{margin-left:4px}
-  .buybar .bp{color:var(--ink);font-weight:400}
-  .buybar a{background:var(--btn);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px;padding:13px 18px;border-radius:10px;white-space:nowrap}
 
   /* stripe checkout pop-up: buyers pay without leaving the page */
   .co{position:fixed;inset:0;z-index:50;background:rgba(43,18,24,.55);display:flex;align-items:flex-end;justify-content:center;overscroll-behavior:contain;touch-action:none}
@@ -291,7 +280,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   @keyframes co-spin{to{transform:rotate(360deg)}}
   body.co-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
   html.co-open{overflow:hidden;scroll-behavior:auto}
-  body.co-open .buybar{display:none}
   @media(min-width:560px){.co{align-items:center}.co-sheet{height:auto;max-height:90vh;border-radius:16px}}
 </style>
 </head>
@@ -556,32 +544,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </div>
 </div>
 
-<!-- sticky buy bar: appears after "what's inside", hides while the offer or a checkout button is on screen -->
-<div class="buybar" id="buybar" aria-hidden="true">
-  <div class="in">
-    <div class="p"><b>síndrome de la hija mayor</b><span class="bp">$9</span> <s>$29</s></div>
-    <a href="#offer" tabindex="-1">quiero el libro →</a>
-  </div>
-</div>
 
 <script>
 (function(){
   var checkout=null;
-  var bar=document.getElementById('buybar');
-  var head=document.getElementById('inside');  // bar appears once the reader has scrolled past "what's inside"
-  var blockers=document.querySelectorAll('#offer, .cta-wrap');
-  var pastHead=false, visible=new Set();
-  function update(){
-    var show=pastHead && visible.size===0;
-    bar.classList.toggle('show',show);
-    bar.setAttribute('aria-hidden',show?'false':'true');
-    bar.querySelector('a').tabIndex=show?0:-1;
-  }
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(e){pastHead=!e[0].isIntersecting&&e[0].boundingClientRect.top<0;update();}).observe(head);
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?visible.add(e.target):visible.delete(e.target);});update();});
-    blockers.forEach(function(b){io.observe(b);});
-  }
 
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
   var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
