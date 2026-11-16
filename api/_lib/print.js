@@ -103,6 +103,13 @@ async function fulfilPrint(session) {
       return { status: q.ok ? 'validated' : 'failed' };
     }
 
+    // safety net: shipping should always have been quoted before payment. if not, print anyway but tell us.
+    const shipPaid = session.shipping_cost ? session.shipping_cost.amount_total : null;
+    if (shipPaid === 0 && !(pi && pi.metadata && pi.metadata.ship_alerted)) {
+      await alert('paperback order paid without shipping: ' + session.id, `this order went through with $0 shipping, so the buyer didn't pay for postage.\nthe book is still being printed and sent.\n\ncheckout: ${session.id}\nbuyer: ${buyer}\ncountry: ${job.shipping_address.country_code}`);
+      await mark('ship_alerted', '1');
+    }
+
     const r = await lulu('/print-jobs/', 'POST', job);
     if (r.ok && r.data && r.data.id) {
       await mark('lulu', r.data.id);
