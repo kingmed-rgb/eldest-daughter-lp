@@ -265,9 +265,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .upc:has(input:checked) .tick{background:var(--accent);border-color:var(--accent)}
   .upc:has(input:checked) .tick::after{content:'';position:absolute;left:8px;top:3px;width:6px;height:12px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
   .up-foot{position:sticky;bottom:0;background:#FFFCF6;margin:0 -18px -26px;padding:0 18px 18px;}
-  .shipto{display:flex;align-items:center;justify-content:space-between;gap:12px;white-space:nowrap;border-top:1px solid var(--line);padding:12px 0 0;font-size:15px;color:var(--muted)}
-  .shipto[hidden]{display:none}
-  .shipto select{flex:1;max-width:270px;font:inherit;font-size:15px;color:var(--ink);background:#FFFCF6;border:1px solid var(--tint-2);border-radius:10px;padding:9px 10px}
   .up-sum{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding:12px 0 12px;font-size:15px;color:var(--muted)}
   .up-sum div{display:flex;justify-content:space-between}
   .up-sum div[hidden],.up-sum>div:not(.tot){display:none}
@@ -505,7 +502,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
     <div class="fmt" role="radiogroup" aria-label="choose your format">  <!-- paperback on sale. to hide it: add "hidden" here, remove "has-fmt" above and class="pb" on <html>, and set PRINT.enabled=false -->
       <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="tag">save 69%</span><span class="dot"></span><span class="txt"><span class="t"><span>digital</span><span class="pr"><s>$29</s>$9</span></span><span class="d">instant download. start tonight on any device.</span></span></button>
-      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$87</s>$27</span></span><span class="d">free shipping in the us &amp; uk. pdf included.</span></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$87</s>$27</span></span><span class="d">printed and shipped free to your door. pdf included.</span></span></button>
     </div>
 
     <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
@@ -591,7 +588,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">poetry</span><b>dear angry eldest daughter</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">a heartfelt poetry book that puts words to your hidden pain, understand your anger, and feel truly seen. the words you never knew you needed.</span></label>
       <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">guided journal</span><b>the eldest daughter journal</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">release buried emotions, break free from guilt and people-pleasing, and finally start choosing yourself. your safe space to let it all out.</span></label>
       <div class="up-foot">
-      <div class="shipto" id="shipto" hidden><label for="ship-country">ship to</label><select id="ship-country"><option value="US">united states · free shipping</option><option value="GB">united kingdom · free shipping</option><option value="CA">canada · +$13 shipping</option><option value="AU">australia · +$10 shipping</option></select></div>
       <div class="up-sum"><div><span>the eldest daughter workbook</span><span>$9</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
       <button type="button" class="cta" id="co-continue">continue to payment →</button>
       </div>
@@ -628,13 +624,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   }); });
   var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
   function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
-  // paperback shipping: us + uk free, canada and australia pay lulu's shipping (same table as the server)
-  var SHIP={US:0,GB:0,CA:13,AU:10}, shipSel=document.getElementById('ship-country');
-  try{ var reg=((navigator.language||'').split('-')[1]||'').toUpperCase(); if(reg==='UK') reg='GB'; if(reg in SHIP) shipSel.value=reg; }catch(e){}
-  function shipFee(){ return FORMAT==='print' ? SHIP[shipSel.value] : 0; }
-  shipSel.addEventListener('change',function(){ document.getElementById('total').textContent='$'+orderTotal(); });
-  function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP+shipFee(); }
-  function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':'')+(FORMAT==='print'?shipSel.value:''); }
+  function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
+  function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
   bumps.forEach(function(b){ b.addEventListener('change',function(){
     document.getElementById('total').textContent='$'+orderTotal();
     document.getElementById('sum-'+b.id.replace('bump-','')).hidden=!b.checked;
@@ -681,7 +672,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     sheet.classList.toggle('paying',n===2);
     sheet.scrollTop=0;
   }
-  function openCheckout(){ document.getElementById('shipto').hidden=FORMAT!=='print'; document.getElementById('total').textContent='$'+orderTotal(); step(1); showCo(true); }
+  function openCheckout(){ step(1); showCo(true); }
   function pay(){
     step(2);
     try{gtag('event','begin_checkout',{value:orderTotal(),currency:'USD',items:[{item_id:'main'}].concat(chosen('poems')?[{item_id:'poems'}]:[],chosen('journal')?[{item_id:'journal'}]:[])});}catch(e){}
@@ -692,7 +683,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
     checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
     starting=true;
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',format:FORMAT,poems:chosen('poems'),journal:chosen('journal'),country:FORMAT==='print'?shipSel.value:undefined})})
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',format:FORMAT,poems:chosen('poems'),journal:chosen('journal')})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })

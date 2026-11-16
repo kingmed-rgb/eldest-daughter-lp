@@ -59,13 +59,9 @@ const PRINT = {
   interior: PRINT_FILES + 'eds-workbook-interior-royal.pdf',
   cover: PRINT_FILES + 'eds-workbook-cover-royal.pdf',
   title: 'The Eldest Daughter Workbook',
-  // where we ship, and what the buyer pays for shipping (cents). us + uk free; canada and australia
-  // pay lulu's mail cost plus the tax lulu adds on it (lulu quotes 2026-11-16: ca $12.42, au $8.79)
-  shipping: { US: 0, GB: 0, CA: 1300, AU: 1000 },
+  countries: ['US', 'GB', 'CA', 'AU'],    // where we ship for now
   shippingLevel: 'MAIL',                  // lulu's cheapest tracked option
   productionDelayMinutes: 120,            // window to cancel a mistaken order before printing starts
 };
-
-PRINT.countries = Object.keys(PRINT.shipping);
 
 module.exports = { FILES, OFFERS, PRINT, languageOf, filesFor };

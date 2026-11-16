@@ -40,7 +40,7 @@ function readBody(req) {
   body = body || {};
   const lang = body.lang || (req.query && req.query.lang);
   const L = OFFERS[lang] ? lang : 'en';
-  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print', country: String(body.country || '').toUpperCase() };
+  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print' };
 }
 
 module.exports = async (req, res) => {
@@ -62,10 +62,9 @@ module.exports = async (req, res) => {
   }
   if (!mode) return res.status(503).json({ error: 'Checkout is not configured' }); // page falls back to the payment link
 
-  const { lang, poems, journal, print, wantsPrint, country } = readBody(req);
+  const { lang, poems, journal, print, wantsPrint } = readBody(req);
   // never charge a different product than the one shown: paperback asked for while it's switched off
   if (wantsPrint && !print) return res.status(409).json({ error: 'paperback not available yet' });
-  if (print && !(country in PRINT.shipping)) return res.status(400).json({ error: 'we do not ship the paperback to this country yet' });
   const offer = OFFERS[lang];
   const items = [print ? 'print' : 'main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
   const host = req.headers['x-forwarded-host'] || req.headers.host;
@@ -80,15 +79,9 @@ module.exports = async (req, res) => {
     return_url: 'https://' + host + THANK_YOU[lang] + '?session_id={CHECKOUT_SESSION_ID}',
   };
   if (print) {
-    // paperback: the buyer picked the country in the pop-up; stripe collects the address there and adds its shipping fee
-    params['shipping_address_collection[allowed_countries][0]'] = country;
+    // paperback: Stripe collects the shipping address (only countries we ship printed books to)
+    PRINT.countries.forEach((c, i) => { params[`shipping_address_collection[allowed_countries][${i}]`] = c; });
     params['phone_number_collection[enabled]'] = 'true'; // the printer needs a phone number for delivery
-    params['metadata[ship_country]'] = country;
-    const fee = PRINT.shipping[country];
-    params['shipping_options[0][shipping_rate_data][type]'] = 'fixed_amount';
-    params['shipping_options[0][shipping_rate_data][display_name]'] = fee ? 'tracked shipping' : 'free tracked shipping';
-    params['shipping_options[0][shipping_rate_data][fixed_amount][amount]'] = String(fee);
-    params['shipping_options[0][shipping_rate_data][fixed_amount][currency]'] = 'usd';
   }
   items.forEach((k, i) => {
     params[`line_items[${i}][quantity]`] = '1';
