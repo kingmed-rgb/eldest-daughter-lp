@@ -4,6 +4,9 @@
 //   ?action=cost&country=US&zip=10001&state=NY&city=New%20York   exact price for 1 copy
 //   ?action=testorder                     create one real print job, then cancel it at once (nothing printed)
 //   ?action=job&id=123                    read a print job's status
+//   ?action=webhook                       register (once) the lulu → site status webhook, and list it
+//   ?action=webhook-test                  ask lulu to send a test notification to it
+//   ?action=update&id=123                 act on a job now (shipped → buyer email; add &force=1 to resend)
 //   ?action=shipping&country=US&zip=10001   lulu shipping levels with delivery times
 const crypto = require('crypto');
 const { PRINT } = require('./_lib/catalog.js');
@@ -56,6 +59,26 @@ module.exports = async (req, res) => {
       // lulu's shipping options for one copy: price and delivery time per level
       const addr = { city: q.city || 'New York', state_code: q.state || undefined, country_code: (q.country || 'US').toUpperCase(), postcode: q.zip || '10001', street1: '1 Main St', phone_number: '5555555555' };
       return res.status(200).json(await lulu('/shipping-options/', 'POST', { line_items: [{ page_count: PRINT.pageCount, pod_package_id: PRINT.podPackageId, quantity: 1 }], shipping_address: addr, currency: 'USD' }));
+    }
+    const HOOK_URL = 'https://www.eldestdaughtercore.com/api/lulu-webhook';
+    if (q.action === 'webhook') {
+      const list = await lulu('/webhooks/');
+      const hooks = (list.data && (list.data.results || list.data)) || [];
+      const mine = Array.isArray(hooks) ? hooks.find((h) => h.url === HOOK_URL) : null;
+      if (mine && mine.is_active) return res.status(200).json({ already: mine });
+      if (mine) return res.status(200).json({ reactivated: await lulu('/webhooks/' + mine.id + '/', 'PATCH', { is_active: true }) });
+      return res.status(200).json({ created: await lulu('/webhooks/', 'POST', { topics: ['PRINT_JOB_STATUS_CHANGED'], url: HOOK_URL }) });
+    }
+    if (q.action === 'webhook-test') {
+      const list = await lulu('/webhooks/');
+      const hooks = (list.data && (list.data.results || list.data)) || [];
+      const mine = Array.isArray(hooks) ? hooks.find((h) => h.url === HOOK_URL) : null;
+      if (!mine) return res.status(404).json({ error: 'webhook not registered yet: run action=webhook first' });
+      return res.status(200).json({ test: await lulu('/webhooks/' + mine.id + '/test-submission/PRINT_JOB_STATUS_CHANGED/', 'POST') });
+    }
+    if (q.action === 'update' && q.id) {
+      const { handleJob } = require('./lulu-webhook.js');
+      return res.status(200).json(await handleJob(q.id, { force: q.force === '1' }));
     }
     if (q.action === 'job' && q.id) {
       return res.status(200).json(await lulu('/print-jobs/' + encodeURIComponent(q.id) + '/'));
