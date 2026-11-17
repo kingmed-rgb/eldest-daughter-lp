@@ -62,6 +62,26 @@ module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   res.setHeader('X-Robots-Tag', 'noindex');
   if (!tokenOk((req.query || {}).token)) return res.status(404).json({ error: 'not found' });
+  if (req.method === 'GET' && (req.query || {}).status) {
+    // read-only: delivery status of the latest emails in resend (up to 500), counted by last event
+    const out = { by_event: {}, by_subject: {}, checked: 0, failed_examples: [] };
+    let after = '';
+    for (let i = 0; i < 5; i++) {
+      const r = await resend('emails?limit=100' + (after ? '&after=' + after : ''));
+      const list = (r && r.data) || [];
+      for (const e of list) {
+        out.checked++;
+        const ev = e.last_event || 'unknown';
+        out.by_event[ev] = (out.by_event[ev] || 0) + 1;
+        const k = (e.subject || '').slice(0, 60) + ' | ' + ev;
+        out.by_subject[k] = (out.by_subject[k] || 0) + 1;
+        if (/fail|bounce|quota|suppress|cancel/i.test(ev) && out.failed_examples.length < 5) out.failed_examples.push({ created: e.created_at, event: ev });
+      }
+      if (!r.has_more || !list.length) break;
+      after = list[list.length - 1].id;
+    }
+    return res.status(200).json(out);
+  }
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
   const body = readBody(req);
   const { html, text } = email();
