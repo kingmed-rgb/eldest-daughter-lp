@@ -10,7 +10,7 @@ const SHOP_INBOX = 'eldestdaughterbook@gmail.com';
 const SITE = 'https://www.eldestdaughtercore.com';
 const OFFER = SITE + '/?utm_source=email&utm_medium=email&utm_campaign=paperback_launch#offer';
 const LULU = 'https://svc.lulu.com/?items=7b70f9a7-35db-4ac7-9567-97395e911aeb';
-const IMAGE = SITE + '/images/email-paperback.jpg?v=2'; // ?v=2: the plain address got a cached 404 at cloudflare
+const IMAGE = SITE + '/images/email-paperback-v3.jpg'; // new name for each version: cloudflare keeps images for a year
 
 function tokenOk(given) {
   const want = (process.env.BACKFILL_TOKEN || '').trim();
@@ -29,7 +29,8 @@ function email() {
 <span style="display:none;max-height:0;overflow:hidden;opacity:0">${PREHEADER}</span>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FEF7EC"><tr><td align="center" style="padding:24px 16px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;font-family:Georgia,serif;color:#2B1218;font-size:17px;line-height:1.6">
-<tr><td style="padding:0 0 22px"><a href="${OFFER}"><img src="${IMAGE}" width="560" alt="your healing starts here. the eldest daughter workbook, now in print." style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:12px"></a></td></tr>
+<tr><td style="padding:8px 0 30px;border-bottom:1px solid #EBDCCD"><a href="${OFFER}"><img src="${IMAGE}" width="560" alt="your healing starts here. the eldest daughter workbook, now in print." style="display:block;width:100%;max-width:560px;height:auto;border:0"></a></td></tr>
+<tr><td style="height:28px;line-height:28px;font-size:0">&nbsp;</td></tr>
 ${p('hi,')}
 ${p('you bought the eldest daughter workbook, and so many of you have asked me the same thing: <em>"is there a printed version?"</em>')}
 ${p('there is now.')}
