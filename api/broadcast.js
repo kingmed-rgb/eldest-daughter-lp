@@ -38,7 +38,6 @@ ${p('📦 <strong>free shipping to the us, uk, canada and australia</strong> · 
 ${btn(OFFER, 'get the paperback')}
 ${p('<strong>living somewhere else?</strong> you can order it here instead, with shipping to your country added at checkout:', 'padding-top:6px')}
 ${btn(LULU, 'order for other countries', false)}
-${p('(this link is the paperback only; the ebook isn\'t included there.)', 'color:#5E434A;font-size:15px')}
 ${p("no pressure at all. what you already have is yours forever. i just wanted you to be the first to know.")}
 ${p('with love,<br>anna', 'padding-bottom:24px')}
 <tr><td style="border-top:1px solid #EBDCCD;padding:16px 0 0;color:#5E434A;font-size:13px;line-height:1.5">you're getting this because you bought from eldest daughter core. reply "unsubscribe" and you won't get emails like this again.</td></tr>
@@ -46,7 +45,7 @@ ${p('with love,<br>anna', 'padding-bottom:24px')}
   const text = ['hi,', '', 'you bought the eldest daughter workbook, and so many of you have asked me the same thing: "is there a printed version?"', '', 'there is now.', '',
     "it's the same workbook, printed as a paperback you can write in, underline, and keep close. the ebook comes with it, so you can start tonight while the book is on its way.", '',
     'free shipping to the us, uk, canada and australia · arrives in about 2 weeks', 'get the paperback: ' + OFFER, '',
-    'living somewhere else? you can order it here instead, with shipping to your country added at checkout:', LULU, "(this link is the paperback only; the ebook isn't included there.)", '',
+    'living somewhere else? you can order it here instead, with shipping to your country added at checkout:', LULU, '',
     'no pressure at all. what you already have is yours forever. i just wanted you to be the first to know.', '', 'with love,', 'anna', '',
     "you're getting this because you bought from eldest daughter core. reply \"unsubscribe\" and you won't get emails like this again."].join('\n');
   return { html, text };
