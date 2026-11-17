@@ -219,7 +219,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .offer.has-fmt .price{display:none}
   .offer h2{margin:0!important;text-align:inherit!important}
   .offer .offer-sub{margin:4px 0 0!important;font-size:18px;line-height:1.5;color:var(--muted);max-width:420px;text-wrap:balance}
-  /* delivery: order placed / pdf / paperback */
+  /* delivery: order placed / ebook / paperback */
   .offer .ship{display:flex;justify-content:center;align-items:center;gap:7px;margin:12px 0 0!important;font-size:15px;line-height:1.3;color:var(--muted)}
   .offer .ship svg{flex:none;color:var(--btn)}
   .offer .ship b{font-weight:600;color:var(--ink);white-space:nowrap}
@@ -522,7 +522,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
     <div class="fmt" role="radiogroup" aria-label="choose your format">  <!-- paperback on sale. to hide it: add "hidden" here, remove "has-fmt" above and class="pb" on <html>, and set PRINT.enabled=false -->
       <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="tag">save 69%</span><span class="dot"></span><span class="txt"><span class="t"><span>digital</span><span class="pr"><s>$29</s>$9</span></span><span class="d">instant download. start tonight on any device.</span></span></button>
-      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free pdf</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$87</s>$27</span></span><span class="d">printed and shipped free to your door. pdf included.</span></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free ebook</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$87</s>$27</span></span><span class="d">printed and shipped free to your door. ebook included.</span></span></button>
     </div>
 
     <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
@@ -545,7 +545,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="faq">
     <details>
       <summary>is this a physical book?</summary>
-      <div class="a"><span class="pb-hide">no, it's digital, which is why you can start tonight instead of waiting for shipping.</span><span class="pb-only">both. the digital workbook arrives instantly. the paperback is printed and shipped to your door, and the pdf is included so you can start tonight.</span></div>
+      <div class="a"><span class="pb-hide">no, it's digital, which is why you can start tonight instead of waiting for shipping.</span><span class="pb-only">both. the digital workbook arrives instantly. the paperback is printed and shipped to your door, and the ebook is included so you can start tonight.</span></div>
     </details>
 
     <details>
@@ -605,8 +605,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="co-sheet" id="co-sheet">
     <div class="co-head"><button type="button" class="co-back" id="co-back" hidden>← back</button><span id="co-title">add to your order?</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
     <div class="up" id="co-step1">
-      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">poetry</span><b>dear angry eldest daughter</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">a heartfelt poetry book that puts words to your hidden pain, understand your anger, and feel truly seen. the words you never knew you needed.</span></label>
-      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">pdf</span></span><span class="upb"><span class="kind">guided journal</span><b>the eldest daughter journal</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">release buried emotions, break free from guilt and people-pleasing, and finally start choosing yourself. your safe space to let it all out.</span></label>
+      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">ebook</span></span><span class="upb"><span class="kind">poetry</span><b>dear angry eldest daughter</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">a heartfelt poetry book that puts words to your hidden pain, understand your anger, and feel truly seen. the words you never knew you needed.</span></label>
+      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">ebook</span></span><span class="upb"><span class="kind">guided journal</span><b>the eldest daughter journal</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">release buried emotions, break free from guilt and people-pleasing, and finally start choosing yourself. your safe space to let it all out.</span></label>
       <div class="up-foot">
       <div class="up-sum"><div><span>the eldest daughter workbook</span><span>$9</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
       <button type="button" class="cta" id="co-continue">continue to payment →</button>
@@ -624,7 +624,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   var checkout=null;
 
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
-  // format switch on the offer card: digital $9 or paperback $27 (pdf included, printed and shipped by lulu)
+  // format switch on the offer card: digital $9 or paperback $27 (ebook included, printed and shipped by lulu)
   // paperback delivery: 11-13 working days = lulu's own mail estimate for the us and australia (uk 8-10, canada 6-8)
   (function(){ var el=document.getElementById('ship-eta'); if(!el) return;
     function add(n){ var d=new Date(); while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()%6) n--; } return d; }
@@ -632,7 +632,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     el.textContent=f(add(11))+' – '+f(add(13)); })();
   var FORMAT='digital', PRICE={digital:9,print:27};
   var FMT={digital:{was:'$29',save:'save 69%',note:'one-time payment. no subscription. yours forever.',cta:'get the workbook for $9 →',row:'the eldest daughter workbook'},
-           print:{was:'$87',save:'save 69%',note:'free shipping to the us, uk, canada and australia. the pdf is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
+           print:{was:'$87',save:'save 69%',note:'free shipping to the us, uk, canada and australia. the ebook is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
   [].forEach.call(document.querySelectorAll('.fmt button'),function(btn){ btn.addEventListener('click',function(){
     FORMAT=btn.dataset.f; BASE=PRICE[FORMAT]; var f=FMT[FORMAT];
     [].forEach.call(document.querySelectorAll('.fmt button'),function(x){ var on=x===btn; x.classList.toggle('on',on); x.setAttribute('aria-checked',on?'true':'false'); });

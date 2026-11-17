@@ -31,7 +31,7 @@ const EMAILS = {
     late: "sorry this is so late. a problem on our side kept your download email from going out, and it's fixed now.",
     intro: "thank you for your order. here's everything, ready to download:",
     tip: 'save this email so you can come back to the files anytime. start with chapter one, at your own pace.',
-    printed: 'your paperback is being printed now and ships to you in a few working days. the pdf above is yours too, so you can start tonight.',
+    printed: 'your paperback is being printed now and ships to you in a few working days. the ebook above is yours too, so you can start tonight.',
     help: "if a link doesn't open or anything feels off, just reply to this email.",
     signoff: 'with love,<br>anna',
   },

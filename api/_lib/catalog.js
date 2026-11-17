@@ -16,8 +16,8 @@ const FILES = {
 const OFFERS = {
   en: {
     main: { name: 'The Eldest Daughter Workbook', amount: 900, files: ['workbook_en'] },
-    // printed paperback (printed and shipped by Lulu), PDF included
-    print: { name: 'The Eldest Daughter Workbook (paperback + PDF)', amount: 2700, files: ['workbook_en'] },
+    // printed paperback (printed and shipped by Lulu), ebook included
+    print: { name: 'The Eldest Daughter Workbook (paperback + ebook)', amount: 2700, files: ['workbook_en'] },
     poems: { name: 'Dear Angry Eldest Daughter (poems)', amount: 700, files: ['poems_en'] },
     journal: { name: 'The Eldest Daughter Journal', amount: 700, files: ['journal_en'] },
   },
@@ -50,7 +50,7 @@ function filesFor(session) {
   return { lang, keys: ['legacy'], files: legacy.map((f) => FILES[f]) };
 }
 
-// Printed paperback: printed and shipped by Lulu (Print API), PDF included.
+// Printed paperback: printed and shipped by Lulu (Print API), ebook included.
 const PRINT_FILES = 'https://www.eldestdaughtercore.com/files/e2b0943418c5d310d9/print/';
 const PRINT = {
   enabled: true,                          // on sale (lulu test passed 2026-11-16). false hides it again: page option and checkout

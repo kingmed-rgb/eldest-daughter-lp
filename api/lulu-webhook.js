@@ -35,7 +35,7 @@ function shippedEmail(name, t) {
   const hello = first ? 'hi ' + first.toLowerCase() + ',' : 'hi,';
   const intro = 'your paperback of the eldest daughter workbook has left the printer and is on its way to you 📦';
   const how = t.url ? 'you can follow it here:' : (t.id ? 'your tracking number' + (t.carrier ? ' (' + t.carrier + ')' : '') + ' is ' + t.id + '.' : 'it usually arrives within one to two weeks.');
-  const note = 'tracking can take a day to show the first update. the pdf from your first email is yours too, so you can keep going until the book arrives.';
+  const note = 'tracking can take a day to show the first update. the ebook from your first email is yours too, so you can keep going until the book arrives.';
   const help = "if anything looks off with the delivery, just reply to this email.";
   const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;background:#FEF7EC">
