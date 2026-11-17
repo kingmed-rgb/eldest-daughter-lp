@@ -10,7 +10,7 @@ const SHOP_INBOX = 'eldestdaughterbook@gmail.com';
 const SITE = 'https://www.eldestdaughtercore.com';
 const OFFER = SITE + '/?utm_source=email&utm_medium=email&utm_campaign=paperback_launch#offer';
 const LULU = 'https://svc.lulu.com/?items=7b70f9a7-35db-4ac7-9567-97395e911aeb';
-const IMAGE = SITE + '/images/email-paperback.jpg';
+const IMAGE = SITE + '/images/email-paperback.jpg?v=2'; // ?v=2: the plain address got a cached 404 at cloudflare
 
 function tokenOk(given) {
   const want = (process.env.BACKFILL_TOKEN || '').trim();
