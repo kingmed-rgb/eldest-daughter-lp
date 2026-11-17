@@ -274,6 +274,26 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-head{display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-family:var(--body);font-size:15px;color:var(--muted)}
   .co-head span{flex:1}
   .co-sheet:not(.paying) #co-title{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);letter-spacing:-.015em}
+  /* tiktok / instagram in-app browsers on small phones */
+  @media (max-width:420px){
+    .offer .covers{width:136px;height:176px}
+    .offer img.bundle--book{height:176px!important}
+  }
+  @media (max-width:360px){
+    .actions{gap:6px}
+    .actions a,.actions button{padding:6px 10px;gap:5px;font-size:14px}
+    .actions svg{width:17px;height:17px}
+    .cta{font-size:16px;padding-left:12px;padding-right:12px}
+  }
+  @media (max-width:340px){
+    .co-sheet:not(.paying) #co-title{font-size:17.5px;white-space:nowrap}
+  }
+  @media (max-height:560px){
+    .co-sheet:not(.paying) #co-title{font-size:19px}
+    .upc{grid-template-columns:52px 1fr auto}
+    .upi{width:52px;height:52px}
+    .upc .why{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  }
   /* small phones (most of the audience): both add-ons and the button fit on one screen without scrolling */
   @media (max-width:420px), (max-height:700px){
     .co-sheet{height:calc(100dvh - 12px)}
