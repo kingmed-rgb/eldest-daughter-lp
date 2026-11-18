@@ -195,7 +195,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   h1,.post h2,.ba h3,.toc .toc-title,.offer h2{color:var(--accent)}
   .offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-bottom:4px;margin-bottom:0}
   .offer img.bundle--book{width:auto!important;max-width:none!important;height:220px!important;margin:0 0 10px;display:block;mix-blend-mode:multiply}
-  .offer .covers{position:relative;flex:none;width:160px;height:208px;margin:0 0 12px}
+  .offer .covers{position:relative;flex:none;width:230px;height:208px;margin:0 0 12px}
   .offer .covers img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;margin:0;opacity:0;transition:opacity .2s}
   .offer .covers img.on{opacity:1}
   .offer-info{display:flex;flex-direction:column;gap:6px;align-items:inherit}
@@ -315,7 +315,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   }
   /* tiktok / instagram in-app browsers on small phones */
   @media (max-width:420px){
-    .offer .covers{width:136px;height:176px}
+    .offer .covers{width:200px;height:176px}
     .offer img.bundle--book{height:176px!important}
   }
   @media (max-width:360px){
@@ -524,7 +524,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <section class="offer has-fmt" id="offer">
     <div class="offer-top">
       <div class="covers">  <!-- both images sit in one fixed box and cross-fade, so nothing moves when the format changes -->
-        <img class="cover" data-f="audio" src="images/offer-audiobook.webp" alt="the eldest daughter workbook audiobook on a phone" width="540" height="1043" loading="lazy" decoding="async">
+        <img class="cover" data-f="audio" src="images/offer-audiobook-combo.webp" alt="the eldest daughter workbook as an ebook and audiobook" width="900" height="939" loading="lazy" decoding="async">
         <img class="cover on" data-f="digital" src="images/offer-workbook-tablet.webp" alt="the eldest daughter workbook on a tablet" width="540" height="701" loading="lazy" decoding="async">
         <img class="cover" data-f="print" src="images/offer-paperback.webp" alt="the eldest daughter workbook paperback" width="585" height="797" loading="lazy" decoding="async">
       </div>
