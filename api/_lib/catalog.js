@@ -7,6 +7,7 @@ const FILES = {
   workbook_en: { kind: 'workbook', img: '/images/offer-workbook.webp', label: 'the eldest daughter workbook', url: 'https://drive.google.com/file/d/1uST3jP6d1VloCdCvBEyCtvD2JTofDXpg/view?usp=sharing' },
   poems_en: { kind: 'poetry', img: '/images/bump-poems-en.webp', label: 'dear angry eldest daughter', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/dear-angry-eldest-daughter-en.pdf` },
   journal_en: { kind: 'guided journal', img: '/images/bump-journal-en.webp', label: 'the eldest daughter journal', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/the-eldest-daughter-journal-en.pdf` },
+  audio_en: { kind: 'audiobook', img: '/images/offer-workbook-tablet.webp', label: 'the eldest daughter audiobook (mp3 + m4b)', url: 'https://drive.google.com/file/d/1nd2EHQdQsdzRHjSwDy7zMsYP01qxiNsK/view?usp=sharing' },
   ebook_es: { kind: 'libro', img: '/images/sindrome-hija-mayor-3d.webp', label: 'síndrome de la hija mayor', url: 'https://drive.google.com/uc?export=download&id=11qYyNgbQSvzttHweeHf-WAbHuA7o4Jw9' },
   poems_es: { kind: 'poesía', img: '/images/bump-poems-es.webp', label: 'querida hija mayor enojada', url: `https://www.hijamayor.com/${FILES_DIR}/querida-hija-mayor-enojada-es.pdf` },
   journal_es: { kind: 'diario guiado', img: '/images/bump-journal-es.webp', label: 'el diario de la hija mayor', url: `https://www.hijamayor.com/${FILES_DIR}/el-diario-de-la-hija-mayor-es.pdf` },
@@ -15,9 +16,11 @@ const FILES = {
 // Amounts in cents (USD).
 const OFFERS = {
   en: {
-    main: { name: 'The Eldest Daughter Workbook', amount: 900, files: ['workbook_en'] },
-    // printed paperback (printed and shipped by Lulu), ebook included
-    print: { name: 'The Eldest Daughter Workbook (paperback + ebook)', amount: 2700, files: ['workbook_en'] },
+    main: { name: 'The Eldest Daughter Workbook (ebook)', amount: 999, files: ['workbook_en'] },
+    // audiobook (mp3 + m4b with chapters), ebook included
+    audio: { name: 'The Eldest Daughter Workbook (audiobook + ebook)', amount: 1999, files: ['workbook_en', 'audio_en'] },
+    // printed paperback (printed and shipped by Lulu), ebook and audiobook included
+    print: { name: 'The Eldest Daughter Workbook (paperback + ebook + audiobook)', amount: 2999, files: ['workbook_en', 'audio_en'] },
     poems: { name: 'Dear Angry Eldest Daughter (poems)', amount: 700, files: ['poems_en'] },
     journal: { name: 'The Eldest Daughter Journal', amount: 700, files: ['journal_en'] },
   },

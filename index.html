@@ -203,20 +203,24 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .fmt[hidden]{display:none}
   .pb-only{display:none} html.pb .pb-only{display:inline} html.pb .pb-hide{display:none}  /* paperback on sale: html gets class pb */
   #total,.fmt .pr,.offer .price .now{font-variant-numeric:tabular-nums lining-nums}
-  #total{display:inline-block;min-width:2.4em;text-align:right}
-  .fmt{display:grid;grid-auto-rows:1fr;gap:18px;margin:24px 0 20px}  /* both cards always the same height */
-  .fmt button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:#FFFCF6;border-radius:12px;padding:20px 16px 16px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+  #total{display:inline-block;min-width:4em;text-align:right}
+  .fmt{display:grid;grid-auto-rows:1fr;gap:14px;margin:22px 0 18px}  /* the three cards always share one height */
+  .fmt button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:#FFFCF6;border-radius:12px;padding:15px 14px 12px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
   .fmt button.on{border-color:var(--ink);background:#FBF1EC}
-  .fmt .dot{flex:none;box-sizing:border-box;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);background:var(--bg);transition:all .15s}
+  .fmt .dot{flex:none;box-sizing:border-box;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);background:var(--bg);transition:all .15s}
   .fmt button.on .dot{border:6px solid var(--btn)}
-  .fmt .txt{flex:1;min-width:0;line-height:1.35}
-  .fmt .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-weight:600;font-size:18px;line-height:1.25}
+  .fmt .txt{flex:1;min-width:0;line-height:1.3}
+  .fmt .t{display:block;font-weight:600;font-size:18px;line-height:1.2}
+  .fmt .d{display:block;font-size:14.5px;color:var(--muted);margin-top:3px}
+  .fmt .tag{position:absolute;top:-10px;left:46px;background:#FFFCF6;color:var(--btn);border:1px solid var(--btn);font-size:12.5px;font-weight:600;padding:1px 9px;border-radius:999px;line-height:1.4;white-space:nowrap;transition:background .15s,color .15s}
+  .fmt button.on .tag{background:var(--btn);color:#fff}
+  .fmt .pr{flex:none;display:flex;flex-direction:column;align-items:flex-end;font-weight:600;font-size:19px;line-height:1.15;color:var(--ink);white-space:nowrap}
+  .fmt .pr s{font-weight:400;font-size:13.5px;color:var(--muted);margin-top:2px}
   /* badge sits on the card's top edge, so it never competes with the name or the price */
   .fmt .tag{position:absolute;top:-11px;left:52px;background:#FFFCF6;color:var(--btn);border:1px solid var(--btn);font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;line-height:1.35;transition:background .15s,color .15s}
   .fmt button.on .tag{background:var(--btn);color:#fff}
   .fmt .d{display:block;font-size:15px;color:var(--muted);margin-top:4px}
   .fmt .pr{flex:none;font-weight:600;font-size:21px;color:var(--ink);white-space:nowrap}
-  .fmt .pr s{font-weight:400;font-size:15px;color:var(--muted);margin-right:7px}
   .offer:not(.has-fmt) .price{margin:6px 0 18px}
   .offer.has-fmt .price{display:none}
   .offer h2{margin:0!important;text-align:inherit!important}
@@ -301,6 +305,14 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .co-head{display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-family:var(--body);font-size:15px;color:var(--muted)}
   .co-head span{flex:1}
   .co-sheet:not(.paying) #co-title{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);letter-spacing:-.015em}
+  @media (max-width:350px){
+    .offer{padding-left:16px!important;padding-right:16px!important}
+    .fmt button{padding:14px 12px 11px;gap:10px}
+    .fmt .tag{left:40px}
+    .fmt .d{font-size:14px}
+    .fmt .pr{font-size:18px}
+    #offer .cta{font-size:15.5px;padding-left:10px;padding-right:10px}
+  }
   /* tiktok / instagram in-app browsers on small phones */
   @media (max-width:420px){
     .offer .covers{width:136px;height:176px}
@@ -421,7 +433,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </ul>
 
   <p>if you checked even one? welcome to the eldest daughter's club.</p>
-  <p class="early"><a href="#offer">get the workbook for $9 ↓</a></p>
+  <p class="early"><a href="#offer">get the workbook for $9.99 ↓</a></p>
 
   <figure class="figure figure--book">
     <img src="images/offer-paperback.webp" alt="the eldest daughter workbook" width="585" height="797" loading="lazy" decoding="async">
@@ -483,7 +495,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </div>
 
   <div class="cta-wrap">
-    <a class="cta" href="#offer">get the workbook for $9 →</a>
+    <a class="cta" href="#offer">get the workbook for $9.99 →</a>
     <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
 
@@ -512,23 +524,24 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <section class="offer has-fmt" id="offer">
     <div class="offer-top">
       <div class="covers">  <!-- both images sit in one fixed box and cross-fade, so nothing moves when the format changes -->
-        <img class="cover on" data-f="digital" src="images/offer-workbook-tablet.webp" alt="the eldest daughter workbook on a tablet" width="540" height="701" loading="lazy" decoding="async">
+        <img class="cover on" data-f="digital audio" src="images/offer-workbook-tablet.webp" alt="the eldest daughter workbook on a tablet" width="540" height="701" loading="lazy" decoding="async">
         <img class="cover" data-f="print" src="images/offer-paperback.webp" alt="the eldest daughter workbook paperback" width="585" height="797" loading="lazy" decoding="async">
       </div>
       <div class="offer-info">
         <h2>the eldest daughter workbook</h2>
         <div class="comments-head offer-rating"><b>★★★★★ 4.8</b><span>· 600 reviews</span></div>
         <p class="offer-sub">for the daughter who grew up too fast, and is ready to put it down.</p>
-        <div class="price"><span class="now" id="p-now">$9</span><span class="was" id="p-was">$29</span><span class="save" id="p-save">save 69%</span></div>
+        <div class="price"><span class="now" id="p-now">$9.99</span><span class="was" id="p-was">$29.99</span><span class="save" id="p-save">save 67%</span></div>
       </div>
     </div>
 
     <div class="fmt" role="radiogroup" aria-label="choose your format">  <!-- paperback on sale. to hide it: add "hidden" here, remove "has-fmt" above and class="pb" on <html>, and set PRINT.enabled=false -->
-      <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="tag">save 69%</span><span class="dot"></span><span class="txt"><span class="t"><span>digital</span><span class="pr"><s>$29</s>$9</span></span><span class="d">instant download. start tonight on any device.</span></span></button>
-      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free ebook</span><span class="dot"></span><span class="txt"><span class="t"><span>paperback</span><span class="pr"><s>$87</s>$27</span></span><span class="d">printed and shipped free to your door. ebook included.</span></span></button>
+      <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="dot"></span><span class="txt"><span class="t">ebook</span><span class="d">instant download</span></span><span class="pr">$9.99<s>$29.99</s></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="audio"><span class="tag">+ free ebook</span><span class="dot"></span><span class="txt"><span class="t">audiobook</span><span class="d">listen anywhere</span></span><span class="pr">$19.99<s>$59.99</s></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free ebook &amp; audio</span><span class="dot"></span><span class="txt"><span class="t">paperback</span><span class="d">free shipping</span></span><span class="pr">$29.99<s>$89.99</s></span></button>
     </div>
 
-    <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
+    <a class="cta js-checkout" id="offer-cta" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9.99 →</a>
     <p class="ship"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>paperback arrives <b id="ship-eta">in 2–3 weeks</b></p>  <!-- one line, only when the paperback is on sale -->
     <ul class="includes">
       <li>read on any device, anywhere, anytime.</li>
@@ -548,7 +561,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   <div class="faq">
     <details>
       <summary>is this a physical book?</summary>
-      <div class="a"><span class="pb-hide">no, it's digital, which is why you can start tonight instead of waiting for shipping.</span><span class="pb-only">both. the digital workbook arrives instantly. the paperback is printed and shipped to your door, and the ebook is included so you can start tonight.</span></div>
+      <div class="a"><span class="pb-hide">no, it's digital, which is why you can start tonight instead of waiting for shipping.</span><span class="pb-only">you choose. the ebook and the audiobook arrive instantly. the paperback is printed and shipped to your door, and it comes with the ebook and the audiobook so you can start tonight.</span></div>
     </details>
 
     <details>
@@ -588,13 +601,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   </div>
 
   <div class="cta-wrap">
-    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9 →</a>
+    <a class="cta js-checkout" href="https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00">get the workbook for $9.99 →</a>
     <p class="cta-note">instant download · 14-day money-back guarantee</p>
   </div>
 
   <p class="big">you spent years becoming who everyone else needed.<br><em>it's finally time to become you.</em></p>
   <p>with love,<br>anna</p>
-  <p class="ps">p.s. it's $9 right now (normally $29). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
+  <p class="ps">p.s. it's $9.99 right now (normally $29.99). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
 
 </main>
 
@@ -611,7 +624,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="images/bump-poems-en.webp" alt="dear angry eldest daughter" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">ebook</span></span><span class="upb"><span class="kind">poetry</span><b>dear angry eldest daughter</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">a heartfelt poetry book that puts words to your hidden pain, understand your anger, and feel truly seen. the words you never knew you needed.</span></label>
       <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="images/bump-journal-en.webp" alt="the eldest daughter journal" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">ebook</span></span><span class="upb"><span class="kind">guided journal</span><b>the eldest daughter journal</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">release buried emotions, break free from guilt and people-pleasing, and finally start choosing yourself. your safe space to let it all out.</span></label>
       <div class="up-foot">
-      <div class="up-sum"><div><span>the eldest daughter workbook</span><span>$9</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9</b></div></div>
+      <div class="up-sum"><div><span>the eldest daughter workbook (ebook)</span><span>$9.99</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$9.99</b></div></div>
       <button type="button" class="cta" id="co-continue">continue to payment →</button>
       </div>
     </div>
@@ -627,31 +640,34 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   var checkout=null;
 
   // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
-  // format switch on the offer card: digital $9 or paperback $27 (ebook included, printed and shipped by lulu)
+  // format switch on the offer card: ebook $9.99, audiobook $19.99 (+ ebook), paperback $29.99 (+ ebook & audiobook, printed and shipped by lulu)
   // paperback delivery: 11-13 working days = lulu's own mail estimate for the us and australia (uk 8-10, canada 6-8)
   (function(){ var el=document.getElementById('ship-eta'); if(!el) return;
     function add(n){ var d=new Date(); while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()%6) n--; } return d; }
     var f=function(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toLowerCase(); };
     el.textContent=f(add(11))+' – '+f(add(13)); })();
-  var FORMAT='digital', PRICE={digital:9,print:27};
-  var FMT={digital:{was:'$29',save:'save 69%',note:'one-time payment. no subscription. yours forever.',cta:'get the workbook for $9 →',row:'the eldest daughter workbook'},
-           print:{was:'$87',save:'save 69%',note:'free shipping to the us, uk, canada and australia. the ebook is included, so you can start tonight.',cta:'get the paperback for $27 →',row:'the eldest daughter workbook (paperback)'}};
+  var FORMAT='digital', PRICE={digital:9.99,audio:19.99,print:29.99};
+  function money(n){ n=Math.round(n*100)/100; return '$'+(n%1?n.toFixed(2):n); }
+  var FMT={digital:{was:'$29.99',save:'save 67%',note:'one-time payment. no subscription. yours forever.',cta:'get the ebook for $9.99 →',row:'the eldest daughter workbook (ebook)'},
+           audio:{was:'$59.99',save:'save 67%',note:'',cta:'get the audiobook for $19.99 →',row:'the eldest daughter workbook (audiobook + ebook)'},
+           print:{was:'$89.99',save:'save 67%',note:'',cta:'get the paperback for $29.99 →',row:'the eldest daughter workbook (paperback)'}};
   [].forEach.call(document.querySelectorAll('.fmt button'),function(btn){ btn.addEventListener('click',function(){
     FORMAT=btn.dataset.f; BASE=PRICE[FORMAT]; var f=FMT[FORMAT];
     [].forEach.call(document.querySelectorAll('.fmt button'),function(x){ var on=x===btn; x.classList.toggle('on',on); x.setAttribute('aria-checked',on?'true':'false'); });
-    document.getElementById('p-now').textContent='$'+PRICE[FORMAT]; document.getElementById('p-was').textContent=f.was; document.getElementById('p-was').hidden=!f.was;
+    document.getElementById('p-now').textContent=money(PRICE[FORMAT]); document.getElementById('p-was').textContent=f.was; document.getElementById('p-was').hidden=!f.was;
     document.getElementById('p-save').textContent=f.save; document.getElementById('offer-cta').textContent=f.cta;
-    var tot=document.getElementById('total'); if(tot) tot.textContent='$'+orderTotal();
-    [].forEach.call(document.querySelectorAll('.offer .covers img'),function(im){ im.classList.toggle('on',im.dataset.f===FORMAT); });
+    var tot=document.getElementById('total'); if(tot) tot.textContent=money(orderTotal());
+    var row=document.querySelector('.up-sum>div:first-child span'); if(row) row.textContent=f.row;
+    [].forEach.call(document.querySelectorAll('.offer .covers img'),function(im){ im.classList.toggle('on',im.dataset.f.split(' ').indexOf(FORMAT)>=0); });
     try{window.clarity&&clarity('event','format_'+FORMAT);}catch(e){}
   }); });
-  var BASE=9, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
+  var BASE=9.99, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
   function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
-  function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
+  function orderTotal(){ return Math.round((BASE+bumps.filter(function(b){return b.checked;}).length*BUMP)*100)/100; }
   function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
   bumps.forEach(function(b){ b.addEventListener('change',function(){
     clearTimeout(prepTimer); prepTimer=setTimeout(prepare,350);
-    document.getElementById('total').textContent='$'+orderTotal();
+    document.getElementById('total').textContent=money(orderTotal());
     document.getElementById('sum-'+b.id.replace('bump-','')).hidden=!b.checked;
     try{window.clarity&&clarity('event',b.id+(b.checked?'_on':'_off'));}catch(e){}
   }); });

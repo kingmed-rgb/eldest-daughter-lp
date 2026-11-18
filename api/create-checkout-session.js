@@ -40,7 +40,7 @@ function readBody(req) {
   body = body || {};
   const lang = body.lang || (req.query && req.query.lang);
   const L = OFFERS[lang] ? lang : 'en';
-  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print' };
+  return { lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print', audio: body.format === 'audio' && !!OFFERS[L].audio };
 }
 
 module.exports = async (req, res) => {
@@ -62,11 +62,11 @@ module.exports = async (req, res) => {
   }
   if (!mode) return res.status(503).json({ error: 'Checkout is not configured' }); // page falls back to the payment link
 
-  const { lang, poems, journal, print, wantsPrint } = readBody(req);
+  const { lang, poems, journal, print, wantsPrint, audio } = readBody(req);
   // never charge a different product than the one shown: paperback asked for while it's switched off
   if (wantsPrint && !print) return res.status(409).json({ error: 'paperback not available yet' });
   const offer = OFFERS[lang];
-  const items = [print ? 'print' : 'main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
+  const items = [print ? 'print' : audio ? 'audio' : 'main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
   const host = req.headers['x-forwarded-host'] || req.headers.host;
 
   const params = {
