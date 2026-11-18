@@ -6,7 +6,7 @@ BRK = '<break time="1.5s" />'
 L = {
  'en': dict(
    pdf_pages=json.load(open(f'{D}/en-pages.json')),
-   skip={2, 3, 121},                       # copyright, contents, "how you can help this book"
+   skip={2, 3, 4, 121, 122},               # copyright, contents, bonus letters, review request, letters thank-you
    title='the eldest daughter workbook',
    opening='the eldest daughter workbook. because you carried too much, too soon, and that\'s not your fault. written by anna celestina.',
    howto=('a quick note before we begin. this is a workbook, so you\'ll be invited to pause and write along the way. '
@@ -29,13 +29,10 @@ L = {
           'for each one, write your age, what happened, what you felt, and what you should have said or done. @CUE'),
      89: ('the money leak detector.\n\ntrack all the money you\'ve given to family in the past three months: the date, the amount, the reason and who it was for, and whether it was paid back. '
           'then add it up. how much of your future did you donate? @CUE'),
-     122: ('thank you.\n\nas a thank you for walking through this workbook, i want to give you something extra: the eldest daughters\' letters. '
-           'inside are words written for you, the strong one, the fixer, the girl who grew up too fast. keep them for the days you feel invisible, the nights you forget your own worth, '
-           'or whenever you just need a reminder: you don\'t have to carry it all anymore. you\'ll find the link to download them at the end of your ebook.'),
    }),
  'es': dict(
    pdf_pages=json.load(open(f'{D}/es-pages.json')),
-   skip={2, 3, 120},
+   skip={2, 3, 120, 121},                  # copyright, contents, review request + qr
    title='síndrome de la hija mayor',
    opening='síndrome de la hija mayor. porque cargaste demasiado, demasiado pronto, y no fue tu culpa. escrito por anna celestina.',
    howto=('una nota antes de empezar. este es un libro de ejercicios, así que a lo largo del camino te invitaré a hacer pausas y escribir. '
