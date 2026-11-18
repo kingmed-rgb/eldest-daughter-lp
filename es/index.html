@@ -317,6 +317,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   }
   .co-close{background:none;border:0;font:inherit;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
   .co-close:focus-visible{outline:2px solid var(--ink);border-radius:6px}
+  #co-step2.prep{position:absolute;left:0;top:0;width:100%;height:0;overflow:hidden;visibility:hidden;pointer-events:none}
   .co-load{font-family:var(--body);text-align:center;padding:56px 16px 64px;display:flex;flex-direction:column;align-items:center;gap:10px}
   .co-load span{font-size:15px;color:var(--muted)}
   .co-spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:co-spin .8s linear infinite;margin-bottom:6px}
@@ -583,7 +584,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
       </div>
     </div>
     <div id="co-step2" hidden>
-      <div id="co-mount"><div class="co-load"><div class="co-spin" aria-hidden="true"></div><span>preparando tu pago seguro…</span></div></div>
+      <div id="co-mount"></div>
     </div>
   </div>
 </div>
@@ -599,6 +600,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   function orderTotal(){ return BASE+bumps.filter(function(b){return b.checked;}).length*BUMP; }
   function orderKey(){ return (chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
   bumps.forEach(function(b){ b.addEventListener('change',function(){
+    clearTimeout(prepTimer); prepTimer=setTimeout(prepare,350);
     document.getElementById('total').textContent='$'+orderTotal();
     document.getElementById('sum-'+b.id.replace('bump-','')).hidden=!b.checked;
     try{window.clarity&&clarity('event',b.id+(b.checked?'_on':'_off'));}catch(e){}
@@ -638,34 +640,42 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   }
   function step(n){
     document.getElementById('co-step1').hidden=n!==1;
-    document.getElementById('co-step2').hidden=n!==2;
+    var s2=document.getElementById('co-step2'); s2.hidden=false; s2.classList.toggle('prep',n!==2);
     document.getElementById('co-back').hidden=n!==2;
     document.getElementById('co-title').textContent=n===1?'¿agregas algo a tu pedido?':'pago seguro · stripe';
     sheet.classList.toggle('paying',n===2);
     sheet.scrollTop=0;
   }
-  function openCheckout(){ step(1); showCo(true); }
-  function pay(){
-    step(2);
-    try{gtag('event','begin_checkout',{value:orderTotal(),currency:'USD',items:[{item_id:'main'}].concat(chosen('poems')?[{item_id:'poems'}]:[],chosen('journal')?[{item_id:'journal'}]:[])});}catch(e){}
-    try{window.clarity&&clarity('event','continue_to_payment_'+(orderKey()||'none'));}catch(e){}
+  // the stripe form loads in the background as soon as the pop-up opens (and again, quietly, when an add-on
+  // changes), so "continue" shows a ready form instead of a loading screen
+  var prepKey=null, prepReady=false, prepBusy=false, prepFailed=false, waiting=false, prepTimer=null;
+  function prepare(){
     var key=orderKey();
-    if(checkout&&mountedKey===key) return;
-    if(starting) return;
+    if(prepKey===key&&(prepReady||prepBusy)) return;
+    if(prepBusy){ clearTimeout(prepTimer); prepTimer=setTimeout(prepare,300); return; }
+    prepBusy=true; prepReady=false; prepFailed=false; prepKey=key;
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
-    checkout=null; document.getElementById('co-mount').innerHTML=loaderHTML;
-    starting=true;
+    checkout=null; document.getElementById('co-mount').innerHTML='';
     var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'es',poems:chosen('poems'),journal:chosen('journal')})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
-      .then(function(c){ checkout=c; mountedKey=key; document.getElementById('co-mount').innerHTML=''; c.mount('#co-mount'); })
-      .catch(function(err){ try{console.warn('embedded checkout fell back to payment link:',err&&err.message);}catch(e){} location.href=fallbackUrl; })
-      .then(function(){ starting=false; });
+      .then(function(c){ checkout=c; mountedKey=key; c.mount('#co-mount'); prepReady=true; })
+      .catch(function(err){ prepFailed=true; prepKey=null; try{console.warn('checkout prepare failed:',err&&err.message);}catch(e){} if(waiting) location.href=fallbackUrl; })
+      .then(function(){ prepBusy=false; if(orderKey()!==prepKey&&!prepFailed) prepare(); });
+  }
+  function openCheckout(){ step(1); showCo(true); prepare(); }
+  function pay(){
+    step(2); waiting=true;
+    try{gtag('event','begin_checkout',{value:orderTotal(),currency:'USD',items:[{item_id:'main'}].concat(chosen('poems')?[{item_id:'poems'}]:[],chosen('journal')?[{item_id:'journal'}]:[])});}catch(e){}
+    try{window.clarity&&clarity('event','continue_to_payment_'+(orderKey()||'none')+(prepReady&&prepKey===orderKey()?'_ready':'_wait'));}catch(e){}
+    if(prepReady&&prepKey===orderKey()) return;   // already loaded: shows instantly
+    if(prepFailed) prepFailed=false;
+    prepare();
   }
   document.getElementById('co-continue').addEventListener('click',pay);
-  document.getElementById('co-back').addEventListener('click',function(){ step(1); });
-  document.getElementById('co-close').addEventListener('click',function(){showCo(false);});
+  document.getElementById('co-back').addEventListener('click',function(){ waiting=false; step(1); });
+  document.getElementById('co-close').addEventListener('click',function(){ waiting=false; showCo(false); });
   // tapping outside the pop-up does nothing: it only closes with the × (or esc on a keyboard)
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!co.hidden) showCo(false); });
 
