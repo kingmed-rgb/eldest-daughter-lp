@@ -43,15 +43,17 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "x7irk4dqm3");
 </script>
-<link rel="preload" as="font" type="font/woff2" href="../fonts/fraunces.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="../fonts/source-serif.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/fraunces.woff2?v=3" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../fonts/source-serif.woff2?v=3" crossorigin>
 <style>
-@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url('../fonts/source-serif.woff2') format('woff2')}
-@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url('../fonts/source-serif-italic.woff2') format('woff2')}
-@font-face{font-family:'Fraunces';font-style:normal;font-weight:400 600;font-display:swap;src:url('../fonts/fraunces.woff2') format('woff2')}
-@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url('../fonts/fraunces-italic.woff2') format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url('../fonts/source-serif.woff2?v=3') format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url('../fonts/source-serif-italic.woff2?v=3') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:400 600;font-display:swap;src:url('../fonts/fraunces.woff2?v=3') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url('../fonts/fraunces-italic.woff2?v=3') format('woff2')}
 @font-face{font-family:'Source Serif Fallback';src:local('Georgia');size-adjust:101.4%;ascent-override:102.2%;descent-override:33%;line-gap-override:0%}
 @font-face{font-family:'Fraunces Fallback';src:local('Georgia');size-adjust:104.8%;ascent-override:93.3%;descent-override:24.3%;line-gap-override:0%}
+@font-face{font-family:'Source Serif Fallback Android';src:local('Noto Serif'),local('NotoSerif-Regular');size-adjust:95.2%;ascent-override:108.8%;descent-override:35.2%;line-gap-override:0%}
+@font-face{font-family:'Fraunces Fallback Android';src:local('Noto Serif'),local('NotoSerif-Regular');size-adjust:98.4%;ascent-override:99.4%;descent-override:25.9%;line-gap-override:0%}
 </style>
 <style>
   /* One background, one accent. Everything else is type + hairlines. All lowercase, like the book. */
@@ -68,8 +70,8 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     --accent:#4D0619;        /* buttons only */
     --btn:#6B0F28;           /* button fill, one step brighter than the accent */
     --accent-dark:#36040F;
-    --serif:'Fraunces','Fraunces Fallback',Georgia,serif;
-    --body:'Source Serif 4','Source Serif Fallback',Georgia,'Noto Serif',serif;
+    --serif:'Fraunces','Fraunces Fallback','Fraunces Fallback Android',Georgia,serif;
+    --body:'Source Serif 4','Source Serif Fallback','Source Serif Fallback Android',Georgia,'Noto Serif',serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;overflow-x:clip}
@@ -626,9 +628,10 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     });
   }
   // get ready before anyone taps: stripe.js after load, and wake the server function as the offer gets close
-  window.addEventListener('load',function(){ setTimeout(function(){ loadStripe().catch(function(){}); },1500); });
+  // stripe's script (~270 KB) loads only when the reader gets close to the offer, not for every visitor
+  if(!('IntersectionObserver' in window)) window.addEventListener('load',function(){ setTimeout(function(){ loadStripe().catch(function(){}); },1500); });
   if('IntersectionObserver' in window){
-    var warm=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ warm.disconnect(); fetch('/api/create-checkout-session').catch(function(){}); } },{rootMargin:'1200px 0px'});
+    var warm=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ warm.disconnect(); fetch('/api/create-checkout-session').catch(function(){}); loadStripe().catch(function(){}); } },{rootMargin:'1200px 0px'});
     warm.observe(document.getElementById('offer'));
   }
   var lockedY=0;
