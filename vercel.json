@@ -125,5 +125,11 @@
       "source": "/gracias",
       "destination": "/get-xk7f2"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/ig-post",
+      "schedule": "0 23 * * *"
+    }
   ]
 }
