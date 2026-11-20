@@ -44,6 +44,9 @@ module.exports = async (req, res) => {
           session: s.id, date: new Date(s.created * 1000).toISOString().slice(0, 10), amount: (s.amount_total || 0) / 100,
           email: (s.customer_details && s.customer_details.email) || s.customer_email || '', products, lang,
           paperback: products.some((p) => /paperback/i.test(p)), payment_link: s.payment_link || '',
+          // traffic source saved by the sales page at checkout (empty for orders before tracking started)
+          source: (s.metadata && s.metadata.source) || '', first_source: (s.metadata && s.metadata.first_source) || '',
+          campaign: (s.metadata && s.metadata.campaign) || '', days_to_buy: (s.metadata && s.metadata.days_to_buy) || '',
         };
       }));
       orders.push(...batch);

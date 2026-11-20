@@ -328,6 +328,29 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   html.co-open{overflow:hidden;scroll-behavior:auto}
   @media(min-width:560px){.co{align-items:center}.co-sheet{height:auto;max-height:90vh;border-radius:16px}}
 </style>
+<script>
+/* where this visitor came from (tiktok, instagram, facebook...). saved on the first visit and on every later visit
+   that has a source; sent with the order so each stripe payment shows its source (api/order-products.js reports it) */
+(function(){ try{
+  var q=new URLSearchParams(location.search), ua=navigator.userAgent||'', us=(q.get('utm_source')||'').toLowerCase(), host='';
+  try{ host=document.referrer?new URL(document.referrer).hostname.replace(/^www\./,''):''; }catch(e){}
+  if(host===location.hostname.replace(/^www\./,'')) host='';
+  var src='direct';
+  if(/musical_ly|bytedance|tiktok/i.test(ua)||q.get('ttclid')||/tiktok/.test(host)||/tiktok|^tt$/.test(us)) src='tiktok';
+  else if(/instagram/i.test(ua)||/instagram/.test(host)||/instagram|^ig$/.test(us)) src='instagram';
+  else if(/FBAN|FBAV|FB_IAB/i.test(ua)||/facebook|fb\.com|fb\.me/.test(host)||/facebook|^fb$/.test(us)) src='facebook';
+  else if(q.get('fbclid')) src='meta';
+  else if(/pinterest/i.test(ua+' '+host+' '+us)) src='pinterest';
+  else if(/threads/i.test(host+' '+us)) src='threads';
+  else if(/youtube|youtu\.be/.test(host+' '+us)) src='youtube';
+  else if(q.get('gclid')||/google\./.test(host)||us==='google') src='google';
+  else if(us) src=us; else if(host) src=host;
+  var v={src:src, camp:q.get('utm_campaign')||'', ad:q.get('utm_content')||'', ref:host, t:Date.now()}, ls=null;
+  try{ ls=window.localStorage; if(!ls.getItem('eds_first')) ls.setItem('eds_first',JSON.stringify(v)); if(src!=='direct'||!ls.getItem('eds_last')) ls.setItem('eds_last',JSON.stringify(v)); }catch(e){ ls=null; }
+  window.EDS_SRC=function(){ var f=v, l=v; try{ f=JSON.parse(ls.getItem('eds_first'))||v; l=JSON.parse(ls.getItem('eds_last'))||v; }catch(e){}
+    return {src:l.src, camp:l.camp, ad:l.ad, ref:l.ref, first:f.src, days:Math.max(0,Math.round((Date.now()-f.t)/864e5))}; };
+}catch(e){ window.EDS_SRC=function(){ return {src:'unknown'}; }; } })();
+</script>
 </head>
 <body>
 
@@ -659,7 +682,7 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
     prepBusy=true; prepReady=false; prepFailed=false; prepKey=key;
     if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
     checkout=null; document.getElementById('co-mount').innerHTML='';
-    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'es',poems:chosen('poems'),journal:chosen('journal')})})
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'es',poems:chosen('poems'),journal:chosen('journal'),src:window.EDS_SRC&&EDS_SRC()})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
