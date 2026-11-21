@@ -43,7 +43,7 @@ function readBody(req) {
   // where the buyer came from (set by the page): short, plain values only
   const clean = (v, n) => String(v == null ? '' : v).replace(/[^\w .:/@+-]/g, '').slice(0, n);
   const src = body.src && typeof body.src === 'object' ? body.src : {};
-  const source = { src: clean(src.src, 40) || 'unknown', first: clean(src.first, 40), camp: clean(src.camp, 100), ad: clean(src.ad, 100), ref: clean(src.ref, 80), days: clean(src.days, 4) };
+  const source = { src: clean(src.src, 40) || 'unknown', first: clean(src.first, 40), camp: clean(src.camp, 100), ad: clean(src.ad, 100), ref: clean(src.ref, 80), days: clean(src.days, 4), fbp: clean(src.fbp, 120), fbc: clean(src.fbc, 400) };
   return { source, lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print', audio: body.format === 'audio' && !!OFFERS[L].audio };
 }
 
@@ -86,6 +86,11 @@ module.exports = async (req, res) => {
     'metadata[ad]': source.ad,
     'metadata[referrer]': source.ref,
     'metadata[days_to_buy]': source.days,
+    // for Meta's Conversions API (api/_lib/meta.js): ad click + browser ids, and the buyer's browser
+    'metadata[fbp]': source.fbp,
+    'metadata[fbc]': source.fbc,
+    'metadata[ip]': String((req.headers['x-forwarded-for'] || '').split(',')[0]).trim().slice(0, 60),
+    'metadata[ua]': String(req.headers['user-agent'] || '').slice(0, 480),
     // The thank-you page reads session_id to show the right downloads and count the purchase once.
     return_url: 'https://' + host + THANK_YOU[lang] + '?session_id={CHECKOUT_SESSION_ID}',
   };

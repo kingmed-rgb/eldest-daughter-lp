@@ -11,6 +11,7 @@
 //
 // Opening this URL in a browser (GET) reports whether everything is set up, never the keys.
 
+const { sendPurchase } = require('./_lib/meta.js');
 const crypto = require('crypto');
 const { filesFor, languageOf } = require('./_lib/catalog.js');
 const { fulfilPrint, hasPrint } = require('./_lib/print.js');
@@ -181,6 +182,7 @@ module.exports = async (req, res) => {
       status.sender = await fromAddress('en');
       status.senderEs = await fromAddress('es');
     }
+    status.metaCapi = Boolean((process.env.META_CAPI_TOKEN || '').trim());
     status.ready = stripeReady && resendReady && Boolean(status.sender);
     return res.status(200).json(status);
   }
@@ -211,6 +213,7 @@ module.exports = async (req, res) => {
     if (!wanted || !session || session.object !== 'checkout.session') return res.status(200).json({ ignored: event.type });
     const sent = await sendFor(session);
     if (hasPrint(session)) await fulfilPrint(session).catch((e) => console.error('print from webhook failed:', e.message));
+    await sendPurchase(session).catch((e) => console.error('meta purchase failed:', e.message));
     return res.status(200).json({ sent: true, email_id: sent.id });
   } catch (err) {
     console.error('delivery failed:', err.message);
