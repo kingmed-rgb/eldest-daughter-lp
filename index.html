@@ -18,7 +18,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 // only the real sites report to Meta (not Vercel preview links or local copies)
-if(!/(^|\.)(eldestdaughtercore|hijamayor)\.com$/.test(location.hostname)){ window.fbq=function(){}; }
+if(!/(^|\.)(eldestdaughtercore|hijamayor)\.com$/.test(location.hostname)){ var nf=function(){}; nf.queue=[]; nf.push=nf; nf.loaded=true; nf.version='2.0'; window.fbq=window._fbq=nf; }
 fbq('init','4363206913920168');
 
 // Dedup key shared with the server-side PageView event (Conversions API).
