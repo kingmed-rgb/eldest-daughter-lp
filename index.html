@@ -137,12 +137,12 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
   .stats b{display:block;font-family:var(--serif);font-size:30px;line-height:1.1;font-weight:600;color:var(--accent);font-variant-numeric:lining-nums}
   .stats span{display:block;font-size:14px;line-height:1.35;color:var(--muted);margin-top:4px}
   /* real pages from the book: three open spreads that cross-fade in one fixed frame (nothing around it moves) */
-  .peek{position:relative;max-width:560px;margin:18px auto 24px;aspect-ratio:900/680}
-  .peek img{position:absolute;inset:0;width:100%;height:100%;opacity:0;animation:peek 12s infinite}
-  .peek img:nth-of-type(1){opacity:1;animation-delay:0s}.peek img:nth-of-type(2){animation-delay:4s}.peek img:nth-of-type(3){animation-delay:8s}
-  @keyframes peek{0%{opacity:0}4%{opacity:1}33%{opacity:1}37%{opacity:0}100%{opacity:0}}
+  .peek{position:relative;max-width:560px;margin:28px auto 8px;aspect-ratio:900/692}
+  .peek img{position:absolute;inset:0;width:100%;height:100%;opacity:0;animation:peek 6s infinite}
+  .peek img:nth-of-type(1){opacity:1;animation-delay:0s}.peek img:nth-of-type(2){animation-delay:2s}.peek img:nth-of-type(3){animation-delay:4s}
+  @keyframes peek{0%{opacity:0}6%{opacity:1}33%{opacity:1}39%{opacity:0}100%{opacity:0}}
   .peek img:nth-of-type(1){animation-name:peek1}
-  @keyframes peek1{0%{opacity:1}33%{opacity:1}37%{opacity:0}96%{opacity:0}100%{opacity:1}}
+  @keyframes peek1{0%{opacity:1}33%{opacity:1}39%{opacity:0}94%{opacity:0}100%{opacity:1}}
   @media (prefers-reduced-motion:reduce){.peek img{animation:none}}
   /* trust row under the offer button */
   .trust{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin:12px 0 0;font-size:14px;color:var(--muted)}
@@ -517,11 +517,6 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
   <p>plus the exercises people message me about the most: the mom call drill (a real script for high-trigger calls: time limit, safe topics, exit line, after-care) and the permission slip, where you officially give yourself back the childhood you never got.</p>
 
-  <div class="peek" role="img" aria-label="real pages from the workbook: the mom call drill, the money leak detector, the rage timeline, the anger translator, the childhood split screen and the permission slip">
-    <img src="images/inside-mom-call-drill.webp" alt="" width="900" height="680" decoding="async">
-    <img src="images/inside-rage-timeline.webp" alt="" width="900" height="680" loading="lazy" decoding="async">
-    <img src="images/inside-childhood-split-screen.webp" alt="" width="900" height="680" loading="lazy" decoding="async">
-  </div>
 
   <!-- ===== BEFORE / AFTER ===== -->
   <div class="ba">
@@ -615,6 +610,13 @@ fbq('track','PageView',{},{eventID:pageViewEventId});
 
     <p class="excl"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7"/></svg>sold only here. not on amazon.</p>
   </section>
+
+  <!-- ===== REAL PAGES (right under the buying options) ===== -->
+  <div class="peek" role="img" aria-label="real pages from the workbook: the mom call drill, the money leak detector, the rage timeline, the anger translator, the childhood split screen and the permission slip">
+    <img src="images/inside-mom-call-drill.webp" alt="" width="900" height="692" loading="lazy" decoding="async">
+    <img src="images/inside-rage-timeline.webp" alt="" width="900" height="692" loading="lazy" decoding="async">
+    <img src="images/inside-childhood-split-screen.webp" alt="" width="900" height="692" loading="lazy" decoding="async">
+  </div>
 
   <!-- ===== FAQ ===== -->
   <h2>frequently asked questions</h2>
