@@ -73,6 +73,17 @@ module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   res.setHeader('X-Robots-Tag', 'noindex');
   if (!tokenOk(req.headers['x-key'])) return res.status(404).json({ error: 'not found' });
+  if ((req.query || {}).wallets) {
+    // which payment methods and wallet domains are switched on in Stripe (read-only)
+    try {
+      const [doms, cfgs] = await Promise.all([stripe('payment_method_domains?limit=20'), stripe('payment_method_configurations?limit=10')]);
+      const on = (c) => Object.keys(c).filter((k) => c[k] && typeof c[k] === 'object' && c[k].display_preference && c[k].available);
+      return res.status(200).json({
+        domains: (doms.data || []).map((d) => ({ domain: d.domain_name, enabled: d.enabled, apple_pay: (d.apple_pay || {}).status, google_pay: (d.google_pay || {}).status, link: (d.link || {}).status, paypal: (d.paypal || {}).status })),
+        configurations: (cfgs.data || []).map((c) => ({ name: c.name, active: c.active, is_default: c.is_default, available: on(c) })),
+      });
+    } catch (e) { return res.status(500).json({ error: e.message }); }
+  }
   const days = Math.min(90, Math.max(1, parseInt((req.query || {}).days, 10) || 7));
   const now = Math.floor(Date.now() / 1000), since = now - days * 86400, jan1 = Math.floor(Date.UTC(new Date().getUTCFullYear(), 0, 1) / 1000);
   try {
