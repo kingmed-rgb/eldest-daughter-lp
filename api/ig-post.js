@@ -43,6 +43,11 @@ module.exports = async (req, res) => {
   const post = QUEUE.find((p) => p.date === date);
   if (!post) return res.status(200).json({ date, posted: false, reason: 'nothing queued for this date', last_queued: (QUEUE[QUEUE.length - 1] || {}).date });
   const imageUrl = SITE + post.image;
+  if (q.check) {
+    // read-only: does the saved Instagram key work? posts nothing
+    try { const me = await graph((process.env.IG_USER_ID || '').trim(), { fields: 'username' }); return res.status(200).json({ token_ok: true, account: me.username, next_post: date, image_url: imageUrl }); }
+    catch (e) { return res.status(200).json({ token_ok: false, error: e.message }); }
+  }
   if (q.dry) return res.status(200).json({ date, dry: true, image_url: imageUrl, caption: post.caption });
 
   const ig = (process.env.IG_USER_ID || '').trim();
