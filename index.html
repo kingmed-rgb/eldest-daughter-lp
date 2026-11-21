@@ -17,8 +17,6 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-// only the real sites report to Meta (not Vercel preview links or local copies)
-if(!/(^|\.)(eldestdaughtercore|hijamayor)\.com$/.test(location.hostname)){ var nf=function(){}; nf.queue=[]; nf.push=nf; nf.loaded=true; nf.version='2.0'; window.fbq=window._fbq=nf; }
 fbq('init','4363206913920168');
 
 // Dedup key shared with the server-side PageView event (Conversions API).
@@ -28,7 +26,6 @@ window.__fbPageViewEventId = pageViewEventId;
 document.cookie = 'fb_pageview_event_id=' + pageViewEventId + ';path=/;max-age=1800;SameSite=Lax';
 
 fbq('track','PageView',{},{eventID:pageViewEventId});
-fbq('track','ViewContent',{content_ids:['workbook'],content_type:'product',value:9.99,currency:'USD'},{eventID:'vc_'+pageViewEventId});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4363206913920168&ev=PageView&noscript=1"/></noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-874XF1X3E3"></script>
@@ -385,12 +382,10 @@ fbq('track','ViewContent',{content_ids:['workbook'],content_type:'product',value
   else if(/youtube|youtu\.be/.test(host+' '+us)) src='youtube';
   else if(q.get('gclid')||/google\./.test(host)||us==='google') src='google';
   else if(us) src=us; else if(host) src=host;
-  var v={src:src, camp:q.get('utm_campaign')||'', ad:q.get('utm_content')||'', ref:host, fbclid:q.get('fbclid')||'', t:Date.now()}, ls=null;
+  var v={src:src, camp:q.get('utm_campaign')||'', ad:q.get('utm_content')||'', ref:host, t:Date.now()}, ls=null;
   try{ ls=window.localStorage; if(!ls.getItem('eds_first')) ls.setItem('eds_first',JSON.stringify(v)); if(src!=='direct'||!ls.getItem('eds_last')) ls.setItem('eds_last',JSON.stringify(v)); }catch(e){ ls=null; }
   window.EDS_SRC=function(){ var f=v, l=v; try{ f=JSON.parse(ls.getItem('eds_first'))||v; l=JSON.parse(ls.getItem('eds_last'))||v; }catch(e){}
-    var ck=function(n){ var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)')); return m?decodeURIComponent(m[1]):''; };
-    var fbc=ck('_fbc')||(l.fbclid?'fb.1.'+l.t+'.'+l.fbclid:'');
-    return {src:l.src, camp:l.camp, ad:l.ad, ref:l.ref, first:f.src, days:Math.max(0,Math.round((Date.now()-f.t)/864e5)), fbp:ck('_fbp'), fbc:fbc}; };
+    return {src:l.src, camp:l.camp, ad:l.ad, ref:l.ref, first:f.src, days:Math.max(0,Math.round((Date.now()-f.t)/864e5))}; };
 }catch(e){ window.EDS_SRC=function(){ return {src:'unknown'}; }; } })();
 </script>
 </head>
@@ -760,11 +755,9 @@ fbq('track','ViewContent',{content_ids:['workbook'],content_type:'product',value
       .catch(function(err){ prepFailed=true; prepKey=null; try{console.warn('checkout prepare failed:',err&&err.message);}catch(e){} if(waiting) location.href=fallbackUrl; })
       .then(function(){ prepBusy=false; if(orderKey()!==prepKey&&!prepFailed) prepare(); });
   }
-  function openCheckout(){ step(1); showCo(true); prepare();
-    try{fbq('track','InitiateCheckout',{value:orderTotal(),currency:'USD',content_ids:['workbook'],content_type:'product',num_items:1},{eventID:'ic_'+Date.now()});}catch(e){} }
+  function openCheckout(){ step(1); showCo(true); prepare(); }
   function pay(){
     step(2); waiting=true;
-    try{fbq('track','AddPaymentInfo',{value:orderTotal(),currency:'USD',content_type:'product'},{eventID:'api_'+Date.now()});}catch(e){}
     try{gtag('event','begin_checkout',{value:orderTotal(),currency:'USD',items:[{item_id:'main'}].concat(chosen('poems')?[{item_id:'poems'}]:[],chosen('journal')?[{item_id:'journal'}]:[])});}catch(e){}
     try{window.clarity&&clarity('event','continue_to_payment_'+(orderKey()||'none')+(prepReady&&prepKey===orderKey()?'_ready':'_wait'));}catch(e){}
     if(prepReady&&prepKey===orderKey()) return;   // already loaded: shows instantly
