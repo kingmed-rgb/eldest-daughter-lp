@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>eldest daughter core · hq</title>
+<style>
+:root { --bg:#FEF7EC; --card:#FFFCF6; --ink:#2B1218; --muted:#5E434A; --wine:#6B0F28; --deep:#4D0619; --line:#EBDCCD; --rose:#F2DED6; --ok:#2f7a4a; --bad:#a3203a; --warn:#a86a12; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width:980px; margin:0 auto; padding:20px max(16px, env(safe-area-inset-left)) 60px; }
+h1 { font:600 22px/1.2 Georgia, serif; color:var(--deep); margin:0; }
+h2 { font:600 17px/1.3 Georgia, serif; color:var(--deep); margin:0 0 10px; }
+.top { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:16px; }
+.muted { color:var(--muted); font-size:13px; }
+.chips { display:flex; gap:6px; }
+.chip { border:1px solid var(--line); background:var(--card); color:var(--ink); padding:7px 12px; border-radius:999px; font:inherit; font-size:14px; cursor:pointer; }
+.chip[aria-pressed="true"] { background:var(--wine); color:#fff; border-color:var(--wine); }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; min-width:0; }
+.grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin-bottom:14px; }
+.kpi .k { color:var(--muted); font-size:13px; }
+.kpi .v { font:600 26px/1.15 Georgia, serif; color:var(--deep); font-variant-numeric:tabular-nums; }
+.bar { height:12px; background:var(--rose); border-radius:99px; overflow:hidden; margin:10px 0 8px; }
+.bar i { display:block; height:100%; background:var(--wine); border-radius:99px; }
+.goal-big { font:600 32px/1 Georgia, serif; color:var(--deep); }
+.row { display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-top:1px solid var(--line); }
+.row:first-of-type { border-top:0; }
+.row .l { min-width:0; }
+.row .r { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.amt { font-weight:600; }
+.tag { display:inline-block; font-size:12px; padding:2px 8px; border-radius:99px; background:var(--rose); color:var(--deep); margin:2px 4px 0 0; }
+.tag.src { background:#e8eef7; color:#24406b; }
+.tag.ok { background:#e3f1e8; color:var(--ok); } .tag.bad { background:#f7e1e5; color:var(--bad); } .tag.warn { background:#f8ecd9; color:var(--warn); }
+.small { font-size:13px; color:var(--muted); word-break:break-word; }
+.btn { display:inline-block; margin-top:6px; padding:7px 12px; border-radius:8px; background:var(--wine); color:#fff; text-decoration:none; font-size:13px; border:0; cursor:pointer; }
+.btn.ghost { background:transparent; color:var(--wine); border:1px solid var(--wine); }
+.two { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); }
+.srcrow { display:grid; grid-template-columns:110px 1fr 70px; gap:8px; align-items:center; padding:5px 0; font-size:14px; }
+.srcbar { height:10px; background:var(--rose); border-radius:99px; overflow:hidden; } .srcbar i { display:block; height:100%; background:var(--wine); }
+.spark { display:flex; align-items:flex-end; gap:2px; height:70px; margin:6px 0 4px; }
+.spark i { flex:1; background:#e8692a; border-radius:2px 2px 0 0; min-height:1px; }
+.empty { color:var(--muted); font-size:14px; padding:6px 0; }
+#gate { max-width:360px; margin:15vh auto; text-align:center; }
+#gate input { width:100%; padding:12px; border:1px solid var(--line); border-radius:10px; font:inherit; margin:12px 0; background:#fff; }
+.err { color:var(--bad); font-size:14px; }
+</style>
+</head>
+<body>
+<div id="gate" hidden>
+  <h1>eldest daughter core · hq</h1>
+  <p class="muted">enter your private key once on this device</p>
+  <form id="gate-form"><input id="key" type="password" autocomplete="current-password" placeholder="private key"><button class="btn" type="submit">open</button></form>
+  <p class="err" id="gate-err"></p>
+</div>
+
+<div class="wrap" id="app" hidden>
+  <div class="top">
+    <div><h1>eldest daughter core · hq</h1><div class="muted" id="updated">loading…</div></div>
+    <div class="chips" role="group" aria-label="Time range">
+      <button class="chip" data-d="1">today</button><button class="chip" data-d="7">7 days</button><button class="chip" data-d="30">30 days</button>
+      <button class="chip" id="reload" title="refresh">↻</button>
+    </div>
+  </div>
+
+  <div class="card" id="goal"></div>
+  <div class="grid" id="kpis"></div>
+
+  <div class="card" id="attention"></div>
+
+  <div class="two">
+    <div class="card"><h2>orders</h2><div id="orders"></div></div>
+    <div>
+      <div class="card"><h2>where buyers came from</h2><div id="sources"></div></div>
+      <div class="card"><h2>instagram · @celestwritings</h2><div id="ig"></div></div>
+      <div class="card"><h2>paperbacks at lulu</h2><div id="print"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY_NAME = 'hq_key', days = 7, key = '';
+  try { key = localStorage.getItem(KEY_NAME) || ''; days = +localStorage.getItem('hq_days') || 7; } catch (e) {}
+  var $ = function (id) { return document.getElementById(id); };
+  var money = function (n) { return '$' + (Math.round(n * 100) / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var ny = function (iso, withDay) { try { return new Date(iso).toLocaleString('en-US', { timeZone: 'America/New_York', month: withDay === false ? undefined : 'short', day: withDay === false ? undefined : 'numeric', hour: 'numeric', minute: '2-digit' }); } catch (e) { return iso; } };
+
+  function gate(msg) { $('app').hidden = true; $('gate').hidden = false; $('gate-err').textContent = msg || ''; }
+  $('gate-form').addEventListener('submit', function (e) { e.preventDefault(); key = $('key').value.trim(); try { localStorage.setItem(KEY_NAME, key); } catch (er) {} load(); });
+  document.querySelectorAll('.chip[data-d]').forEach(function (b) { b.addEventListener('click', function () { days = +b.dataset.d; try { localStorage.setItem('hq_days', days); } catch (e) {} load(); }); });
+  $('reload').addEventListener('click', function () { load(); });
+
+  function load() {
+    if (!key) return gate();
+    document.querySelectorAll('.chip[data-d]').forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.d === days); });
+    $('updated').textContent = 'loading live data…';
+    fetch('/api/admin?days=' + days, { headers: { 'x-key': key } }).then(function (r) {
+      if (r.status === 404) { try { localStorage.removeItem(KEY_NAME); } catch (e) {} key = ''; gate('that key did not work'); throw 0; }
+      return r.json();
+    }).then(function (d) { if (d.error) throw new Error(d.error); $('gate').hidden = true; $('app').hidden = false; render(d); })
+      .catch(function (e) { if (e) $('updated').textContent = 'could not load: ' + (e.message || e); });
+  }
+
+  function render(d) {
+    $('updated').textContent = 'live · updated ' + ny(d.generated) + ' (New York time)';
+    var g = d.goal, pct = Math.min(100, g.revenue / g.goal * 100);
+    var o = d.orders, rev = o.reduce(function (a, x) { return a + x.amount; }, 0), label = days === 1 ? 'last 24 hours' : 'last ' + days + ' days';
+    var perDay = rev / days;
+    $('goal').innerHTML = '<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline"><div><span class="goal-big">' + money(g.revenue) + '</span> <span class="muted">of $10,000 this year</span></div>' +
+      '<span class="tag ' + (perDay >= g.needed_per_day ? 'ok' : 'bad') + '">' + (perDay >= g.needed_per_day ? 'on pace' : 'behind pace') + '</span></div>' +
+      '<div class="bar"><i style="width:' + pct.toFixed(1) + '%"></i></div>' +
+      '<div class="muted">needed ' + money(g.needed_per_day) + '/day · ' + g.days_left + ' days left · site ' + money(g.site_year) + ' + old stores ' + money(g.older) + '</div>';
+    $('kpis').innerHTML = [
+      ['sales, ' + label, money(rev)], ['orders', o.length], ['average order', o.length ? money(rev / o.length) : '–'], ['per day', money(perDay)],
+    ].map(function (k) { return '<div class="card kpi" style="margin:0"><div class="k">' + k[0] + '</div><div class="v">' + k[1] + '</div></div>'; }).join('');
+
+    // needs attention: failed payments and unfinished checkouts that never paid
+    var todo = d.failed.filter(function (f) { return !f.paid_later; }).map(function (f) { return { kind: 'payment failed', why: f.reason, when: f.when, amount: f.amount, email: f.email }; })
+      .concat(d.unfinished.filter(function (u) { return !u.paid_later && !d.failed.some(function (f) { return f.email && f.email === u.email; }); })
+        .map(function (u) { return { kind: 'checkout not finished', why: (u.items || []).join(' + ') + (u.source ? ' · from ' + u.source : ''), when: u.when, amount: u.amount, email: u.email }; }));
+    $('attention').innerHTML = '<h2>needs attention</h2>' + (todo.length ? todo.map(function (t) {
+      var subject = encodeURIComponent('your order didn\'t go through 🤍');
+      var body = encodeURIComponent("hi,\n\nit looks like your order for the eldest daughter workbook didn't go through. it happens, especially when typing a card on a phone.\n\nyour copy is still waiting for you here:\nhttps://www.eldestdaughtercore.com/#offer\n\nif paying by card feels fiddly, apple pay or google pay at checkout is one tap.\n\nwith love,\nanna");
+      var gm = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(t.email) + '&su=' + subject + '&body=' + body;
+      return '<div class="row"><div class="l"><span class="tag bad">' + esc(t.kind) + '</span> <span class="small">' + esc(ny(t.when)) + '</span><div class="small">' + esc(t.why) + '</div><div class="small">' + esc(t.email) + '</div>' +
+        '<a class="btn" target="_blank" rel="noopener" href="' + gm + '">write reminder in gmail</a></div><div class="r amt">' + money(t.amount) + '</div></div>';
+    }).join('') : '<div class="empty">nothing waiting. no failed or unfinished payments without a purchase in this range.</div>');
+
+    $('orders').innerHTML = o.length ? o.map(function (x) {
+      return '<div class="row"><div class="l"><div>' + esc(x.items.join(' + ')) + '</div><div class="small">' + esc(ny(x.when)) + ' · ' + esc(x.site) + (x.country ? ' · ' + esc(x.country) : '') + '</div>' +
+        '<span class="tag src">' + esc(x.source) + '</span>' + (x.campaign ? '<span class="tag">campaign ' + esc(x.campaign) + '</span>' : '') + (x.days_to_buy !== '' ? '<span class="tag">' + (x.days_to_buy === '0' ? 'bought first visit' : 'after ' + esc(x.days_to_buy) + ' days') + '</span>' : '') +
+        '<div class="small">' + esc(x.name) + (x.email ? ' · ' + esc(x.email) : '') + '</div></div><div class="r amt">' + money(x.amount) + '</div></div>';
+    }).join('') : '<div class="empty">no orders in this range yet.</div>';
+
+    var by = {}; o.forEach(function (x) { var k = x.source || 'not tracked'; by[k] = by[k] || { n: 0, v: 0 }; by[k].n++; by[k].v += x.amount; });
+    var keys = Object.keys(by).sort(function (a, b) { return by[b].v - by[a].v; }), max = keys.length ? by[keys[0]].v : 1;
+    $('sources').innerHTML = keys.length ? keys.map(function (k) { return '<div class="srcrow"><div>' + esc(k) + '</div><div class="srcbar"><i style="width:' + (by[k].v / max * 100).toFixed(0) + '%"></i></div><div style="text-align:right">' + money(by[k].v) + '<div class="small">' + by[k].n + ' order' + (by[k].n === 1 ? '' : 's') + '</div></div></div>'; }).join('') : '<div class="empty">no orders in this range yet.</div>';
+
+    var ig = d.instagram || {};
+    if (ig.error) $('ig').innerHTML = '<div class="empty">could not load: ' + esc(ig.error) + '</div>';
+    else {
+      var v = ig.days || [], tv = v.reduce(function (a, x) { return a + x.views; }, 0), mv = Math.max.apply(null, v.map(function (x) { return x.views; }).concat([1]));
+      var rpm = tv ? rev / tv * 1000 : 0;
+      $('ig').innerHTML = '<div class="grid" style="grid-template-columns:repeat(3,1fr);margin:0"><div class="kpi"><div class="k">views</div><div class="v" style="font-size:20px">' + tv.toLocaleString() + '</div></div><div class="kpi"><div class="k">posts</div><div class="v" style="font-size:20px">' + (ig.posts || []).length + '</div></div><div class="kpi"><div class="k">rpm</div><div class="v" style="font-size:20px">' + (tv ? money(rpm) : '–') + '</div></div></div>' +
+        '<div class="spark">' + v.map(function (x) { return '<i title="' + x.date + ': ' + x.views + ' views" style="height:' + Math.max(2, x.views / mv * 100) + '%"></i>'; }).join('') + '</div><div class="small">views per day · rpm = sales per 1,000 views</div>' +
+        (ig.posts || []).map(function (p) { return '<div class="row"><div class="l"><a class="small" target="_blank" rel="noopener" href="' + esc(p.link) + '">' + esc(p.text || 'post') + '</a><div class="small">' + esc(ny(p.when)) + '</div></div><div class="r small">♥ ' + (p.likes || 0) + ' · 💬 ' + (p.comments || 0) + '</div></div>'; }).join('');
+    }
+
+    var pr = d.print || {};
+    $('print').innerHTML = pr.error ? '<div class="empty">could not load: ' + esc(pr.error) + '</div>' : ((pr.jobs || []).length ? pr.jobs.map(function (j) {
+      var st = j.status || '', cls = /SHIPPED/.test(st) ? 'ok' : /REJECT|CANCEL|ERROR|UNPAID/.test(st) ? 'bad' : 'warn';
+      var late = j.dispatch && !/SHIPPED/.test(st) && Date.now() > Date.parse(j.dispatch[1] + 'T23:59:59Z');
+      return '<div class="row"><div class="l"><span class="tag ' + (late ? 'bad' : cls) + '">' + esc(st.toLowerCase().replace(/_/g, ' ')) + (late ? ' · late' : '') + '</span> <span class="small">job ' + esc(j.id) + ' · to ' + esc(j.ship_to) + '</span>' +
+        (j.dispatch ? '<div class="small">ships ' + esc(j.dispatch[0]) + ' – ' + esc(j.dispatch[1]) + ' · arrives ' + esc(j.arrival[0]) + ' – ' + esc(j.arrival[1]) + '</div>' : '') +
+        (j.tracking && j.tracking[0] ? '<a class="small" target="_blank" rel="noopener" href="' + esc(j.tracking[0]) + '">tracking</a>' : '') + '</div></div>';
+    }).join('') : '<div class="empty">no paperback orders.</div>');
+  }
+  load();
+})();
+</script>
+</body>
+</html>
