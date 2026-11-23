@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en" class="pb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>the eldest daughter workbook</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.eldestdaughtercore.com/">
+<meta name="description" content="A guided workbook for eldest daughters ready to stop carrying everyone else and start healing themselves. instant download.">
+<link rel="alternate" hreflang="en" href="https://www.eldestdaughtercore.com/">
+<link rel="alternate" hreflang="es" href="https://www.hijamayor.com/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','4363206913920168');
+
+// Dedup key shared with the server-side PageView event (Conversions API).
+// Expose it (window var + cookie) so a server-side tag/backend can reuse the same id.
+var pageViewEventId = (crypto.randomUUID ? crypto.randomUUID() : 'pv_' + Date.now() + '_' + Math.random().toString(36).slice(2));
+window.__fbPageViewEventId = pageViewEventId;
+document.cookie = 'fb_pageview_event_id=' + pageViewEventId + ';path=/;max-age=1800;SameSite=Lax';
+
+fbq('track','PageView',{},{eventID:pageViewEventId});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4363206913920168&ev=PageView&noscript=1"/></noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-874XF1X3E3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-874XF1X3E3');
+</script>
+<script>
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "x7irk4dqm3");
+</script>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/fraunces.woff2?v=3" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/source-serif.woff2?v=3" crossorigin>
+<style>
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url('/fonts/source-serif.woff2?v=3') format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url('/fonts/source-serif-italic.woff2?v=3') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:400 600;font-display:swap;src:url('/fonts/fraunces.woff2?v=3') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url('/fonts/fraunces-italic.woff2?v=3') format('woff2')}
+@font-face{font-family:'Source Serif Fallback';src:local('Georgia');size-adjust:101.4%;ascent-override:102.2%;descent-override:33%;line-gap-override:0%}
+@font-face{font-family:'Fraunces Fallback';src:local('Georgia');size-adjust:104.8%;ascent-override:93.3%;descent-override:24.3%;line-gap-override:0%}
+@font-face{font-family:'Source Serif Fallback Android';src:local('Noto Serif'),local('NotoSerif-Regular');size-adjust:95.2%;ascent-override:108.8%;descent-override:35.2%;line-gap-override:0%}
+@font-face{font-family:'Fraunces Fallback Android';src:local('Noto Serif'),local('NotoSerif-Regular');size-adjust:98.4%;ascent-override:99.4%;descent-override:25.9%;line-gap-override:0%}
+</style>
+<style>
+  /* One background, one accent. Everything else is type + hairlines. All lowercase, like the book. */
+  :root{
+    --bg:#F7F3F9;
+    --ink:#22172B;           /* darkest burgundy, all body text */
+    --muted:#5B4B66;         /* burgundy-grey, secondary text (7:1 on cream) */
+    --line:#E4DAEA;          /* hairlines */
+    --tint-1:#EBE0F2;        /* burgundy tints, used only for avatars */
+    --tint-2:#D6C3E3;
+    --tint-3:#B293C8;
+    --tint-4:#7A5693;
+    --tint-5:#4C2B62;
+    --accent:#3D1D52;        /* buttons only */
+    --btn:#5B2C7C;           /* button fill, one step brighter than the accent */
+    --accent-dark:#2A1239;
+    --serif:'Fraunces','Fraunces Fallback','Fraunces Fallback Android',Georgia,serif;
+    --body:'Source Serif 4','Source Serif Fallback','Source Serif Fallback Android',Georgia,'Noto Serif',serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.7;
+       -webkit-font-smoothing:antialiased;overflow-x:clip;text-transform:lowercase}
+  a{color:inherit}
+  img{max-width:100%;height:auto;display:block}
+
+  /* article column */
+  .post{max-width:640px;margin:0 auto;padding:0 20px}
+  .post-head{padding:44px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.08;letter-spacing:-.02em;margin:0 0 22px}
+  @media(min-width:660px){h1{white-space:nowrap}}  /* one line on desktop, two big lines on phones */
+  .byline{display:flex;align-items:center;gap:12px;font-family:var(--body);padding-bottom:16px}
+  .byline img{width:40px;height:40px;border-radius:50%}
+  .byline .who{font-size:15px;font-weight:400;letter-spacing:.02em;line-height:1.3}
+  .byline .meta{font-size:15px;color:var(--muted)}
+  .actions{display:flex;gap:8px;align-items:center;padding:4px 0 6px;margin-bottom:28px;font-family:var(--body);font-size:15px;color:var(--muted)}
+  .actions a,.actions button{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:inherit;background:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;line-height:1;cursor:pointer;text-transform:inherit;font-variant-numeric:tabular-nums lining-nums;transition:border-color .15s}
+  .actions a:hover,.actions button:hover{border-color:var(--tint-2)}
+  .actions .spacer{flex:1}
+  .actions svg{width:19px;height:19px}
+  .actions .liked svg{fill:var(--btn);stroke:var(--btn)}
+  .actions .liked{border-color:var(--tint-2);color:var(--btn)}
+
+  /* prose */
+  .post p,.post li,.faq .a{text-wrap:pretty}
+  h1,h2,.faq summary{text-wrap:balance}
+  .post p{margin:0 0 16px}
+  .post h2{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:32px 0 10px}
+  @media(min-width:700px){ h1{font-size:40px} .post h2{font-size:28px} }
+  .post h2.first{margin-top:0}
+  /* page B: product-first layout */
+  .hero{text-align:center;padding:8px 0 6px}
+  .hero .eyebrow{display:inline-block;font-size:14px;letter-spacing:.06em;color:var(--btn);background:var(--tint-1);border-radius:999px;padding:4px 12px;margin:0 0 14px}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.12;letter-spacing:-.02em;margin:0 0 12px;text-wrap:balance}
+  @media(min-width:700px){.hero h1{font-size:44px}}
+  .hero .sub{color:var(--muted);font-size:18px;line-height:1.55;margin:0 auto 14px;max-width:34em;text-wrap:pretty}
+  .hero img{display:block;height:300px;width:auto;margin:6px auto 10px}
+  .hero .stars{font-size:15px;color:var(--muted);margin:0 0 14px}
+  .hero .stars b{color:var(--btn);letter-spacing:1px}
+  .hero .cta-note{margin-top:8px}
+  .steps{list-style:none;padding:0;margin:8px 0 18px;display:grid;gap:12px;counter-reset:st}
+  .steps li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;counter-increment:st}
+  .steps li::before{content:"step " counter(st);display:block;font-size:13px;letter-spacing:.08em;color:var(--btn);margin-bottom:2px}
+  .steps b{display:block;font-family:var(--serif);font-size:20px;line-height:1.25;color:var(--accent);margin-bottom:4px}
+  .steps span{display:block;color:var(--muted);font-size:16px;line-height:1.5}
+  .author{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0 24px}
+  .author img{width:56px;height:56px;border-radius:50%;flex:none}
+  .author p{margin:0 0 8px;font-size:17px;line-height:1.55}
+  .author p:last-child{margin:0}
+  .big{font-family:var(--serif);font-size:24px;line-height:1.35;letter-spacing:-.01em}
+  .figure{margin:0 0 16px}
+  .figure img{width:100%;height:auto;mix-blend-mode:multiply}
+  .figure--book{display:flex;justify-content:center;padding:12px 0 8px}
+  .figure--book img{width:auto;height:260px}
+  hr.dots{border:0;text-align:center;margin:40px 0}
+  hr.dots::before{content:"✦ ✦ ✦";color:var(--muted);letter-spacing:.6em;font-size:15px}
+
+  /* signs checklist, the book's own ❒ boxes */
+  .signs{list-style:none;margin:0 0 16px;padding:0}
+  .signs li{position:relative;padding:5px 0 5px 32px;line-height:1.5}
+  .signs li::before{content:"❒";position:absolute;left:2px;top:7px;color:var(--muted)}
+
+
+  /* before / after as two plain lists */
+  .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;margin:32px 0 20px;font-family:var(--body);font-size:18px;line-height:1.5}
+  .ba h3{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.2;margin:0 0 8px;color:var(--accent)}
+  .ba ul{list-style:none;margin:0;padding:0}
+  .ba li{padding:8px 0;border-top:1px solid var(--line)}
+  .ba .after h3{color:var(--accent)}
+  .ba-arrow{align-self:center;color:var(--accent);display:flex;justify-content:center}
+  .ba-arrow svg{width:30px;height:30px}
+  @media(max-width:520px){.ba{grid-template-columns:1fr;gap:6px}.ba-arrow svg{transform:rotate(90deg)}.ba-arrow{padding:6px 0 10px}}
+
+  /* chapters */
+  .toc{font-family:var(--body);margin:4px 0 20px}
+  .toc .toc-title{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.2;color:var(--ink);margin:0 0 6px}
+  .toc ol{margin:0;padding:0;list-style:none}
+  .toc-more summary{list-style:none;cursor:pointer;font-family:var(--body);font-size:15px;color:var(--muted);padding:8px 0 0}
+  .toc-more summary::-webkit-details-marker{display:none}
+  .toc-more[open] summary{display:none}
+  .early{margin-top:-6px}
+  .early a{font-family:var(--body);font-weight:600;color:var(--btn);text-decoration:underline;text-underline-offset:4px}
+  .toc li{display:flex;align-items:baseline;gap:10px;padding:7px 0;font-size:18px;line-height:1.4}
+  .toc li span{color:var(--tint-4);font-variant-numeric:tabular-nums lining-nums;min-width:44px;font-size:15px;font-weight:400;white-space:nowrap}
+  .toc li i{flex:1;border-bottom:1.5px dotted var(--tint-3);transform:translateY(-5px);min-width:16px;font-style:normal}
+  .toc li b{font-weight:400;min-width:0;text-wrap:wrap}
+  .toc li{text-wrap:wrap}
+  .toc li em{color:var(--muted);font-style:italic;font-size:15px;white-space:nowrap}
+
+  /* buttons */
+  .cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--btn);color:var(--bg);font-family:var(--body);font-weight:600;font-size:18px;
+       text-decoration:none;padding:17px 22px;border-radius:10px;transition:background .15s ease,transform .15s ease}
+  .cta:hover{background:var(--accent)}
+  .cta:active{transform:scale(.99)}
+  .cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .cta-wrap{margin:22px 0 26px}
+  .cta-note{font-family:var(--body);font-size:15px;color:var(--accent);font-weight:400;text-align:center;margin:10px 0 0!important}
+
+  /* comments (TikTok style reviews) */
+  .comments-head{font-family:var(--body);display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
+  .comments-head b{font-weight:400;font-size:18px;color:var(--accent)}
+  .comments-head span{font-size:15px;color:var(--muted)}
+  .offer .offer-rating{justify-content:center;margin:0}
+  .comment{display:flex;gap:12px;padding:14px 0;font-family:var(--body)}
+  .comment .av{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:400}
+  .comment .name{font-size:15px;color:var(--muted);font-weight:400;margin-bottom:2px}
+  .comment .name small{font-weight:400;font-size:13px}
+  .comment .txt{font-size:18px;line-height:1.45}
+  .more summary{font-family:var(--body);font-size:15px;font-weight:400;color:var(--muted);cursor:pointer;list-style:none;padding:6px 0 0 48px}
+  .more summary::-webkit-details-marker{display:none}
+  .more[open] summary{display:none}
+
+  /* offer (base) */
+  .offer{border:1.5px solid var(--ink);border-radius:14px;padding:26px 22px 22px;margin:8px 0 10px;scroll-margin-top:16px}
+  .offer h2{margin:0 0 4px!important;text-align:center;font-size:24px}
+  .offer .sub{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 14px!important}
+  .offer .bundle{margin:0 -6px 6px;mix-blend-mode:multiply}
+  .price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin:4px 0 4px;font-family:var(--body)}
+  .price .now{font-family:var(--serif);font-size:32px;font-weight:600;line-height:1;color:var(--accent)}
+  .price .was{color:var(--muted);text-decoration:line-through;font-size:24px}
+  .price .save{align-self:center;font-size:15px;color:var(--muted)}
+  .price-note{font-family:var(--body);font-size:15px;color:var(--muted);text-align:center;margin:0 0 18px!important}
+  .includes{list-style:none;margin:0 0 20px;padding:0;font-family:var(--body);font-size:18px}
+  .includes li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);line-height:1.4}
+  .includes li:last-child{border-bottom:1px solid var(--line)}
+  .includes li::before{content:"✓";color:var(--accent);font-weight:400;flex:none}
+  .includes .tag{margin-left:auto;font-size:15px;font-weight:400;letter-spacing:.04em;color:var(--muted);white-space:nowrap;align-self:center}
+  .guarantee{font-family:var(--body);font-size:15px;line-height:1.5;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:flex;gap:12px;align-items:flex-start}
+  .guarantee svg{flex:none;margin-top:2px;color:var(--accent)}
+  .pay{display:flex;justify-content:center;margin-top:14px}
+  .pay{flex-wrap:wrap;align-items:center;gap:6px}
+  .pay img{height:24px;width:auto;opacity:.8;mix-blend-mode:multiply}
+  .pay-badge{font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-transform:none;font-size:12px;font-weight:600;line-height:1;letter-spacing:0;color:#111;background:#fff;border:1px solid #d8cfc4;border-radius:5px;padding:5px 7px}
+  .pay-link{background:#00D66F;border-color:#00D66F;color:#011E0F}
+  /* offer */
+  .offer{padding:24px 22px 22px;background:#FFFFFF;border:0;box-shadow:0 1px 2px rgba(43,18,24,.06),0 12px 32px rgba(43,18,24,.10)}
+  /* titles: deep wine */
+  h1,.post h2,.ba h3,.toc .toc-title,.offer h2{color:var(--accent)}
+  .offer-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-bottom:4px;margin-bottom:0}
+  .offer img.bundle--book{width:auto!important;max-width:none!important;height:220px!important;margin:0 0 10px;display:block;mix-blend-mode:multiply}
+  .offer .covers{position:relative;flex:none;width:230px;height:208px;margin:0 0 12px}
+  .offer .covers img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;margin:0;opacity:0;transition:opacity .2s}
+  .offer .covers img.on{opacity:1}
+  .offer-info{display:flex;flex-direction:column;gap:6px;align-items:inherit}
+  /* format options (digital / paperback): stacked cards, the chosen one gets the dark border */
+  .fmt[hidden]{display:none}
+  .pb-only{display:none} html.pb .pb-only{display:inline} html.pb .pb-hide{display:none}  /* paperback on sale: html gets class pb */
+  #total,.fmt .pr,.offer .price .now{font-variant-numeric:tabular-nums lining-nums}
+  #total{display:inline-block;min-width:4em;text-align:right}
+  .fmt{display:grid;grid-auto-rows:1fr;gap:14px;margin:22px 0 18px}  /* the three cards always share one height */
+  .fmt button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:#FFFFFF;border-radius:12px;padding:15px 14px 12px;position:relative;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+  .fmt button.on{border-color:var(--ink);background:#F3ECF8}
+  .fmt .dot{flex:none;box-sizing:border-box;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);background:var(--bg);transition:all .15s}
+  .fmt button.on .dot{border:6px solid var(--btn)}
+  .fmt .txt{flex:1;min-width:0;line-height:1.3}
+  .fmt .t{display:block;font-weight:600;font-size:18px;line-height:1.2}
+  .fmt .d{display:block;font-size:14.5px;color:var(--muted);margin-top:3px}
+  .fmt .tag{position:absolute;top:-10px;left:46px;background:#FFFFFF;color:var(--btn);border:1px solid var(--btn);font-size:12.5px;font-weight:600;padding:1px 9px;border-radius:999px;line-height:1.4;white-space:nowrap;transition:background .15s,color .15s}
+  .fmt button.on .tag{background:var(--btn);color:#fff}
+  .fmt .pr{flex:none;display:flex;flex-direction:column;align-items:flex-end;font-weight:600;font-size:19px;line-height:1.15;color:var(--ink);white-space:nowrap}
+  .fmt .pr s{font-weight:400;font-size:13.5px;color:var(--muted);margin-top:2px}
+  /* badge sits on the card's top edge, so it never competes with the name or the price */
+  .fmt .tag{position:absolute;top:-11px;left:52px;background:#FFFFFF;color:var(--btn);border:1px solid var(--btn);font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;line-height:1.35;transition:background .15s,color .15s}
+  .fmt button.on .tag{background:var(--btn);color:#fff}
+  .fmt .d{display:block;font-size:15px;color:var(--muted);margin-top:4px}
+  .fmt .pr{flex:none;font-weight:600;font-size:21px;color:var(--ink);white-space:nowrap}
+  .offer:not(.has-fmt) .price{margin:6px 0 18px}
+  .offer.has-fmt .price{display:none}
+  .offer h2{margin:0!important;text-align:inherit!important}
+  .offer .offer-sub{margin:4px 0 0!important;font-size:18px;line-height:1.5;color:var(--muted);max-width:420px;text-wrap:balance}
+  /* delivery: order placed / ebook / paperback */
+  .offer .ship{display:flex;justify-content:center;align-items:center;gap:7px;margin:12px 0 0!important;font-size:15px;line-height:1.3;color:var(--muted)}
+  .offer .ship svg{flex:none;color:var(--btn)}
+  .offer .ship b{font-weight:600;color:var(--ink);white-space:nowrap}
+  .offer:not(.has-fmt) .ship{display:none}
+  /* exclusivity line */
+  .offer .excl{display:flex;justify-content:center;align-items:center;gap:7px;margin:14px 0 0!important;font-size:15px;color:var(--btn);font-weight:600}
+  .offer .price{display:flex;align-items:center;justify-content:center;gap:10px;margin:2px 0 0}
+  .offer .price .now{font-size:32px}
+  .offer .price .save{background:var(--tint-1);color:var(--accent);font-weight:600;font-size:15px;line-height:1;padding:6px 10px;border-radius:999px}
+  .offer .price-note{margin:0!important;font-size:15px;color:var(--muted)}
+  .offer .includes{margin:14px auto 0;width:fit-content;max-width:100%}  /* centered as a group under the button */
+  .offer .includes li{border:0!important;padding:5px 0;align-items:center;font-size:15px;color:var(--muted)}
+  .offer .includes li::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;background:var(--tint-1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234D0619' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 12.5 10 16.5 18 8'/%3E%3C/svg%3E") center/14px no-repeat}
+  .offer .guarantee{border:0;background:var(--tint-1);border-radius:12px;padding:16px 20px;margin-top:16px;flex-direction:column;align-items:center;text-align:center;gap:6px}
+  .offer .guarantee b{display:block;font-weight:600;color:var(--ink);margin-bottom:2px}
+  .offer .guarantee div{color:var(--muted);text-wrap:balance}
+  .offer .pay{margin-top:14px;gap:6px;justify-content:center}
+  @media(min-width:600px){
+    .offer{padding:28px}
+    .offer img.bundle--book{height:230px!important;margin:0}
+  }
+  /* checkout step 1: order bumps */
+  .co-sheet:not(.paying),.co-sheet:not(.paying) .co-head{background:#FFFFFF!important}  /* same as the offer box */
+  .co-back{background:none;border:0;font:inherit;font-size:15px;color:var(--muted);cursor:pointer;padding:4px 0}
+  .co-back[hidden]{display:none}
+  .up{padding:4px 18px 26px;font-family:var(--body)}
+  .upc{display:grid;grid-template-columns:84px 1fr auto;column-gap:12px;row-gap:6px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:8px 10px;margin:0 0 10px;cursor:pointer;transition:border-color .15s}
+  .upc:has(input:checked){border-color:var(--accent)}
+  .upc:has(input:focus-visible){outline:2px solid var(--ink);outline-offset:2px}
+  .upc input{position:absolute;opacity:0;pointer-events:none}
+  .upi{width:84px;height:84px;flex:none;display:block}
+  .upi img{width:100%;height:100%;object-fit:cover;display:block}
+  .upi{position:relative}
+  .upi .pdf{position:absolute;right:2px;bottom:6px;background:var(--accent);color:var(--bg);font-size:11px;font-weight:600;letter-spacing:.04em;line-height:1;padding:3px 6px;border-radius:4px}  /* file badge: bumps are pdf only */
+  .upb{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;padding-top:2px}
+  .upb .kind{font-size:15px;line-height:1;color:var(--muted);margin-bottom:-2px}
+  .upb b{font-family:var(--serif);font-weight:600;font-size:18px;line-height:1.25;color:var(--ink)}
+  .upc .why{grid-column:1/-1;font-size:15px;line-height:1.45;color:var(--ink)}
+  .upp{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--accent)}
+  .side{display:flex;flex-direction:column;align-items:center;gap:6px;align-self:center;flex:none;margin-right:4px}
+  .tick{width:26px;height:26px;flex:none;border:1.5px solid var(--muted);border-radius:7px;position:relative;margin-right:4px;transition:background .15s,border-color .15s}
+  .upc:has(input:checked){background:var(--tint-1)}
+  .upc:has(input:checked) .tick{background:var(--accent);border-color:var(--accent)}
+  .upc:has(input:checked) .tick::after{content:'';position:absolute;left:8px;top:3px;width:6px;height:12px;border:solid var(--bg);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+  .up-foot{position:sticky;bottom:0;background:#FFFFFF;margin:0 -18px -26px;padding:0 18px 18px;}
+  .up-sum{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line);padding:12px 0 12px;font-size:15px;color:var(--muted)}
+  .up-sum div{display:flex;justify-content:space-between}
+  .up-sum div[hidden],.up-sum>div:not(.tot){display:none}
+  .up-sum .tot{font-size:18px;color:var(--ink);padding-top:4px}
+  .up-sum .tot b{font-family:var(--serif);font-weight:600;font-size:24px}
+  .up .cta{width:100%;border:0;cursor:pointer;font:inherit}
+  .up-note{text-align:center;font-size:15px;color:var(--muted);margin:10px 0 0!important}
+
+  /* faq */
+  .faq{font-family:var(--body);margin:0 0 10px}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq details:first-of-type{border-top:1px solid var(--line)}
+  .faq summary{cursor:pointer;list-style:none;padding:16px 34px 16px 0;font-weight:400;font-size:18px;line-height:1.4;position:relative}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:400;color:var(--muted)}
+  .faq details[open] summary::after{content:"–"}
+  .faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .faq .a{padding:0 0 16px;font-size:18px;line-height:1.6;color:var(--ink)}
+
+  .ps{font-style:italic}
+
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 20px 110px;text-align:center;font-family:var(--body);font-size:15px;color:var(--muted)}
+  footer a{margin:0 8px}
+  footer p{max-width:520px;margin:12px auto 0;line-height:1.6}
+
+
+  /* stripe checkout pop-up: buyers pay without leaving the page */
+  .co{position:fixed;inset:0;z-index:50;background:rgba(43,18,24,.55);display:flex;align-items:flex-end;justify-content:center;overscroll-behavior:contain;touch-action:none}
+  .co[hidden]{display:none}
+  .co-sheet{background:#FFFFFF;width:100%;max-width:520px;height:calc(100dvh - 28px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;border-radius:16px 16px 0 0;padding:10px 0 calc(16px + env(safe-area-inset-bottom))}
+  .co-head{position:sticky;top:-10px;z-index:1;background:#FFFFFF;padding-top:14px!important}
+  .co-head{display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-family:var(--body);font-size:15px;color:var(--muted)}
+  .co-head span{flex:1}
+  .co-sheet:not(.paying) #co-title{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);letter-spacing:-.015em}
+  @media (max-width:350px){
+    .offer{padding-left:16px!important;padding-right:16px!important}
+    .fmt button{padding:14px 12px 11px;gap:10px}
+    .fmt .tag{left:40px}
+    .fmt .d{font-size:14px}
+    .fmt .pr{font-size:18px}
+    #offer .cta{font-size:15.5px;padding-left:10px;padding-right:10px}
+  }
+  /* tiktok / instagram in-app browsers on small phones */
+  @media (max-width:420px){
+    .offer .covers{width:200px;height:176px}
+    .offer img.bundle--book{height:176px!important}
+  }
+  @media (max-width:360px){
+    .actions{gap:6px}
+    .actions a,.actions button{padding:6px 10px;gap:5px;font-size:14px}
+    .actions svg{width:17px;height:17px}
+    .cta{font-size:16px;padding-left:12px;padding-right:12px}
+  }
+  @media (max-width:340px){
+    .co-sheet:not(.paying) #co-title{font-size:17.5px;white-space:nowrap}
+  }
+  @media (max-height:560px){
+    .co-sheet:not(.paying) #co-title{font-size:19px}
+    .upc{grid-template-columns:52px 1fr auto}
+    .upi{width:52px;height:52px}
+    .upc .why{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  }
+  /* small phones (most of the audience): both add-ons and the button fit on one screen without scrolling */
+  @media (max-width:420px), (max-height:700px){
+    .co-sheet{height:calc(100dvh - 12px)}
+    .co-sheet:not(.paying) #co-title{font-size:21px}
+    .co-sheet:not(.paying) .co-head{padding-top:10px!important;padding-bottom:6px}
+    .up{padding:2px 14px 20px}
+    .upc{grid-template-columns:62px 1fr auto;column-gap:10px;row-gap:4px;padding:8px 10px;margin:0 0 8px;border-radius:12px}
+    .upi{width:62px;height:62px}
+    .upi .pdf{font-size:10px;padding:2px 5px;bottom:3px;right:0}
+    .upb{gap:3px}
+    .upb .kind{font-size:13px}
+    .upb b{font-size:16px;line-height:1.2}
+    .upc .why{font-size:13.5px;line-height:1.4}
+    .tick{width:24px;height:24px}
+    .upc:has(input:checked) .tick::after{left:7px;top:3px;width:6px;height:11px}
+    .up-foot{margin:0 -14px -20px;padding:0 14px 14px}
+    .up-sum{padding:8px 0}
+    .up-sum .tot{font-size:16px;padding-top:0}
+    .up-sum .tot b{font-size:21px}
+    .up .cta{padding-top:13px;padding-bottom:13px}
+  }
+  .co-close{background:none;border:0;font:inherit;font-size:24px;line-height:1;color:var(--ink);cursor:pointer;padding:4px 6px}
+  .co-close:focus-visible{outline:2px solid var(--ink);border-radius:6px}
+  #co-step2.prep{position:absolute;left:0;top:0;width:100%;height:0;overflow:hidden;visibility:hidden;pointer-events:none}
+  .co-load{font-family:var(--body);text-align:center;padding:56px 16px 64px;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .co-load span{font-size:15px;color:var(--muted)}
+  .co-spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:co-spin .8s linear infinite;margin-bottom:6px}
+  @keyframes co-spin{to{transform:rotate(360deg)}}
+  body.co-open{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+  html.co-open{overflow:hidden;scroll-behavior:auto}
+  @media(min-width:560px){.co{align-items:center}.co-sheet{height:auto;max-height:90vh;border-radius:16px}}
+</style>
+<script>
+/* where this visitor came from (tiktok, instagram, facebook...). saved on the first visit and on every later visit
+   that has a source; sent with the order so each stripe payment shows its source (api/order-products.js reports it) */
+(function(){ try{
+  var q=new URLSearchParams(location.search), ua=navigator.userAgent||'', us=(q.get('utm_source')||'').toLowerCase(), host='';
+  try{ host=document.referrer?new URL(document.referrer).hostname.replace(/^www\./,''):''; }catch(e){}
+  if(host===location.hostname.replace(/^www\./,'')) host='';
+  var src='direct';
+  if(/musical_ly|bytedance|tiktok/i.test(ua)||q.get('ttclid')||/tiktok/.test(host)||/tiktok|^tt$/.test(us)) src='tiktok';
+  else if(/instagram/i.test(ua)||/instagram/.test(host)||/instagram|^ig$/.test(us)) src='instagram';
+  else if(/FBAN|FBAV|FB_IAB/i.test(ua)||/facebook|fb\.com|fb\.me/.test(host)||/facebook|^fb$/.test(us)) src='facebook';
+  else if(q.get('fbclid')) src='meta';
+  else if(/pinterest/i.test(ua+' '+host+' '+us)) src='pinterest';
+  else if(/threads/i.test(host+' '+us)) src='threads';
+  else if(/youtube|youtu\.be/.test(host+' '+us)) src='youtube';
+  else if(q.get('gclid')||/google\./.test(host)||us==='google') src='google';
+  else if(us) src=us; else if(host) src=host;
+  var v={src:src, camp:q.get('utm_campaign')||'', ad:q.get('utm_content')||'', ref:host, t:Date.now()}, ls=null;
+  try{ ls=window.localStorage; if(!ls.getItem('eds_first')) ls.setItem('eds_first',JSON.stringify(v)); if(src!=='direct'||!ls.getItem('eds_last')) ls.setItem('eds_last',JSON.stringify(v)); }catch(e){ ls=null; }
+  window.EDS_SRC=function(){ var f=v, l=v; try{ f=JSON.parse(ls.getItem('eds_first'))||v; l=JSON.parse(ls.getItem('eds_last'))||v; }catch(e){}
+    return {src:l.src, camp:l.camp, ad:l.ad, ref:l.ref, first:f.src, days:Math.max(0,Math.round((Date.now()-f.t)/864e5))}; };
+}catch(e){ window.EDS_SRC=function(){ return {src:'unknown'}; }; } })();
+</script>
+</head>
+<body>
+
+<main class="post">
+
+  <!-- ===== HERO (page B) ===== -->
+  <div class="hero">
+    <span class="eyebrow">for the daughter who grew up first</span>
+    <h1>you were the parent before you were a grown-up</h1>
+    <p class="sub">a workbook of exercises, scripts and prompts to quiet the guilt, stop over-giving, and finally rest without having to earn it.</p>
+    <img src="/images/offer-paperback.webp" alt="the eldest daughter workbook" width="585" height="797" fetchpriority="high" decoding="async">
+    <p class="stars"><b>★★★★★</b> 4.8 · loved by 600+ eldest daughters</p>
+    <a class="cta" href="#offer">get the workbook for $14.99 →</a>
+    <p class="cta-note">instant download · 14-day money-back guarantee</p>
+  </div>
+
+  <!-- ===== RECOGNITION ===== -->
+  <h2>does this sound like you?</h2>
+  <ul class="signs">
+    <li>you read the room before anyone speaks.</li>
+    <li>you feel guilty the second you sit down.</li>
+    <li>you're everyone's first call, and nobody asks how you are.</li>
+    <li>you apologize before you ask for anything.</li>
+    <li>you were &ldquo;mature for your age&rdquo; at eight.</li>
+    <li>you confuse being loved with being useful.</li>
+  </ul>
+  <p>none of this is a personality flaw. it's a job you were handed as a kid, and you never got to clock out.</p>
+
+  <!-- ===== WHY ===== -->
+  <h2>why reading about it hasn't changed it</h2>
+  <p>you've seen the posts. you've sent them to your friends with &ldquo;this is literally me.&rdquo; and you still feel guilty every time you rest.</p>
+  <p>knowing the pattern and changing it are two different things. this workbook is the second one: you write, you sort, you practice, one small exercise at a time.</p>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <h2 id="inside">how the workbook works</h2>
+  <ol class="steps">
+    <li><b>see the job you were handed</b><span>name the role, where it started, and the guilt that came with it. the guilt sort shows you which part was never yours to carry.</span></li>
+    <li><b>loosen what it left behind</b><span>the anger you swallowed, the help you can't accept, the perfectionism that kept you safe. the rage timeline and the help script give each one somewhere to go.</span></li>
+    <li><b>learn to rest without earning it</b><span>a script for the call with mom, a plan for the family money requests, and a permission slip for the childhood you never got.</span></li>
+  </ol>
+
+  <div class="toc">
+    <h3 class="toc-title">table of contents</h3>
+    <ol>
+      <li><span>ch 01</span><b>the weight you never chose</b><i></i><em>p. 3</em></li>
+      <li><span>ch 02</span><b>where it all started</b><i></i><em>p. 9</em></li>
+      <li><span>ch 03</span><b>why pretending you're fine isn't working</b><i></i><em>p. 18</em></li>
+      <li><span>ch 04</span><b>your healing starts here</b><i></i><em>p. 21</em></li>
+      <li><span>ch 05</span><b>the day my childhood ended</b><i></i><em>p. 22</em></li>
+      <li><span>ch 06</span><b>older sister guilt</b><i></i><em>p. 32</em></li>
+    </ol>
+    <ol>
+      <li><span>ch 07</span><b>the angry mean sister</b><i></i><em>p. 41</em></li>
+      <li><span>ch 08</span><b>the &ldquo;i don't need anyone&rdquo; lie</b><i></i><em>p. 48</em></li>
+      <li><span>ch 09</span><b>your job isn't your worth</b><i></i><em>p. 54</em></li>
+      <li><span>ch 10</span><b>the body remembers everything</b><i></i><em>p. 66</em></li>
+      <li><span>ch 11</span><b>loved, not just needed</b><i></i><em>p. 74</em></li>
+      <li><span>ch 12</span><b>the family atm (financial boundaries)</b><i></i><em>p. 85</em></li>
+      <li><span>ch 13</span><b>the wounds we inherit</b><i></i><em>p. 90</em></li>
+      <li><span>ch 14</span><b>i'm your sister, not your mom</b><i></i><em>p. 97</em></li>
+      <li><span>ch 15</span><b>becoming the kid you never got to be</b><i></i><em>p. 105</em></li>
+      <li><span>ch 16</span><b>the cycle ends with you</b><i></i><em>p. 117</em></li>
+    </ol>
+  </div>
+
+  <div class="ba">
+    <div>
+      <h3>right now</h3>
+      <ul>
+        <li>you feel guilty when you're not productive</li>
+        <li>you confuse being loved with being useful</li>
+        <li>you're exhausted in your body, not just your mind</li>
+        <li>you scan the room before anyone speaks</li>
+        <li>everyone's therapist, nobody's patient</li>
+      </ul>
+    </div>
+    <div class="ba-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="after">
+      <h3>after the workbook</h3>
+      <ul>
+        <li>your nervous system finally stands down</li>
+        <li>a body that isn't braced for the next thing</li>
+        <li>boundaries that hold, even at home</li>
+        <li>resting without shame</li>
+        <li>being loved for who you are, not what you do</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <a class="cta" href="#offer">get the workbook for $14.99 →</a>
+    <p class="cta-note">instant download · 14-day money-back guarantee</p>
+  </div>
+
+  <h2 id="comments" style="scroll-margin-top:16px">what other eldest daughters said</h2>
+  <div class="comments-head"><b>★★★★★ 4.8</b><span>· 600 reviews</span></div>
+
+  <div class="comment"><span class="av" style="background:var(--tint-2);color:var(--ink)">p</span><div><div class="name">priya m. <small>· mumbai</small></div><div class="txt">i didn't plan on getting personally attacked today, but here we are 😭 every single page felt too close to home. if you know, you know.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">f</span><div><div class="name">fatima zahra <small>· casablanca</small></div><div class="txt">everyone always expected something from me. needed something from me. i could never rest. this workbook finally gave me permission to.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-5);color:var(--bg)">z</span><div><div class="name">zara <small>· london</small></div><div class="txt">reading this felt like someone finally handed me back to myself. honestly didn't expect a workbook to hit this hard.</div></div></div>
+  <div class="comment"><span class="av" style="background:var(--tint-1);color:var(--ink)">r</span><div><div class="name">renée l. <small>· paris</small></div><div class="txt">confusing being loved with being useful. ouch. i had to put it down for a minute and just sit with that. chapter 3 absolutely wrecked me. 💔</div></div></div>
+  <details class="more">
+    <summary>view 5 more replies ⌄</summary>
+    <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">y</span><div><div class="name">yara al-hassan <small>· beirut</small></div><div class="txt">i finally had words for why rest felt impossible. it felt like someone understood the part of me i always hide.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-2);color:var(--ink)">l</span><div><div class="name">leila <small>· dubai</small></div><div class="txt">the prompts were direct without being harsh. i cried, but in the way that makes space afterward.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-4);color:var(--bg)">n</span><div><div class="name">nora <small>· sydney</small></div><div class="txt">i kept stopping because every page felt too accurate. in a good way. i felt so seen without feeling judged 🤍</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-3);color:var(--ink)">a</span><div><div class="name">adaeze o. <small>· accra</small></div><div class="txt">called me out and made me cry. described me to a t. i sent it to every eldest daughter i know.</div></div></div>
+    <div class="comment"><span class="av" style="background:var(--tint-5);color:var(--bg)">c</span><div><div class="name">claire dubois <small>· brussels</small></div><div class="txt">it gave me language for the guilt. i didn't know how much i needed that until i wrote it down. highly recommend 🌱</div></div></div>
+  </details>
+
+  <!-- ===== FROM ANNA ===== -->
+  <div class="author">
+    <img src="/images/author-pfp.webp" alt="anna celestina" width="56" height="56" loading="lazy" decoding="async">
+    <div>
+      <p>i'm an eldest daughter too. for years i was the strong one, the fixer, the one who never learned how to rest.</p>
+      <p>i wrote the workbook i wish someone had handed me. i hope it gives you what it gave me: permission to put some of it down. <b>anna</b></p>
+    </div>
+  </div>
+
+  <!-- ===== OFFER ===== -->
+  <section class="offer has-fmt" id="offer">
+    <div class="offer-top">
+      <div class="covers">  <!-- both images sit in one fixed box and cross-fade, so nothing moves when the format changes -->
+        <img class="cover" data-f="audio" src="/images/offer-audiobook-combo.webp" alt="the eldest daughter workbook as an ebook and audiobook" width="900" height="939" loading="lazy" decoding="async">
+        <img class="cover on" data-f="digital" src="/images/offer-workbook-tablet.webp" alt="the eldest daughter workbook on a tablet" width="540" height="701" loading="lazy" decoding="async">
+        <img class="cover" data-f="print" src="/images/offer-paperback.webp" alt="the eldest daughter workbook paperback" width="585" height="797" loading="lazy" decoding="async">
+      </div>
+      <div class="offer-info">
+        <h2>the eldest daughter workbook</h2>
+        <div class="comments-head offer-rating"><b>★★★★★ 4.8</b><span>· 600 reviews</span></div>
+        <p class="offer-sub">for the daughter who grew up too fast, and is ready to put it down.</p>
+        <div class="price"><span class="now" id="p-now">$14.99</span><span class="was" id="p-was">$29.99</span><span class="save" id="p-save">save 50%</span></div>
+      </div>
+    </div>
+
+    <div class="fmt" role="radiogroup" aria-label="choose your format">  <!-- paperback on sale. to hide it: add "hidden" here, remove "has-fmt" above and class="pb" on <html>, and set PRINT.enabled=false -->
+      <button type="button" role="radio" aria-checked="true" data-f="digital" class="on"><span class="dot"></span><span class="txt"><span class="t">ebook</span><span class="d">instant download</span></span><span class="pr">$14.99<s>$29.99</s></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="audio"><span class="tag">+ free ebook</span><span class="dot"></span><span class="txt"><span class="t">audiobook</span><span class="d">listen anywhere</span></span><span class="pr">$19.99<s>$59.99</s></span></button>
+      <button type="button" role="radio" aria-checked="false" data-f="print"><span class="tag">+ free ebook &amp; audio</span><span class="dot"></span><span class="txt"><span class="t">paperback</span><span class="d">free shipping</span></span><span class="pr">$29.99<s>$89.99</s></span></button>
+    </div>
+
+    <a class="cta js-checkout" id="offer-cta" href="#offer">get the workbook for $14.99 →</a>
+    <p class="ship"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>paperback arrives <b id="ship-eta">in 2–3 weeks</b></p>  <!-- one line, only when the paperback is on sale -->
+    <ul class="includes">
+      <li>read on any device, anywhere, anytime.</li>
+      <li>lifetime access to all the materials.</li>
+      <li>14-day no-questions-asked money back guarantee.</li>
+    </ul>
+
+
+
+    <div class="pay"><span class="pay-badge">Apple Pay</span><span class="pay-badge">Google Pay</span><span class="pay-badge pay-link">Link</span><img src="/images/card-logos.jpg" alt="visa, mastercard, american express, discover" width="366" height="49" loading="lazy" decoding="async"></div>
+
+    <p class="excl"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7"/></svg>sold only here. not on amazon.</p>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <h2>frequently asked questions</h2>
+  <div class="faq">
+    <details>
+      <summary>is this a physical book?</summary>
+      <div class="a"><span class="pb-hide">no, it's digital, which is why you can start tonight instead of waiting for shipping.</span><span class="pb-only">you choose. the ebook and the audiobook arrive instantly. the paperback is printed and shipped to your door, and it comes with the ebook and the audiobook so you can start tonight.</span></div>
+    </details>
+
+    <details>
+      <summary>what if it doesn't help me?</summary>
+      <div class="a">then email <a href="mailto:eldestdaughterbook@gmail.com">eldestdaughterbook@gmail.com</a> within 14 days and you'll get a full refund. you don't have to justify it.</div>
+    </details>
+
+    <details>
+      <summary>how do i get it after i pay?</summary>
+      <div class="a">right after checkout you'll get a download link by email. it's a digital workbook, so you can open it on your phone, tablet, or computer, or print the pages you want to write on.</div>
+    </details>
+
+    <details>
+      <summary>i'm not technically the eldest. will it still work for me?</summary>
+      <div class="a">yes. this is about the role, not birth order. plenty of only children, youngest siblings, and middle kids were the responsible one: the fixer, the peacemaker, the emotional default. if that's you, you're in the right place.</div>
+    </details>
+
+    <details>
+      <summary>i've done therapy and read all the books. why would this help?</summary>
+      <div class="a">because awareness and repair are two different skills. you can describe the eldest daughter wound perfectly and still re-run the pattern every day. this workbook is writing, reflecting, and experimenting, exercise by exercise. it sits alongside therapy beautifully; it doesn't replace it.</div>
+    </details>
+
+    <details>
+      <summary>my progress resets the moment i'm around my family.</summary>
+      <div class="a">that's exactly what the mom call drill and the financial boundaries chapter are built for: practical scripts for the moments (the guilt-trip call, the money request) that tend to undo people fastest.</div>
+    </details>
+
+    <details>
+      <summary>do i need to finish it all at once?</summary>
+      <div class="a">no. it's designed to go slowly. one page, one prompt, or one section, whenever you have the capacity.</div>
+    </details>
+
+    <details>
+      <summary>can i buy it as a gift?</summary>
+      <div class="a">yes. lots of people send it to a sister, a friend, or a mother who's quietly carrying the same weight.</div>
+    </details>
+  </div>
+
+  <div class="cta-wrap">
+    <a class="cta js-checkout" href="#offer">get the workbook for $14.99 →</a>
+    <p class="cta-note">instant download · 14-day money-back guarantee</p>
+  </div>
+
+  <p class="big">you spent years becoming who everyone else needed.<br><em>it's finally time to become you.</em></p>
+  <p>with love,<br>anna</p>
+  <p class="ps">p.s. it's $14.99 right now (normally $29.99). if you're on the fence, grab it, do the first chapter tonight, and if it doesn't feel right, i'll refund you. <a href="#offer">get the workbook →</a></p>
+
+</main>
+
+<footer>
+  <div><a href="/privacy-policy">privacy policy</a> · <a href="/terms-of-service">terms of service</a></div>
+  <p>need help? <a href="mailto:eldestdaughterbook@gmail.com" style="margin:0">eldestdaughterbook@gmail.com</a></p>
+</footer>
+
+<!-- stripe embedded checkout opens here; buttons fall back to the payment link if it can't start -->
+<div class="co" id="co" hidden role="dialog" aria-modal="true" aria-label="checkout">
+  <div class="co-sheet" id="co-sheet">
+    <div class="co-head"><button type="button" class="co-back" id="co-back" hidden>← back</button><span id="co-title">add to your order?</span><button type="button" class="co-close" id="co-close" aria-label="close checkout">×</button></div>
+    <div class="up" id="co-step1">
+      <label class="upc"><input type="checkbox" id="bump-poems"><span class="upi"><img src="/images/bump-poems-en.webp" alt="dear angry eldest daughter" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">ebook</span></span><span class="upb"><span class="kind">poetry</span><b>dear angry eldest daughter</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">a heartfelt poetry book that puts words to your hidden pain, understand your anger, and feel truly seen. the words you never knew you needed.</span></label>
+      <label class="upc"><input type="checkbox" id="bump-journal"><span class="upi"><img src="/images/bump-journal-en.webp" alt="the eldest daughter journal" width="360" height="360" loading="lazy" decoding="async"><span class="pdf">ebook</span></span><span class="upb"><span class="kind">guided journal</span><b>the eldest daughter journal</b></span><span class="side"><span class="tick" aria-hidden="true"></span><span class="upp">$7</span></span><span class="why">release buried emotions, break free from guilt and people-pleasing, and finally start choosing yourself. your safe space to let it all out.</span></label>
+      <div class="up-foot">
+      <div class="up-sum"><div><span>the eldest daughter workbook (ebook)</span><span>$14.99</span></div><div id="sum-poems" hidden><span>dear angry eldest daughter</span><span>$7</span></div><div id="sum-journal" hidden><span>the eldest daughter journal</span><span>$7</span></div><div class="tot"><span>total</span><b id="total">$14.99</b></div></div>
+      <button type="button" class="cta" id="co-continue">continue to payment →</button>
+      </div>
+    </div>
+    <div id="co-step2" hidden>
+      <div id="co-mount"></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  var checkout=null;
+
+  // step 1 of the pop-up: the two $7 add-ons, then step 2: stripe's payment form with exactly what was chosen
+  // format switch on the offer card: ebook $14.99 (page B), audiobook $19.99 (+ ebook), paperback $29.99 (+ ebook & audiobook, printed and shipped by lulu)
+  // paperback delivery: 11-13 working days = lulu's own mail estimate for the us and australia (uk 8-10, canada 6-8)
+  (function(){ var el=document.getElementById('ship-eta'); if(!el) return;
+    function add(n){ var d=new Date(); while(n>0){ d.setDate(d.getDate()+1); if(d.getDay()%6) n--; } return d; }
+    var f=function(d){ return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toLowerCase(); };
+    el.textContent=f(add(11))+' – '+f(add(13)); })();
+  var FORMAT='digital', PRICE={digital:14.99,audio:19.99,print:29.99};
+  function money(n){ n=Math.round(n*100)/100; return '$'+(n%1?n.toFixed(2):n); }
+  var FMT={digital:{was:'$29.99',save:'save 50%',note:'one-time payment. no subscription. yours forever.',cta:'get the ebook for $14.99 →',row:'the eldest daughter workbook (ebook)'},
+           audio:{was:'$59.99',save:'save 67%',note:'',cta:'get the audiobook for $19.99 →',row:'the eldest daughter workbook (audiobook + ebook)'},
+           print:{was:'$89.99',save:'save 67%',note:'',cta:'get the paperback for $29.99 →',row:'the eldest daughter workbook (paperback)'}};
+  [].forEach.call(document.querySelectorAll('.fmt button'),function(btn){ btn.addEventListener('click',function(){
+    FORMAT=btn.dataset.f; BASE=PRICE[FORMAT]; var f=FMT[FORMAT];
+    [].forEach.call(document.querySelectorAll('.fmt button'),function(x){ var on=x===btn; x.classList.toggle('on',on); x.setAttribute('aria-checked',on?'true':'false'); });
+    document.getElementById('p-now').textContent=money(PRICE[FORMAT]); document.getElementById('p-was').textContent=f.was; document.getElementById('p-was').hidden=!f.was;
+    document.getElementById('p-save').textContent=f.save; document.getElementById('offer-cta').textContent=f.cta;
+    var tot=document.getElementById('total'); if(tot) tot.textContent=money(orderTotal());
+    var row=document.querySelector('.up-sum>div:first-child span'); if(row) row.textContent=f.row;
+    [].forEach.call(document.querySelectorAll('.offer .covers img'),function(im){ im.classList.toggle('on',im.dataset.f.split(' ').indexOf(FORMAT)>=0); });
+    try{window.clarity&&clarity('event','format_'+FORMAT);}catch(e){}
+  }); });
+  var BASE=14.99, BUMP=7, bumps=[].slice.call(document.querySelectorAll('#co-step1 input'));
+  function chosen(id){ var b=document.getElementById('bump-'+id); return !!(b&&b.checked); }
+  function orderTotal(){ return Math.round((BASE+bumps.filter(function(b){return b.checked;}).length*BUMP)*100)/100; }
+  function orderKey(){ return FORMAT+(chosen('poems')?'p':'')+(chosen('journal')?'j':''); }
+  bumps.forEach(function(b){ b.addEventListener('change',function(){
+    clearTimeout(prepTimer); prepTimer=setTimeout(prepare,350);
+    document.getElementById('total').textContent=money(orderTotal());
+    document.getElementById('sum-'+b.id.replace('bump-','')).hidden=!b.checked;
+    try{window.clarity&&clarity('event',b.id+(b.checked?'_on':'_off'));}catch(e){}
+  }); });
+
+  // which checkout button got the click (shows up in Clarity + GA4)
+  var fallbackUrl='';
+  document.querySelectorAll('.js-checkout').forEach(function(a,i){
+    a.addEventListener('click',function(e){
+      var where=a.closest('#offer')?'offer':'after_faq';
+      try{window.clarity&&clarity('event','checkout_click_'+where);}catch(e){}
+      e.preventDefault();
+      fallbackUrl=a.href;
+      openCheckout();
+    });
+  });
+
+  // stripe embedded checkout in a pop-up; any failure sends the buyer to the payment link instead
+  var co=document.getElementById('co'), sheet=document.getElementById('co-sheet'), starting=false, mountedKey=null, loaderHTML=document.getElementById('co-mount').innerHTML;
+  function loadStripe(){
+    return window.Stripe ? Promise.resolve() : new Promise(function(ok,fail){
+      var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
+    });
+  }
+  // get ready before anyone taps: stripe.js after load, and wake the server function as the offer gets close
+  // stripe's script (~270 KB) loads only when the reader gets close to the offer, not for every visitor
+  if(!('IntersectionObserver' in window)) window.addEventListener('load',function(){ setTimeout(function(){ loadStripe().catch(function(){}); },1500); });
+  if('IntersectionObserver' in window){
+    var warm=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ warm.disconnect(); fetch('/api/create-checkout-session').catch(function(){}); loadStripe().catch(function(){}); } },{rootMargin:'1200px 0px'});
+    warm.observe(document.getElementById('offer'));
+  }
+  var lockedY=0;
+  function showCo(on){
+    if(on===!co.hidden) return;
+    var b=document.body, d=document.documentElement;
+    if(on){ lockedY=window.scrollY; b.style.top=(-lockedY)+'px'; d.classList.add('co-open'); b.classList.add('co-open'); co.hidden=false; document.getElementById('co-close').focus({preventScroll:true}); }
+    else { co.hidden=true; b.classList.remove('co-open'); b.style.top=''; window.scrollTo(0,lockedY); d.classList.remove('co-open'); }
+  }
+  function step(n){
+    document.getElementById('co-step1').hidden=n!==1;
+    var s2=document.getElementById('co-step2'); s2.hidden=false; s2.classList.toggle('prep',n!==2);
+    document.getElementById('co-back').hidden=n!==2;
+    document.getElementById('co-title').textContent=n===1?'add to your order?':'secure checkout · stripe';
+    sheet.classList.toggle('paying',n===2);
+    sheet.scrollTop=0;
+  }
+  // the stripe form loads in the background as soon as the pop-up opens (and again, quietly, when an add-on
+  // changes), so "continue" shows a ready form instead of a loading screen
+  var prepKey=null, prepReady=false, prepBusy=false, prepFailed=false, waiting=false, prepTimer=null;
+  function prepare(){
+    var key=orderKey();
+    if(prepKey===key&&(prepReady||prepBusy)) return;
+    if(prepBusy){ clearTimeout(prepTimer); prepTimer=setTimeout(prepare,300); return; }
+    prepBusy=true; prepReady=false; prepFailed=false; prepKey=key;
+    if(checkout&&checkout.destroy){ try{checkout.destroy();}catch(e){} }
+    checkout=null; document.getElementById('co-mount').innerHTML='';
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lang:'en',variant:'b',format:FORMAT,poems:chosen('poems'),journal:chosen('journal'),src:window.EDS_SRC&&EDS_SRC()})})
+      .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
+    Promise.all([session, loadStripe()])
+      .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){return Promise.resolve(d.clientSecret);}}); })
+      .then(function(c){ checkout=c; mountedKey=key; c.mount('#co-mount'); prepReady=true; })
+      .catch(function(err){ prepFailed=true; prepKey=null; try{console.warn('checkout prepare failed:',err&&err.message);}catch(e){} if(waiting) location.href=fallbackUrl; })
+      .then(function(){ prepBusy=false; if(orderKey()!==prepKey&&!prepFailed) prepare(); });
+  }
+  function openCheckout(){ step(1); showCo(true); prepare(); }
+  function pay(){
+    step(2); waiting=true;
+    try{gtag('event','begin_checkout',{value:orderTotal(),currency:'USD',items:[{item_id:'main'}].concat(chosen('poems')?[{item_id:'poems'}]:[],chosen('journal')?[{item_id:'journal'}]:[])});}catch(e){}
+    try{window.clarity&&clarity('event','continue_to_payment_'+(orderKey()||'none')+(prepReady&&prepKey===orderKey()?'_ready':'_wait'));}catch(e){}
+    if(prepReady&&prepKey===orderKey()) return;   // already loaded: shows instantly
+    if(prepFailed) prepFailed=false;
+    prepare();
+  }
+  document.getElementById('co-continue').addEventListener('click',pay);
+  document.getElementById('co-back').addEventListener('click',function(){ waiting=false; step(1); });
+  document.getElementById('co-close').addEventListener('click',function(){ waiting=false; showCo(false); });
+  // tapping outside the pop-up does nothing: it only closes with the × (or esc on a keyboard)
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!co.hidden) showCo(false); });
+
+  var like=document.getElementById('like');
+  if(like) like.addEventListener('click',function(){var on=like.classList.toggle('liked');like.setAttribute('aria-pressed',on);document.getElementById('like-n').textContent=on?'1,630':'1,629';});
+  if(document.getElementById('restack')) document.getElementById('restack').addEventListener('click',function(){document.getElementById('share').click();});
+
+  if(document.getElementById('share')) document.getElementById('share').addEventListener('click',function(){
+    var data={title:document.title,text:'this made me feel so seen 🥹',url:location.origin+location.pathname};
+    if(navigator.share){navigator.share(data).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(data.url);}
+  });
+})();
+</script>
+
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

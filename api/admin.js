@@ -90,7 +90,7 @@ module.exports = async (req, res) => {
       return {
         when: new Date(s.created * 1000).toISOString(), amount: (s.amount_total || 0) / 100, items: itemsOf(s), site: m.page === 'es' ? 'Spanish' : 'English',
         source: m.source || (s.payment_link ? 'payment link' : 'not tracked'), first_source: m.first_source || '', campaign: m.campaign || '', ad: m.ad || '',
-        days_to_buy: m.days_to_buy || '', country: (cd.address || {}).country || '', email: cd.email || s.customer_email || '', name: cd.name || '',
+        days_to_buy: m.days_to_buy || '', variant: m.variant || 'a', country: (cd.address || {}).country || '', email: cd.email || s.customer_email || '', name: cd.name || '',
       };
     });
     const paidEmails = new Set(paid.map((s) => ((s.customer_details || {}).email || '').toLowerCase()).filter(Boolean));
