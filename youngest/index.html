@@ -3,204 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Youngest Daughter Workbook</title>
-<meta name="description" content="For the daughter who was never taken seriously. A workbook to stop performing, stop second-guessing yourself, and become the capable adult you already are.">
-<meta property="og:title" content="The Youngest Daughter Workbook">
-<meta property="og:description" content="For the daughter who was never taken seriously.">
+<title>Why the youngest daughter is never taken seriously</title>
+<meta name="description" content="A short read for every youngest daughter who was the fun one, the baby, the one nobody took seriously, and the workbook that helps you put the role down.">
+<meta property="og:title" content="Why the youngest daughter is never taken seriously">
+<meta property="og:description" content="You know everyone else's stories. Nobody really asks for yours.">
 <meta property="og:image" content="https://www.eldestdaughtercore.com/images/yd/yd-cover.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233F7FC1'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232F6AA8'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/fraunces.woff2?v=3" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/source-serif.woff2?v=3" crossorigin>
 <style>
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url('/fonts/source-serif.woff2?v=3') format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url('/fonts/source-serif-italic.woff2?v=3') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:400 600;font-display:swap;src:url('/fonts/fraunces.woff2?v=3') format('woff2')}
+@font-face{font-family:'Serif Fallback';src:local('Georgia');size-adjust:102%;ascent-override:100%;descent-override:30%;line-gap-override:0%}
   :root{
-    --bg:#FFFFFF; --soft:#F4F7FB; --ink:#25262B; --muted:#5D6270; --line:#E3E8EF;
-    --blue:#3F7FC1; --blue-dark:#2F6AA8; --blue-tint:#E7F0FA;
+    --bg:#FFFFFF;            /* white paper */
+    --ink:#1F2A3A;           /* deep navy text */
+    --muted:#566273;         /* slate */
+    --line:#E3E9F1;
+    --blue:#2F6AA8;          /* the blue from the cover */
+    --blue-dark:#24548A;
+    --tint:#EAF2FB;          /* pale sky */
+    --tint-2:#D3E3F5;
+    --serif:'Fraunces','Serif Fallback',Georgia,serif;
+    --body:'Source Serif 4','Serif Fallback',Georgia,serif;
     --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    --serif:Georgia,'Times New Roman',serif;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.7;-webkit-font-smoothing:antialiased}
   img{max-width:100%;height:auto;display:block}
   a{color:var(--blue)}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-  .narrow{max-width:680px;margin:0 auto}
-  .bar{background:var(--ink);color:#fff;text-align:center;font-size:13px;padding:8px 12px}
-  .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-  .nav b{font-size:14px;letter-spacing:.12em;text-transform:uppercase}
-  .nav a{font-size:14px;text-decoration:none;color:var(--ink);border:1px solid var(--ink);border-radius:999px;padding:6px 14px}
-  h1,h2,h3{letter-spacing:-.02em;line-height:1.15;margin:0}
-  .btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-radius:12px;padding:16px 26px;text-align:center}
+  .top{border-bottom:1px solid var(--line);font-family:var(--sans)}
+  .top .in{max-width:728px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+  .top .pub{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;color:var(--ink);text-decoration:none}
+  .top .pub i{width:30px;height:30px;border-radius:8px;background:var(--blue);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:14px}
+  .top .sub{font-size:14px;font-weight:600;background:var(--blue);color:#fff;text-decoration:none;border-radius:8px;padding:7px 14px}
+  .post{max-width:728px;margin:0 auto;padding:28px 20px 40px}
+  h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.15;letter-spacing:-.02em;margin:6px 0 10px;text-wrap:balance}
+  @media(min-width:700px){h1{font-size:42px}}
+  .subtitle{font-family:var(--body);color:var(--muted);font-size:20px;line-height:1.45;margin:0 0 18px}
+  .byline{display:flex;align-items:center;gap:12px;font-family:var(--sans);margin-bottom:14px}
+  .byline .av{width:40px;height:40px;border-radius:50%;background:var(--tint-2);color:var(--blue-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+  .byline .who{font-size:15px;font-weight:600}
+  .byline .meta{font-size:13px;color:var(--muted)}
+  .actions{display:flex;gap:8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:26px;font-family:var(--sans)}
+  .actions button,.actions a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:14px;color:var(--muted);text-decoration:none;cursor:pointer}
+  .actions svg{width:17px;height:17px}
+  .actions .spacer{flex:1}
+  .actions .liked{color:var(--blue);border-color:var(--blue)}
+  .post h2{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.2;letter-spacing:-.015em;margin:36px 0 10px;color:var(--blue-dark);text-wrap:balance}
+  .post p{margin:0 0 18px}
+  .figure{margin:24px 0}
+  .figure img{border-radius:12px}
+  .figure figcaption{font-family:var(--sans);font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+  blockquote{margin:24px 0;padding:4px 0 4px 18px;border-left:3px solid var(--blue);font-family:var(--serif);font-size:23px;line-height:1.35;color:var(--ink)}
+  .signs{list-style:none;padding:0;margin:0 0 18px}
+  .signs li{position:relative;padding:6px 0 6px 32px;line-height:1.5}
+  .signs li::before{content:"❒";position:absolute;left:2px;top:7px;color:var(--blue)}
+  .phases{display:grid;gap:12px;margin:6px 0 22px}
+  .phase{background:var(--tint);border-radius:12px;padding:16px 18px}
+  .phase small{display:block;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+  .phase b{font-family:var(--serif);font-size:20px;display:block;margin:2px 0 4px}
+  .phase span{font-size:17px;color:var(--muted);line-height:1.55}
+  .toc{border:1px solid var(--line);border-radius:12px;padding:16px 18px 8px;margin:10px 0 22px;font-family:var(--body)}
+  .toc h3{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+  .toc ol{margin:0;padding-left:22px;font-size:17px;line-height:1.6}
+  .toc li{padding:2px 0}
+  .early{font-family:var(--sans);font-size:16px}
+  .early a{font-weight:600}
+
+  /* offer card */
+  .offer{background:var(--tint);border-radius:18px;padding:26px 22px 22px;margin:34px 0 26px;text-align:center}
+  .offer img{width:210px;margin:0 auto 14px;border-radius:10px;box-shadow:0 10px 28px rgba(31,42,58,.18)}
+  .offer h2{margin:0 0 4px!important;color:var(--ink)!important}
+  .offer .for{color:var(--muted);font-size:17px;margin:0 0 12px}
+  .offer .price{font-family:var(--sans);margin:0 0 14px}
+  .offer .price b{font-size:32px;color:var(--ink)}
+  .offer .price span{font-size:15px;color:var(--muted);margin-left:6px}
+  .btn{display:block;background:var(--blue);color:#fff;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:18px;border-radius:12px;padding:17px 20px;text-align:center}
   .btn:hover{background:var(--blue-dark)}
-  .btn.full{display:block;width:100%}
-  .note{font-size:13px;color:var(--muted);margin:10px 0 0;text-align:center}
+  .offer ul{list-style:none;padding:0;margin:16px auto 0;width:fit-content;max-width:100%;text-align:left;font-family:var(--sans);font-size:15px;color:var(--muted)}
+  .offer li{padding:5px 0 5px 26px;position:relative}
+  .offer li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:700}
+  .offer .safe{font-family:var(--sans);font-size:13px;color:var(--muted);margin:12px 0 0}
 
-  /* hero */
-  .hero{display:grid;gap:24px;padding:12px 0 40px;align-items:center}
-  @media(min-width:860px){.hero{grid-template-columns:1fr 1fr;gap:48px;padding:28px 0 56px}}
-  .hero .photo{border-radius:18px;overflow:hidden;background:var(--soft)}
-  .eyebrow{display:inline-block;background:var(--blue-tint);color:var(--blue-dark);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:5px 12px;margin-bottom:14px}
-  .hero h1{font-size:34px;margin-bottom:14px;text-wrap:balance}
-  @media(min-width:860px){.hero h1{font-size:44px}}
-  .hero .sub{font-size:18px;color:var(--muted);margin:0 0 18px;text-wrap:pretty}
-  .price{display:flex;align-items:baseline;gap:10px;margin:0 0 16px}
-  .price b{font-size:30px}
-  .price span{font-size:15px;color:var(--muted)}
-  .ticks{list-style:none;padding:0;margin:18px 0 0;border-top:1px solid var(--line)}
-  .ticks li{position:relative;padding:10px 0 10px 28px;border-bottom:1px solid var(--line);font-size:15px}
-  .ticks li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:700}
-
-  /* sections */
-  .sec{padding:52px 0;border-top:1px solid var(--line)}
-  .sec.soft{background:var(--soft);border-top:0}
-  .sec h2{font-size:28px;text-align:center;margin-bottom:10px;text-wrap:balance}
-  @media(min-width:860px){.sec h2{font-size:36px}}
-  .lead{text-align:center;color:var(--muted);font-size:17px;max-width:620px;margin:0 auto 28px;text-wrap:pretty}
-
-  .two{display:grid;gap:26px;align-items:center}
-  @media(min-width:860px){.two{grid-template-columns:1fr 1fr;gap:48px}}
-  .two .img{border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(37,38,43,.10)}
-
-  .signs{list-style:none;padding:0;margin:0}
-  .signs li{position:relative;padding:11px 0 11px 34px;border-bottom:1px solid var(--line);font-size:16px}
-  .signs li::before{content:"";position:absolute;left:4px;top:15px;width:16px;height:16px;border:2px solid var(--blue);border-radius:4px}
-  .after-signs{margin-top:18px;font-size:17px}
-
-  .pull{font-family:var(--serif);font-size:24px;line-height:1.35;margin:0 0 16px;text-wrap:balance}
-  .pull em{color:var(--blue-dark);font-style:normal}
-
-  .phases{display:grid;gap:14px}
-  @media(min-width:760px){.phases{grid-template-columns:repeat(3,1fr)}}
-  .phase{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
-  .phase small{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
-  .phase h3{font-size:20px;margin:4px 0 6px}
-  .phase p{margin:0;color:var(--muted);font-size:15px}
-
-  .tools{display:grid;gap:12px}
-  @media(min-width:760px){.tools{grid-template-columns:repeat(3,1fr)}}
-  .tool{border:1px solid var(--line);border-radius:14px;padding:16px}
-  .tool b{display:block;font-size:16px;margin-bottom:3px}
-  .tool span{font-size:14px;color:var(--muted)}
-  .toc{columns:1;column-gap:32px;padding-left:22px;margin:26px auto 0;max-width:760px;color:var(--muted)}
-  @media(min-width:760px){.toc{columns:2}}
-  .toc li{padding:4px 0;break-inside:avoid}
-
-  .anna{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
-  .anna .mono{flex:none;width:52px;height:52px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
-  .anna p{margin:0 0 10px}
-  .anna p:last-child{margin:0;color:var(--muted)}
-
-  .fit{display:grid;gap:14px}
-  @media(min-width:760px){.fit{grid-template-columns:1fr 1fr}}
-  .fit .card{border:1px solid var(--line);border-radius:16px;padding:20px;background:#fff}
-  .fit h3{font-size:18px;margin-bottom:8px}
-  .fit ul{list-style:none;padding:0;margin:0}
-  .fit li{position:relative;padding:8px 0 8px 26px;border-bottom:1px solid var(--line);font-size:15px}
-  .fit .yes li::before{content:"✓";position:absolute;left:2px;color:var(--blue);font-weight:700}
-  .fit .no li::before{content:"✕";position:absolute;left:2px;color:#9aa1ad}
-
-  .faq details{border-bottom:1px solid var(--line);padding:14px 0}
-  .faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .faq details{border-bottom:1px solid var(--line);padding:12px 0;font-family:var(--sans)}
+  .faq summary{font-weight:600;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
   .faq summary::-webkit-details-marker{display:none}
   .faq summary::after{content:"+";font-weight:400;color:var(--muted)}
   .faq details[open] summary::after{content:"–"}
-  .faq .a{color:var(--muted);margin-top:8px;font-size:15px}
-
-  .final{text-align:center;padding:60px 0 66px}
-  .final .pull{font-size:28px;margin-bottom:8px}
-  .final p{color:var(--muted);margin:0 auto 22px;max-width:520px}
-  footer{border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--muted);padding:22px 20px 34px}
+  .faq .a{color:var(--muted);font-size:15px;margin-top:6px;line-height:1.55}
+  .big{font-family:var(--serif);font-size:25px;line-height:1.35;margin:34px 0 16px}
+  .big em{color:var(--blue-dark)}
+  .ps{font-style:italic;color:var(--muted)}
+  footer{border-top:1px solid var(--line);text-align:center;font-family:var(--sans);font-size:13px;color:var(--muted);padding:22px 20px 34px}
 </style>
 </head>
 <body>
 
-<div class="bar">Instant PDF download · 157 pages · Read on any device or print it</div>
+<div class="top"><div class="in"><a class="pub" href="#"><i>Y</i>The Youngest Daughter</a><a class="sub" href="#offer">Get the book</a></div></div>
 
-<div class="wrap">
-  <div class="nav"><b>The Youngest Daughter</b><a href="#buy">Get the book</a></div>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="buy">
-    <div class="photo"><img src="/images/yd/yd-cover.webp" alt="The Youngest Daughter Workbook by Anna Celestina" width="760" height="1124" fetchpriority="high"></div>
-    <div>
-      <span class="eyebrow">For the daughter who was never taken seriously</span>
-      <h1>You were the fun one. Nobody noticed you were carrying anything at all.</h1>
-      <p class="sub">The Youngest Daughter Workbook helps you stop performing, stop second-guessing every decision, and finally be taken seriously, starting with yourself.</p>
-      <div class="price"><b>$9.99</b><span>one-time · instant PDF download</span></div>
-      <a class="btn full js-buy" href="https://buy.stripe.com/3cI00i1vDghEe950XMbfO01">Get the workbook →</a>
-      <p class="note">🔒 Secure checkout by Stripe · Delivered instantly</p>
-      <ul class="ticks">
-        <li>157 pages, 12 chapters of exercises and prompts</li>
-        <li>Understand the patterns that keep you "the baby"</li>
-        <li>Build real confidence and trust your own decisions</li>
-      </ul>
-    </div>
-  </section>
-</div>
-
-<!-- ===== RECOGNITION ===== -->
-<section class="sec soft">
-  <div class="wrap">
-    <div class="two">
-      <div class="img"><img src="/images/yd/yd-quote.webp" alt="Being the youngest daughter means you know everyone else's stories, but nobody really asks for yours." width="760" height="767" loading="lazy" decoding="async"></div>
-      <div>
-        <h2 style="text-align:left">Does this sound like you?</h2>
-        <ul class="signs" style="margin-top:14px">
-          <li>People still call you "the baby" well into adulthood.</li>
-          <li>Bills, appointments or confrontation feel harder than they should.</li>
-          <li>You use charm to get out of difficult moments.</li>
-          <li>You ask others before almost every decision.</li>
-          <li>Your family still treats you like you can't handle "adult" things.</li>
-          <li>You've been called "the fun one," but secretly feel empty.</li>
-          <li>You're afraid of being boring.</li>
-          <li>You don't know who you are without your family role.</li>
-        </ul>
-        <p class="after-signs">If even a few of these hit home, this workbook was written for you.</p>
-      </div>
-    </div>
+<main class="post">
+  <h1>Why the youngest daughter is never taken seriously</h1>
+  <p class="subtitle">You know everyone else's stories. Nobody really asks for yours.</p>
+  <div class="byline"><div class="av">AC</div><div><div class="who">Anna Celestina</div><div class="meta">6 min read</div></div></div>
+  <div class="actions">
+    <button type="button" id="like" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></svg>Like</button>
+    <a href="#offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg>The workbook</a>
+    <span class="spacer"></span>
+    <button type="button" id="share" aria-label="Share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>Share</button>
   </div>
-</section>
 
-<!-- ===== THE TRAP ===== -->
-<section class="sec">
-  <div class="wrap">
-    <div class="two">
-      <div>
-        <p class="pull">What saved you as a child <em>is exhausting you as an adult.</em></p>
-        <p>You learned early that making people laugh kept you safe. Being cute got you attention. Charm got you out of trouble.</p>
-        <p>While your older siblings were trusted with responsibility, you were protected, rescued, and quietly underestimated. It worked, for a while.</p>
-        <p>Then one day you realize you're the grown woman who still calls home before every big decision, and nobody takes you as seriously as you take them.</p>
-      </div>
-      <div class="img"><img src="/images/yd/yd-page.webp" alt="A page from The Youngest Daughter Workbook" width="800" height="914" loading="lazy" decoding="async"></div>
-    </div>
+  <p>How many times have you been called "the baby"? At family dinners. At thirty. In front of people you were trying to impress.</p>
+  <p>It sounds sweet. Harmless, even. But for a lot of us, it came with an unspoken deal: stay small, stay fun, and let everyone else handle the serious things.</p>
+  <p>Your older siblings were trusted. You were protected. They got responsibility. You got rescued.</p>
+
+  <figure class="figure"><img src="/images/yd/yd-quote.webp" alt="Being the youngest daughter means you know everyone else's stories, but nobody really asks for yours." width="760" height="767" decoding="async"></figure>
+
+  <h2>Being the fun one was a strategy</h2>
+  <p>You learned early that making people laugh kept you safe. Being cute got you attention. Charm could get you out of trouble. Performance could fill a room so you wouldn't feel invisible.</p>
+  <p>And it worked. For a while.</p>
+  <blockquote>But here's the trap: what saved you as a child is exhausting you as an adult.</blockquote>
+  <p>Because one day you look up and you're the grown woman who still calls home before every big decision. Who freezes at bills and appointments. Whose ideas get a smile and a pat on the head instead of a real answer.</p>
+
+  <h2>The signs you're still carrying it</h2>
+  <p>Read these slowly. Be honest.</p>
+  <ul class="signs">
+    <li>People still call you "the baby" well into adulthood.</li>
+    <li>Tasks other adults handle easily feel heavy: bills, appointments, confrontation.</li>
+    <li>You rely on charm to get out of difficult situations.</li>
+    <li>You look for approval before almost every decision.</li>
+    <li>Your family still treats you like you can't handle "adult" things.</li>
+    <li>You've been called "the fun one," but secretly feel empty.</li>
+    <li>You're afraid of being boring.</li>
+    <li>You don't know who you are without your family role.</li>
+  </ul>
+  <p>If you checked even a few, this isn't a personality flaw. It's a role you were handed, and you never got to put it down.</p>
+  <p class="early"><a href="#offer">Skip to the workbook ↓</a></p>
+
+  <h2>I know because I lived it</h2>
+  <p>I was always "the fun one." The one who could charm her way through anything, the one everyone called when they needed cheering up.</p>
+  <p>But somewhere around 28, something cracked. I couldn't make simple decisions without calling my mom three times. I kept turning to my oldest brother to bail me out of things I knew I could handle.</p>
+  <p>Reading about it helped me name it. It didn't help me change it. Changing it took writing things down, practicing small decisions on my own, and learning the difference between being supported and being rescued.</p>
+  <p>So I wrote the workbook I needed then.</p>
+
+  <figure class="figure"><img src="/images/yd/yd-page.webp" alt="A page from The Youngest Daughter Workbook" width="800" height="914" loading="lazy" decoding="async"><figcaption>a page from the workbook</figcaption></figure>
+
+  <h2>What's inside</h2>
+  <p>It isn't about fixing yourself overnight. It's about walking, step by step, into a lighter way of living, in three phases:</p>
+  <div class="phases">
+    <div class="phase"><small>Phase one</small><b>Awareness</b><span>Name the pattern: being treated as "the baby," the learned helplessness, the credibility gap that follows you everywhere.</span></div>
+    <div class="phase"><small>Phase two</small><b>Release</b><span>Let go of charm as survival, the need for outside approval, reactive rebellion, and the resentment you've been carrying.</span></div>
+    <div class="phase"><small>Phase three</small><b>Reclaiming</b><span>Step into your competence. Set boundaries. Trust your own judgment.</span></div>
   </div>
-</section>
-
-<!-- ===== THREE PHASES ===== -->
-<section class="sec soft">
-  <div class="wrap">
-    <h2>How the workbook works</h2>
-    <p class="lead">Not a book that describes you and leaves you there. Three phases, one exercise at a time.</p>
-    <div class="phases">
-      <div class="phase"><small>Phase one</small><h3>Awareness</h3><p>Name the pattern: being treated as "the baby," the learned helplessness, the credibility gap that follows you everywhere.</p></div>
-      <div class="phase"><small>Phase two</small><h3>Release</h3><p>Let go of charm as survival, the need for outside approval, reactive rebellion, and the resentment you've been carrying.</p></div>
-      <div class="phase"><small>Phase three</small><h3>Reclaiming</h3><p>Step into your competence. Set boundaries. Trust your own judgment. Become the capable adult you already are.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== INSIDE ===== -->
-<section class="sec" id="inside">
-  <div class="wrap">
-    <h2>What's inside</h2>
-    <p class="lead">12 chapters, each with exercises you actually do, not just read.</p>
-    <div class="tools">
-      <div class="tool"><b>The infantilization trap</b><span>See where "the baby" role still runs your adult life.</span></div>
-      <div class="tool"><b>Support vs. rescue</b><span>Learn the difference, and stop waiting to be saved.</span></div>
-      <div class="tool"><b>The invisible audience experiment</b><span>Notice who you're still performing for.</span></div>
-      <div class="tool"><b>The rebellion audit</b><span>Separate who you are from what you're reacting against.</span></div>
-      <div class="tool"><b>The boundary audit</b><span>Decide what your time and energy are no longer available for.</span></div>
-      <div class="tool"><b>Your personal manifesto</b><span>Write the "this is who I am" declaration, in your own words.</span></div>
-    </div>
-    <ol class="toc">
+  <div class="toc">
+    <h3>Table of contents</h3>
+    <ol>
       <li>Where it all started</li>
       <li>Why pretending you're fine isn't working</li>
       <li>Your healing starts here</li>
@@ -214,58 +173,37 @@
       <li>Becoming who you actually are</li>
       <li>The cycle ends with you</li>
     </ol>
-    <p style="text-align:center;margin-top:28px"><a class="btn js-buy" href="https://buy.stripe.com/3cI00i1vDghEe950XMbfO01">Get the workbook · $9.99 →</a></p>
   </div>
-</section>
+  <p>Inside you'll find exercises like the invisible audience experiment (who are you still performing for?), the rebellion audit, the boundary audit, and your own "this is who I am" declaration.</p>
 
-<!-- ===== FIT ===== -->
-<section class="sec soft">
-  <div class="wrap">
-    <h2>Is it for you?</h2>
-    <p class="lead">It's about the role you played, not only your birth order.</p>
-    <div class="fit">
-      <div class="card yes"><h3>It's for you if</h3><ul><li>You were "the baby," "the fun one" or "the charming one"</li><li>You second-guess yourself and look to others for approval</li><li>Your family still doesn't take you seriously</li><li>You're ready to do exercises, not just read about it</li></ul></div>
-      <div class="card no"><h3>It's not for you if</h3><ul><li>You want a quick read without writing anything down</li><li>You're looking for a replacement for professional support</li></ul></div>
-    </div>
-  </div>
-</section>
+  <!-- ===== OFFER ===== -->
+  <section class="offer" id="offer">
+    <img src="/images/yd/yd-cover.webp" alt="The Youngest Daughter Workbook" width="760" height="1124" loading="lazy" decoding="async">
+    <h2>The Youngest Daughter Workbook</h2>
+    <p class="for">For the daughter who was never taken seriously.</p>
+    <div class="price"><b>$9.99</b><span>one-time · instant PDF</span></div>
+    <a class="btn js-buy" href="https://buy.stripe.com/3cI00i1vDghEe950XMbfO01">Get the workbook →</a>
+    <ul>
+      <li>157 pages, 12 chapters of exercises and prompts</li>
+      <li>Read on any device, or print the pages</li>
+      <li>Yours forever, no subscription</li>
+    </ul>
+    <p class="safe">🔒 Secure checkout by Stripe · Delivered instantly</p>
+  </section>
 
-<!-- ===== FROM ANNA ===== -->
-<section class="sec">
-  <div class="wrap narrow">
-    <div class="anna">
-      <div class="mono">AC</div>
-      <div>
-        <p>I was always "the fun one." The one who could charm her way through anything, the one everyone called when they needed cheering up. But somewhere around 28, something cracked. I couldn't make simple decisions without calling my mom three times.</p>
-        <p>I wrote the workbook I needed then: not to fix you overnight, but to help you walk, step by step, into a lighter way of living. <b>Anna Celestina</b></p>
-      </div>
-    </div>
+  <h2>Questions</h2>
+  <div class="faq">
+    <details><summary>How do I get it?</summary><div class="a">Right after you pay, you get a download link for the PDF. It works on your phone, tablet or computer, and you can print the pages you want to write on.</div></details>
+    <details><summary>Is it a physical book?</summary><div class="a">No, it's a digital PDF, so you can start tonight instead of waiting for shipping.</div></details>
+    <details><summary>I'm not technically the youngest. Will it still help?</summary><div class="a">If you were the one who was protected, underestimated, or expected to be "the fun one," yes. It's about the role, not only birth order.</div></details>
+    <details><summary>Do I have to finish it all at once?</summary><div class="a">No. Go one exercise at a time, whenever you have the space for it.</div></details>
+    <details><summary>Can I give it as a gift?</summary><div class="a">Yes. Many people buy it for a younger sister or a friend.</div></details>
   </div>
-</section>
 
-<!-- ===== FAQ ===== -->
-<section class="sec soft">
-  <div class="wrap narrow">
-    <h2>Questions</h2>
-    <div class="faq" style="margin-top:18px">
-      <details><summary>How do I get it?</summary><div class="a">Right after you pay, you get a download link for the PDF. It works on your phone, tablet or computer, and you can print the pages you want to write on.</div></details>
-      <details><summary>Is it a physical book?</summary><div class="a">No, it's a digital PDF, so you can start tonight instead of waiting for shipping.</div></details>
-      <details><summary>I'm not technically the youngest. Will it still help?</summary><div class="a">If you were the one who was protected, underestimated, or expected to be "the fun one," yes. It's about the role, not only birth order.</div></details>
-      <details><summary>Do I have to finish it all at once?</summary><div class="a">No. Go one exercise at a time, whenever you have the space for it.</div></details>
-      <details><summary>Can I give it as a gift?</summary><div class="a">Yes. Many people buy it for a younger sister or a friend.</div></details>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FINAL ===== -->
-<section class="final">
-  <div class="wrap">
-    <p class="pull">You get to be taken seriously.</p>
-    <p>You don't have to be delightful anymore. You don't have to prove your worth through performance. Start with one exercise tonight.</p>
-    <a class="btn js-buy" href="https://buy.stripe.com/3cI00i1vDghEe950XMbfO01">Get the workbook · $9.99 →</a>
-    <p class="note">Instant PDF download · Secure checkout by Stripe</p>
-  </div>
-</section>
+  <p class="big">You don't have to be delightful anymore.<br><em>You get to be taken seriously.</em></p>
+  <p>With love,<br>Anna</p>
+  <p class="ps">P.S. It's $9.99, one time. If you've been "the baby" for long enough, start with one exercise tonight. <a class="js-buy" href="https://buy.stripe.com/3cI00i1vDghEe950XMbfO01">Get the workbook →</a></p>
+</main>
 
 <footer>© 2026 Anna Celestina · The Youngest Daughter Workbook</footer>
 
@@ -273,9 +211,15 @@
   // pass ad tracking (utm_*) through to the Stripe payment link so sales can be traced to their source
   (function(){ try{
     var q=new URLSearchParams(location.search), ref=[q.get('utm_source'),q.get('utm_campaign'),q.get('utm_content')].filter(Boolean).join('_').replace(/[^\w-]/g,'').slice(0,190);
-    if(!ref) return;
-    document.querySelectorAll('.js-buy').forEach(function(a){ var u=new URL(a.href); u.searchParams.set('client_reference_id','yd_'+ref); a.href=u.toString(); });
+    if(ref) document.querySelectorAll('.js-buy').forEach(function(a){ var u=new URL(a.href); u.searchParams.set('client_reference_id','yd_'+ref); a.href=u.toString(); });
   }catch(e){} })();
+  (function(){
+    var like=document.getElementById('like');
+    if(like) like.addEventListener('click',function(){ var on=like.classList.toggle('liked'); like.setAttribute('aria-pressed',on); });
+    var share=document.getElementById('share');
+    if(share) share.addEventListener('click',function(){ var d={title:document.title,url:location.origin+location.pathname};
+      if(navigator.share){ navigator.share(d).catch(function(){}); } else if(navigator.clipboard){ navigator.clipboard.writeText(d.url); } });
+  })();
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
