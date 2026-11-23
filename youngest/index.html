@@ -7,8 +7,7 @@
 <meta name="description" content="A short read for every youngest daughter who was the fun one, the baby, the one nobody took seriously, and the workbook that helps you put the role down.">
 <meta property="og:title" content="Why the youngest daughter is never taken seriously">
 <meta property="og:description" content="You know everyone else's stories. Nobody really asks for yours.">
-<meta property="og:image" content="https://www.eldestdaughtercore.com/images/yd/yd-cover.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232F6AA8'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23FF6719'/%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" href="/fonts/fraunces.woff2?v=3" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/source-serif.woff2?v=3" crossorigin>
 <style>
@@ -18,13 +17,13 @@
 @font-face{font-family:'Serif Fallback';src:local('Georgia');size-adjust:102%;ascent-override:100%;descent-override:30%;line-gap-override:0%}
   :root{
     --bg:#FFFFFF;            /* white paper */
-    --ink:#1F2A3A;           /* deep navy text */
-    --muted:#566273;         /* slate */
-    --line:#E3E9F1;
-    --blue:#2F6AA8;          /* the blue from the cover */
-    --blue-dark:#24548A;
-    --tint:#EAF2FB;          /* pale sky */
-    --tint-2:#D3E3F5;
+    --ink:#363737;           /* Substack text */
+    --muted:#757575;
+    --line:#E6E6E6;
+    --blue:#FF6719;          /* Substack orange */
+    --blue-dark:#E5560D;
+    --tint:#F7F7F7;
+    --tint-2:#FFE6D9;
     --serif:'Fraunces','Serif Fallback',Georgia,serif;
     --body:'Source Serif 4','Serif Fallback',Georgia,serif;
     --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
@@ -52,12 +51,12 @@
   .actions svg{width:17px;height:17px}
   .actions .spacer{flex:1}
   .actions .liked{color:var(--blue);border-color:var(--blue)}
-  .post h2{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.2;letter-spacing:-.015em;margin:36px 0 10px;color:var(--blue-dark);text-wrap:balance}
+  .post h2{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.2;letter-spacing:-.015em;margin:36px 0 10px;color:var(--ink);text-wrap:balance}
   .post p{margin:0 0 18px}
   .figure{margin:24px 0}
   .figure img{border-radius:12px}
   .figure figcaption{font-family:var(--sans);font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
-  blockquote{margin:24px 0;padding:4px 0 4px 18px;border-left:3px solid var(--blue);font-family:var(--serif);font-size:23px;line-height:1.35;color:var(--ink)}
+  blockquote{margin:24px 0;padding:4px 0 4px 18px;border-left:3px solid var(--ink);font-family:var(--serif);font-size:23px;line-height:1.35;color:var(--ink)}
   .signs{list-style:none;padding:0;margin:0 0 18px}
   .signs li{position:relative;padding:6px 0 6px 32px;line-height:1.5}
   .signs li::before{content:"❒";position:absolute;left:2px;top:7px;color:var(--blue)}
@@ -74,18 +73,18 @@
   .early a{font-weight:600}
 
   /* offer card */
-  .offer{background:var(--tint);border-radius:18px;padding:26px 22px 22px;margin:34px 0 26px;text-align:center}
+  .offer{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 22px 22px;margin:34px 0 26px;text-align:center}
   .offer img{width:210px;margin:0 auto 14px;border-radius:10px;box-shadow:0 10px 28px rgba(31,42,58,.18)}
   .offer h2{margin:0 0 4px!important;color:var(--ink)!important}
   .offer .for{color:var(--muted);font-size:17px;margin:0 0 12px}
   .offer .price{font-family:var(--sans);margin:0 0 14px}
   .offer .price b{font-size:32px;color:var(--ink)}
   .offer .price span{font-size:15px;color:var(--muted);margin-left:6px}
-  .btn{display:block;background:var(--blue);color:#fff;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:18px;border-radius:12px;padding:17px 20px;text-align:center}
+  .btn{display:block;background:var(--blue);color:#fff;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:18px;border-radius:8px;padding:17px 20px;text-align:center}
   .btn:hover{background:var(--blue-dark)}
   .offer ul{list-style:none;padding:0;margin:16px auto 0;width:fit-content;max-width:100%;text-align:left;font-family:var(--sans);font-size:15px;color:var(--muted)}
   .offer li{padding:5px 0 5px 26px;position:relative}
-  .offer li::before{content:"✓";position:absolute;left:4px;color:var(--blue);font-weight:700}
+  .offer li::before{content:"✓";position:absolute;left:4px;color:var(--ink);font-weight:700}
   .offer .safe{font-family:var(--sans);font-size:13px;color:var(--muted);margin:12px 0 0}
 
   .faq details{border-bottom:1px solid var(--line);padding:12px 0;font-family:var(--sans)}
@@ -95,7 +94,7 @@
   .faq details[open] summary::after{content:"–"}
   .faq .a{color:var(--muted);font-size:15px;margin-top:6px;line-height:1.55}
   .big{font-family:var(--serif);font-size:25px;line-height:1.35;margin:34px 0 16px}
-  .big em{color:var(--blue-dark)}
+  .big em{color:var(--ink)}
   .ps{font-style:italic;color:var(--muted)}
   footer{border-top:1px solid var(--line);text-align:center;font-family:var(--sans);font-size:13px;color:var(--muted);padding:22px 20px 34px}
 </style>
@@ -118,8 +117,6 @@
   <p>How many times have you been called "the baby"? At family dinners. At thirty. In front of people you were trying to impress.</p>
   <p>It sounds sweet. Harmless, even. But for a lot of us, it came with an unspoken deal: stay small, stay fun, and let everyone else handle the serious things.</p>
   <p>Your older siblings were trusted. You were protected. They got responsibility. You got rescued.</p>
-
-  <figure class="figure"><img src="/images/yd/yd-quote.webp" alt="Being the youngest daughter means you know everyone else's stories, but nobody really asks for yours." width="760" height="767" decoding="async"></figure>
 
   <h2>Being the fun one was a strategy</h2>
   <p>You learned early that making people laugh kept you safe. Being cute got you attention. Charm could get you out of trouble. Performance could fill a room so you wouldn't feel invisible.</p>
@@ -147,8 +144,6 @@
   <p>But somewhere around 28, something cracked. I couldn't make simple decisions without calling my mom three times. I kept turning to my oldest brother to bail me out of things I knew I could handle.</p>
   <p>Reading about it helped me name it. It didn't help me change it. Changing it took writing things down, practicing small decisions on my own, and learning the difference between being supported and being rescued.</p>
   <p>So I wrote the workbook I needed then.</p>
-
-  <figure class="figure"><img src="/images/yd/yd-page.webp" alt="A page from The Youngest Daughter Workbook" width="800" height="914" loading="lazy" decoding="async"><figcaption>a page from the workbook</figcaption></figure>
 
   <h2>What's inside</h2>
   <p>It isn't about fixing yourself overnight. It's about walking, step by step, into a lighter way of living, in three phases:</p>
@@ -178,7 +173,6 @@
 
   <!-- ===== OFFER ===== -->
   <section class="offer" id="offer">
-    <img src="/images/yd/yd-cover.webp" alt="The Youngest Daughter Workbook" width="760" height="1124" loading="lazy" decoding="async">
     <h2>The Youngest Daughter Workbook</h2>
     <p class="for">For the daughter who was never taken seriously.</p>
     <div class="price"><b>$9.99</b><span>one-time · instant PDF</span></div>
