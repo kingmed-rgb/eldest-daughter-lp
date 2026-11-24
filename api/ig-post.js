@@ -48,6 +48,14 @@ module.exports = async (req, res) => {
     try { const me = await graph((process.env.IG_USER_ID || '').trim(), { fields: 'username' }); return res.status(200).json({ token_ok: true, account: me.username, next_post: date, image_url: imageUrl }); }
     catch (e) { return res.status(200).json({ token_ok: false, error: e.message }); }
   }
+  if (q.comments) {
+    // read-only: latest comments on recent posts (needs the comments permission on the key). posts nothing
+    try {
+      const ig0 = (process.env.IG_USER_ID || '').trim();
+      const media = await graph(ig0 + '/media', { fields: 'caption,permalink,comments_count,comments.limit(50){text,username,timestamp,like_count}', limit: Math.min(50, parseInt(q.comments, 10) || 15) });
+      return res.status(200).json({ ok: true, posts: (media.data || []).map((m) => ({ link: m.permalink, first_line: String(m.caption || '').split('\n')[0].slice(0, 80), count: m.comments_count, comments: ((m.comments || {}).data || []).map((c) => ({ user: c.username, text: c.text, when: c.timestamp, likes: c.like_count })) })) });
+    } catch (e) { return res.status(200).json({ ok: false, error: e.message }); }
+  }
   if (q.dry) return res.status(200).json({ date, dry: true, image_url: imageUrl, caption: post.caption });
 
   const ig = (process.env.IG_USER_ID || '').trim();
