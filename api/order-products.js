@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
           paperback: products.some((p) => /paperback/i.test(p)), payment_link: s.payment_link || '',
           // traffic source saved by the sales page at checkout (empty for orders before tracking started)
           source: (s.metadata && s.metadata.source) || '', first_source: (s.metadata && s.metadata.first_source) || '',
-          campaign: (s.metadata && s.metadata.campaign) || '', days_to_buy: (s.metadata && s.metadata.days_to_buy) || '',
+          campaign: (s.metadata && s.metadata.campaign) || '', variant: (s.metadata && s.metadata.variant) || 'a', days_to_buy: (s.metadata && s.metadata.days_to_buy) || '',
         };
       }));
       orders.push(...batch);

@@ -130,7 +130,7 @@ h2 { font:600 17px/1.3 Georgia, serif; color:var(--deep); margin:0 0 10px; }
 
     $('orders').innerHTML = o.length ? o.map(function (x) {
       return '<div class="row"><div class="l"><div>' + esc(x.items.join(' + ')) + '</div><div class="small">' + esc(ny(x.when)) + ' · ' + esc(x.site) + (x.country ? ' · ' + esc(x.country) : '') + '</div>' +
-        '<span class="tag src">' + esc(x.source) + '</span>' + (x.campaign ? '<span class="tag">campaign ' + esc(x.campaign) + '</span>' : '') + (x.days_to_buy !== '' ? '<span class="tag">' + (x.days_to_buy === '0' ? 'bought first visit' : 'after ' + esc(x.days_to_buy) + ' days') + '</span>' : '') +
+        '<span class="tag src">' + esc(x.source) + '</span>' + (x.variant === 'b' ? '<span class="tag">page B $14.99</span>' : x.variant === 'kit' ? '<span class="tag">kit page $27</span>' : '') + (x.campaign ? '<span class="tag">campaign ' + esc(x.campaign) + '</span>' : '') + (x.days_to_buy !== '' ? '<span class="tag">' + (x.days_to_buy === '0' ? 'bought first visit' : 'after ' + esc(x.days_to_buy) + ' days') + '</span>' : '') +
         '<div class="small">' + esc(x.name) + (x.email ? ' · ' + esc(x.email) : '') + '</div></div><div class="r amt">' + money(x.amount) + '</div></div>';
     }).join('') : '<div class="empty">no orders in this range yet.</div>';
 
