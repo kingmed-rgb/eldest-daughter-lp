@@ -1,8 +1,9 @@
-# Eldest Daughter Kit — landing page copy ($27 bundle + $24 paperback bump)
+# The Kit — landing page copy ($27 bundle + $24 paperback bump)
 
-Same section order as the Growing Good Men page. Copy is written in your brand voice (lowercase, warm, personal).
-Everything here is true for your product: real items, real prices, your real reviews, your real 14-day guarantee.
-`[IMAGE: …]` = an image to provide or generate. `[EDIT]` = check / rewrite in your own words.
+Same section order as the Growing Good Men page.
+Language comes from what already resonated: the winning ad ("Parentification Debt") and the most-liked comments on your TikTok (likes in brackets, for your reference only, not for the page).
+No birth order. The reader is **the one who took care of everyone**: daughter, only child, middle, youngest, it doesn't matter.
+`[IMAGE: …]` = image to provide or generate. `[EDIT]` = check in your own words.
 
 ---
 
@@ -13,84 +14,89 @@ Everything here is true for your product: real items, real prices, your real rev
 
 ## 1. Hero
 **Headline**
-you're not bad at resting.
-you were never allowed to.
+you can manage everyone's feelings
+except your own.
 
 **Sub**
-you can read everyone's feelings before they say a word. you know when to step in, when to fix it, when to stay quiet. but ask what *you* need and your mind goes blank. that isn't a flaw. it's a job you were handed as a kid, and nobody ever told you that you could clock out.
+you knew who was walking through the door by the sound of their footsteps. you learned to read the room, fix the mood, and need nothing. it worked. it kept everyone okay. but now someone asks what *you* need, and your mind goes blank.
+that isn't who you are. it's a debt from childhood, and it's coming due.
 
 **Button:** help me put it down →
 
-[IMAGE: hero — the kit mockup: workbook cover + phone with audiobook + poems + journal fanned out]
+[IMAGE: the kit mockup: workbook + phone with audiobook + poems + journal]
+
+*(from: the ad "…she can manage everyone else's feelings except her own" · "when you know who enters the room by sound… you know" [159])*
 
 ---
 
 ## 2. Reframe section ("a shield, not a wall")
-**Title:** it's not who you are. it's what you learned.
+**Title:** you're not too much. you've been carrying too much.
 
-**Intro:** the things you're hardest on yourself for are usually the things that kept you safe. here's what's really going on.
+**Intro:** the things you're hardest on yourself for are usually the things that kept everyone else okay.
 
-**Block 1: "guilt when you sit down" is a habit, not a crime**
-when love came after usefulness, rest started to feel like falling behind. your body learned it before your mind did. that's why "just relax" never works.
-[IMAGE: woman on a couch, laptop open, not resting]
+**Block 1: "i'm fine" was never true. it was your job.**
+you look happy on the outside, and nobody sees how you are inside. you learned that your needs made things harder, so you stopped saying them. then you stopped knowing them.
+[IMAGE: woman smiling at a table, eyes tired]
+*(from: "i look happy outside but nobody sees how i am inside" [112])*
 
-**Block 2: "snapping" at people you love is overflow**
-you swallowed the anger for years because someone had to be the calm one. it didn't disappear. it waited. the snap isn't the problem, the swallowing is.
-[IMAGE: woman in kitchen, tense, alone]
+**Block 2: you don't ask for help because it never came.**
+people say "just ask." but every time you did, nothing happened, or it felt like an inconvenience. so you kept doing it yourself. that isn't independence. it's exhaustion with good manners.
+[IMAGE: woman carrying too many bags / doing everything alone]
+*(from: "how can i ask for help that won't come?" [583] · "when you do, no one comes… so you keep doing it yourself. it's exhausting" [165])*
 
-**Block 3: "i'm fine" is a reflex**
-you learned early that your needs made things harder for everyone. so you stopped saying them out loud, until you stopped knowing them at all.
-[IMAGE: woman smiling at a family table, eyes tired]
+**Block 3: being needed started to feel like being loved.**
+you're not the favorite. you're the dependable one. and somewhere along the way, being useful became the only way you knew to be wanted. so when you rest, it feels like you're disappearing.
+[IMAGE: woman on the couch, laptop open, not resting]
+*(from: "i confuse being loved with being useful" [340] · "not the favorite, just the most dependable" [176] · "never the favorite. just a household accessory" [235])*
 
-**Button:** i want to stop carrying it →
+**Button:** that's me →
 
 ---
 
 ## 3. Empathy section ("you don't have to fix him")
-**Title:** you don't have to become a different person.
+**Title:** you don't have to stop caring. you just have to stop carrying.
 
 **Body**
-you've read the posts. you've sent them to your friends with "this is literally me." you understand the pattern better than anyone, and you still feel guilty every time you sit down.
-because awareness doesn't change patterns that live in your body. you have to *do* something with it. write it down. sort it. grieve it. say no once and see what happens.
+you've seen the posts. you've sent them to your friends with "this is literally me." it's comforting to know you're not the only one. but you still feel guilty every time you sit down.
+because knowing the pattern doesn't change it. you have to *do* something with it. write it down. sort what's yours from what isn't. say no once and see what happens.
 
 **Checks**
-- ✓ stop rescuing everyone without feeling like a bad person
-- ✓ have the hard call with your mom without losing yourself for a week
-- ✓ rest because you're tired, not because you finally earned it
+- ✓ care about people without absorbing every problem they have
+- ✓ choose yourself without it feeling wrong
+- ✓ let someone take care of you, and actually know what you need
 
-[IMAGE: woman writing in a workbook at a table, morning light]
+[IMAGE: woman writing in a workbook, morning light]
+*(from: "i can still care about others, but i don't have to absorb every single problem they have" [110] · "when i'm finally choosing to please myself, why does it feel so wrong?" [167] · "it's comforting knowing others experience it too" [929])*
 
 ---
 
-## 4. "The map" (what's inside, 6 cards)
+## 4. The map (what's inside, 6 cards)
 **Title:** what's inside the workbook
 **Sub:** 16 chapters of writing exercises, scripts and prompts. you write, you reflect, you try things, one page at a time.
 
-1. **see the job you were handed.** where it started, and the guilt that came with it. (ch 1–5)
-2. **sort the guilt.** what's actually yours to carry, and what was never yours. (older sister guilt, ch 6)
-3. **let the anger out safely.** the anger you swallowed, and where it can finally go. (the angry mean sister, ch 7)
-4. **let someone help.** unlearning "i don't need anyone." (ch 8, ch 11)
-5. **boundaries that hold at home.** the mom call drill and the family ATM chapter. (ch 12, ch 14)
-6. **become the kid you never got to be.** rest without earning it, and end the cycle. (ch 15–16)
+1. **where it started.** the day you became the responsible one, and the "mature for your age" that was never really a compliment.
+2. **what's yours and what isn't.** sort the guilt into two piles. most of it was never yours to carry.
+3. **the anger you swallowed.** someone had to be the calm one. here's where the anger can finally go.
+4. **the "i don't need anyone" lie.** how to let someone help without feeling like a burden.
+5. **boundaries that hold, even with family.** scripts for the hard phone call and the money requests.
+6. **becoming who you were before.** rest without earning it, and stop passing it down.
 
 **Button:** get the complete kit →
+*(from: "mature for my age since 8" [140] · "i thought 'mature for your age' was a compliment. now it makes me sad" [124])*
 
 ---
 
 ## 5. Bonuses ("plus, you'll also get…")
 **Title:** plus, everything else in the kit
 
-> Only list what really exists. Items 1–3 exist today. Items 4–6 come straight out of the workbook and can be made into one-page printables (I can make them).
+> Items 1–3 exist today. Items 4–6 come from the workbook and still need to be made into one-page printables, or removed before the page goes live.
 
-1. **the audiobook (free today, normally $19.99)** — listen on walks, in the car, on the nights you can't read.
-   [IMAGE: phone with audiobook player + headphones]
-2. **dear angry eldest daughter (poems & letters, $7)** — the words you never got to say, written for you.
-   [IMAGE: poems cover]
-3. **the eldest daughter journal ($7)** — daily prompts for the days you don't have energy for a whole chapter.
-   [IMAGE: journal cover]
-4. **the mom call drill card** *(printable, from the workbook)* — time limit, safe topics, exit line, after-care. keep it by your phone.
-5. **the guilt sort sheet** *(printable)* — mine / not mine, in two columns, in five minutes.
-6. **the permission slip** *(printable)* — officially give yourself back the childhood you never got.
+1. **the audiobook (free today, normally $19.99)** — for walks, the car, and the nights you can't read another word.
+2. **the poems & letters ($7)** — the things you never got to say, written for you.
+3. **the journal ($7)** — one prompt a day, for the days you don't have energy for a whole chapter.
+4. **the hard call card** *(printable)* — time limit, safe topics, exit line, after-care. keep it by your phone.
+5. **the mine / not mine sheet** *(printable)* — sort the weight in five minutes.
+6. **the permission slip** *(printable)* — to rest, to say no, to need something.
 
 **Price block**
 everything separately: ~~$43.97~~
@@ -99,74 +105,66 @@ everything separately: ~~$43.97~~
 ---
 
 ## 6. Founder story ("i was the boy behind the door")
-**Title:** i was the girl who held everything together.
-[IMAGE: your photo, now] [IMAGE: optional: a childhood photo]
+**Title:** i was everyone's therapist. nobody's patient.
+[IMAGE: your photo, now] [IMAGE: optional childhood photo]
 
-[EDIT — this is built from your existing "why i wrote this"; add 2–3 real details only you know]
-for years i carried a weight i never chose. i was the caretaker, the strong one, the one who held everything together. the burnt-out gifted child who never learned how to rest.
-i could explain the wound perfectly. and i still felt guilty every time i sat down.
-so i wrote the workbook i wish someone had handed me at 20. not another thing to read about the pattern. something to *do* about it, one page at a time.
+[EDIT — add 2–3 real details only you know]
+for years i was the strong one. the one who held it together, who everyone called, who never needed anything. i secretly wished someone would take care of me, but i didn't even know how i'd want to be taken care of.
+i could explain the pattern perfectly. and i still felt guilty every time i sat down.
+so i wrote the workbook i wish someone had handed me. not another thing to read about it. something to *do* about it, one page at a time.
 
 **Button:** start tonight →
+*(from: "everyone's therapist but nobody's patient" [1,087] · "secretly wish someone would take care of me, but i don't even know how i need to be taken care of" [1,939])*
 
 ---
 
-## 7. Reviews ("proof…")
-**Title:** what other daughters said
-Use your existing reviews from the landing page exactly as they are (priya m., fatima zahra, zara, renée l., yara al-hassan, leila, nora, adaeze o., claire dubois). Don't add new ones.
+## 7. Reviews
+**Title:** what other readers said
+Use your existing reviews exactly as they are. Don't add or reword any.
+> Tip: lead with the ones that don't mention birth order (fatima zahra, zara, yara al-hassan, leila, nora, claire dubois).
 
 ---
 
 ## 8. Guarantee
 **Title:** 14-day money-back guarantee
-do the first chapter tonight. if it doesn't feel right, email eldestdaughterbook@gmail.com within 14 days and you'll get a full refund. you don't have to justify it.
+do the first chapter tonight. if it doesn't feel right, email eldestdaughterbook@gmail.com within 14 days for a full refund. you don't have to explain.
 [IMAGE: guarantee badge]
 
 ---
 
-## 9. Closing CTA ("the silence doesn't have to last a decade")
+## 9. Closing CTA
 **Title:** you spent years becoming who everyone else needed.
-**Sub:** it's finally time to become you.
-[IMAGE: kit mockup again]
+**Sub:** it's your turn now.
+[IMAGE: kit mockup]
 everything separately: ~~$43.97~~ · **today: $27**
 **Button:** get the complete kit →
 
 ---
 
 ## 10. FAQ
-- **what's in the kit?** the workbook (ebook), the audiobook, the poems & letters, the journal, and the printables. all instant download.
+- **is this for me if i'm not the eldest?** yes. it's about the role, not birth order. if you were the responsible one, the fixer, the peacemaker, the one who held it together, you're in the right place.
+- **what's in the kit?** the workbook (ebook), the audiobook, the poems & letters, the journal, and the printables. everything arrives instantly.
 - **is there a printed version?** yes. tick "add the printed paperback (+$24)" before you check out. it's printed and shipped to your door (free shipping to the US, UK, Canada and Australia, 2–3 weeks). the digital kit arrives right away so you can start tonight.
-- **i'm not technically the eldest. will it still work for me?** yes. this is about the role, not birth order. plenty of only children, youngest siblings and middle kids were the responsible one: the fixer, the peacemaker, the emotional default. if that's you, you're in the right place.
-- **i've done therapy and read all the books. why would this help?** because awareness and repair are two different skills. this workbook is writing, reflecting and experimenting, exercise by exercise. it sits alongside therapy; it doesn't replace it.
-- **my progress resets the moment i'm around my family.** that's exactly what the mom call drill and the family ATM chapter are for: scripts for the moments that undo people fastest.
-- **do i need to finish it all at once?** no. one page, one prompt, whenever you have the capacity.
-- **can i buy it as a gift?** yes. lots of people send it to a sister, a friend, or a mother quietly carrying the same weight.
-- **what if it doesn't help me?** email eldestdaughterbook@gmail.com within 14 days for a full refund.
+- **i've done therapy and read the books. why would this help?** because understanding the pattern and changing it are two different skills. this is writing and practice, exercise by exercise. it sits alongside therapy; it doesn't replace it.
+- **i'm fine until i'm around my family.** that's what the hard-call script and the money-boundaries chapter are for.
+- **do i have to finish it all at once?** no. one page, one prompt, whenever you have room for it.
+- **can i give it as a gift?** yes. a lot of people send it to a sister, a friend, or their mom.
+- **what if it doesn't help?** email eldestdaughterbook@gmail.com within 14 days for a full refund.
 
 ---
 
 ## Order bump (checkbox above the buy button)
 ☐ **add the printed paperback, shipped to your door: +$24**
-for the pages you want to underline, the nights you want off your phone, and the shelf where you'll see it. free shipping to the US, UK, Canada and Australia.
+for the pages you want to underline, and the nights you want off your phone. free shipping to the US, UK, Canada and Australia.
 
 ## After-payment upsell (optional, later)
-**wait, want it in your hands too?**
+**want it in your hands too?**
 add the printed paperback for $24 with one click. no need to re-enter your card.
 [yes, add the paperback] · [no thanks]
 
 ---
 
-## Images needed (12)
-1. kit mockup (hero + closing) — I can make this from your covers
-2–4. three reframe photos (guilt on the couch, tense in the kitchen, tired smile at the table)
-5. woman writing in a workbook
-6. audiobook on phone + headphones — I can make this
-7. poems cover · 8. journal cover — you have these
-9. you, now · 10. optional childhood photo — yours
-11. guarantee badge — I can make this
-12. the three printables — I can make these as PDFs
-
-## What NOT to copy from their page
-- invented "value" ($97 ebook, $342 total) → use your real $43.97
-- bonuses that don't exist yet
-- a guarantee that mentions things you don't sell
+## Notes
+- The book's cover still says "The Eldest Daughter Workbook". That's fine in the images; the page copy calls it "the workbook" and "the kit" so nobody feels left out before they read the FAQ.
+- Images needed: kit mockup (×2), 4 lifestyle photos (tired smile at a table, carrying everything alone, couch with laptop, writing in the workbook), audiobook on a phone, poems and journal covers, your photo, guarantee badge, 3 printables.
+- Don't copy from their page: made-up "value" numbers, bonuses that don't exist, their words or their images.
