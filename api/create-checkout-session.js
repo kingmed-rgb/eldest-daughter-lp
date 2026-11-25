@@ -35,7 +35,9 @@ async function stripe(path, secret, method = 'GET', body) {
 }
 
 // landing-page test prices in cents (only what differs from the catalog)
-const VARIANT_PRICES = { b: { main: 1499 } };
+const VARIANT_PRICES = { b: { main: 1499 }, kit: { print: 2400 } };
+// and product names that differ (the kit's paperback is an add-on: the digital files come with the kit)
+const VARIANT_NAMES = { kit: { print: 'Printed paperback (add-on, shipped to your door)' } };
 
 function readBody(req) {
   let body = req.body;
@@ -48,7 +50,12 @@ function readBody(req) {
   const src = body.src && typeof body.src === 'object' ? body.src : {};
   const source = { src: clean(src.src, 40) || 'unknown', first: clean(src.first, 40), camp: clean(src.camp, 100), ad: clean(src.ad, 100), ref: clean(src.ref, 80), days: clean(src.days, 4) };
   // landing-page test: page B (/b) sells the ebook at $14.99; any other value gets the normal prices
-  const variant = body.variant === 'b' && L === 'en' ? 'b' : '';
+  // page kit (/kit) sells the $27 bundle, with the paperback as a $24 add-on
+  const variant = L === 'en' && (body.variant === 'b' || body.variant === 'kit') ? body.variant : '';
+  if (variant === 'kit') {
+    const wantsPrint = body.paperback === true;
+    return { variant, source, lang: L, kit: true, poems: false, journal: false, print: wantsPrint && PRINT.enabled, wantsPrint, audio: false };
+  }
   return { variant, source, lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print', audio: body.format === 'audio' && !!OFFERS[L].audio };
 }
 
@@ -71,11 +78,12 @@ module.exports = async (req, res) => {
   }
   if (!mode) return res.status(503).json({ error: 'Checkout is not configured' }); // page falls back to the payment link
 
-  const { lang, poems, journal, print, wantsPrint, audio, source, variant } = readBody(req);
+  const { lang, poems, journal, print, wantsPrint, audio, source, variant, kit } = readBody(req);
   // never charge a different product than the one shown: paperback asked for while it's switched off
   if (wantsPrint && !print) return res.status(409).json({ error: 'paperback not available yet' });
   const offer = OFFERS[lang];
-  const items = [print ? 'print' : audio ? 'audio' : 'main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
+  const items = kit ? ['kit'].concat(print ? ['print'] : [])
+    : [print ? 'print' : audio ? 'audio' : 'main'].concat(poems ? ['poems'] : [], journal ? ['journal'] : []);
   const host = req.headers['x-forwarded-host'] || req.headers.host;
 
   const params = {
@@ -104,7 +112,7 @@ module.exports = async (req, res) => {
     params[`line_items[${i}][quantity]`] = '1';
     params[`line_items[${i}][price_data][currency]`] = 'usd';
     params[`line_items[${i}][price_data][unit_amount]`] = String(((VARIANT_PRICES[variant] || {})[k]) || offer[k].amount);
-    params[`line_items[${i}][price_data][product_data][name]`] = offer[k].name;
+    params[`line_items[${i}][price_data][product_data][name]`] = ((VARIANT_NAMES[variant] || {})[k]) || offer[k].name;
   });
 
   try {

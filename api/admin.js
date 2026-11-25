@@ -28,7 +28,7 @@ async function all(path, max = 10) {
   }
   return out;
 }
-const ITEM = { main: 'ebook', audio: 'audiobook', print: 'paperback', poems: 'poems', journal: 'journal' };
+const ITEM = { main: 'ebook', audio: 'audiobook', print: 'paperback', poems: 'poems', journal: 'journal', kit: 'complete kit' };
 function itemsOf(s) {
   const m = (s.metadata || {}).items;
   if (m) return m.split(',').map((k) => ITEM[k] || k);

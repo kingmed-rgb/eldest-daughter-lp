@@ -9,6 +9,7 @@ const FILES = {
   journal_en: { kind: 'guided journal', img: '/images/bump-journal-en.webp', label: 'the eldest daughter journal', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/the-eldest-daughter-journal-en.pdf` },
   audio_en: { kind: 'audiobook · plays in any app', img: '/images/offer-audiobook-combo.webp', label: 'the eldest daughter audiobook (mp3)', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/the-eldest-daughter-audiobook.mp3?v=1` },
   audio_m4b_en: { kind: 'audiobook · with chapters', img: '/images/offer-audiobook-combo.webp', label: 'the eldest daughter audiobook (m4b)', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/the-eldest-daughter-audiobook.m4b?v=1` },
+  printables_en: { kind: 'printables · print or fill in', img: '/images/kit/printables-thumb.webp', label: 'the kit printables', url: `https://www.eldestdaughtercore.com/${FILES_DIR}/the-kit-printables-en.pdf?v=1` },
   ebook_es: { kind: 'libro', img: '/images/sindrome-hija-mayor-3d.webp', label: 'síndrome de la hija mayor', url: `https://www.hijamayor.com/${FILES_DIR}/sindrome-de-la-hija-mayor-es.pdf?v=1` },
   poems_es: { kind: 'poesía', img: '/images/bump-poems-es.webp', label: 'querida hija mayor enojada', url: `https://www.hijamayor.com/${FILES_DIR}/querida-hija-mayor-enojada-es.pdf` },
   journal_es: { kind: 'diario guiado', img: '/images/bump-journal-es.webp', label: 'el diario de la hija mayor', url: `https://www.hijamayor.com/${FILES_DIR}/el-diario-de-la-hija-mayor-es.pdf` },
@@ -24,6 +25,8 @@ const OFFERS = {
     print: { name: 'The Eldest Daughter Workbook (paperback + ebook + audiobook)', amount: 2999, files: ['workbook_en', 'audio_en', 'audio_m4b_en'] },
     poems: { name: 'Dear Angry Eldest Daughter (poems)', amount: 700, files: ['poems_en'] },
     journal: { name: 'The Eldest Daughter Journal', amount: 700, files: ['journal_en'] },
+    // landing-page test (/kit): everything digital in one bundle
+    kit: { name: 'The Complete Kit (workbook, audiobook, poems, journal, printables)', amount: 2700, files: ['workbook_en', 'audio_en', 'audio_m4b_en', 'poems_en', 'journal_en', 'printables_en'] },
   },
   es: {
     main: { name: 'Síndrome de la hija mayor', amount: 900, files: ['ebook_es'] },
@@ -46,7 +49,8 @@ function filesFor(session) {
   const items = session.metadata && session.metadata.items;
   if (items) {
     const keys = items.split(',').filter((k) => OFFERS[lang][k]);
-    return { lang, keys, files: keys.flatMap((k) => OFFERS[lang][k].files).map((f) => FILES[f]) };
+    const ids = [...new Set(keys.flatMap((k) => OFFERS[lang][k].files))]; // kit + paperback share files: list each once
+    return { lang, keys, files: ids.map((f) => FILES[f]) };
   }
   // Orders from before the journal bump (or from a payment link):
   // English bought the old bundle (workbook, poems, worksheet → now the journal); Spanish bought the ebook.
