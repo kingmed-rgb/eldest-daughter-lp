@@ -43,7 +43,7 @@ function readBody(req) {
   // where the buyer came from (set by the page): short, plain values only
   const clean = (v, n) => String(v == null ? '' : v).replace(/[^\w .:/@+-]/g, '').slice(0, n);
   const src = body.src && typeof body.src === 'object' ? body.src : {};
-  const source = { src: clean(src.src, 40) || 'unknown', first: clean(src.first, 40), camp: clean(src.camp, 100), ad: clean(src.ad, 100), ref: clean(src.ref, 80), days: clean(src.days, 4) };
+  const source = { src: clean(src.src, 40) || 'unknown', first: clean(src.first, 40), camp: clean(src.camp, 100), ad: clean(src.ad, 100), ref: clean(src.ref, 80), days: clean(src.days, 4), lp: clean(src.lp, 20) || 'article' };
   return { source, lang: L, poems: body.poems === true, journal: body.journal === true, print: body.format === 'print' && PRINT.enabled && !!OFFERS[L].print, wantsPrint: body.format === 'print', audio: body.format === 'audio' && !!OFFERS[L].audio };
 }
 
@@ -86,6 +86,8 @@ module.exports = async (req, res) => {
     'metadata[ad]': source.ad,
     'metadata[referrer]': source.ref,
     'metadata[days_to_buy]': source.days,
+    // which sales page version the buyer checked out from (article = the main page, read, workbook)
+    'metadata[landing]': source.lp,
     // The thank-you page reads session_id to show the right downloads and count the purchase once.
     return_url: 'https://' + host + THANK_YOU[lang] + '?session_id={CHECKOUT_SESSION_ID}',
   };

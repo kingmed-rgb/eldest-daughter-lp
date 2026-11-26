@@ -1449,7 +1449,7 @@ html.edco-open,html.edco-open body{overflow:hidden}
   function start(){
     var me=++run; destroy(); load.hidden=false; err.hidden=true;
     var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({lang:'en',format:order.format,poems:order.poems,journal:order.journal,src:window.EDS_SRC&&EDS_SRC()})})
+      body:JSON.stringify({lang:'en',format:order.format,poems:order.poems,journal:order.journal,src:Object.assign({},window.EDS_SRC&&EDS_SRC(),{lp:'workbook'})})})
       .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
     Promise.all([session, loadStripe()])
       .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){ return Promise.resolve(d.clientSecret); }}); })

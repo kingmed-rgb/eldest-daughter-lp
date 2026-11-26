@@ -90,7 +90,7 @@ module.exports = async (req, res) => {
       return {
         when: new Date(s.created * 1000).toISOString(), amount: (s.amount_total || 0) / 100, items: itemsOf(s), site: m.page === 'es' ? 'Spanish' : 'English',
         source: m.source || (s.payment_link ? 'payment link' : 'not tracked'), first_source: m.first_source || '', campaign: m.campaign || '', ad: m.ad || '',
-        days_to_buy: m.days_to_buy || '', country: (cd.address || {}).country || '', email: cd.email || s.customer_email || '', name: cd.name || '',
+        days_to_buy: m.days_to_buy || '', landing: m.landing || '', country: (cd.address || {}).country || '', email: cd.email || s.customer_email || '', name: cd.name || '',
       };
     });
     const paidEmails = new Set(paid.map((s) => ((s.customer_details || {}).email || '').toLowerCase()).filter(Boolean));
@@ -100,7 +100,7 @@ module.exports = async (req, res) => {
     });
     const unfinished = year.filter((s) => s.created >= since && s.status !== 'complete').map((s) => {
       const email = (s.customer_details && s.customer_details.email) || s.customer_email || '';
-      return { when: new Date(s.created * 1000).toISOString(), amount: (s.amount_total || 0) / 100, items: itemsOf(s), source: (s.metadata || {}).source || '', email, paid_later: !!(email && paidEmails.has(email.toLowerCase())) };
+      return { when: new Date(s.created * 1000).toISOString(), amount: (s.amount_total || 0) / 100, items: itemsOf(s), source: (s.metadata || {}).source || '', landing: (s.metadata || {}).landing || '', email, paid_later: !!(email && paidEmails.has(email.toLowerCase())) };
     }).filter((s) => s.email);
     const revenue = siteYear + OLDER_2026;
     const end = Date.UTC(new Date().getUTCFullYear(), 11, 31) / 1000, daysLeft = Math.max(1, Math.ceil((end - now) / 86400) + 1);

@@ -34,6 +34,14 @@ Spanish page: ebook $9 + the same two add-ons in Spanish.
 - `workbook/index.html` is the Shopify product page design (cart drawer, add-on upsell, sticky bar) running on this site's Stripe checkout.
   Built from `docs/lp-v2/` (`product.src.html`, `brand.py`, `checkout.html`): edit those, then `python3 docs/lp-v2/build.py`. Images in `images/v2/`.
 
+## test page (/read): the main page plus the best parts of /workbook
+- `read/index.html` = `index.html` with: real page spreads after the self-check, four number cards instead of
+  "right now / after", an audiobook preview in the offer card, and a sticky edition bar. Same headline, copy and checkout.
+- Built from `index.html` by `python3 docs/lp-read/build.py`: **rebuild it after every change to index.html** so the two
+  pages only differ in the tested parts.
+- Every Stripe order carries `metadata.landing` = `article` (main page), `read` or `workbook`; HQ shows it as "page …".
+  Compare sales per page against visits per page in Vercel Analytics (Clarity also has a `landing` tag on /read).
+
 ## secrets
 Never in the repo. Stripe, Resend, Lulu keys live in Vercel environment variables.
 
