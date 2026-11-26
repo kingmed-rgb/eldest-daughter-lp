@@ -30,6 +30,10 @@ Spanish page: ebook $9 + the same two add-ons in Spanish.
   paperback printing `api/_lib/print.js` + `api/lulu-webhook.js` (Lulu Print API, shipped email with tracking)
 - Audiobook narration scripts: `docs/audiobook/`
 
+## new sales page (/workbook)
+- `workbook/index.html` is the Shopify product page design (cart drawer, add-on upsell, sticky bar) running on this site's Stripe checkout.
+  Built from `docs/lp-v2/` (`product.src.html`, `brand.py`, `checkout.html`): edit those, then `python3 docs/lp-v2/build.py`. Images in `images/v2/`.
+
 ## secrets
 Never in the repo. Stripe, Resend, Lulu keys live in Vercel environment variables.
 

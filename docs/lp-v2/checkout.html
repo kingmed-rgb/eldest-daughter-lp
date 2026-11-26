@@ -1,0 +1,71 @@
+<!-- stripe embedded checkout: the cart's "Check out" opens this pop-up; buyers pay without leaving the page -->
+<div class="edco" id="edco" hidden role="dialog" aria-modal="true" aria-label="Secure checkout">
+  <div class="edco-sheet">
+    <div class="edco-head"><span>Secure checkout</span><button type="button" class="edco-x" id="edco-x" aria-label="Close checkout"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="edco-load" id="edco-load"><div class="edco-spin"></div><span>Loading secure checkout…</span></div>
+    <div class="edco-err" id="edco-err" hidden><p>Checkout didn’t load. Please check your connection and try again.</p><button type="button" id="edco-retry">Try again</button><p class="edco-help">Still stuck? Email <a href="mailto:eldestdaughterbook@gmail.com">eldestdaughterbook@gmail.com</a> and we’ll sort it out.</p></div>
+    <div id="edco-mount"></div>
+  </div>
+</div>
+<style>
+.edco{position:fixed;inset:0;z-index:200;background:rgba(11,9,9,.55);display:flex;align-items:flex-end;justify-content:center;overscroll-behavior:contain}
+.edco[hidden]{display:none}
+.edco-sheet{background:#fff;width:100%;max-width:520px;height:calc(100dvh - 16px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;border-radius:16px 16px 0 0;padding:0 0 calc(16px + env(safe-area-inset-bottom));font-family:'Inter',system-ui,sans-serif;color:#1f1a17}
+.edco-head{position:sticky;top:0;z-index:1;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 12px 10px 20px;border-bottom:1px solid #eee;font:600 15px/1 'Inter',sans-serif;color:#6b625c}
+.edco-x{background:none;border:0;width:40px;height:40px;display:grid;place-items:center;cursor:pointer}
+.edco-x svg{width:22px;height:22px;fill:none;stroke:#1f1a17;stroke-width:2;stroke-linecap:round}
+.edco-load{display:flex;flex-direction:column;align-items:center;gap:14px;padding:64px 16px;color:#6b625c;font-size:15px}
+.edco-load[hidden]{display:none}
+.edco-spin{width:28px;height:28px;border-radius:50%;border:3px solid #e8dfd6;border-top-color:#6e1a2b;animation:edco-spin .8s linear infinite}
+@keyframes edco-spin{to{transform:rotate(360deg)}}
+.edco-err{text-align:center;padding:48px 24px;font-size:15px;line-height:1.5}
+.edco-err button{margin:16px 0;background:#6e1a2b;color:#fff;border:0;border-radius:4px;padding:14px 26px;font:700 14px/1 'Inter',sans-serif;cursor:pointer}
+.edco-help{color:#6b625c;font-size:14px}
+.edco-help a{color:#6e1a2b}
+html.edco-open,html.edco-open body{overflow:hidden}
+@media(min-width:560px){.edco{align-items:center}.edco-sheet{height:auto;min-height:420px;max-height:92vh;border-radius:16px}}
+</style>
+<script>
+(function(){
+  var co=document.getElementById('edco'), mount=document.getElementById('edco-mount'), load=document.getElementById('edco-load'), err=document.getElementById('edco-err');
+  // only the ebook on its own has a payment link, used if the pop-up can't start
+  var LINK='https://buy.stripe.com/9B63cuenJbjK7Jvbpn9sk00', checkout=null, order=null, run=0;
+  function loadStripe(){
+    return window.Stripe ? Promise.resolve() : new Promise(function(ok,fail){
+      var s=document.createElement('script'); s.src='https://js.stripe.com/v3/'; s.onload=ok; s.onerror=fail; document.head.appendChild(s);
+    });
+  }
+  // get ready before anyone taps: wake the server function and load stripe.js once the reader is near the buy box
+  var top=document.getElementById('top');
+  if('IntersectionObserver' in window && top){
+    var warm=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ warm.disconnect(); setTimeout(function(){ fetch('/api/create-checkout-session').catch(function(){}); loadStripe().catch(function(){}); },2500); } });
+    warm.observe(top);
+  }
+  function destroy(){ if(checkout&&checkout.destroy){ try{ checkout.destroy() }catch(e){} } checkout=null; mount.innerHTML=''; }
+  function close(){ run++; co.hidden=true; document.documentElement.classList.remove('edco-open'); destroy(); }
+  function start(){
+    var me=++run; destroy(); load.hidden=false; err.hidden=true;
+    var session=fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({lang:'en',format:order.format,poems:order.poems,journal:order.journal,src:window.EDS_SRC&&EDS_SRC()})})
+      .then(function(r){ return r.json().then(function(d){ if(!r.ok) throw new Error(d.error||'checkout unavailable'); return d; }); });
+    Promise.all([session, loadStripe()])
+      .then(function(x){ var d=x[0], s=Stripe(d.publishableKey), create=s.createEmbeddedCheckoutPage||s.initEmbeddedCheckout; return create.call(s,{fetchClientSecret:function(){ return Promise.resolve(d.clientSecret); }}); })
+      .then(function(c){ if(me!==run){ try{ c.destroy() }catch(e){} return; } checkout=c; load.hidden=true; c.mount('#edco-mount'); })
+      .catch(function(e){
+        if(me!==run) return;
+        try{ console.warn('checkout failed:', e&&e.message); window.clarity&&clarity('event','checkout_failed'); }catch(x){}
+        if(order.format==='digital'&&!order.poems&&!order.journal){ location.href=LINK; return; }
+        load.hidden=true; err.hidden=false;
+      });
+  }
+  window.EDS_CHECKOUT=function(o){
+    order=o; co.hidden=false; document.documentElement.classList.add('edco-open'); document.getElementById('edco-x').focus({preventScroll:true});
+    try{ gtag('event','begin_checkout',{value:o.total,currency:'USD',items:[{item_id:o.format}].concat(o.poems?[{item_id:'poems'}]:[],o.journal?[{item_id:'journal'}]:[])}); }catch(e){}
+    try{ window.clarity&&clarity('event','checkout_'+o.format+(o.poems?'_p':'')+(o.journal?'_j':'')); }catch(e){}
+    start();
+  };
+  document.getElementById('edco-x').addEventListener('click',close);
+  document.getElementById('edco-retry').addEventListener('click',start);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!co.hidden) close(); });
+})();
+</script>

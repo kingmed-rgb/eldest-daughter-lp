@@ -72,7 +72,7 @@
       ]
     },
     {
-      "source": "/(terms-of-service|privacy-policy)",
+      "source": "/(terms-of-service|privacy-policy|workbook)",
       "headers": [
         {
           "key": "Cache-Control",
